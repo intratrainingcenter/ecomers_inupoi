@@ -13,7 +13,8 @@ class LabBarang extends Controller
      */
     public function index()
     {
-        //
+        return view('content.laporanBarang');
+
     }
 
     /**
