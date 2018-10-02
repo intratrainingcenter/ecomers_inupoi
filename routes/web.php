@@ -16,4 +16,6 @@ Route::get('/', function () {
 })->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('dashboard','dashboardController');
 Route::resource('Inupoi', 'FrondendController');
+Route::resource('kategori','kategoriController');
