@@ -35,7 +35,8 @@
     </section>
     <!-- Main content -->
     <section class="content container-fluid">
-      @include('dashboard.dashboard')
+      @yield('dashboard')
+      @yield('content')
     </section>
     <!-- /.content -->
   </div>

@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('index');
 })->middleware('auth');
 
+Route::resource('dashboard','dashboardController');
 Route::resource('Inupoi', 'FrondendController');
+Route::resource('kategori','kategoriController');

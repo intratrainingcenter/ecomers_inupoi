@@ -31,8 +31,8 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">HEADER</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
-      <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+      <li class="active"><a href="{{route('dashboard.index')}}"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
+      <li><a href="{{route('kategori.index')}}"><i class="fa fa-link"></i> <span>Kategori</span></a></li>
       <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
     </ul>
     <!-- /.sidebar-menu -->
