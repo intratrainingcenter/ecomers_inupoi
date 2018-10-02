@@ -20,13 +20,10 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
   <!-- Main Header -->
   @include('header.header')
-
   <!-- Main sidebar -->
   @include('sidebar.sidebar')
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
