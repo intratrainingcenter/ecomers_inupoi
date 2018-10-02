@@ -31,9 +31,33 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">HEADER</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
-      <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-      <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+      <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+      <li><a href="#"><i class="fa fa-link"></i> <span>kategori</span></a></li>
+      <li><a href="#"><i class="fa fa-link"></i> <span>Barang</span></a></li>
+      <li><a href="#"><i class="fa fa-link"></i> <span>Keranjang</span></a></li>
+      <li><a href="#"><i class="fa fa-link"></i> <span>Diskon</span></a></li>
+      <li><a href="#"><i class="fa fa-link"></i> <span>Retur</span></a></li>
+      <li><a href="#"><i class="fa fa-link"></i> <span>Komentar</span></a></li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-dashboard"></i> <span>Laporan</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="index2.html"><i class="fa fa-circle-o"></i> Laporan Barang</a></li>
+          <li><a href="index2.html"><i class="fa fa-circle-o"></i> Laporan Keuangan</a></li>          
+          <li><a href="index2.html"><i class="fa fa-circle-o"></i> Laporan Transaksi</a></li>
+        </ul>
+      </li>
+      <li><a href="#"><i class="fa fa-link"></i> <span>User</span></a></li>
+      <li><a href="#"><i class="fa fa-link"></i> <span>Setting</span></a></li>
+
+      
+
+      
+
     </ul>
     <!-- /.sidebar-menu -->
   </section>
