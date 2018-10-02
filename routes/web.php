@@ -14,3 +14,5 @@ Auth::routes();
 Route::get('/', function () {
     return view('index');
 })->middleware('auth');
+
+Route::resource('Inupoi', 'FrondendController');
