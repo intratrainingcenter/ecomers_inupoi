@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::resource('dashboard','dashboardController');
 Route::resource('Inupoi', 'FrondendController');
 Route::resource('kategori','kategoriController');
+Route::resource('profile','profileController');
