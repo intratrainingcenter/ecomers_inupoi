@@ -62,47 +62,46 @@ $(function() {
     </div>
 @endif
 
-
-      <div class="clearfix"></div>
-     				<div class="row">
-     					<div class="col-md-12 col-sm-12 col-xs-12">
-     								<div class="row clearfix">
-     											<div class="container-fluid">
-                  {{-- {!! Form::open(array('route' => 'kategori.store','method'=>'POST','files' => 'true')) !!} --}}
-     								<div class="col-md-6" >
-     										<label for="kode" class="control-label">NIS Siswa</label>
-     										<div class="form-group">
-                            {{-- {!! Form::text('nis', null, array('placeholder' => 'Nis','class' => 'form-control','required' => '')) !!} --}}
-     										</div>
-     								</div>
-                    <div class="col-md-6">
-                      <label for="kode" class="control-label">Absensi</label>
-                      <div class="form-group">
-                        {{-- {!!Form::select('presensi', ['Sakit' => 'Sakit', 'Ijin' => 'Ijin', 'Alfa' => 'Alfa'], null, array('class' => 'form-control','placeholder' => 'Mohon Masukan Presensi Siswa','required' => ''))!!} --}}
-                      </div>
-                    </div>
-     								<div class="col-md-6">
-     										<label for="kode" class="control-label">Keterangan</label>
-     										<div class="form-group">
-     												{{-- {!! Form::textarea('keterangan', null, array('placeholder' => 'keterangan','class' => 'form-control','required' => '','style' => 'width:500px; height:100px;')) !!} --}}
-     										</div>
-     								</div>
-     								 <div class="ln_solid"></div>
-     									<div class="form-group">
-     										<div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="submit" value="Submit" class="btn btn-success">
-     										<div class="col-md-6 col-sm-6 col-xs-12">
-                          <button class="btn btn-primary" type="reset">Reset</button>
-     										</div>
-     									</div>
-     								 </div>
-                      {{-- {!! Form::close() !!} --}}
-     							</div>
-     						</div>
-     				</div>
-      </div>
+<div class="clearfix"></div>
+    <div class="row">
+    	<div class="col-md-12 col-sm-12 col-xs-12">
+    		<div class="row clearfix">
+    			<div class="container-fluid">
+             		{{-- {!! Form::open(array('route' => 'kategori.store','method'=>'POST','files' => 'true')) !!} --}}
+    				<div class="col-md-6" >
+    					<label for="kode" class="control-label">NIS Siswa</label>
+    					<div class="form-group">
+                      {{-- {!! Form::text('nis', null, array('placeholder' => 'Nis','class' => 'form-control','required' => '')) !!} --}}
+    					</div>
+    				</div>
+               	<div class="col-md-6">
+               	  	<label for="kode" class="control-label">Absensi</label>
+               	  	<div class="form-group">
+               	  	  {{-- {!!Form::select('presensi', ['Sakit' => 'Sakit', 'Ijin' => 'Ijin', 'Alfa' => 'Alfa'], null, array('class' => 'form-control','placeholder' => 'Mohon Masukan Presensi Siswa','required' => ''))!!} --}}
+               	  	</div>
+               	</div>
+    			<div class="col-md-6">
+    				<label for="kode" class="control-label">Keterangan</label>
+    				<div class="form-group">
+    						{{-- {!! Form::textarea('keterangan', null, array('placeholder' => 'keterangan','class' => 'form-control','required' => '','style' => 'width:500px; height:100px;')) !!} --}}
+    				</div>
+    			</div>
+    			<div class="ln_solid"></div>
+    			<div class="form-group">
+    				<div class="col-md-6 col-sm-6 col-xs-12">
+                    	<input type="submit" value="Submit" class="btn btn-success">
+    					<div class="col-md-6 col-sm-6 col-xs-12">
+                     		<button class="btn btn-primary" type="reset">Reset</button>
+    					</div>
+    				</div>
+    				 </div>
+                 {{-- {!! Form::close() !!} --}}
+    			</div>
+    		</div>
+    	</div>
     </div>
-    </div>
+</div>
+</div>
 <br>
 <br>
     <div class="panel panel-default">
