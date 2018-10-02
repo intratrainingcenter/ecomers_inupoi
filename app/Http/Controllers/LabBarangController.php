@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LabBarang extends Controller
+class LabBarangController extends Controller
 {
     /**
      * Display a listing of the resource.
