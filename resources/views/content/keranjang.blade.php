@@ -1,6 +1,6 @@
-@extends('index')@section('title', 'Dasboard')
+@extends('index')@section('title', 'Keranjang')
 @section('judul','Header')
-@section('sub','Dashboard')
+@section('sub','Keranjang')
 @section('someCSS')
 <link href="{{ asset('assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
@@ -56,7 +56,7 @@ $(function() {
  
     <div class="panel panel-default">
     <div class="panel-heading">
-            <button type="submit" class="btn btn-lg btn-success ">add</button>
+            <button type="button" class="btn-lg btn-success fa fa-plus-square "></button>
     </div>
     <div class="panel-body">
       <table id="example" class="table table-striped table-bordered" style="width:100%">

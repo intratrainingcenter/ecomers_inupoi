@@ -17,3 +17,15 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('Inupoi', 'FrondendController');
+Route::resource('dashboard','dashboardController');
+Route::resource('kategori','KategoriController');
+Route::resource('barang','ProdukController');
+Route::resource('keranjang','KeranjangController');
+Route::resource('diskon','DiskonController');
+Route::resource('retur','ReturController');
+Route::resource('komentar','KomentarController');
+Route::resource('laporanbarang','LabBarangController');
+Route::resource('laporankeuangan','LapKeuanganController');
+Route::resource('laporantransaksi','LapTransaksiController');
+Route::resource('user','UserController');
+Route::resource('setting','SettingController');
