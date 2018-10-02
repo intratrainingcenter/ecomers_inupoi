@@ -128,11 +128,9 @@ $(function() {
     	@endphp
     	<tbody>
     		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>awgaanklfa</td>
+    			<td></td>
+    			<td></td>
+    			<td></td>
           <td>
               <a href="" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
 
