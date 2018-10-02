@@ -16,6 +16,16 @@ Route::get('/', function () {
 })->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('dashboard','dashboardController');
 Route::resource('Inupoi', 'FrondendController');
-Route::resource('kategori','kategoriController');
+Route::resource('dashboard','dashboardController');
+Route::resource('kategori','KategoriController');
+Route::resource('barang','ProdukController');
+Route::resource('keranjang','KeranjangController');
+Route::resource('diskon','DiskonController');
+Route::resource('retur','ReturController');
+Route::resource('komentar','KomentarController');
+Route::resource('laporanbarang','LapBarangController');
+Route::resource('laporantransaksi','LabTransaksiController');
+Route::resource('laporankeuangan','LapKeuanganController');
+Route::resource('user','UserController');
+Route::resource('setting','SettingController');

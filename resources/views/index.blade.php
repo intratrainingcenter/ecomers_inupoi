@@ -29,8 +29,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Page Header
-        <small>Optional description</small>
+        @yield('judul')
+        <small>@yield('sub')</small>
       </h1>
     </section>
     <!-- Main content -->
@@ -57,6 +57,19 @@
 <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+@section('someJS')
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+<script>
+$(function() {
+  $('#example').DataTable();
+  // $('#example2').DataTable({
+  //   ''
+  // });
+});
+</script>
+@endsection
 
 </body>
 </html>
