@@ -1,6 +1,6 @@
-@extends('index')@section('title', 'Laporan Keuangan')
+@extends('index')@section('title', 'Laporan Transaksi')
 @section('judul','Header')
-@section('sub','Laporan Keuangan')
+@section('sub','Laporan Transaksi')
 @section('someCSS')
 <link href="{{ asset('assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">

@@ -1,6 +1,6 @@
-@extends('index')
-
-@section('title', 'AdminLTE')
+@extends('index')@section('title', 'Setting')
+@section('judul','Header')
+@section('sub','Setting')
 @section('someCSS')
 <link href="{{ asset('assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
@@ -16,71 +16,82 @@
 <script>
 $(function() {
   $('#example').DataTable();
+  // $('#example2').DataTable({
+  //   ''
+  // });
 });
 </script>
 @endsection
 
-@section('dashboard')
-<div class="row">
-  <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-aqua">
-      <div class="inner">
-        <h3>150</h3>
-
-        <p>New Orders</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-bag"></i>
-      </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+@section('content')
+<section class="content container-fluid">
+  <div class="x_panel">
+    <div class="x_content">
+@if ($message = Session::get('success'))
+    <div class="alert alert-success alert alert-success alert-dismissible fade in" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+        <p>{{ $message }}</p>
     </div>
-  </div>
-  <!-- ./col -->
-  <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-green">
-      <div class="inner">
-        <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-        <p>Bounce Rate</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-stats-bars"></i>
-      </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    @elseif ($message = Session::get('edit'))
+    <div class="alert alert-warning alert alert-warning alert-dismissible fade in" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+        <p>{{ $message }}</p>
     </div>
-  </div>
-  <!-- ./col -->
-  <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-yellow">
-      <div class="inner">
-        <h3>44</h3>
-
-        <p>User Registrations</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-person-add"></i>
-      </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    @elseif ($message = Session::get('delete'))
+    <div class="alert alert-danger alert alert-danger alert-dismissible fade in" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+        <p>{{ $message }}</p>
     </div>
-  </div>
-  <!-- ./col -->
-  <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-red">
-      <div class="inner">
-        <h3>65</h3>
-
-        <p>Unique Visitors</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-pie-graph"></i>
-      </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    @elseif ($message = Session::get('not_success'))
+    <div class="alert alert-danger alert alert-danger alert-dismissible fade in" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+        <p>{{ $message }}</p>
     </div>
-  </div>
-  <!-- ./col -->
-</div>
+@endif
+
+ 
+    <div class="panel panel-default">
+    <div class="panel-heading">
+            <button type="button" class="btn-lg btn-success fa fa-plus-square "></button>
+    </div>
+    <div class="panel-body">
+      <table id="example" class="table table-striped table-bordered" style="width:100%">
+      <thead>
+        <tr>
+          <th class="column-title">No</th>
+          <th class="column-title">Nis Siswa</th>
+          <th class="column-title">Nama Siswa</th>
+          <th class="column-title">Absensi</th>
+          <th class="column-title">Keterangan</th>
+          <th class="column-title">Action</th>
+        </tr>
+      </thead>
+    	@php
+    	$no= 1;
+    	@endphp
+    	<tbody>
+    		<tr>
+    			<td>data-dismissq</td>
+    			<td>dsdfsdfs</td>
+          <td>cdzsasdasw</td>
+          <td>faa</td>
+          <td>awgaanklfa</td>
+          <td>
+              <a href="" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+
+              <a><button  onclick=" return confirm('Anda Yakin Menghapus Absensi')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
+
+          </td>
+    		</tr>
+    	</tbody>
+     </table>
+     </div>
+     </div>
+</section>
+
 @endsection
+
