@@ -13,7 +13,7 @@ class LapTransaksiController extends Controller
      */
     public function index()
     {
-        return view('content.laporanTransaksi');
+        return view('content.LapTransaksi.laporanTransaksi');
         //
     }
 

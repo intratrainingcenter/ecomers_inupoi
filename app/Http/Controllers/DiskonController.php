@@ -13,7 +13,7 @@ class DiskonController extends Controller
      */
     public function index()
     {
-        return view('content.diskon');        
+        return view('content.diskon.diskon');        
     }
 
     /**
