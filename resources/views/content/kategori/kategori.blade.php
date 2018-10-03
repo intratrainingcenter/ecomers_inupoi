@@ -56,7 +56,7 @@ $(function() {
  
   <div class="panel panel-default">
     <div class="panel-heading">
-            <button type="button" class="btn-lg btn-success fa fa-plus-square "></button>
+      <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#modal-success"><li class="fa fa-plus-square"></li> Add Kategori</button>
     </div>
   <div class="panel-body">
     <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -85,6 +85,46 @@ $(function() {
   </div>
   </div>
 </section>
+{{-- modal create --}}
+<div class="modal modal-success fade" id="modal-success">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Tambah Data Kelas</h4>
+      </div>
+      <form  action="{{route('kategori.store')}}" method="post">
+      @method('POST') @csrf()
+      {{-- {!! Form::open(['route' => 'kategori.create' , 'method' => 'post'])!!} --}}
+      <div class="modal-body">
+        <div class="box-body">
+          <div class="form-group">
+            <label for="kode_kategori" class="col-sm-4 control-label">Kode Kategori</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="kode_kategori" id="kode_kategori" placeholder="Kode Kategori">
+            </div>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <label for="nama_kategori" class="col-sm-4 control-label">Nama Kategori</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name='nama_kategori' id="nama_kategori" placeholder="Nama Kategori">
+            </div>
+          </div>
+          <br>
+        </div>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger pull-left batal" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+    {{-- {!! Form::close() !!} --}}
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
 
 @endsection
 
