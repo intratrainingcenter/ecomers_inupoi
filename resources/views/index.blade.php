@@ -82,6 +82,10 @@ $(function() {
   // });
 });
 </script>
+<script type="text/javascript">
+
+  setTimeout(function(){ $('.notif').hide(1000)},3000);
+</Script>
 @endsection
 
 </body>
