@@ -75,8 +75,8 @@ $(function() {
     			<td>{{$kategori->kode_kategori}}</td>
           <td>{{$kategori->nama_kategori}}</td>
           <td>
-              <a href="" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-              <a><button  onclick=" return confirm('Anda Yakin Menghapus Absensi')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit{{$kategori->id}}"><li class="fa fa-pencil"></li></button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{$kategori->id}}"><li class="fa fa-trash-o"></li></button>
           </td>
     		</tr>
         @endforeach
@@ -90,11 +90,10 @@ $(function() {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Tambah Data Kelas</h4>
+        <h4 class="modal-title">Tambah Data Kategori</h4>
       </div>
       <form  action="{{route('kategori.store')}}" method="post">
       @method('POST') @csrf()
-      {{-- {!! Form::open(['route' => 'kategori.create' , 'method' => 'post'])!!} --}}
       <div class="modal-body">
         <div class="box-body">
           <div class="form-group">
@@ -118,11 +117,77 @@ $(function() {
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
-    {{-- {!! Form::close() !!} --}}
-
     </div>
     <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
 </div>
+
+{{-- modal delete --}}
+  @foreach($data as $kategori)
+  <div class="modal modal-danger fade" id="modal-danger{{$kategori->id}}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Hapus Data Kategori</h4>
+        </div>
+        <form  action="{{route('kategori.destroy',$kategori->id)}}" method="post">
+        @method('delete') @csrf()
+        <div class="modal-body">
+          <input type="hidden" name="id" value="{{$kategori->id}}">
+          <p>Apakah anda yakin ingin menghapus data ini ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
+          <button type="submit" class="btn btn-outline">Iya</button>
+        </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  {{-- /.modal --}}
+
+  {{-- modal update --}}
+<div class="modal fade fade" id="modal-edit{{$kategori->id}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Update Data Kategori</h4>
+      </div>
+      <form  action="{{route('kategori.update',$kategori->id)}}" method="post">
+      @method('PUT') @csrf()
+      <div class="modal-body">
+        <input type="hidden" name="id" value="{{$kategori->id}}">
+        <div class="box-body">
+          <div class="form-group">
+            <label for="kode_kategori" class="col-sm-4 control-label">Kode Kategori</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="kode_kategori" id="kode_kategori" placeholder="Kode Kategori" value="{{$kategori->kode_kategori}}">
+            </div>
+          </div>
+          <br><br>
+          <div class="form-group">
+            <label for="nama_kategori" class="col-sm-4 control-label">Nama Kategori</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name='nama_kategori' id="nama_kategori" placeholder="Nama Kategori" value="{{$kategori->nama_kategori}}">
+            </div>
+          </div>
+          <br>
+        </div>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger pull-left batal" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+  </div>
+  @endforeach
 @endsection
