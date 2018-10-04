@@ -84,7 +84,13 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = kategori::find($id);
+        $update->update([
+            'kode_kategori' =>  $request->kode_kategori,
+            'nama_kategori' =>  $request->nama_kategori
+        ]);
+
+        return redirect('kategori')->with('success','Update data success');
     }
 
     /**
@@ -95,6 +101,11 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        $hapus = kategori::find($id);
+        // dd($hapus);
+        $hapus->delete();
+
+        return redirect('kategori')->with('success','Delete data success');
     }
 }
