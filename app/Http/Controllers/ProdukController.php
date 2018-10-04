@@ -17,7 +17,9 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        return view('content.produk.produk');
+        $item = produk::all();
+        $category = kategori::all();
+        return view('content.produk.produk',['item'=>$item,'kategori'=>$category]);
     }
 
     /**
@@ -27,23 +29,7 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        $cek = produk::where('nama_kelas',$request->nama_kelas)->doesntExist(); 
-        // dd($cek);
-        if($cek == true)
-        {
-        $table = new kelas;
-        $table->kode_guru    =  $request->kode_guru;
-        $table->nama_kelas   =  $request->nama_kelas;
-        $table->jml_siswa    =  $request->jml_siswa;
-        $table->orderBy('id_kelas DESC');
-        $table->save();
-
-        return redirect('kelas')->with('yeah','Add new data success');
-        }
-        else{
-            return redirect('kelas')->with('update','Name Class is already exists'); 
-
-        }
+        
     }
 
     /**
@@ -54,7 +40,67 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
+        $cek = produk::where('kode_produk',$request->kode_produk)->doesntExist(); 
         
+        if($cek == true)
+        {
+        $table = new produk;
+        $table->kode_produk    =  $request->kode_produk;
+        $table->kode_kategori  =  $request->kode_kategori;
+        $table->kode_diskon    =  $request->kode_diskon;
+        $table->nama_produk    =  $request->nama_produk;
+        $table->harga          =  $request->harga;     
+        $table->stok           =  $request->stok;
+        $table->deskripsi      =  $request->deskripsi;
+
+        $table->orderBy('id DESC');
+        $table->save();
+
+        return redirect('barang')->with('yeah','Add new data success');
+        }
+        else{
+            return redirect('barang')->with('update','Kode is already exists'); 
+
+        }
+        
+        //  // dd($request);
+        //  $cek = produk::where('kode_produk',$request->kode_produk)->doesntExist(); 
+        
+        //  if($cek == true)
+        //  {
+        //      $upload = "N";
+        //      if ($request->hasFile('images')) {
+        //      $destination = "images";
+        //      $filename = $request->file('images');
+        //      $filename1 = $request->file('images2');
+        //      $filename->move($destination, $filename->getClientOriginalName());
+        //      $filename1->move($destination, $filename1->getClientOriginalName());
+        //      $upload = "Y";
+        //      }
+        //          if ($upload = "Y") {
+           
+        //          $table = new produk;
+        //          $table->kode_produk    =  $request->kode_produk;
+        //          $table->kode_kategori  =  $request->kode_kategori;
+        //          $table->kode_diskon    =  $request->kode_diskon;
+        //          $table->nama_produk    =  $request->nama_produk;
+        //          $table->harga          =  $request->harga;     
+        //          $table->stok           =  $request->stok;
+        //          $table->deskripsi      =  $request->deskripsi;
+        //          $table->gambar = $filename->getClientOriginalName();
+        //          $table->gambar2 = $filename1->getClientOriginalName();
+        //          $table->orderBy('id DESC');
+        //          $table->save();
+                 
+        //          return redirect('barang')->with('yeah','Add new data success');
+        //      }
+        //  }
+        //  else
+        //  {
+        //      return redirect('barang')->with('update','Kode is already exists'); 
+        //  }
+
     }
 
     /**

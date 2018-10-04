@@ -6,26 +6,28 @@
       <table id="example" class="table table-striped table-bordered" style="width:100%">
       <thead>
         <tr>
-          <th class="column-title">No</th>
-          <th class="column-title">Nis Siswa</th>
-          <th class="column-title">Nama Siswa</th>
-          <th class="column-title">Absensi</th>
-          <th class="column-title">Keterangan</th>
-          <th class="column-title">Action</th>
+          <th class="column-title">#</th>
+          <th class="column-title">Kode Produk</th>
+          <th class="column-title">Nama Produk</th>
+          <th class="column-title">Stock</th>
+          <th class="column-title">Opsi</th>
         </tr>
       </thead>@php$no= 1;@endphp
     	<tbody>
+        @foreach ($item as $items)
     		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>awgaanklfa</td>
+          <td>{{$no++}}</td>
+          <td>{{$items->kode_produk}}</td>
+          <td>{{$items->nama_produk}}</td>         
+    			<td>{{$items->harga}}</td>
+          <td>{{$items->stok}}</td>
           <td>
+              <a href="" type="button" class="btn btn-primary" title="Detail"> <i class="fa fa-search"></i> </a>
               <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#modal-edit" title="Edit data"><i class="fa fa-pencil"></i></button>
               <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modal-hapus" title="Delete data"><i class="fa fa-trash-o"></i></button>
           </td>
-    		</tr>
+        </tr>
+        @endforeach
     	</tbody>
      </table>
      </div>

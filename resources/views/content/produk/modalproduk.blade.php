@@ -48,7 +48,12 @@
                     <div class="form-group">
                         <label for="" class="col-sm-4 control-label">Kode Kategori</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name='kode_kategori' id="kode_kategori" placeholder="Kode Kategori">
+                          <select class="form-control" name="kode_kategori">
+                                <option value="" disabled selected>Kategori</option>
+                                @foreach($kategori as $in)
+                              <option value="{{$in->kode_kategori}}">{{$in->kode_kategori}} - {{$in->nama_kategori}}</option>
+                                @endforeach
+                              </select>
                         </div>
                       </div>
                       <br><br>
@@ -83,10 +88,24 @@
                     <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Deskripsi</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" name='deskripsi' id="deskripsi" placeholder="Deskripsi">
+                              <textarea type="text" class="form-control" name='deskripsi' id="deskripsi" placeholder="Deskripsi"></textarea>
                             </div>
                           </div>
-                    <br><br>
+                    <br><br><br>
+                    <div class="form-group">
+                            <label for="exampleInputFile" class="col-sm-4 control-label">Image Depan</label>
+                            <div class="col-sm-8">
+                                <input type="file" class="" id="image" name="images">
+                            </div>
+                          </div>
+                    <br>
+                    <div class="form-group">
+                            <label for="exampleInputFile" class="col-sm-4 control-label">Image Belakang</label>
+                            <div class="col-sm-8">
+                                <input type="file" class="" id="image2" name="images2">
+                            </div>
+                          </div>
+                    <br>
                  </div>  
             </div>
             <div class="modal-footer">

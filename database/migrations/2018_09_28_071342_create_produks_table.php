@@ -23,6 +23,7 @@ class CreateProduksTable extends Migration
             $table->integer('stok');
             $table->string('rating');
             $table->string('gambar');
+            $table->string('gambar_belakang');
             $table->string('deskripsi_produk');
             $table->timestamps();
         });
