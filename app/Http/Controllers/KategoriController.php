@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\kategori;
 
 class KategoriController extends Controller
 {
@@ -13,7 +14,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return view('content.kategori');
+        $data = kategori::all();
+        return view('content.kategori.kategori', compact('data'));
 
     }
 
@@ -24,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +37,20 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $cek = kategori::where('kode_kategori',$request->kode_kategori)->doesntExist();
+
+        if($cek == true){
+            $table = new kategori;
+            $table->kode_kategori   =   $request->kode_kategori;
+            $table->nama_kategori   =   $request->nama_kategori;
+            $table->orderBy('id DESC');
+            $table->save();
+
+            return redirect('kategori')->with('success','Add new data success');
+        }else{
+            return redirect('kategori')->with('edit','Kode Kategori is already exists');
+        }
     }
 
     /**
