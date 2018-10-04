@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use Hash;
-use Bcrypt;
 
-
-class UserController extends Controller
+class UserprofileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +15,8 @@ class UserController extends Controller
     public function index()
     {
       $user = User::get();
-      // dd($user);
-      return View('content/profile',compact('user'));
+      // dd($class);
+      return View('content/detail_profile',compact('user'));
     }
 
     /**
@@ -62,8 +59,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-      $user = User::where('id', $id)->first();
-      return View('content/detail_profile',compact('user', 'id'));
+        //
     }
 
     /**
@@ -75,23 +71,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $gambar = $request->file('foto');
-            $nm_file = $gambar->getClientOriginalName();
-            $request->file('foto')->move(public_path().'/image/', $nm_file);
-      $user = User::find($id);
-   if (Hash::check(request()->get('password_lama'), $user->password)) {
-     $user->name = $request->name;
-     $user->email = $request->email;
-     $user->jabatan = $request->jabatan;
-     $user->foto = $nm_file;
-     $user->password = bcrypt('$request->password');
-     $user->save();
-     dd($user);
-    return redirect()->route('user.index')->with('success', 'Berhasil Mengedit Data');
-  }else {
-      return redirect()->route('user.index')->with('gagal','Gagal mengupdate data mohon chack password anda');
-    }
-
+        //
     }
 
     /**

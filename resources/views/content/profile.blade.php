@@ -2,11 +2,7 @@
 
 @section('title', 'AdminLTE')
 @section('someCSS')
-<link href="{{ asset('assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/image.css') }}">
 @endsection
 
 @section('someJS')
@@ -16,9 +12,6 @@
 <script>
 $(function() {
   $('#example').DataTable();
-  // $('#example2').DataTable({
-  //   ''
-  // });
 });
 </script>
 @endsection
@@ -27,8 +20,8 @@ $(function() {
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Absen
-    <small>Data Absensi Siswa</small>
+    Profile
+    <small>Data Profile</small>
   </h1>
 </section>
 
@@ -54,60 +47,19 @@ $(function() {
       </button>
         <p>{{ $message }}</p>
     </div>
-    @elseif ($message = Session::get('not_success'))
+    @elseif ($message = Session::get('gagal'))
     <div class="alert alert-danger alert alert-danger alert-dismissible fade in" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
       </button>
         <p>{{ $message }}</p>
     </div>
 @endif
-
-<div class="clearfix"></div>
-    <div class="row">
-    	<div class="col-md-12 col-sm-12 col-xs-12">
-    		<div class="row clearfix">
-    			<div class="container-fluid">
-             		{{-- {!! Form::open(array('route' => 'kategori.store','method'=>'POST','files' => 'true')) !!} --}}
-    				<div class="col-md-6" >
-    					<label for="kode" class="control-label">NIS Siswa</label>
-    					<div class="form-group">
-                      {{-- {!! Form::text('nis', null, array('placeholder' => 'Nis','class' => 'form-control','required' => '')) !!} --}}
-    					</div>
-    				</div>
-               	<div class="col-md-6">
-               	  	<label for="kode" class="control-label">Absensi</label>
-               	  	<div class="form-group">
-               	  	  {{-- {!!Form::select('presensi', ['Sakit' => 'Sakit', 'Ijin' => 'Ijin', 'Alfa' => 'Alfa'], null, array('class' => 'form-control','placeholder' => 'Mohon Masukan Presensi Siswa','required' => ''))!!} --}}
-               	  	</div>
-               	</div>
-    			<div class="col-md-6">
-    				<label for="kode" class="control-label">Keterangan</label>
-    				<div class="form-group">
-    						{{-- {!! Form::textarea('keterangan', null, array('placeholder' => 'keterangan','class' => 'form-control','required' => '','style' => 'width:500px; height:100px;')) !!} --}}
-    				</div>
-    			</div>
-    			<div class="ln_solid"></div>
-    			<div class="form-group">
-    				<div class="col-md-6 col-sm-6 col-xs-12">
-                    	<input type="submit" value="Submit" class="btn btn-success">
-    					<div class="col-md-6 col-sm-6 col-xs-12">
-                     		<button class="btn btn-primary" type="reset">Reset</button>
-    					</div>
-    				</div>
-    				 </div>
-                 {{-- {!! Form::close() !!} --}}
-    			</div>
-    		</div>
-    	</div>
-    </div>
-</div>
-</div>
 <br>
 <br>
     <div class="panel panel-default">
     <div class="panel-heading">
       <center>
-    <h2> Data Absensi Siswa</h2>
+    <h2> Data Profile</h2>
       </center>
       <br>
     </div>
@@ -116,10 +68,10 @@ $(function() {
       <thead>
         <tr>
           <th class="column-title">No</th>
-          <th class="column-title">Nis Siswa</th>
-          <th class="column-title">Nama Siswa</th>
-          <th class="column-title">Absensi</th>
-          <th class="column-title">Keterangan</th>
+          <th class="column-title">Nama</th>
+          <th class="column-title">Email</th>
+          <th class="column-title">Jabatan</th>
+          <th class="column-title">Foto</th>
           <th class="column-title">Action</th>
         </tr>
       </thead>
@@ -127,23 +79,30 @@ $(function() {
     	$no= 1;
     	@endphp
     	<tbody>
+        @foreach($user as $users)
     		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>awgaanklfa</td>
-          <td>
-              <a href="" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-
-              <a><button  onclick=" return confirm('Anda Yakin Menghapus Absensi')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
-
-          </td>
+    			<td>{{$no++}}</td>
+    			<td>{{$users->name}}</td>
+    			<td>{{$users->email}}</td>
+    			<td>{{$users->jabatan}}</td>
+    			<td><img src="{{ asset('image/' . $users->foto) }}"  width="80px"/></td>
+           @if (Auth::guard('web')->check())
+              @if (Auth::guard('web')->user()->jabatan == 'owner')
+              <td>
+                <a href="{{Route('user.edit', $users->id)}}" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                <a><button  onclick=" return confirm('Anda Yakin Menghapus Absensi')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
+              </td>
+              @elseif (Auth::guard('web')->user()->jabatan == 'superadmin')
+              <td>Hanya Owner Yang Dapat Mengganti</td>
+              @elseif (Auth::guard('web')->user()->jabatan == 'petugas')
+              <td>Hanya Owner Yang Dapat Mengganti</td>
+           @endif
+           @endif
     		</tr>
+        @endforeach
     	</tbody>
      </table>
      </div>
      </div>
 </section>
-<!-- /.content -->
 @endsection

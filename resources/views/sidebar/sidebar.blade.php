@@ -6,10 +6,10 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        <img src="{{ asset('image/'. Auth::user()->foto) }}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Alexander Pierce</p>
+        <p>{{Auth::user()->name}}</p>
         <!-- Status -->
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
@@ -47,7 +47,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="{{Route('laporanbarang.index')}}"><i class="fa fa-circle-o"></i> Laporan Barang</a></li>
-          <li><a href="{{Route('laporankeuangan.index')}}"><i class="fa fa-circle-o"></i> Laporan Keuangan</a></li>          
+          <li><a href="{{Route('laporankeuangan.index')}}"><i class="fa fa-circle-o"></i> Laporan Keuangan</a></li>
           <li><a href="{{Route('laporantransaksi.index')}}"><i class="fa fa-circle-o"></i> Laporan Transaksi</a></li>
         </ul>
       </li>

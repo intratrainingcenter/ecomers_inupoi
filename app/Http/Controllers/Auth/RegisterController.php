@@ -63,23 +63,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-//       $image = $request->foto;
-//       $name=$image->getClientOriginalName();
-//       $image->move(public_path().'/image/', $name);
     $request = request();
-    // dd($request->all());
       $gambar = $request->file('foto');
-      // dd($gambar);
             $nm_file = $gambar->getClientOriginalName();
-            // dd($nm_file);
             $request->file('foto')->move(public_path().'/image/', $nm_file);
 
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'jabatan' => $data['jabatan'],
-            'password' => Hash::make($data['password']),
+            'password' => bcrypt($data['password']),
             'foto' => $nm_file,
         ]);
     }
