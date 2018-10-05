@@ -90,7 +90,7 @@ $(function() {
               @if (Auth::guard('web')->user()->jabatan == 'owner')
               <td>
                 <a href="{{Route('user.edit', $users->id)}}" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                <a><button  onclick=" return confirm('Anda Yakin Menghapus Absensi')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
+                <a href="{{Route('user.destroy', $users->id)}}"><button  onclick=" return confirm('Anda Yakin Menghapus Profile')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
               </td>
               @elseif (Auth::guard('web')->user()->jabatan == 'superadmin')
               <td>Hanya Owner Yang Dapat Mengganti</td>

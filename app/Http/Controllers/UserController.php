@@ -84,9 +84,9 @@ class UserController extends Controller
      $user->email = $request->email;
      $user->jabatan = $request->jabatan;
      $user->foto = $nm_file;
-     $user->password = bcrypt('$request->password');
+     $user->password = Hash::make($request->password);
      $user->save();
-     dd($user);
+     // dd($user);
     return redirect()->route('user.index')->with('success', 'Berhasil Mengedit Data');
   }else {
       return redirect()->route('user.index')->with('gagal','Gagal mengupdate data mohon chack password anda');
