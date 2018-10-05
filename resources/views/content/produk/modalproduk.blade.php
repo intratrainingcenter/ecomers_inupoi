@@ -75,10 +75,10 @@
                       <div class="col-sm-8">
                         <select name="ukuran" class="form-control" id="" required>
                           <option value="" disabled selected>Ukuran</option>
-                          <option value="s">Ukuran - S</option>
-                          <option value="m">Ukuran - M</option>
-                          <option value="l">Ukuran - L</option>
-                          <option value="xl">Ukuran - XL</option>
+                          <option value="S">Ukuran - S</option>
+                          <option value="M">Ukuran - M</option>
+                          <option value="L">Ukuran - L</option>
+                          <option value="XL">Ukuran - XL</option>
                         </select>
                       </div>
                     </div>
@@ -153,10 +153,6 @@
                   </div>
                 </div>
               </div>
-
-             
-      
-      <!-- /.modal-EDIT -->
       
             <div class="modal fade" id="modal-edit{{$items->kode_produk}}">
                   <div class="modal-dialog">
@@ -164,16 +160,14 @@
                       <div class="modal-header">
                       <h4 class="modal-title">Edit - {{$items->kode_produk}}</h4>
                       </div>
-                     <form action="{{Route('barang.update',['id'=> $items->kode_produk])}}"></form>
-                      {{-- {!! Form::open(['route' => 'sekolah.edit',$item->id_mapel, 'method' => 'PUT' ]) !!} --}}
+                     <form action="{{Route('barang.update',['id'=> $items->kode_produk])}}" method="POST" enctype="multipart/form-data">
+                        @csrf @method('PATCH')
                       <div class="modal-body">
-                      <input type="hidden" name="id" value="">
                       <div class="box-body">
                         <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Kode Kategori</label>
                             <div class="col-sm-8">
                               <select class="form-control" name="kode_kategori">
-                    
                                     @foreach($kategori as $in)
                                   <option value="{{$in->kode_kategori}}">{{$in->kode_kategori}} - {{$in->nama_kategori}}</option>
                                     @endforeach
@@ -219,14 +213,14 @@
                         <div class="form-group">
                                 <label for="exampleInputFile" class="col-sm-4 control-label">Image Depan</label>
                                 <div class="col-sm-8">
-                                    <input type="file" class="" id="images" name="images" value="{{$items->gambar}}">
+                                    <input type="file" class="" id="images" name="images" value="">
                                 </div>
                               </div>
-                        <br>
+                        <br><br>
                         <div class="form-group">
                                 <label for="exampleInputFile" class="col-sm-4 control-label">Image Belakang</label>
                                 <div class="col-sm-8">
-                                    <input type="file" class="" id="image2" name="images2" value="{{$items->gambar_belakang}}">
+                                    <input type="file" class="" id="image2" name="images2" value="">
                                 </div>
                               </div>
                         <br>
@@ -237,65 +231,69 @@
                         <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </div>
-                      {{-- {!! Form::close() !!} --}}
+                    </form>
                     </div>
                   </div>
                 </div>     
-{{-- 
-                <div class="modal fade" id="ModalDetail{{$item->kode_produk}}" data-backdrop="false">
+
+
+
+
+                <div class="modal fade" id="modal-detail{{$items->kode_produk}}" data-backdrop="false">
                   <div class="modal-dialog">
                       <div class="modal-content">
                           <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span></button>
-                              <h4 class="modal-title">Rincian Produk</h4>
+                              <h4 class="modal-title">Detail Produk</h4>
                           </div>
                           <div class="modal-body">
-                              <center><img src="{{Storage::url($items->gambar)}}" width="200px" alt=""></center><br>
+                              <center><img src="{{Storage::url($items->gambar)}}" width="200px" alt=""> &nbsp;&nbsp;
+                                <img src="{{Storage::url($items->gambar_belakang)}}" width="200px" alt=""></center><br><hr>
                               <table width="100%">
                                   <thead>
                                       <th width="40%"></th><th width="10%"></th><th width="40%"></th>
                                   </thead>
                                   <tbody>
                                       <tr>
-                                          <td><label for="">Kode Produk</label></td><td>:</td><td>{{$item->kode_produk}}</td>
+                                          <td><label for="">Kode Produk</label></td><td>:</td><td>{{$items->kode_produk}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Nama Produk</label></td><td>:</td><td>{{$item->nama_produk}}</td>
+                                          <td><label for="">Kode Kategori</label></td><td>:</td><td>{{$items->kode_kategori}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Kategori</label></td><td>:</td><td>{{$item->kode_kategori}}</td>
+                                          <td><label for="">Kode Diskon</label></td><td>:</td><td>{{$items->kode_diskon}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">HPP</label></td><td>:</td><td>{{$item->hpp}}</td>
+                                          <td><label for="">Nama Produk</label></td><td>:</td><td>{{$items->nama_produk}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Harga Jual</label></td><td>:</td><td>{{$item->harga}}</td>
+                                          <td><label for="">Kategori</label></td><td>:</td><td>{{$items->kode_kategori}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Stok</label></td><td>:</td><td>{{$item->stok}}</td>
+                                          <td><label for="">Ukuran</label></td><td>:</td><td>{{$items->ukuran}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Status</label></td><td>:</td><td>{{$item->status}}</td>
+                                          <td><label for="">Harga</label></td><td>:</td><td>{{$items->harga}}</td>
                                       </tr>
-                                      @if ($item->keterangan !='')
-                                          <tr>
-                                              <td><label for="">Nama Produk</label></td><td>:</td><td>{{$item->keterangan}}</td>
-                                          </tr>
-                                      @else
-                                      @endif
+                                      <tr>
+                                          <td><label for="">Rate</label></td><td>:</td><td>{{$items->rating}}</td>
+                                      </tr>
+                                      <tr>
+                                          <td><label for="">Stok</label></td><td>:</td><td>{{$items->stok}}</td>
+                                      </tr>
+                                          <td><label for="">Deskripsi</label></td><td>:</td><td>{{$items->deskripsi_produk}}</td>
+                                       </tr>
                                   </tbody>
                               </table>
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
                           </div>
                       </div>
                       <!-- /.modal-content -->
                   </div>
                   <!-- /.modal-dialog -->
               </div>
-              <!-- /.modal --> --}}
+              <!-- /.modal -->
       
                 
                 @endforeach

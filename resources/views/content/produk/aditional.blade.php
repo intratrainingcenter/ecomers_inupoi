@@ -7,9 +7,10 @@
 @endsection
 
 <style>
-img
+hr
 {
-  
+  width: 100%;
+  size: 100px;
 
 }
 
