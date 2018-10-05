@@ -56,7 +56,7 @@ $(function() {
  
     <div class="panel panel-default">
     <div class="panel-heading">
-      <h3>Laporan Keuangan</h3>
+      <button type="button" class="btn btn-primary" onclick="window.print();" data-toggle="modal" data-target="#modal-danger"><li class="fa fa-print"> Print</li></button>
     </div>
     <div class="panel-body">
       <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -77,7 +77,6 @@ $(function() {
           <td>faa</td>
           <td>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-edit"><li class="fa fa-search"></li></button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-danger"><li class="fa fa-print"></li></button>
           </td>
     		</tr>
     	</tbody>
