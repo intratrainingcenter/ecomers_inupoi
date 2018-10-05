@@ -166,7 +166,7 @@ $(function() {
           <div class="form-group">
             <label for="kode_kategori" class="col-sm-4 control-label">Kode Kategori</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" name="kode_kategori" id="kode_kategori" placeholder="Kode Kategori" value="{{$kategori->kode_kategori}}">
+              <input type="text" class="form-control" name="kode_kategori" id="kode_kategori" placeholder="Kode Kategori" value="{{$kategori->kode_kategori}}" readonly="readonly">
             </div>
           </div>
           <br><br>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\diskon;
 
 class DiskonController extends Controller
 {
@@ -13,7 +14,9 @@ class DiskonController extends Controller
      */
     public function index()
     {
-        return view('content.diskon.diskon');        
+        $data = diskon::all();
+
+        return view('content.diskon.diskon', compact('data'));        
     }
 
     /**
