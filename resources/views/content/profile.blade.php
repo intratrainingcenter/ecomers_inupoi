@@ -90,7 +90,14 @@ $(function() {
               @if (Auth::guard('web')->user()->jabatan == 'owner')
               <td>
                 <a href="{{Route('user.edit', $users->id)}}" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                <a href="{{Route('user.destroy', $users->id)}}"><button  onclick=" return confirm('Anda Yakin Menghapus Profile')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
+                <form action="{{route('user.destroy',$users->id,$users->foto)}}" method="post" enctype="multipart/form-data">
+                  <button  type="submit" onclick=" return confirm('Anda Yakin Menghapus Profile')" name="submit" class="btn btn-danger">
+                      <i class="fa fa-trash-o"></i>
+                  </button>
+                   {{ csrf_field() }}
+                    <input type="hidden" name="image" value="{{$users->foto}}">
+                    <input type="hidden" name="_method" class="btn btn-danger" value="DELETE">
+                </form>
               </td>
               @elseif (Auth::guard('web')->user()->jabatan == 'superadmin')
               <td>Hanya Owner Yang Dapat Mengganti</td>

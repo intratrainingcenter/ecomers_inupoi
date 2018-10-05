@@ -100,8 +100,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+      $user = user::findOrFail($id);
+      // dd($user);
+      $gambar = $request->file('foto');
+      $nm_file = $request->image;
+      unlink(public_path('image'.DIRECTORY_SEPARATOR.$nm_file));
+      $user->delete();
+      $user =user::all();
+      return redirect()->route('user.index')->with('delete', 'Berhasil Menghapus Data');
     }
 }
