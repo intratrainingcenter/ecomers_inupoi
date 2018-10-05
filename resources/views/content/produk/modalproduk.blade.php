@@ -3,25 +3,25 @@
   <div class="x_panel">
     <div class="x_content">
 @if ($message = Session::get('success'))
-    <div class="alert alert-success alert alert-success alert-dismissible fade in" role="alert" >
+    <div class="alert alert-success alert alert-success alert-dismissible fade in notif" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
       </button>
         <p>{{ $message }}</p>
     </div>
     @elseif ($message = Session::get('edit'))
-    <div class="alert alert-warning alert alert-warning alert-dismissible fade in" role="alert" >
+    <div class="alert alert-warning alert alert-warning alert-dismissible fade in notif" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
       </button>
         <p>{{ $message }}</p>
     </div>
     @elseif ($message = Session::get('delete'))
-    <div class="alert alert-danger alert alert-danger alert-dismissible fade in" role="alert" >
+    <div class="alert alert-danger alert alert-danger alert-dismissible fade in notif" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
       </button>
         <p>{{ $message }}</p>
     </div>
     @elseif ($message = Session::get('not_success'))
-    <div class="alert alert-danger alert alert-danger alert-dismissible fade in" role="alert" >
+    <div class="alert alert-danger alert alert-danger alert-dismissible fade in notif" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
       </button>
         <p>{{ $message }}</p>
@@ -88,14 +88,14 @@
                     <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Deskripsi</label>
                             <div class="col-sm-8">
-                              <textarea type="text" class="form-control" name='deskripsi' id="deskripsi" placeholder="Deskripsi"></textarea>
+                              <textarea type="text" class="form-control" name='deskripsi_produk' id="deskripsi" placeholder="Deskripsi"></textarea>
                             </div>
                           </div>
                     <br><br><br>
                     <div class="form-group">
                             <label for="exampleInputFile" class="col-sm-4 control-label">Image Depan</label>
                             <div class="col-sm-8">
-                                <input type="file" class="" id="image" name="images">
+                                <input type="file" class="" id="images" name="images">
                             </div>
                           </div>
                     <br>

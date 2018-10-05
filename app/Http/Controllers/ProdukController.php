@@ -5,6 +5,7 @@ use App\produk;
 use App\kategori;
 use App\keranjang;
 use App\diskon;
+use Validator, Input, Redirect;  
 
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $item = produk::all();
+        $item = produk::orderBy('created_at', 'desc')->get();;
         $category = kategori::all();
         return view('content.produk.produk',['item'=>$item,'kategori'=>$category]);
     }
@@ -40,66 +41,47 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-        $cek = produk::where('kode_produk',$request->kode_produk)->doesntExist(); 
-        
-        if($cek == true)
-        {
-        $table = new produk;
-        $table->kode_produk    =  $request->kode_produk;
-        $table->kode_kategori  =  $request->kode_kategori;
-        $table->kode_diskon    =  $request->kode_diskon;
-        $table->nama_produk    =  $request->nama_produk;
-        $table->harga          =  $request->harga;     
-        $table->stok           =  $request->stok;
-        $table->deskripsi      =  $request->deskripsi;
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            
+            'kode_produk'       => 'required|max:20',
+            'kode_kategori'     => 'required|max:20',
+            'kode_diskon'       => 'required|max:20',
+            'nama_produk'       => 'required|max:20',
+            'harga'             => 'required|max:40',
+            'stok'              => 'required|max:40',
+            'deskripsi_produk'  => 'required|max:40',
+            'images'            => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'images2'           => 'required|image|mimes:jpeg,png,jpg|max:2048',
 
-        $table->orderBy('id DESC');
-        $table->save();
-
-        return redirect('barang')->with('yeah','Add new data success');
-        }
-        else{
-            return redirect('barang')->with('update','Kode is already exists'); 
-
-        }
+          ]);
+        //   dd($validator);
+        if ($validator->fails()) {
+            
+            return redirect('barang')->with('not_success', 'x_x Fail');
+        } else {
+            $gambar = $request->images;  
+            $gambar_belakang = $request->images2; 
+            $GetExtension = $gambar->getClientOriginalExtension();
+            $GetExtension2 = $gambar_belakang->getClientOriginalExtension();
+            $path = $gambar->storeAs('public/images', $request->kode_produk . '.' . $GetExtension);
+            $path2 = $gambar_belakang->storeAs('public/images', $request->kode_produk . '.' . $GetExtension);
+            $create = Produk::create([
+                'kode_produk'       => $request->kode_produk,
+                'kode_kategori'     => $request->kode_kategori,
+                'kode_diskon'       => $request->kode_diskon,
+                'nama_produk'       => $request->nama_produk,
+                'harga'             => $request->harga,
+                'stok'              => $request->stok,
+                'rating'            => '0',
+                'deskripsi_produk'  => $request->deskripsi,
+                'gambar'            => $path,
+                'gambar_belakang'   => $path2,
+            ]);
+            dd('create');
+            return redirect('barang')->with('yeah','hore');
         
-        //  // dd($request);
-        //  $cek = produk::where('kode_produk',$request->kode_produk)->doesntExist(); 
-        
-        //  if($cek == true)
-        //  {
-        //      $upload = "N";
-        //      if ($request->hasFile('images')) {
-        //      $destination = "images";
-        //      $filename = $request->file('images');
-        //      $filename1 = $request->file('images2');
-        //      $filename->move($destination, $filename->getClientOriginalName());
-        //      $filename1->move($destination, $filename1->getClientOriginalName());
-        //      $upload = "Y";
-        //      }
-        //          if ($upload = "Y") {
-           
-        //          $table = new produk;
-        //          $table->kode_produk    =  $request->kode_produk;
-        //          $table->kode_kategori  =  $request->kode_kategori;
-        //          $table->kode_diskon    =  $request->kode_diskon;
-        //          $table->nama_produk    =  $request->nama_produk;
-        //          $table->harga          =  $request->harga;     
-        //          $table->stok           =  $request->stok;
-        //          $table->deskripsi      =  $request->deskripsi;
-        //          $table->gambar = $filename->getClientOriginalName();
-        //          $table->gambar2 = $filename1->getClientOriginalName();
-        //          $table->orderBy('id DESC');
-        //          $table->save();
-                 
-        //          return redirect('barang')->with('yeah','Add new data success');
-        //      }
-        //  }
-        //  else
-        //  {
-        //      return redirect('barang')->with('update','Kode is already exists'); 
-        //  }
+            }
 
     }
 
