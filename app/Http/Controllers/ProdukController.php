@@ -55,18 +55,24 @@ class ProdukController extends Controller
             'images2'           => 'required|image|mimes:jpeg,png,jpg|max:2048',
 
           ]);
-        //   dd($validator);
-        if ($validator->fails()) {
-            
-            return redirect('barang')->with('not_success', 'x_x Fail');
-        } else {
+
+        if ($validator->fails())
+        {  
+            return redirect('barang')->with('not_success', 'Fail');
+        }
+        $cek = produk::where('kode_produk',$request->kode_produk)->doesntExist();
+        // dd($cek);
+        if($cek)
+        { 
             $gambar = $request->images;  
-            $gambar_belakang = $request->images2; 
-            $GetExtension = $gambar->getClientOriginalExtension();
-            $GetExtension2 = $gambar_belakang->getClientOriginalExtension();
-            $path = $gambar->storeAs('public/images', $request->kode_produk . '.' . $GetExtension);
-            $path2 = $gambar_belakang->storeAs('public/images', $request->kode_produk . '.' . $GetExtension);
-            $create = Produk::create([
+            $GetExtension = $gambar->getClientOriginalName();
+            $path = $gambar->storeAs('public/images', $GetExtension);
+            
+            $gambar_belakang = $request->images2;
+            $GetExtension2 = $gambar_belakang->getClientOriginalName();
+            $path2 = $gambar_belakang->storeAs('public/images', $GetExtension2);
+            // dd($path2);
+            $create = produk::create([
                 'kode_produk'       => $request->kode_produk,
                 'kode_kategori'     => $request->kode_kategori,
                 'kode_diskon'       => $request->kode_diskon,
@@ -74,18 +80,20 @@ class ProdukController extends Controller
                 'harga'             => $request->harga,
                 'stok'              => $request->stok,
                 'rating'            => '0',
-                'deskripsi_produk'  => $request->deskripsi,
+                'deskripsi_produk'  => $request->deskripsi_produk,
                 'gambar'            => $path,
                 'gambar_belakang'   => $path2,
-            ]);
-            dd('create');
-            return redirect('barang')->with('yeah','hore');
-        
+                ]);
+                return redirect('barang')->with('yeah','hore');
+                
             }
+            else
+            {
+            return redirect('barang')->with('warning', 'Code has been exist');
 
+            }
     }
-
-    /**
+        /**
      * Display the specified resource.
      *
      * @param  int  $id

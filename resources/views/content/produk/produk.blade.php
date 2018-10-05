@@ -9,22 +9,23 @@
           <th class="column-title">#</th>
           <th class="column-title">Kode Produk</th>
           <th class="column-title">Nama Produk</th>
+          <th class="column-title">harga</th>
           <th class="column-title">Stock</th>
           <th class="column-title">Opsi</th>
         </tr>
-      </thead>@php$no= 1;@endphp
+      </thead>
     	<tbody>
         @foreach ($item as $items)
     		<tr>
-          <td>{{$no++}}</td>
+          <td>{{$loop->iteration}}</td>
           <td>{{$items->kode_produk}}</td>
           <td>{{$items->nama_produk}}</td>         
     			<td>{{$items->harga}}</td>
           <td>{{$items->stok}}</td>
           <td>
               <a href="" type="button" class="btn btn-primary" title="Detail"> <i class="fa fa-search"></i> </a>
-              <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#modal-edit" title="Edit data"><i class="fa fa-pencil"></i></button>
-              <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modal-hapus" title="Delete data"><i class="fa fa-trash-o"></i></button>
+              <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#modal-edit{{$items->kode_produk}}" title="Edit data"><i class="fa fa-pencil"></i></button>
+          <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modal-hapus{{$items->kode_produk}}" title="Delete data"><i class="fa fa-trash-o"></i></button>
           </td>
         </tr>
         @endforeach
