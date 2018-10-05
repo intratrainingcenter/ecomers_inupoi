@@ -52,7 +52,7 @@ class UserController extends Controller
     public function show($id)
     {
       $user = User::where('id', $id)->first();
-      return View('content/detail_profile',compact('user', 'id'));
+      return View('content/detail_edit_profile',compact('user', 'id'));
     }
 
     /**

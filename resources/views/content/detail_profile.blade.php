@@ -23,18 +23,10 @@ $(function() {
                       };
 </script>
 <div class="container" style="padding-top: 60px;">
-  @if (Auth::guard('web')->check())
-     @if (Auth::guard('web')->user()->jabatan == 'owner')
   <h1 class="page-header">Edit Profile</h1>
-  @else
-  <h1 class="page-header">Profile {{$user->name}}</h1>
-  @endif
-  @endif
   <div class="row">
     <form action="{{route('user.update',['id' => $id])}}"  method="post" id="demo-form2" data-parsley-validate method="post"  class="form-horizontal form-label-left" enctype="multipart/form-data">
     <!-- left column -->
-    @if (Auth::guard('web')->check())
-       @if (Auth::guard('web')->user()->jabatan == 'owner')
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center">
         <img src="{{ asset('image/'. $user->foto) }}" id="output" alt="..." class="img-thumbnail" width="120px" height="180px">
@@ -98,46 +90,6 @@ $(function() {
         </div>
         {{ csrf_field() }}
                <input type="hidden" name="_method" value="PUT">
-
-
-               @else
-
-
-               <div class="col-md-4 col-sm-6 col-xs-12">
-                 <div class="text-center">
-                   <img src="{{ asset('image/'. $user->foto) }}" id="output" alt="..." class="img-thumbnail" width="120px" height="180px">
-                 </div>
-               </div>
-               <!-- edit form column -->
-               <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-                 <div class="alert alert-info alert-dismissable">
-                   <a class="panel-close close" data-dismiss="alert">×</a>
-                   <i class="fa fa-user"></i>
-                    Halaman <strong>Profil</strong> Data User
-                 </div>
-                 <h3>Informasi Pribadi  {{Auth::user()->name}}</h3>
-                                <input type="hidden" name="id" value="{{$user->id}}" class="form-control"/>
-                   <div class="form-group">
-                     <label class="col-lg-3 control-label">Nama:</label>
-                     <div class="col-lg-8">
-                       <input class="form-control" name="name" value="{{$user->name}}" type="text" disabled>
-                     </div>
-                   </div>
-                   <div class="form-group">
-                     <label class="col-md-3 control-label">Email:</label>
-                     <div class="col-md-8">
-                       <input class="form-control" name="email" value="{{$user->email}}" type="text" disabled>
-                     </div>
-                   </div>
-                   <div class="form-group">
-                     <label class="col-lg-3 control-label">Jabatan:</label>
-                     <div class="col-lg-8">
-                       <input class="form-control" name="jabatan" value="{{$user->jabatan}}" type="text" disabled>
-
-                     </div>
-                   </div>
-               @endif
-               @endif
       </form>
     </div>
   </div>
