@@ -43,18 +43,12 @@
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Main Footer -->
   <footer class="main-footer">
     @include('footer.footer')
   </footer>
 
   <div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
 <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
@@ -80,9 +74,6 @@ $(function() {
 <script>
 $(function() {
   $('#example').DataTable();
-  // $('#example2').DataTable({
-  //   ''
-  // });
 });
 </script>
 

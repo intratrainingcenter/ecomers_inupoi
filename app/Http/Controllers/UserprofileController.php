@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
-class ReturController extends Controller
+class UserprofileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,9 @@ class ReturController extends Controller
      */
     public function index()
     {
-        return view('content.retur.retur');
-        //
+      $user = User::get();
+      // dd($class);
+      return View('content/detail_profile',compact('user'));
     }
 
     /**
