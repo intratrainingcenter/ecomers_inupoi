@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\produk;
+use App\kategori;
+use App\keranjang;
+use App\diskon;
 
 use Illuminate\Http\Request;
 
@@ -23,7 +27,23 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        $cek = produk::where('nama_kelas',$request->nama_kelas)->doesntExist(); 
+        // dd($cek);
+        if($cek == true)
+        {
+        $table = new kelas;
+        $table->kode_guru    =  $request->kode_guru;
+        $table->nama_kelas   =  $request->nama_kelas;
+        $table->jml_siswa    =  $request->jml_siswa;
+        $table->orderBy('id_kelas DESC');
+        $table->save();
+
+        return redirect('kelas')->with('yeah','Add new data success');
+        }
+        else{
+            return redirect('kelas')->with('update','Name Class is already exists'); 
+
+        }
     }
 
     /**
@@ -34,7 +54,7 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
