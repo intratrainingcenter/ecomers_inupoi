@@ -9,6 +9,8 @@
           <th class="column-title">#</th>
           <th class="column-title">Kode Produk</th>
           <th class="column-title">Nama Produk</th>
+          <th class="column-title">Gambar Depan</th>
+          <th class="column-title">Ukuran</th>          
           <th class="column-title">harga</th>
           <th class="column-title">Stock</th>
           <th class="column-title">Opsi</th>
@@ -19,7 +21,11 @@
     		<tr>
           <td>{{$loop->iteration}}</td>
           <td>{{$items->kode_produk}}</td>
-          <td>{{$items->nama_produk}}</td>         
+          <td>{{$items->nama_produk}}</td>
+          <td>
+              <img src="{{Storage::url($items->gambar)}}" width="100px" alt="">
+          </td>   
+          <td>{{$items->ukuran}}</td>         
     			<td>{{$items->harga}}</td>
           <td>{{$items->stok}}</td>
           <td>

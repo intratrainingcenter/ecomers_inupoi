@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Storage;
 use App\produk;
 use App\kategori;
 use App\keranjang;
@@ -48,6 +49,7 @@ class ProdukController extends Controller
             'kode_kategori'     => 'required|max:20',
             'kode_diskon'       => 'required|max:20',
             'nama_produk'       => 'required|max:20',
+            'ukuran'            => 'required|max:5',
             'harga'             => 'required|max:40',
             'stok'              => 'required|max:40',
             'deskripsi_produk'  => 'required|max:40',
@@ -77,6 +79,7 @@ class ProdukController extends Controller
                 'kode_kategori'     => $request->kode_kategori,
                 'kode_diskon'       => $request->kode_diskon,
                 'nama_produk'       => $request->nama_produk,
+                'ukuran'            => $request->ukuran,                
                 'harga'             => $request->harga,
                 'stok'              => $request->stok,
                 'rating'            => '0',
@@ -84,7 +87,7 @@ class ProdukController extends Controller
                 'gambar'            => $path,
                 'gambar_belakang'   => $path2,
                 ]);
-                return redirect('barang')->with('yeah','hore');
+                return redirect('barang')->with('success','Success');
                 
             }
             else
@@ -135,6 +138,12 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = produk::where('kode_produk', $id)->first();
+        $image_path = $data->gambar;
+        $image_path2 = $data->gambar_belakang;
+        Storage::delete($image_path);
+        Storage::delete($image_path2);
+        $data->delete();
+        return redirect('barang')->with('success','Success');
     }
 }

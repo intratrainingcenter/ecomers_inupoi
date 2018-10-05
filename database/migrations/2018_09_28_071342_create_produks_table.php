@@ -22,6 +22,7 @@ class CreateProduksTable extends Migration
             $table->string('harga');
             $table->string('stok');
             $table->string('rating');
+            $table->string('ukuran');
             $table->string('deskripsi_produk');
             $table->binary('gambar');
             $table->binary('gambar_belakang');

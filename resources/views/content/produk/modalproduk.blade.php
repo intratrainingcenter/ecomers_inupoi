@@ -43,7 +43,7 @@
                         <input type="text" class="form-control" name="kode_produk" id="kode_produk" placeholder="Kode Produk" required>
                       </div>
                     </div>
-                    <br>
+                    <br><br>
                     <div class="form-group">
                         <label for="" class="col-sm-4 control-label">Kode Kategori</label>
                         <div class="col-sm-8">
@@ -55,42 +55,55 @@
                               </select>
                         </div>
                       </div>
-                      <br>
+                      <br><br>
                       <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Kode Diskon</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control" name='kode_diskon' id="kode_diskon" placeholder="Kode Diskon" required>
                             </div>
                         </div>
-                    <br>
+                    <br><br>
                     <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Nama Produk</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control" name='nama_produk' id="nama_produk" placeholder="Nama Produk" required>
                             </div>
                           </div>
-                    <br>
+                    <br><br>
+                    <div class="form-group">
+                      <label for="" class="col-sm-4 control-label">Ukuran</label>
+                      <div class="col-sm-8">
+                        <select name="ukuran" class="form-control" id="" required>
+                          <option value="" disabled selected>Ukuran</option>
+                          <option value="s">Ukuran - S</option>
+                          <option value="m">Ukuran - M</option>
+                          <option value="l">Ukuran - L</option>
+                          <option value="xl">Ukuran - XL</option>
+                        </select>
+                      </div>
+                    </div>
+              <br><br>
                     <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Harga</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control" name='harga' id="harga" placeholder="Harga" required>
                             </div>
                           </div>
-                    <br>
+                    <br><br>
                     <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Stock</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control" name='stok' id="stok" placeholder="Stok Yang Tersedia" required>
                             </div>
                           </div>
-                    <br>
+                    <br><br>
                     <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Deskripsi</label>
                             <div class="col-sm-8">
                               <textarea type="text" class="form-control" name='deskripsi_produk' id="deskripsi" placeholder="Deskripsi" required></textarea>
                             </div>
                           </div>
-                    <br><br>
+                    <br><br><br>
                     <div class="form-group">
                             <label for="exampleInputFile" class="col-sm-4 control-label">Image Depan</label>
                             <div class="col-sm-8">
@@ -124,20 +137,19 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
                       <h4 class="modal-title">Delete - {{$items->kode_produk}} </h4>
                     </div>
-                  <form action="{{Route('barang.destroy',['id'=> $items->kode_produk])}}" method="delete">
+                  <form action="{{Route('barang.destroy',['id'=> $items->kode_produk])}}" method="POST">
+                      @csrf @method('DELETE')
                     <div class="modal-body">
                     <p> <center> Apakah anda yakin ingin menghapus Produk : {{$items->kode_produk}} ??</center></p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
                       <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                     </div>
-                    {{ csrf_field() }}
-                  </form>
+                  
                   </div>
                 </div>
               </div>
