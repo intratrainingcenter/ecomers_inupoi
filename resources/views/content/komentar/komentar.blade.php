@@ -63,10 +63,9 @@ $(function() {
       <thead>
         <tr>
           <th class="column-title">No</th>
-          <th class="column-title">Nis Siswa</th>
-          <th class="column-title">Nama Siswa</th>
-          <th class="column-title">Absensi</th>
-          <th class="column-title">Keterangan</th>
+          <th class="column-title">Nama</th>
+          <th class="column-title">Email</th>
+          <th class="column-title">Comment</th>
           <th class="column-title">Action</th>
         </tr>
       </thead>
@@ -75,11 +74,6 @@ $(function() {
     	@endphp
     	<tbody>
     		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>awgaanklfa</td>
           <td>
               <a href="" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
 
