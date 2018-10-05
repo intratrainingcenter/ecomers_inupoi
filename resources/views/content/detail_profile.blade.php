@@ -29,7 +29,7 @@ $(function() {
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center">
-        <img src="{{ asset('image/'. Auth::user()->foto) }}" id="output" alt="..." class="img-thumbnail" width="120px" height="180px">
+        <img src="{{ asset('image/'. $user->foto) }}" id="output" alt="..." class="img-thumbnail" width="120px" height="180px">
         <h6>==========================================</h6>
 
         <input type="file"  name="foto"  accept="image/*" onchange="loadFile(event)" class="text-center center-block well well-sm" required="">
