@@ -37,7 +37,7 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="{{Route('user.index')}}" class="btn btn-default btn-flat">Profile</a>
+                <a href="{{Route('user.show', Auth::user()->id)}}" class="btn btn-default btn-flat">Profile</a>
               </div>
               <div class="pull-right">
                 <a href="{{ route('logout') }}" class="btn btn-default btn-flat"  onclick="event.preventDefault();

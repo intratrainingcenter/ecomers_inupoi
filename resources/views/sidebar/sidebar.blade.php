@@ -51,7 +51,13 @@
           <li><a href="{{Route('laporantransaksi.index')}}"><i class="fa fa-circle-o"></i> Laporan Transaksi</a></li>
         </ul>
       </li>
+      @if (Auth::guard('web')->check())
+         @if (Auth::guard('web')->user()->jabatan == 'owner')
       <li><a href="{{Route('user.index')}}"><i class="fa fa-group "></i> <span>User</span></a></li>
+      @elseif (Auth::guard('web')->user()->jabatan == 'superadmin')
+      <li><a href="{{Route('user.index')}}"><i class="fa fa-group "></i> <span>User</span></a></li>
+      @endif
+      @endif
       <li><a href="{{Route('setting.index')}}"><i class="fa fa-laptop"></i> <span>Setting</span></a></li>
     </ul>
     <!-- /.sidebar-menu -->
