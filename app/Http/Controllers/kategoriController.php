@@ -15,8 +15,8 @@ class KategoriController extends Controller
     public function index()
     {
         $data = kategori::all();
+        
         return view('content.kategori.kategori', compact('data'));
-
     }
 
     /**
