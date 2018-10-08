@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\laporanKeuangan;
 
 class LapKeuanganController extends Controller
 {
@@ -13,7 +14,9 @@ class LapKeuanganController extends Controller
      */
     public function index()
     {
-        //
+        $data = laporanKeuangan::all();
+
+        return view('content.LapKeuangan.laporanKeuangan');
     }
 
     /**

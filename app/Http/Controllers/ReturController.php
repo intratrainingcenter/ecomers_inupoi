@@ -13,6 +13,7 @@ class ReturController extends Controller
      */
     public function index()
     {
+        return view('content.retur.retur');
         //
     }
 

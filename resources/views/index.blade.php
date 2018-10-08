@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
+  <title>Admin Inupoi</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -17,8 +17,16 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
+  <script type="text/javascript">
+    setTimeout(function(){ $('.notif').hide(1000)},3000);
+  </script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+    <script type="text/javascript">
+
+      setTimeout(function(){ $('.notif').hide(1000)},3000);
+    </Script>
 <div class="wrapper">
   <!-- Main Header -->
   @include('header.header')
@@ -51,6 +59,19 @@
 <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+<script>
+$(function() {
+  $('#example').DataTable();
+  // $('#example2').DataTable({
+  //   ''
+  // });
+});
+</script>
+
 @section('someJS')
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -60,6 +81,7 @@ $(function() {
   $('#example').DataTable();
 });
 </script>
+
 @endsection
 
 </body>
