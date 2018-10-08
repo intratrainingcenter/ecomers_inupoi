@@ -90,7 +90,7 @@ class UserController extends Controller
      // dd($user);
     return redirect()->route('user.index')->with('success', 'Berhasil Mengedit Data');
   }else {
-      return redirect()->route('user.index')->with('gagal','Gagal mengupdate data mohon chack password anda');
+      return redirect()->route('user.index')->with('gagal','Gagal mengupdate data mohon cek password anda');
     }
 
     }

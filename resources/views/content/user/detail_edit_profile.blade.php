@@ -1,10 +1,8 @@
 @extends('index')
-
 @section('title', 'AdminLTE')
 @section('someCSS')
 <link href="{{ asset('css/image.css') }}">
 @endsection
-
 @section('someJS')
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -17,10 +15,7 @@ $(function() {
 @endsection
 @section('content')
 <script>
-    var loadFile = function(event) {
-    var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-                      };
+    var loadFile = function(event) {var output = document.getElementById('output'); output.src = URL.createObjectURL(event.target.files[0]);};
 </script>
 <div class="container" style="padding-top: 60px;">
   @if (Auth::guard('web')->check())
@@ -70,5 +65,4 @@ $(function() {
     </div>
   </div>
 </div>
-
 @endsection
