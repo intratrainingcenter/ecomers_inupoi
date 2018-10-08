@@ -19,11 +19,13 @@ class CreateProduksTable extends Migration
             $table->string('kode_produk');
             $table->string('kode_diskon');
             $table->string('nama_produk');
-            $table->integer('harga');
-            $table->integer('stok');
+            $table->string('harga');
+            $table->string('stok');
             $table->string('rating');
-            $table->string('gambar');
+            $table->string('ukuran');
             $table->string('deskripsi_produk');
+            $table->binary('gambar');
+            $table->binary('gambar_belakang');
             $table->timestamps();
         });
     }

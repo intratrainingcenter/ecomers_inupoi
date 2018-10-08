@@ -6,16 +6,37 @@
 <link href="{{ asset('assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
 @endsection
 
+<style>
+hr
+{
+  width: 100%;
+  size: 100px;
+
+}
+
+</style>
+
 @section('someJS')
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-<script>
+
 <script type="text/javascript">
+
 setTimeout(function(){ $('.notif').hide(1000)},3000);
 
-</script> 
- 
+function ShowImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#image')
+                    .attr('src', e.target.result)
+                    .height(150);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
 $(function() {
   $('#example').DataTable();
       'paging'      : true,
