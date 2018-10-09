@@ -28,7 +28,7 @@
     </div>
 @endif
 
-<div class="modal modal-success fade" id="modal-success">
+<div class="modal modal-success fade" id="modal-success" >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -47,7 +47,7 @@
                     <div class="form-group">
                         <label for="" class="col-sm-4 control-label">Kode Kategori</label>
                         <div class="col-sm-8">
-                          <select class="form-control" name="kode_kategori" required>
+                          <select class="form-control" name="kode_kategori"id="kode_kategori" required>
                                 <option value="" disabled selected>Kategori</option>
                                 @foreach($kategori as $in)
                               <option value="{{$in->kode_kategori}}">{{$in->kode_kategori}} - {{$in->nama_kategori}}</option>
@@ -73,7 +73,7 @@
                     <div class="form-group">
                       <label for="" class="col-sm-4 control-label">Ukuran</label>
                       <div class="col-sm-8">
-                        <select name="ukuran" class="form-control" id="" required>
+                        <select name="ukuran" class="form-control" id="ukuran" required>
                           <option value="" disabled selected>Ukuran</option>
                           <option value="S">Ukuran - S</option>
                           <option value="M">Ukuran - M</option>
@@ -86,7 +86,7 @@
                     <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Harga</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" name='harga' id="harga" placeholder="Harga" required>
+                              <input type="text" onchange="hanyaAngka()" class="form-control" name='harga' id="harga" placeholder="Harga" required>
                             </div>
                           </div>
                     <br><br>
@@ -108,7 +108,7 @@
                             <label for="exampleInputFile" class="col-sm-4 control-label">Image Depan</label>
                             <div class="col-sm-8">
                                 <input type="file" class="" id="images" name="images" onchange="ShowImage(this);" required>
-                                <img src="" alt="" id='image'>
+                                <img class="pull-right" src="" alt="" id='image'>
                             </div>
                           </div>
                     <br>
@@ -154,14 +154,14 @@
                 </div>
               </div>
       
-            <div class="modal fade" id="modal-edit{{$items->kode_produk}}">
+            <div class="modal fade" id="modal-edit{{$items->kode_produk}}" >
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
                       <h4 class="modal-title">Edit - {{$items->kode_produk}}</h4>
                       </div>
                      <form action="{{Route('barang.update',['id'=> $items->kode_produk])}}" method="POST" enctype="multipart/form-data">
-                        @csrf @method('PATCH')
+                        @csrf @method('PUT')
                       <div class="modal-body">
                       <div class="box-body">
                         <div class="form-group">
@@ -190,6 +190,21 @@
                               </div>
                         <br><br>
                         <div class="form-group">
+                          <label for="" class="col-sm-4 control-label">Ukuran</label>
+                          <div class="col-sm-8">
+                            <select name="ukuran" class="form-control" id="" required>
+                            <option value="{{$items->ukuran}}"selected>{{$items->ukuran}}</option>
+                                <hr>
+                              <option value="" disabled>Ukuran Lain :</option>
+                              <option value="S">Ukuran - S</option>
+                              <option value="M">Ukuran - M</option>
+                              <option value="L">Ukuran - L</option>
+                              <option value="XL">Ukuran - XL</option>
+                            </select>
+                          </div>
+                        </div>
+                  <br><br>
+                        <div class="form-group">
                                 <label for="" class="col-sm-4 control-label">Harga</label>
                                 <div class="col-sm-8">
                                   <input type="text" class="form-control" name='harga' id="harga" value="{{$items->harga}}">
@@ -211,22 +226,23 @@
                               </div>
                         <br><br><br>
                         <div class="form-group">
-                                <label for="exampleInputFile" class="col-sm-4 control-label">Image Depan</label>
-                                <div class="col-sm-8">
-                                    <input type="file" class="" id="images" name="images" value="">
-                                </div>
-                              </div>
-                        <br><br>
-                        <div class="form-group">
-                                <label for="exampleInputFile" class="col-sm-4 control-label">Image Belakang</label>
-                                <div class="col-sm-8">
-                                    <input type="file" class="" id="image2" name="images2" value="">
-                                </div>
-                              </div>
-                        <br>
+                            <label for="exampleInputFile" class="col-sm-4 control-label">Image Depan</label>
+                            <div class="col-sm-8">
+                            <input type="file" class="" id="images" name="gambar" value="{{$items->gambar}}" >
+
+                            </div>
+                          </div>
+                    <br>
+                    <div class="form-group">
+                            <label for="exampleInputFile" class="col-sm-4 control-label">Image Belakang</label>
+                            <div class="col-sm-8">
+                                <input type="file" class="" id="image2" name="gambar_belakang" >
+                            </div>
+                          </div>
             
                        </div>  
                       </div>
+                      <hr>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
