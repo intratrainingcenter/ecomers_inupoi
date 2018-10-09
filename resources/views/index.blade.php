@@ -18,6 +18,20 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
+  <style>
+  hr
+{
+    display: block;
+		margin-top: 1%;
+		margin-bottom: 1%;
+		margin-left: 1%;
+		margin-right: 1%;
+		border-style: solid;
+		border-width: 2px;
+
+
+}
+  </style>
   <script type="text/javascript">
     setTimeout(function(){ $('.notif').hide(1000)},3000);
   </script>
@@ -66,11 +80,12 @@
 <script>
 $(function() {
   $('#example').DataTable();
-  // $('#example2').DataTable({
-  //   ''
-  // });
+ 
 });
 </script>
+
+@yield('jsku')
+     
 
 @section('someJS')
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -80,6 +95,11 @@ $(function() {
 $(function() {
   $('#example').DataTable();
 });
+</script>
+
+<script>
+
+
 </script>
 
 @endsection
