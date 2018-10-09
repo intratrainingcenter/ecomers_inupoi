@@ -54,35 +54,43 @@ $(function() {
 @endif
 
  
-    <div class="panel panel-default">
-    <div class="panel-heading">
-      <button type="button" class="btn btn-primary" onclick="window.print();" data-toggle="modal" data-target="#modal-danger"><li class="fa fa-print"> Print</li></button>
-    </div>
-    <div class="panel-body">
-      <table id="example" class="table table-striped table-bordered" style="width:100%">
-      <thead>
-        <tr>
-          <th class="column-title">No</th>
-          <th class="column-title">Kode Transaksi</th>
-          <th class="column-title">Tanggal Transaksi</th>
-          <th class="column-title">Total Biaya</th>
-          <th class="column-title">Action</th>
-        </tr>
-      </thead>
-    	<tbody>
-    		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-edit"><li class="fa fa-search"></li></button>
-          </td>
-    		</tr>
-    	</tbody>
-     </table>
-     </div>
-     </div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <label>Dari :</label>
+      <input type="date" name="dari">
+      <label>Sampai :</label>
+      <input type="date" name="sampai">
+      <button type="button" class="btn btn-info">Cari</button>
+      <button type="button" class="btn btn-primary pull-right" onclick="window.print();"><li class="fa fa-print"> Print</li></button>
+  </div>
+  <div class="panel-body">
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+      <tr>
+        <th class="column-title">No</th>
+        <th class="column-title">Kode Transaksi</th>
+        <th class="column-title">Tanggal Transaksi</th>
+        <th class="column-title">Total Biaya</th>
+      </tr>
+    </thead>
+  	<tbody>
+      @foreach($data as $uang)
+  		<tr>
+  			<td>{{$loop->iteration}}</td>
+  			<td>{{$uang->kode_transaksi}}</td>
+        <td>{{$uang->tgl_transaksi}}</td>
+        <td>{{$uang->total_biaya}}</td>
+  		</tr>
+      @endforeach
+  	</tbody>
+    <tfoot>
+      <tr>
+          
+      </tr>
+    </tfoot>
+   </table>
+  </div>
+</div>
 </section>
 
 @endsection

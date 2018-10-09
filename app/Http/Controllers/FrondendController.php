@@ -81,4 +81,24 @@ class FrondendController extends Controller
     {
         //
     }
+
+    public function contact()
+    {
+        return view('frondend.contact');
+    }
+
+    public function about()
+    {
+        return view('frondend.about');
+    }
+
+    public function produk()
+    {
+        return view('frondend.produk');
+    }
+
+    public function transaksi()
+    {
+        return view('frondend.transaksi');
+    }
 }
