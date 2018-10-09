@@ -10,10 +10,14 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "laravelcollective/html": "^5.2.0",
 =======
         "laravelcollective/html": "^5.4.0",
 >>>>>>> migration
+=======
+        "laravelcollective/html": "^5.4.0",
+>>>>>>> login
         "paypal/rest-api-sdk-php": "^1.13"
     },
     "require-dev": {

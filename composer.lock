@@ -5,10 +5,14 @@
         "This file is @generated automatically"
     ],
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "25dca49670d8e6b9b30fda102747606a",
 =======
     "content-hash": "0622a91fb1a7988801ec3d9999e0c8eb",
 >>>>>>> migration
+=======
+    "content-hash": "0622a91fb1a7988801ec3d9999e0c8eb",
+>>>>>>> login
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
