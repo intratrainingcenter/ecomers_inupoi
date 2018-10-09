@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\diskon;
 
 class DiskonController extends Controller
 {
@@ -13,7 +14,9 @@ class DiskonController extends Controller
      */
     public function index()
     {
-        return view('content.diskon.diskon');        
+        $data = diskon::all();
+
+        return view('content.diskon.diskon', compact('data'));        
     }
 
     /**
@@ -34,7 +37,19 @@ class DiskonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cek = diskon::where('kode_diskon',$request->kode_diskon)->doesntExist();
+
+        if($cek == true){
+            $table = new diskon;
+            $table->kode_diskon     =   $request->kode_diskon;
+            $table->nominal         =   $request->nominal;
+            $table->orderBy('id DESC');
+            $table->save();
+
+            return redirect('diskon')->with('success','Add new data success');
+        }else{
+            return redirect('diskon')->with('edit','Kode Diskon is already exists');
+        }
     }
 
     /**
