@@ -1,30 +1,3 @@
-@extends('index')
-
-@section('title', 'AdminLTE')
-@section('someCSS')
-<link href="{{ asset('css/image.css') }}">
-@endsection
-
-@section('someJS')
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-<script>
-$(function() {
-  $('#example').DataTable();
-});
-</script>
-@endsection
-@section('content')
-<script>
-    var loadFile = function(event) {
-    var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-                      };
-</script>
-<div class="container" style="padding-top: 60px;">
-  <h1 class="page-header">Edit Profile</h1>
-  <div class="row">
     <form action="{{route('user.update',['id' => $id])}}"  method="post" id="demo-form2" data-parsley-validate method="post"  class="form-horizontal form-label-left" enctype="multipart/form-data">
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
@@ -91,8 +64,3 @@ $(function() {
         {{ csrf_field() }}
                <input type="hidden" name="_method" value="PUT">
       </form>
-    </div>
-  </div>
-</div>
-
-@endsection

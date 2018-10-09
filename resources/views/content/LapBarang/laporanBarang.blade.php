@@ -1,8 +1,12 @@
-@extends('index')
-
-@section('title', 'AdminLTE')
+@extends('index')@section('title', 'Laporan Barang')
+@section('judul','Header')
+@section('sub','Laporan Barang')
 @section('someCSS')
-<link href="{{ asset('css/image.css') }}">
+<link href="{{ asset('assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('someJS')
@@ -12,20 +16,14 @@
 <script>
 $(function() {
   $('#example').DataTable();
+  // $('#example2').DataTable({
+  //   ''
+  // });
 });
 </script>
 @endsection
 
 @section('content')
-<!-- Content Header (Page header) -->
-<section class="content-header">
-  <h1>
-    Profile
-    <small>Data Profile</small>
-  </h1>
-</section>
-
-<!-- Main content -->
 <section class="content container-fluid">
   <div class="x_panel">
     <div class="x_content">
@@ -47,31 +45,28 @@ $(function() {
       </button>
         <p>{{ $message }}</p>
     </div>
-    @elseif ($message = Session::get('gagal'))
+    @elseif ($message = Session::get('not_success'))
     <div class="alert alert-danger alert alert-danger alert-dismissible fade in" role="alert" >
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
       </button>
         <p>{{ $message }}</p>
     </div>
 @endif
-<br>
-<br>
+
+ 
     <div class="panel panel-default">
     <div class="panel-heading">
-      <center>
-    <h2> Data Profile</h2>
-      </center>
-      <br>
+            <button type="button" class="btn-lg btn-success fa fa-plus-square "></button>
     </div>
     <div class="panel-body">
       <table id="example" class="table table-striped table-bordered" style="width:100%">
       <thead>
         <tr>
           <th class="column-title">No</th>
-          <th class="column-title">Nama</th>
-          <th class="column-title">Email</th>
-          <th class="column-title">Jabatan</th>
-          <th class="column-title">Foto</th>
+          <th class="column-title">Nis Siswa</th>
+          <th class="column-title">Nama Siswa</th>
+          <th class="column-title">Absensi</th>
+          <th class="column-title">Keterangan</th>
           <th class="column-title">Action</th>
         </tr>
       </thead>
@@ -79,37 +74,24 @@ $(function() {
     	$no= 1;
     	@endphp
     	<tbody>
-        @foreach($user as $users)
     		<tr>
-    			<td>{{$no++}}</td>
-    			<td>{{$users->name}}</td>
-    			<td>{{$users->email}}</td>
-    			<td>{{$users->jabatan}}</td>
-    			<td><img src="{{ asset('image/' . $users->foto) }}"  width="80px"/></td>
-           @if (Auth::guard('web')->check())
-              @if (Auth::guard('web')->user()->jabatan == 'owner')
-              <td>
-                <a href="{{Route('user.edit', $users->id)}}" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                <form action="{{route('user.destroy',$users->id,$users->foto)}}" method="post" enctype="multipart/form-data">
-                  <button  type="submit" onclick=" return confirm('Anda Yakin Menghapus Profile')" name="submit" class="btn btn-danger">
-                      <i class="fa fa-trash-o"></i>
-                  </button>
-                   {{ csrf_field() }}
-                    <input type="hidden" name="image" value="{{$users->foto}}">
-                    <input type="hidden" name="_method" class="btn btn-danger" value="DELETE">
-                </form>
-              </td>
-              @elseif (Auth::guard('web')->user()->jabatan == 'superadmin')
-              <td>Hanya Owner Yang Dapat Mengganti</td>
-              @elseif (Auth::guard('web')->user()->jabatan == 'petugas')
-              <td>Hanya Owner Yang Dapat Mengganti</td>
-           @endif
-           @endif
+    			<td>data-dismissq</td>
+    			<td>dsdfsdfs</td>
+          <td>cdzsasdasw</td>
+          <td>faa</td>
+          <td>awgaanklfa</td>
+          <td>
+              <a href="" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+
+              <a><button  onclick=" return confirm('Anda Yakin Menghapus Absensi')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
+
+          </td>
     		</tr>
-        @endforeach
     	</tbody>
      </table>
      </div>
      </div>
 </section>
+
 @endsection
+

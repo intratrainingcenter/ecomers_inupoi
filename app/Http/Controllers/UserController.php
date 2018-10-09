@@ -19,7 +19,7 @@ class UserController extends Controller
     {
       $user = User::get();
       // dd($user);
-      return View('content/profile',compact('user'));
+      return View('content/user/profile',compact('user'));
     }
 
     /**
@@ -52,7 +52,7 @@ class UserController extends Controller
     public function show($id)
     {
       $user = User::where('id', $id)->first();
-      return View('content/detail_edit_profile',compact('user', 'id'));
+      return View('content/user/detail_edit_profile',compact('user', 'id'));
     }
 
     /**
@@ -64,7 +64,7 @@ class UserController extends Controller
     public function edit($id)
     {
       $user = User::where('id', $id)->first();
-      return View('content/detail_profile',compact('user', 'id'));
+      return View('content/user/detail_profile',compact('user', 'id'));
     }
 
     /**
@@ -90,7 +90,7 @@ class UserController extends Controller
      // dd($user);
     return redirect()->route('user.index')->with('success', 'Berhasil Mengedit Data');
   }else {
-      return redirect()->route('user.index')->with('gagal','Gagal mengupdate data mohon chack password anda');
+      return redirect()->route('user.index')->with('gagal','Gagal mengupdate data mohon cek password anda');
     }
 
     }
