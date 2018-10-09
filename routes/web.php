@@ -29,3 +29,6 @@ Route::resource('laporankeuangan','LapKeuanganController');
 Route::resource('laporantransaksi','LapTransaksiController');
 Route::resource('user','UserController');
 Route::resource('setting','SettingController');
+Route::resource('user','UserController');
+Route::resource('userprofile','UserprofileController');
+Route::resource('kategori','kategoriController');
