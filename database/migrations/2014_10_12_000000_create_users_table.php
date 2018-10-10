@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('jenis_kelamin')->nullable();
             $table->integer('no_telp')->nullable();
             $table->string('foto')->nullable();
+            $table->string('provider')->nullable();
+            $table->string('provider_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

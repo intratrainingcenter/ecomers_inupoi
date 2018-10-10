@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('index');
 })->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-
-Route::resource('Inupoi', 'FrondendController')->middleware('auth');
+Route::get('Inupoi', 'Auth\LoginController@setupCheck');
+Route::resource('Inupoi', 'FrondendController');
 Route::resource('dashboard','dashboardController')->middleware('auth');
 Route::resource('kategori','KategoriController')->middleware('auth');
 Route::resource('barang','ProdukController')->middleware('auth');
