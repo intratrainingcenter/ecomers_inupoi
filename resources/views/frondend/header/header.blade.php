@@ -11,7 +11,7 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							Help & FAQs
 						</a>
-						<a href="login_fn" class="flex-c-m trans-04 p-lr-25">
+						<a href="{{ url('Inupoi/google') }}" class="flex-c-m trans-04 p-lr-25">
 							Login &nbsp;<i class="fa fa-google"></i>oogle +
 						</a>
 					</div>
