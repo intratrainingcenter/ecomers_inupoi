@@ -20,7 +20,15 @@
     			<td>{{$users->name}}</td>
     			<td>{{$users->email}}</td>
     			<td>{{$users->jabatan}}</td>
-    			<td><img src="{{ asset('image/' . $users->foto) }}"  width="80px"/></td>
+    			<td>
+
+            <img src=" @if(Auth::guard('web')->check())
+            @elseif (Auth::guard('web')->user()->jabatan == 'owner')
+            {{ asset('image/' . $users->foto) }}
+                   @elseif (Auth::guard('web')->user()->jabatan == 'member')
+                      {{ Auth::guard('web')->user()->avatar }}
+                  @endif" alt="..." class="img-circle profile_img"  width="80px"/>
+          </td>
            @if (Auth::guard('web')->check())
               @if (Auth::guard('web')->user()->jabatan == 'owner')
               <td>
