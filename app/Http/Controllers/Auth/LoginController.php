@@ -68,11 +68,12 @@ class LoginController extends Controller
         return User::create([
           'name' => $user->name,
           'email'  => $user->email,
-          // 'password'  => bcrypt('admin24'),
           'provider'  => $provider,
           'provider_id'  => $user->id,
-          'avatar_original' => $user->avatar_original,
+          'avatar'         => $user->avatar,
+          'avatar_original'  => $user->avatar_original,
         ]);
+
       }
     }
 
