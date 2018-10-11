@@ -42,16 +42,5 @@
      </div>
      </div>
 </section>
-<script>
-$("input#kode_produk").on({
-  keydown: function(e) {
-    if (e.which === 32)
-      return false;
-  },
-  change: function() {
-    this.value = this.value.replace(/\s/g, "");
-  }
-});
 
-</script>
 @endsection

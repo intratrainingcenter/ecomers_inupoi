@@ -86,7 +86,7 @@
                     <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Harga</label>
                             <div class="col-sm-8">
-                              <input type="text" onchange="hanyaAngka()" class="form-control" name='harga' id="harga" placeholder="Harga" required>
+                              <input type="number" class="form-control" name='harga' id="harga" placeholder="Harga" required>
                             </div>
                           </div>
                     <br><br>
@@ -106,19 +106,16 @@
                     <br><br><br>
                     <div class="form-group">
                             <label for="exampleInputFile" class="col-sm-4 control-label">Image Depan</label>
-                            <div class="col-sm-8">
+                            <div class="col-sm-4">
                                 <input type="file" class="" id="images" name="images" onchange="ShowImage(this);" required>
-                                <img class="pull-right" src="" alt="" id='image'>
+                                <img class="center" src="" alt="" id='image'>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="file" class="" id="image2" name="images2" onchange="ShowImagedua(this);" required>
+                                <img class="center" src="" alt="" id='imagedua'>
                             </div>
                           </div>
-                    <br>
-                    <div class="form-group">
-                            <label for="exampleInputFile" class="col-sm-4 control-label">Image Belakang</label>
-                            <div class="col-sm-8">
-                                <input type="file" class="" id="image2" name="images2" required>
-                            </div>
-                          </div>
-                    <br>
+                
                  </div>  
             </div>
             <div class="modal-footer">
@@ -207,7 +204,7 @@
                         <div class="form-group">
                                 <label for="" class="col-sm-4 control-label">Harga</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control" name='harga' id="harga" value="{{$items->harga}}">
+                                  <input type="number" class="form-control" name='harga' id="hargaedit" value="{{$items->harga}}">
                                 </div>
                               </div>
                         <br><br>
@@ -226,7 +223,7 @@
                               </div>
                         <br><br><br>
                         <div class="form-group">
-                            <label for="exampleInputFile" class="col-sm-4 control-label">Image Depan</label>
+                            <label for="exampleInputFile" class="col-sm-2 control-label">Image Depan</label>
                             <div class="col-sm-8">
                             <input type="file" class="" id="images" name="gambar" value="{{$items->gambar}}" >
 
