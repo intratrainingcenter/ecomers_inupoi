@@ -86,7 +86,6 @@ class DiskonController extends Controller
     {
       $update = diskon::find($id);
       $update->update([
-          'kode_diskon' =>  $request->kode_diskon,
           'nominal' =>  $request->nominal
       ]);
 
@@ -101,8 +100,11 @@ class DiskonController extends Controller
      */
     public function destroy($id)
     {
+
+
       $cek= produk::where('kode_diskon', $id)->doesntExist();
-      if($cek=true)
+
+      if($cek==true)
       {
         $hapus = diskon::where('kode_diskon', $id);
         // dd($hapus);
