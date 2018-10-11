@@ -38,7 +38,7 @@
 
 {{-- modal delete --}}
   @foreach($data as $diskon)
-  <div class="modal modal-danger fade" id="modal-danger{{$diskon->id}}">
+  <div class="modal modal-danger fade" id="modal-danger{{$diskon->kode_diskon}}">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
