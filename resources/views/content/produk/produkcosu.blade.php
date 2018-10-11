@@ -16,18 +16,6 @@
     
 setTimeout(function(){ $('.notif').hide(1000)},3000);
 
-function ShowImage(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#image')
-                    .attr('src', e.target.result)
-                    .height(150);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
 function bersih() {
     $('#kode_produk').val('');
 	$('#kode_kategori').val('');
@@ -51,22 +39,7 @@ $(function() {
       'info'        : true,
       'autoWidth'   : true
 });
-function hanyaAngka(evt) {
-	var charCode = (evt.which) ? evt.which : event.keyCode
-	 if (charCode > 31 && (charCode < 48 || charCode > 57))
-			return false;
-		return true;
-		}
 
-$("input#kode_produk").on({
-  keydown: function(e) {
-    if (e.which === 32)
-      return false;
-  },
-  change: function() {
-    this.value = this.value.replace(/\s/g, "");
-  }
-});
 
 </script>
 
