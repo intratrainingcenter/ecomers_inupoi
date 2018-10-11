@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Auth;
 class frontend
 {
     /**
@@ -15,6 +15,14 @@ class frontend
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+      if (Auth::guard('frontend')->check() == 'member') {
+
+          return $next($request);
+
+      }else{
+
+    return redirect('Inupoi.index')->with('Login','Anda Belum Login');
+}
+
     }
 }
