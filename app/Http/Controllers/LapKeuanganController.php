@@ -85,12 +85,12 @@ class LapKeuanganController extends Controller
         //
     }
 
-    // public function filter(Request $request)
-    // {
-    //     $dari = $request->get('dari');
-    //     $sampai = $request->get('sampai');
+    public function filter(Request $request)
+    {
+        $dari = $request->get('dari');
+        $sampai = $request->get('sampai');
 
-    //     $lapkeuangan = DB::table('laporan_keuangans')->whereBetween('tgl_transaksi', [$dari, $sampai])->get();
-    //     return view();
-    // }
+        $data = laporanKeuangan::whereBetween('tgl_transaksi', [$dari, $sampai])->get();
+        return view('content.LapKeuangan.laporanKeuangan', ['data'=>$data]);
+    }
 }

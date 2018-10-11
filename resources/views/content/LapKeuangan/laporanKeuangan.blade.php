@@ -55,14 +55,17 @@ $(function() {
 
  
 <div class="panel panel-default">
+<form action="{{route('Filter.laporankeuangan')}}">
   <div class="panel-heading">
       <label>Dari :</label>
       <input type="date" name="dari">
       <label>Sampai :</label>
       <input type="date" name="sampai">
-      <button type="button" class="btn btn-info">Cari</button>
+      <input type="submit" class="btn btn-info">
+      {{-- <button type="button" class="btn btn-info">Cari</button> --}}
       <button type="button" class="btn btn-primary pull-right" onclick="window.print();"><li class="fa fa-print"> Print</li></button>
   </div>
+</form>
   <div class="panel-body">
     <table id="example" class="table table-striped table-bordered" style="width:100%">
     <thead>
@@ -84,9 +87,9 @@ $(function() {
       @endforeach
   	</tbody>
     <tfoot>
-      <tr>
-          
-      </tr>
+          <td colspan="2"></td>
+          <td><b>Total Keuangan</b></td>
+          <td></td>
     </tfoot>
    </table>
   </div>

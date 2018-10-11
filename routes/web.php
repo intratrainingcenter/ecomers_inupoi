@@ -23,6 +23,10 @@ Route::prefix('Inupoi')->group(function(){
 	Route::get('/Transaksi', 'FrondendController@transaksi')->name('Inupoi.Transaksi');
 });
 
+Route::prefix('laporankeuangan')->group(function(){
+	Route::get('/Filter', 'LapKeuanganController@filter')->name('Filter.laporankeuangan');
+});
+
 Route::resource('Inupoi', 'FrondendController');
 Route::resource('dashboard','dashboardController');
 Route::resource('kategori','KategoriController');
