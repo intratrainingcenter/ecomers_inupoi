@@ -59,7 +59,12 @@
                       <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Kode Diskon</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" name='kode_diskon' id="kode_diskon" placeholder="Kode Diskon" required>
+                              <select name="kode_diskon" class="form-control" id="kode_diskon" required>
+                                  <option value="" disabled selected>----------kode_diskon----------</option>
+                                @foreach ($diskon as $itemdiskon)
+                              <option value="{{$itemdiskon->kode_diskon}}">{{$itemdiskon->kode_diskon}} - ${{$itemdiskon->nominal}}</option>
+                                @endforeach
+                                </select>
                             </div>
                         </div>
                     <br><br>
@@ -74,7 +79,7 @@
                       <label for="" class="col-sm-4 control-label">Ukuran</label>
                       <div class="col-sm-8">
                         <select name="ukuran" class="form-control" id="ukuran" required>
-                          <option value="" disabled selected>Ukuran</option>
+                          <option value="" disabled selected>----------Ukuran----------</option>
                           <option value="S">Ukuran - S</option>
                           <option value="M">Ukuran - M</option>
                           <option value="L">Ukuran - L</option>
@@ -105,7 +110,7 @@
                           </div>
                     <br><br><br>
                     <div class="form-group">
-                            <label for="exampleInputFile" class="col-sm-4 control-label">Image Depan</label>
+                            <label for="exampleInputFile" class="col-sm-4 control-label">Image</label>
                             <div class="col-sm-4">
                                 <input type="file" class="" id="images" name="images" onchange="ShowImage(this);" required>
                                 <img class="center" src="" alt="" id='image'>
@@ -114,7 +119,7 @@
                                 <input type="file" class="" id="image2" name="images2" onchange="ShowImagedua(this);" required>
                                 <img class="center" src="" alt="" id='imagedua'>
                             </div>
-                          </div>
+                        </div>
                 
                  </div>  
             </div>
@@ -175,7 +180,12 @@
                           <div class="form-group">
                                 <label for="" class="col-sm-4 control-label">Kode Diskon</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control" name='kode_diskon' id="kode_diskon" value="{{$items->kode_diskon}}">
+                                 <select name="kode_diskon" class="form-control" id="kode_diskon" required>
+                                 <option value="{{$items->kode_diskon}}" selected>{{$items->kode_diskon}}</option>
+                                @foreach ($diskon as $itemdiskon)
+                              <option value="{{$itemdiskon->kode_diskon}}">{{$itemdiskon->kode_diskon}} - ${{$itemdiskon->nominal}}</option>
+                                @endforeach
+                                </select>
                                 </div>
                             </div>
                         <br><br>
@@ -222,7 +232,7 @@
                                 </div>
                               </div>
                         <br><br><br>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="exampleInputFile" class="col-sm-2 control-label">Image Depan</label>
                             <div class="col-sm-8">
                             <input type="file" class="" id="images" name="gambar" value="{{$items->gambar}}" >
@@ -235,6 +245,18 @@
                             <div class="col-sm-8">
                                 <input type="file" class="" id="image2" name="gambar_belakang" >
                             </div>
+                          </div> --}}
+
+                          <div class="form-group">
+                              <label for="exampleInputFile" class="col-sm-4 control-label">Image</label>
+                              <div class="col-sm-4">
+                                  <input type="file" class="" id="images" name="gambar">
+                                  <img class="center" src="" alt="" id='imageedit'>
+                              </div>
+                              <div class="col-sm-4">
+                                  <input type="file" class="" id="image2" name="gambar_belakang">
+                                  <img class="center" src="" alt="" id='imageduaedit'>
+                              </div>
                           </div>
             
                        </div>  
