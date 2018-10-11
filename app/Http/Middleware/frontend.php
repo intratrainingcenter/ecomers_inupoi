@@ -21,7 +21,7 @@ class frontend
 
       }else{
 
-    return redirect('Inupoi.index')->with('Login','Anda Belum Login');
+    return redirect()->route('Inupoi.index')->with('Login','Anda Belum Login');
 }
 
     }
