@@ -46,10 +46,16 @@ class LoginController extends Controller
 
     public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver($provider)->user();
+        $user = Socialite::driver($provider)->stateless()->user();
         $authUser = $this->findOrCreateUser($user, $provider);
-        Auth::login($authUser, true);
-        return redirect($this->redirectTo);
+        // Auth::login($authUser, true);
+        // return redirect($this->redirectTo);
+        if ($authUser == false){
+          return redirect('Inupoi11.index')->with('warning','WARNING!');
+        }else{
+          Auth::login($authUser, true);
+          return redirect()->route('Inupoi.index');
+        }
     }
 
 
@@ -62,6 +68,7 @@ class LoginController extends Controller
         return User::create([
           'name' => $user->name,
           'email'  => $user->email,
+          // 'password'  => bcrypt('admin24'),
           'provider'  => $provider,
           'provider_id'  => $user->id,
           'avatar_original' => $user->avatar_original,
