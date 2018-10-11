@@ -15,7 +15,7 @@
           <th class="column-title">Stock</th>
           <th class="column-title">Opsi</th>
         </tr>
-      </thead>
+      </thead> 
     	<tbody>
         @foreach ($item as $items)
     		<tr>
