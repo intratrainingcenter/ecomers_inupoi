@@ -16,6 +16,17 @@ Route::get('/', function () {
 })->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::prefix('Inupoi')->group(function(){
+	Route::get('/Contact', 'FrondendController@contact')->name('Inupoi.Contact');
+	Route::get('/About', 'FrondendController@about')->name('Inupoi.About');
+	Route::get('/Produk', 'FrondendController@produk')->name('Inupoi.Produk');
+	Route::get('/Transaksi', 'FrondendController@transaksi')->name('Inupoi.Transaksi');
+});
+
+Route::prefix('laporankeuangan')->group(function(){
+	Route::get('/Filter', 'LapKeuanganController@filter')->name('Filter.laporankeuangan');
+});
+
 Route::resource('Inupoi', 'FrondendController');
 Route::resource('dashboard','dashboardController');
 Route::resource('kategori','KategoriController');
