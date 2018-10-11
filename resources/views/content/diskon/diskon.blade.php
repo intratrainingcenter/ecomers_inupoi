@@ -1,4 +1,4 @@
-@extends('index')@section('title', 'Diskon')@extends('content.diskon.modal')
+@extends('index')@section('title', 'Diskon')@extends('content.diskon.modal')@extends('content.diskon.notif')
 @section('judul','Header')
 @section('sub','Diskon')
 @section('someCSS')

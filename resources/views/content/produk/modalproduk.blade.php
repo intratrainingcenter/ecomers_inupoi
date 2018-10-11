@@ -120,8 +120,8 @@
                                 <img class="center" src="" alt="" id='imagedua'>
                             </div>
                         </div>
-                
-                 </div>  
+
+                 </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger pull-left batal" data-dismiss="modal">Close</button>
@@ -132,9 +132,9 @@
           </div>
         </div>
       </div>
-      
+
      @foreach ($item as $items)
-         
+
     <div class="modal fade" id="modal-hapus{{$items->kode_produk}}">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -151,11 +151,11 @@
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                     </div>
-                  
+
                   </div>
                 </div>
               </div>
-      
+
             <div class="modal fade" id="modal-edit{{$items->kode_produk}}" >
                   <div class="modal-dialog">
                     <div class="modal-content">
@@ -258,8 +258,8 @@
                                   <img class="center" src="" alt="" id='imageduaedit'>
                               </div>
                           </div>
-            
-                       </div>  
+
+                       </div>
                       </div>
                       <hr>
                       <div class="modal-footer">
@@ -269,7 +269,7 @@
                     </form>
                     </div>
                   </div>
-                </div>     
+                </div>
 
 
 
@@ -329,8 +329,8 @@
                   <!-- /.modal-dialog -->
               </div>
               <!-- /.modal -->
-      
-                
+
+
                 @endforeach
 @yield('home')
 @endsection

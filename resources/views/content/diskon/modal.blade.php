@@ -1,4 +1,33 @@
-{{-- modal create --}}
+@section('content')
+
+@if ($message = Session::get('success'))
+    <div class="alert alert-success alert alert-success alert-dismissible fade in notif" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+        <p>{{ $message }}</p>
+    </div>
+    @elseif ($message = Session::get('warning'))
+    <div class="alert alert-warning alert alert-warning alert-dismissible fade in notif" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+        <p>{{ $message }}</p>
+    </div>
+    @elseif ($message = Session::get('delete'))
+    <div class="alert alert-danger alert alert-danger alert-dismissible fade in notif" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+        <p>{{ $message }}</p>
+    </div>
+    @elseif ($message = Session::get('not_success'))
+    <div class="alert alert-danger alert alert-danger alert-dismissible fade in notif" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+        <p>{{ $message }}</p>
+    </div>
+@endif
+@endsection
+
+
 <div class="modal modal-success fade" id="modal-success">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -38,23 +67,21 @@
 
 {{-- modal delete --}}
   @foreach($data as $diskon)
-  <div class="modal modal-danger fade" id="modal-danger{{$diskon->id}}">
+  <div class="modal fade" id="modal-danger{{$diskon->id}}">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Hapus Data Diskon</h4>
         </div>
-        <form  action="{{route('diskon.destroy',$diskon->id)}}" method="post">
+        <form  action="{{route('diskon.destroy',$diskon->kode_diskon)}}" method="post">
         @method('delete') @csrf()
         <div class="modal-body">
-          <input type="hidden" name="id" value="{{$diskon->id}}">
-          <p>Apakah anda yakin ingin menghapus data ini ?</p>
+
+          <p>Apakah anda yakin ingin menghapus {{$diskon->kode_diskon}} ?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
-          <button type="submit" class="btn btn-outline">Iya</button>
+          <button type="button" class="btn btn-danger pull-left batal" data-dismiss="modal">Tidak</button>
+          <button type="submit" class="btn btn-primary">Iya</button>
         </div>
         </form>
       </div>
