@@ -17,7 +17,8 @@ class ProdukController extends Controller
     {
         $item = produk::orderBy('created_at', 'desc')->get();;
         $category = kategori::all();
-        return view('content.produk.produk',['item'=>$item,'kategori'=>$category]);
+        $discount = diskon::all();
+        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount]);
     }
 
    
