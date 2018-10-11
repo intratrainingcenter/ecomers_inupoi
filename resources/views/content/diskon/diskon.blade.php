@@ -1,4 +1,4 @@
-@extends('index')@section('title', 'Diskon')
+@extends('index')@section('title', 'Diskon')@extends('content.diskon.modal')
 @section('judul','Header')
 @section('sub','Diskon')
 @section('someCSS')
@@ -27,36 +27,9 @@ $(function() {
 <section class="content container-fluid">
   <div class="x_panel">
     <div class="x_content">
-@if ($message = Session::get('success'))
-    <div class="alert alert-success alert alert-success alert-dismissible fade in notif" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-    @elseif ($message = Session::get('edit'))
-    <div class="alert alert-warning alert alert-warning alert-dismissible fade in notif" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-    @elseif ($message = Session::get('delete'))
-    <div class="alert alert-danger alert alert-danger alert-dismissible fade in notif" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-    @elseif ($message = Session::get('not_success'))
-    <div class="alert alert-danger alert alert-danger alert-dismissible fade in notif" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-@endif
-
- 
     <div class="panel panel-default">
     <div class="panel-heading">
-      <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#modal-success"><li class="fa fa-plus-square"></li> Add Kategori</button>
+      <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#modal-success"><li class="fa fa-plus-square"></li> Add Diskon</button>
     </div>
     <div class="panel-body">
       <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -75,8 +48,8 @@ $(function() {
     			<td>{{$diskon->kode_diskon}}</td>
           <td>{{$diskon->nominal}}</td>
           <td>
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit"><li class="fa fa-pencil"></li></button>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger"><li class="fa fa-trash-o"></li></button>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit{{$diskon->id}}"><li class="fa fa-pencil"></li></button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{$diskon->id}}"><li class="fa fa-trash-o"></li></button>
           </td>
     		</tr>
         @endforeach
@@ -85,43 +58,5 @@ $(function() {
      </div>
      </div>
 </section>
-
-{{-- modal create --}}
-<div class="modal modal-success fade" id="modal-success">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Tambah Data Diskon</h4>
-      </div>
-      <form  action="{{route('diskon.store')}}" method="post">
-      @method('POST') @csrf()
-      <div class="modal-body">
-        <div class="box-body">
-          <div class="form-group">
-            <label for="kode_diskon" class="col-sm-4 control-label">Kode Diskon</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" name="kode_diskon" id="kode_diskon" placeholder="Kode Diskon">
-            </div>
-          </div>
-          <br><br>
-          <div class="form-group">
-            <label for="nominal" class="col-sm-4 control-label">Nominal</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" name='nominal' id="nominal" placeholder="Nominal">
-            </div>
-          </div>
-          <br>
-        </div>  
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger pull-left batal" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
+@include('content.diskon.disc')
 @endsection
-
