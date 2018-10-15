@@ -33,7 +33,7 @@
 							</span>
 
 							<p class="stext-115 cl6 size-213 p-t-18">
-								Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
+								Inupoi Store Center , Ruko Suhat Indah no.10, Malang
 							</p>
 						</div>
 					</div>
@@ -49,7 +49,7 @@
 							</span>
 
 							<p class="stext-115 cl1 size-213 p-t-18">
-								+1 800 1236879
+								+628384940928
 							</p>
 						</div>
 					</div>
@@ -65,7 +65,7 @@
 							</span>
 
 							<p class="stext-115 cl1 size-213 p-t-18">
-								contact@example.com
+								inupiCorp@gmail.com
 							</p>
 						</div>
 					</div>

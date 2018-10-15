@@ -56,7 +56,7 @@ $(function() {
  
     <div class="panel panel-default">
     <div class="panel-heading">
-      <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#modal-success"><li class="fa fa-plus-square"></li> Add Kategori</button>
+      <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#modal-success"><li class="fa fa-plus-square"></li> Add Diskon</button>
     </div>
     <div class="panel-body">
       <table id="example" class="table table-striped table-bordered" style="width:100%">

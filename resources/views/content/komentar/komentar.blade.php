@@ -55,38 +55,30 @@ $(function() {
 
  
     <div class="panel panel-default">
-    <div class="panel-heading">
-            <button type="button" class="btn-lg btn-success fa fa-plus-square "></button>
-    </div>
+    <div class="panel-heading"></div>
     <div class="panel-body">
       <table id="example" class="table table-striped table-bordered" style="width:100%">
       <thead>
         <tr>
           <th class="column-title">No</th>
-          <th class="column-title">Nis Siswa</th>
-          <th class="column-title">Nama Siswa</th>
-          <th class="column-title">Absensi</th>
-          <th class="column-title">Keterangan</th>
+          <th class="column-title">Kode User</th>
+          <th class="column-title">Kode Barang</th>
+          <th class="column-title">Deskripsi</th>
           <th class="column-title">Action</th>
         </tr>
       </thead>
-    	@php
-    	$no= 1;
-    	@endphp
     	<tbody>
+        @foreach($data as $coment)
     		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>awgaanklfa</td>
+    			<td>{{$loop->iteration}}</td>
+    			<td>{{$coment->kode_user}}</td>
+          <td>{{$coment->kode_produk}}</td>
+          <td>{{$coment->deskripsi}}</td>
           <td>
-              <a href="" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-
-              <a><button  onclick=" return confirm('Anda Yakin Menghapus Absensi')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
-
+            <center><a href="" type="button" class="btn btn-primary"><i class="fa fa-search"></i></a></center>
           </td>
     		</tr>
+        @endforeach
     	</tbody>
      </table>
      </div>
