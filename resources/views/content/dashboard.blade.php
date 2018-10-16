@@ -33,7 +33,7 @@ $(function() {
       <div class="icon">
         <i class="ion ion-bag"></i>
       </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      <a class="small-box-footer"><i class="ion ion-bag"></i></a>
     </div>
   </div>
   <!-- ./col -->
@@ -41,14 +41,13 @@ $(function() {
     <!-- small box -->
     <div class="small-box bg-green">
       <div class="inner">
-        <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-        <p>Bounce Rate</p>
+        <h3>53</h3>
+        <p>Stock all Product</p>
       </div>
       <div class="icon">
-        <i class="ion ion-stats-bars"></i>
+        <i class="ion ion-cube"></i>
       </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      <a class="small-box-footer">Total All Stock   <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
