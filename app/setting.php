@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class setting extends Model
 {
-    protected $table = 'setting';
+    protected $table = 'settings';
     protected $primaryKey = 'id';
-    protected $fillable = ['id','alamat','contact','logo','min_stock'];
+    protected $fillable = ['id','nama','alamat','contact','logo','min_stock'];
 }
