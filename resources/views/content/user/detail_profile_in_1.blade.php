@@ -16,7 +16,11 @@
       <div class="alert alert-info alert-dismissable">
         <a class="panel-close close" data-dismiss="alert">×</a>
         <i class="fa fa-user"></i>
+        @if ($user->jabatan == 'member')
+        Halaman <strong>Profil</strong> Data Member
+        @else
          Halaman <strong>Edit Profil</strong> Ubah Data User
+         @endif
       </div>
       <h3>Informasi Pribadi  {{Auth::user()->name}}</h3>
                      <input type="hidden" name="id" value="{{$user->id}}" class="form-control"/>
@@ -57,7 +61,7 @@
           </div>
         </div>
         @if ($user->jabatan == 'member')
-        <a href="{{ route('user.index')}}" type="button" class="btn btn-default">Cancel</a>
+        <a href="{{ route('user.index')}}" type="button" class="btn btn-default">Back</a>
         @else
         <div class="form-group">
           <label class="col-md-3 control-label">Password Lama</label>

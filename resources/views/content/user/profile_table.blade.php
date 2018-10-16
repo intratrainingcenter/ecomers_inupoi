@@ -22,7 +22,11 @@
            @if (Auth::guard('web')->check())
               @if (Auth::guard('web')->user()->jabatan == 'owner')
               <td>
-                <a href="{{Route('user.edit', $users->id)}}" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                @if ($users->jabatan == 'member')
+                <a href="{{Route('user.edit', $users->id)}}" type="button" class="btn btn-info"><i class="fa fa-info">nfo</i></a>
+                @else
+                  <a href="{{Route('user.edit', $users->id)}}" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                @endif
                 @if ($users->jabatan == 'owner')
                 <p>=====</p>
                 @else
