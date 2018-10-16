@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\diskon;
+use App\produk;
 
 class DiskonController extends Controller
 {
@@ -16,7 +17,7 @@ class DiskonController extends Controller
     {
         $data = diskon::all();
 
-        return view('content.diskon.diskon', compact('data'));        
+        return view('content.diskon.diskon', compact('data'));
     }
 
     /**
@@ -83,7 +84,12 @@ class DiskonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $update = diskon::find($id);
+      $update->update([
+          'nominal' =>  $request->nominal
+      ]);
+
+      return redirect('diskon')->with('success','Update data success');
     }
 
     /**
@@ -94,6 +100,23 @@ class DiskonController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+
+      $cek= produk::where('kode_diskon', $id)->doesntExist();
+
+      if($cek==true)
+      {
+        $hapus = diskon::where('kode_diskon', $id);
+        // dd($hapus);
+        $hapus->delete();
+
+        return redirect('diskon')->with('success','Delete data success');
+
+      }
+      else {
+
+        return redirect('diskon')->with('edit','This code diskon has been used');
+
+      }
     }
 }

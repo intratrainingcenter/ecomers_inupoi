@@ -1,34 +1,46 @@
-@extends('index')@section('title', 'Produk')@section('judul','Header')@section('sub','Produk')@extends('content.produk.aditional')
-@extends('content.produk.modalproduk')@section('home')
+@extends('index')@section('title', 'Produk')@section('judul','Header')@section('sub','Produk')
+@extends('content.produk.aditional')@extends('content.produk.modalproduk')@section('home')
 <div class="panel panel-default">           
-  <div class="panel-heading"><button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#modal-success"><li class="fa fa-plus-square"></li> Add Produk </button></div>
+  <div class="panel-heading">
+    <button type="button" onclick="white()" class="btn btn-success btn-flat fa fa-plus-square" data-toggle="modal" data-target="#modal-success">Add Product</button>
+  </div>
     <div class="panel-body">
       <table id="example" class="table table-striped table-bordered" style="width:100%">
       <thead>
         <tr>
-          <th class="column-title">No</th>
-          <th class="column-title">Nis Siswa</th>
-          <th class="column-title">Nama Siswa</th>
-          <th class="column-title">Absensi</th>
-          <th class="column-title">Keterangan</th>
-          <th class="column-title">Action</th>
+          <th class="column-title">#</th>
+          <th class="column-title">Code Product</th>
+          <th class="column-title">Name Product</th>
+          <th class="column-title">Front Image</th>
+          <th class="column-title">Size</th>          
+          <th class="column-title">Price</th>
+          <th class="column-title">Stock</th>
+          <th class="column-title">Opsi</th>
         </tr>
-      </thead>@php$no= 1;@endphp
+      </thead> 
     	<tbody>
+        @foreach ($item as $items)
     		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>awgaanklfa</td>
+          <td>{{$loop->iteration}}</td>
+          <td>{{$items->kode_produk}}</td>
+          <td>{{$items->nama_produk}}</td>
           <td>
-              <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#modal-edit" title="Edit data"><i class="fa fa-pencil"></i></button>
-              <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modal-hapus" title="Delete data"><i class="fa fa-trash-o"></i></button>
+              <img src="{{Storage::url($items->gambar)}}" width="100px" alt="">
+          </td>   
+          <td>{{$items->ukuran}}</td>         
+    			<td>{{"$.".number_format($items->harga)}}</td>
+          <td>{{$items->stok}}</td>
+          <td>
+            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#modal-detail{{$items->kode_produk}}" title="Detail data"><i class="fa fa-search"></i></button>
+            <button type="button" onclick="bersih()" id="btnedit" class="btn btn-warning"  data-toggle="modal" data-target="#modal-edit{{$items->kode_produk}}" title="Edit data"><i class="fa fa-pencil"></i></button>
+          <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modal-hapus{{$items->kode_produk}}" title="Delete data"><i class="fa fa-trash-o"></i></button>
           </td>
-    		</tr>
+        </tr>
+        @endforeach
     	</tbody>
      </table>
      </div>
      </div>
 </section>
+
 @endsection
