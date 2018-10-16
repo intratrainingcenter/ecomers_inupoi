@@ -7,8 +7,8 @@
 setTimeout(function(){ $('.notif').hide(1000)},3000);
         
 
-function bersih() {
-    $('#kode_produk').val('');
+function white() {
+  $('#kode_produk').val('');
 	$('#kode_kategori').val('');
 	$('#kode_diskon').val('');
 	$('#nama_produk').val('');

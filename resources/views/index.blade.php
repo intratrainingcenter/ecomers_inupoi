@@ -13,6 +13,9 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
+  {{-- onesignal --}}
+  {{-- end onesignal --}}
+
   <style>
   hr
 {
@@ -30,6 +33,20 @@
   <script type="text/javascript">
     setTimeout(function(){ $('.notif').hide(1000)},3000);
   </script>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCRY_ZWM6IrXgBSR2kgQFmrMRaI4sCUELg",
+    authDomain: "ecommers-inupoi.firebaseapp.com",
+    databaseURL: "https://ecommers-inupoi.firebaseio.com",
+    projectId: "ecommers-inupoi",
+    storageBucket: "ecommers-inupoi.appspot.com",
+    messagingSenderId: "485916679851"
+  };
+  firebase.initializeApp(config);
+</script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <script type="text/javascript">
@@ -66,21 +83,32 @@ $(function() {
   $('#example').DataTable();
  
 });
-</script>
 
-@yield('jsku')
+</script>
+  {{-- onesignal --}}
+<link rel="manifest" href="/manifest.json" />
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  var OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "60fe8115-2762-4d5f-8252-da2d4689e188",
+      autoRegister: false,
+      notifyButton: {
+        enable: true,
+      },
+      allowLocalhostAsSecureOrigin: true,
+    });
+  });
+</script>
+  {{-- end onesignal --}}
+
      
 
 @section('someJS')
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-<script>
-$(function() {
-  $('#example').DataTable();
-});
-</script>
-
 @endsection
 </body>
 </html>

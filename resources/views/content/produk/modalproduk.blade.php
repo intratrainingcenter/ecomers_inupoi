@@ -307,7 +307,7 @@
                               </table>
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                              <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">close</button>
                           </div>
                       </div>
                   </div>
