@@ -1,8 +1,9 @@
+@foreach($data as $produk)
 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 	<!-- Block2 -->
 	<div class="block2">
-		<div class="block2-pic hov-img0">
-			<img src="{{asset('cozastore/images/product-01.jpg')}}" alt="IMG-PRODUCT">
+		<div class="block2-pic hov-img1">
+			<img src="{{Storage::url($produk->gambar)}}" alt="IMG-PRODUCT">
 
 			<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 				Quick View
@@ -11,12 +12,12 @@
 
 		<div class="block2-txt flex-w flex-t p-t-14">
 			<div class="block2-txt-child1 flex-col-l ">
-				<a href="{{asset('cozastore/product-detail.html')}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-					Esprit Ruffle Shirt
+				<a href="{{Route('Inupoi.Detail')}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+					{{$produk->nama_produk}}
 				</a>
 
 				<span class="stext-105 cl3">
-					$16.64
+					{{$produk->harga}}
 				</span>
 			</div>
 
@@ -29,6 +30,7 @@
 		</div>
 	</div>
 </div>
+@endforeach
 
 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 	<!-- Block2 -->

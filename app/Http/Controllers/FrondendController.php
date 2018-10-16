@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\produk;
 
 class FrondendController extends Controller
 {
@@ -13,7 +14,9 @@ class FrondendController extends Controller
      */
     public function index()
     {
-        return view('frondend/frondend');
+        $data = produk::all();
+
+        return view('frondend/frondend', compact('data'));
     }
 
     /**
@@ -100,5 +103,10 @@ class FrondendController extends Controller
     public function transaksi()
     {
         return view('frondend.transaksi');
+    }
+
+    public function detail()
+    {
+        return view('frondend.detailproduk');
     }
 }

@@ -33,6 +33,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/css/main.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/imgproduk.css')}}">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">

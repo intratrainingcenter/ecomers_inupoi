@@ -21,6 +21,7 @@ Route::prefix('Inupoi')->group(function(){
 	Route::get('/About', 'FrondendController@about')->name('Inupoi.About');
 	Route::get('/Produk', 'FrondendController@produk')->name('Inupoi.Produk');
 	Route::get('/Transaksi', 'FrondendController@transaksi')->name('Inupoi.Transaksi');
+	Route::get('/Detail', 'FrondendController@detail')->name('Inupoi.Detail');
 });
 
 Route::prefix('laporankeuangan')->group(function(){
