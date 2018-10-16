@@ -15,8 +15,8 @@ class DiskonController extends Controller
      */
     public function index()
     {
-        $data = diskon::all();
-
+        $data = diskon::orderBy('created_at','desc')->get();
+    
         return view('content.diskon.diskon', compact('data'));
     }
 
@@ -75,13 +75,6 @@ class DiskonController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
       $update = diskon::find($id);
@@ -115,7 +108,7 @@ class DiskonController extends Controller
       }
       else {
 
-        return redirect('diskon')->with('edit','This code diskon has been used');
+        return redirect('diskon')->with('edit','This code is still used on the product');
 
       }
     }
