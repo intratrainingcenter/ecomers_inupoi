@@ -32,23 +32,23 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Produk</h4>
+              <h4 class="modal-title">Add Product</h4>
             </div>
             <form  action="{{Route('barang.store')}}" method="post" enctype="multipart/form-data">
             <div class="modal-body">
                 <div class="box-body">
                     <div class="form-group">
-                      <label for="kode_produk" class="col-sm-4 control-label">Kode Produk</label>
+                      <label for="kode_produk" class="col-sm-4 control-label">Code Product</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="kode_produk" id="kode_produk" placeholder="Kode Produk" required>
+                        <input type="text" class="form-control" name="kode_produk" id="kode_produk" placeholder="Code Product" required>
                       </div>
                     </div>
                     <br><br>
                     <div class="form-group">
-                        <label for="" class="col-sm-4 control-label">Kode Kategori</label>
+                        <label for="" class="col-sm-4 control-label">Code Category</label>
                         <div class="col-sm-8">
                           <select class="form-control" name="kode_kategori"id="kode_kategori" required>
-                                <option value="" disabled selected>Kategori</option>
+                                <option value="" disabled selected>Category</option>
                                 @foreach($kategori as $in)
                               <option value="{{$in->kode_kategori}}">{{$in->kode_kategori}} - {{$in->nama_kategori}}</option>
                                 @endforeach
@@ -57,10 +57,10 @@
                       </div>
                       <br><br>
                       <div class="form-group">
-                            <label for="" class="col-sm-4 control-label">Kode Diskon</label>
+                            <label for="" class="col-sm-4 control-label">Code Discount</label>
                             <div class="col-sm-8">
                               <select name="kode_diskon" class="form-control" id="kode_diskon" required>
-                                  <option value="" disabled selected>----------kode_diskon----------</option>
+                                  <option value="" disabled selected>Code Discount</option>
                                 @foreach ($diskon as $itemdiskon)
                               <option value="{{$itemdiskon->kode_diskon}}">{{$itemdiskon->kode_diskon}} - ${{$itemdiskon->nominal}}</option>
                                 @endforeach
@@ -69,27 +69,27 @@
                         </div>
                     <br><br>
                     <div class="form-group">
-                            <label for="" class="col-sm-4 control-label">Nama Produk</label>
+                            <label for="" class="col-sm-4 control-label">Product Name</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control" name='nama_produk' id="nama_produk" placeholder="Nama Produk" required>
                             </div>
                           </div>
                     <br><br>
                     <div class="form-group">
-                      <label for="" class="col-sm-4 control-label">Ukuran</label>
+                      <label for="" class="col-sm-4 control-label">Size</label>
                       <div class="col-sm-8">
                         <select name="ukuran" class="form-control" id="ukuran" required>
-                          <option value="" disabled selected>----------Ukuran----------</option>
-                          <option value="S">Ukuran - S</option>
-                          <option value="M">Ukuran - M</option>
-                          <option value="L">Ukuran - L</option>
-                          <option value="XL">Ukuran - XL</option>
+                          <option class="center" value="" disabled selected>Size</option>
+                          <option value="S">Size - S</option>
+                          <option value="M">Size - M</option>
+                          <option value="L">Size - L</option>
+                          <option value="XL">Size - XL</option>
                         </select>
                       </div>
                     </div>
               <br><br>
                     <div class="form-group">
-                            <label for="" class="col-sm-4 control-label">Harga</label>
+                            <label for="" class="col-sm-4 control-label">Price</label>
                             <div class="col-sm-8">
                               <input type="number" class="form-control" name='harga' id="harga" placeholder="Harga" required>
                             </div>
@@ -98,12 +98,12 @@
                     <div class="form-group">
                             <label for="" class="col-sm-4 control-label">Stock</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" name='stok' id="stok" placeholder="Stok Yang Tersedia" required>
+                              <input type="number" class="form-control" name='stok' id="stok" placeholder="Stok Yang Tersedia" required>
                             </div>
                           </div>
                     <br><br>
                     <div class="form-group">
-                            <label for="" class="col-sm-4 control-label">Deskripsi</label>
+                            <label for="" class="col-sm-4 control-label">Description</label>
                             <div class="col-sm-8">
                               <textarea type="text" class="form-control" name='deskripsi_produk' id="deskripsi" placeholder="Deskripsi" required></textarea>
                             </div>
@@ -144,7 +144,7 @@
                   <form action="{{Route('barang.destroy',['id'=> $items->kode_produk])}}" method="POST">
                       @csrf @method('DELETE')
                     <div class="modal-body">
-                    <p> <center> Apakah anda yakin ingin menghapus Produk : {{$items->kode_produk}} ??</center></p>
+                    <p> <center> Are you sure want to delete : {{$items->kode_produk}} ??</center></p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
@@ -160,14 +160,14 @@
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                      <h4 class="modal-title">Edit - {{$items->kode_produk}}</h4>
+                      <h4 class="modal-title">Update - {{$items->kode_produk}}</h4>
                       </div>
                      <form action="{{Route('barang.update',['id'=> $items->kode_produk])}}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PUT')
                       <div class="modal-body">
                       <div class="box-body">
                         <div class="form-group">
-                            <label for="" class="col-sm-4 control-label">Kode Kategori</label>
+                            <label for="" class="col-sm-4 control-label">Code Category</label>
                             <div class="col-sm-8">
                               <select class="form-control" name="kode_kategori">
                                     @foreach($kategori as $in)
@@ -178,7 +178,7 @@
                           </div>
                           <br><br>
                           <div class="form-group">
-                                <label for="" class="col-sm-4 control-label">Kode Diskon</label>
+                                <label for="" class="col-sm-4 control-label">Code Discount</label>
                                 <div class="col-sm-8">
                                  <select name="kode_diskon" class="form-control" id="kode_diskon" required>
                                  <option value="{{$items->kode_diskon}}" selected>{{$items->kode_diskon}}</option>
@@ -190,29 +190,29 @@
                             </div>
                         <br><br>
                         <div class="form-group">
-                                <label for="" class="col-sm-4 control-label">Nama Produk</label>
+                                <label for="" class="col-sm-4 control-label">Name Product</label>
                                 <div class="col-sm-8">
                                   <input type="text" class="form-control" name='nama_produk' id="nama_produk" value="{{$items->nama_produk}}">
                                 </div>
                               </div>
                         <br><br>
                         <div class="form-group">
-                          <label for="" class="col-sm-4 control-label">Ukuran</label>
+                          <label for="" class="col-sm-4 control-label">Size</label>
                           <div class="col-sm-8">
                             <select name="ukuran" class="form-control" id="" required>
                             <option value="{{$items->ukuran}}"selected>{{$items->ukuran}}</option>
                                 <hr>
-                              <option value="" disabled>Ukuran Lain :</option>
-                              <option value="S">Ukuran - S</option>
-                              <option value="M">Ukuran - M</option>
-                              <option value="L">Ukuran - L</option>
-                              <option value="XL">Ukuran - XL</option>
+                              <option value="" disabled>Another Size :</option>
+                              <option value="S">Size - S</option>
+                              <option value="M">Size - M</option>
+                              <option value="L">Size - L</option>
+                              <option value="XL">Size - XL</option>
                             </select>
                           </div>
                         </div>
                   <br><br>
                         <div class="form-group">
-                                <label for="" class="col-sm-4 control-label">Harga</label>
+                                <label for="" class="col-sm-4 control-label">Price</label>
                                 <div class="col-sm-8">
                                   <input type="number" class="form-control" name='harga' id="hargaedit" value="{{$items->harga}}">
                                 </div>
@@ -221,40 +221,26 @@
                         <div class="form-group">
                                 <label for="" class="col-sm-4 control-label">Stock</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control" name='stok' id="stok"  value="{{$items->stok}}">
+                                  <input type="number" class="form-control" name='stok' id="stokedit"  value="{{$items->stok}}">
                                 </div>
                               </div>
                         <br><br>
                         <div class="form-group">
-                                <label for="" class="col-sm-4 control-label">Deskripsi</label>
+                                <label for="" class="col-sm-4 control-label">Description</label>
                                 <div class="col-sm-8">
                                   <textarea type="text" class="form-control" name='deskripsi_produk' id="deskripsi" value="{{$items->deskripsi_produk}}">{{$items->deskripsi_produk}}</textarea>
                                 </div>
                               </div>
                         <br><br><br>
-                        {{-- <div class="form-group">
-                            <label for="exampleInputFile" class="col-sm-2 control-label">Image Depan</label>
-                            <div class="col-sm-8">
-                            <input type="file" class="" id="images" name="gambar" value="{{$items->gambar}}" >
-
-                            </div>
-                          </div>
-                    <br>
-                    <div class="form-group">
-                            <label for="exampleInputFile" class="col-sm-4 control-label">Image Belakang</label>
-                            <div class="col-sm-8">
-                                <input type="file" class="" id="image2" name="gambar_belakang" >
-                            </div>
-                          </div> --}}
 
                           <div class="form-group">
                               <label for="exampleInputFile" class="col-sm-4 control-label">Image</label>
                               <div class="col-sm-4">
-                                  <input type="file" class="" id="images" name="gambar">
+                                  <input type="file" class="" id="images" name="gambar" onchange="EditImage(this);">
                                   <img class="center" src="" alt="" id='imageedit'>
                               </div>
                               <div class="col-sm-4">
-                                  <input type="file" class="" id="image2" name="gambar_belakang">
+                                  <input type="file" class="" id="image2" name="gambar_belakang" onchange="EditImagedua(this);">
                                   <img class="center" src="" alt="" id='imageduaedit'>
                               </div>
                           </div>
@@ -278,7 +264,7 @@
                   <div class="modal-dialog">
                       <div class="modal-content">
                           <div class="modal-header">
-                              <h4 class="modal-title">Detail Produk</h4>
+                          <h4 class="modal-title">Detail Product : {{$items->kode_produk}}</h4>
                           </div>
                           <div class="modal-body">
                               <center><img src="{{Storage::url($items->gambar)}}" width="200px" alt=""> &nbsp;&nbsp;
@@ -289,47 +275,43 @@
                                   </thead>
                                   <tbody>
                                       <tr>
-                                          <td><label for="">Kode Produk</label></td><td>:</td><td>{{$items->kode_produk}}</td>
+                                          <td><label for="">Code Product</label></td><td>:</td><td>{{$items->kode_produk}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Kode Kategori</label></td><td>:</td><td>{{$items->kode_kategori}}</td>
+                                          <td><label for="">Code Category</label></td><td>:</td><td>{{$items->kode_kategori}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Kode Diskon</label></td><td>:</td><td>{{$items->kode_diskon}}</td>
+                                          <td><label for="">Code Discount</label></td><td>:</td><td>{{$items->kode_diskon}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Nama Produk</label></td><td>:</td><td>{{$items->nama_produk}}</td>
+                                          <td><label for="">Name Product</label></td><td>:</td><td>{{$items->nama_produk}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Kategori</label></td><td>:</td><td>{{$items->kode_kategori}}</td>
+                                          <td><label for="">Category</label></td><td>:</td><td>{{$items->kode_kategori}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Ukuran</label></td><td>:</td><td>{{$items->ukuran}}</td>
+                                          <td><label for="">Size</label></td><td>:</td><td>{{$items->ukuran}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Harga</label></td><td>:</td><td>{{$items->harga}}</td>
+                                          <td><label for="">Price</label></td><td>:</td><td>{{"$.".number_format($items->harga)}}</td>
                                       </tr>
                                       <tr>
                                           <td><label for="">Rate</label></td><td>:</td><td>{{$items->rating}}</td>
                                       </tr>
                                       <tr>
-                                          <td><label for="">Stok</label></td><td>:</td><td>{{$items->stok}}</td>
+                                          <td><label for="">Stock</label></td><td>:</td><td>{{$items->stok}}</td>
                                       </tr>
-                                          <td><label for="">Deskripsi</label></td><td>:</td><td>{{$items->deskripsi_produk}}</td>
+                                          <td><label for="">Description</label></td><td>:</td><td>{{$items->deskripsi_produk}}</td>
                                        </tr>
                                   </tbody>
                               </table>
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                              <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">close</button>
                           </div>
                       </div>
-                      <!-- /.modal-content -->
                   </div>
-                  <!-- /.modal-dialog -->
               </div>
-              <!-- /.modal -->
-
 
                 @endforeach
 @yield('home')
