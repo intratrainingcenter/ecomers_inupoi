@@ -17,7 +17,7 @@
 				</a>
 
 				<span class="stext-105 cl3">
-					{{$produk->harga}}
+					${{$produk->harga}}
 				</span>
 			</div>
 
