@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class LabBarangController extends Controller
+class LapTransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,8 @@ class LabBarangController extends Controller
      */
     public function index()
     {
-        return view('content.LapBarang.laporanBarang');
-
+        return view('content.LapTransaksi.laporanTransaksi');
+        //
     }
 
     /**

@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\diskon;
+use App\produk;
 
-class LapTransaksiController extends Controller
+class DiskonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +16,9 @@ class LapTransaksiController extends Controller
      */
     public function index()
     {
-        return view('content.LapTransaksi.laporanTransaksi');
-        //
+        $data = diskon::all();
+
+        return view('content.diskon.diskon', compact('data'));
     }
 
     /**
@@ -35,7 +39,19 @@ class LapTransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cek = diskon::where('kode_diskon',$request->kode_diskon)->doesntExist();
+
+        if($cek == true){
+            $table = new diskon;
+            $table->kode_diskon     =   $request->kode_diskon;
+            $table->nominal         =   $request->nominal;
+            $table->orderBy('id DESC');
+            $table->save();
+
+            return redirect('diskon')->with('success','Add new data success');
+        }else{
+            return redirect('diskon')->with('edit','Kode Diskon is already exists');
+        }
     }
 
     /**
@@ -69,7 +85,12 @@ class LapTransaksiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $update = diskon::find($id);
+      $update->update([
+          'nominal' =>  $request->nominal
+      ]);
+
+      return redirect('diskon')->with('success','Update data success');
     }
 
     /**
@@ -80,6 +101,23 @@ class LapTransaksiController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+
+      $cek= produk::where('kode_diskon', $id)->doesntExist();
+
+      if($cek==true)
+      {
+        $hapus = diskon::where('kode_diskon', $id);
+        // dd($hapus);
+        $hapus->delete();
+
+        return redirect('diskon')->with('success','Delete data success');
+
+      }
+      else {
+
+        return redirect('diskon')->with('edit','This code diskon has been used');
+
+      }
     }
 }

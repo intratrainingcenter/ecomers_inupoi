@@ -17,29 +17,29 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('Inupoi')->group(function(){
-	Route::get('/Contact', 'FrondendController@contact')->name('Inupoi.Contact');
-	Route::get('/About', 'FrondendController@about')->name('Inupoi.About');
-	Route::get('/Produk', 'FrondendController@produk')->name('Inupoi.Produk');
-	Route::get('/Transaksi', 'FrondendController@transaksi')->name('Inupoi.Transaksi');
-	Route::get('/Detail', 'FrondendController@detail')->name('Inupoi.Detail');
+	Route::get('/Contact', 'frondend\FrondendController@contact')->name('Inupoi.Contact');
+	Route::get('/About', 'frondend\FrondendController@about')->name('Inupoi.About');
+	Route::get('/Produk', 'frondend\FrondendController@produk')->name('Inupoi.Produk');
+	Route::get('/Transaksi', 'frondend\FrondendController@transaksi')->name('Inupoi.Transaksi');
+	Route::get('/Detail', 'frondend\FrondendController@detail')->name('Inupoi.Detail');
 });
 
 Route::prefix('laporankeuangan')->group(function(){
 	Route::get('/Filter', 'LapKeuanganController@filter')->name('Filter.laporankeuangan');
 });
 
-Route::resource('Inupoi', 'FrondendController');
-Route::resource('dashboard','dashboardController');
-Route::resource('barang','ProdukController');
-Route::resource('keranjang','KeranjangController');
-Route::resource('diskon','DiskonController');
-Route::resource('retur','ReturController');
-Route::resource('komentar','KomentarController');
-Route::resource('laporanbarang','LabBarangController');
-Route::resource('laporankeuangan','LapKeuanganController');
-Route::resource('laporantransaksi','LapTransaksiController');
-Route::resource('user','UserController');
-Route::resource('setting','SettingController');
-Route::resource('user','UserController');
-Route::resource('userprofile','UserprofileController');
-Route::resource('kategori','kategoriController');
+Route::resource('Inupoi', 'frondend\FrondendController');
+Route::resource('dashboard','backend\dashboardController');
+Route::resource('barang','backend\ProdukController');
+Route::resource('keranjang','backend\KeranjangController');
+Route::resource('diskon','backend\DiskonController');
+Route::resource('retur','backend\ReturController');
+Route::resource('komentar','backend\KomentarController');
+Route::resource('laporanbarang','backend\LabBarangController');
+Route::resource('laporankeuangan','backend\LapKeuanganController');
+Route::resource('laporantransaksi','backend\LapTransaksiController');
+Route::resource('user','backend\UserController');
+Route::resource('setting','backend\SettingController');
+Route::resource('user','backend\UserController');
+Route::resource('userprofile','backend\UserprofileController');
+Route::resource('kategori','backend\kategoriController');

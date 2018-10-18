@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 use Illuminate\Support\Facades\Storage;
+<<<<<<< HEAD:app/Http/Controllers/ProdukController.php
 use Illuminate\Support\Facades\DB;
+=======
+use App\Http\Controllers\Controller;
+>>>>>>> migration:app/Http/Controllers/backend/ProdukController.php
 use App\produk;
 use App\kategori;
 use App\keranjang;
