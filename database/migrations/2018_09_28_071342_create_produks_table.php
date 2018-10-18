@@ -20,7 +20,7 @@ class CreateProduksTable extends Migration
             $table->string('kode_diskon');
             $table->string('nama_produk');
             $table->string('harga');
-            $table->string('stok');
+            $table->integer('stok');
             $table->string('rating');
             $table->string('ukuran');
             $table->string('deskripsi_produk');

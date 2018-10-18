@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\produk;
 use App\kategori;
 use App\keranjang;
 use App\diskon;
+use App\setting;
 use Validator, Input, Redirect;  
 
 use Illuminate\Http\Request;
@@ -15,10 +17,24 @@ class ProdukController extends Controller
     
     public function index()
     {
-        $item = produk::orderBy('created_at', 'desc')->get();;
+        $item = produk::orderBy('created_at', 'desc')->get();
         $category = kategori::all();
+        $setting = setting::all();
         $discount = diskon::all();
-        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount]);
+
+        $settings = DB::table('settings')
+        ->select('min_stock')
+        ->get('min_stock');
+        
+        $product = DB::table('produks')
+        ->select('stok')
+        ->get('stok');
+
+        
+        
+       
+    
+        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount,'setting'=>$setting]);
     }
 
    
