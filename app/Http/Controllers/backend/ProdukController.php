@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
 use App\produk;
 use App\kategori;
 use App\keranjang;

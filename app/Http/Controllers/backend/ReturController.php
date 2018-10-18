@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class SettingController extends Controller
+class ReturController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view('content.setting.setting');
+        return view('content.retur.retur');
         //
     }
 

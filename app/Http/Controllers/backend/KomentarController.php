@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
-use App\produk;
+use App\Http\Controllers\Controller;
+use App\coment;
 
-class FrondendController extends Controller
+class KomentarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,10 @@ class FrondendController extends Controller
      */
     public function index()
     {
-        $data = produk::all();
+        $data = coment::all();
 
-        return view('frondend/frondend', compact('data'));
+        return view('content.komentar.komentar', compact('data'));
+        
     }
 
     /**
@@ -83,30 +85,5 @@ class FrondendController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function contact()
-    {
-        return view('frondend.contact');
-    }
-
-    public function about()
-    {
-        return view('frondend.about');
-    }
-
-    public function produk()
-    {
-        return view('frondend.produk');
-    }
-
-    public function transaksi()
-    {
-        return view('frondend.transaksi');
-    }
-
-    public function detail()
-    {
-        return view('frondend.detailproduk');
     }
 }

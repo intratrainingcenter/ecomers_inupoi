@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frondend;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\produk;
 
-class ReturController extends Controller
+class FrondendController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +15,9 @@ class ReturController extends Controller
      */
     public function index()
     {
-        return view('content.retur.retur');
-        //
+        $data = produk::all();
+
+        return view('frondend/frondend', compact('data'));
     }
 
     /**
@@ -81,5 +84,30 @@ class ReturController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function contact()
+    {
+        return view('frondend.contact');
+    }
+
+    public function about()
+    {
+        return view('frondend.about');
+    }
+
+    public function produk()
+    {
+        return view('frondend.produk');
+    }
+
+    public function transaksi()
+    {
+        return view('frondend.transaksi');
+    }
+
+    public function detail()
+    {
+        return view('frondend.detailproduk');
     }
 }

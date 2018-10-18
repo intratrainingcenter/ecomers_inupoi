@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
-use App\laporanKeuangan;
+use App\Http\Controllers\Controller;
 
-class LapKeuanganController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class LapKeuanganController extends Controller
      */
     public function index()
     {
-        $data = laporanKeuangan::all();
-
-        return view('content.LapKeuangan.laporanKeuangan', compact('data'));
+        return view('content.setting.setting');
+        //
     }
 
     /**
@@ -83,14 +82,5 @@ class LapKeuanganController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function filter(Request $request)
-    {
-        $dari = $request->get('dari');
-        $sampai = $request->get('sampai');
-
-        $data = laporanKeuangan::whereBetween('tgl_transaksi', [$dari, $sampai])->get();
-        return view('content.LapKeuangan.laporanKeuangan', ['data'=>$data]);
     }
 }

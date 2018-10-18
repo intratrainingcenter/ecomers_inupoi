@@ -90,16 +90,6 @@
 										</a>
 									</div>
 								</div>
-
-								<div class="item-slick3" data-thumb="{{asset('cozastore/images/product-detail-03.jpg')}}">
-									<div class="wrap-pic-w pos-relative">
-										<img src="{{asset('cozastore/images/product-detail-03.jpg')}}" alt="IMG-PRODUCT">
-
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('cozastore/images/product-detail-03.jpg')}}">
-											<i class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -134,25 +124,6 @@
 											<option>Size M</option>
 											<option>Size L</option>
 											<option>Size XL</option>
-										</select>
-										<div class="dropDownSelect2"></div>
-									</div>
-								</div>
-							</div>
-
-							<div class="flex-w flex-r-m p-b-10">
-								<div class="size-203 flex-c-m respon6">
-									Color
-								</div>
-
-								<div class="size-204 respon6-next">
-									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="time">
-											<option>Choose an option</option>
-											<option>Red</option>
-											<option>Blue</option>
-											<option>White</option>
-											<option>Grey</option>
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
