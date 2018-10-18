@@ -11,17 +11,8 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							Help & FAQs
 						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
+						<a href="{{ url('Inupoi/google') }}" class="flex-c-m trans-04 p-lr-25">
+							Login &nbsp;<i class="fa fa-google"></i>oogle +
 						</a>
 					</div>
 				</div>
@@ -29,8 +20,8 @@
 
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
-					
-					<!-- Logo desktop -->		
+
+					<!-- Logo desktop -->
 					<a href="#" class="logo">
 						<img src="{{asset('cozastore/images/icons/inupoi.png')}}" alt="IMG-LOGO">
 					</a>
@@ -67,7 +58,7 @@
 								<a href="{{asset('cozastore/contact.html')}}">Contact</a>
 							</li>
 						</ul>
-					</div>	
+					</div>
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
@@ -84,12 +75,12 @@
 						</a>
 					</div>
 				</nav>
-			</div>	
+			</div>
 		</div>
 
 		<!-- Header Mobile -->
 		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
+			<!-- Logo moblie -->
 			<div class="logo-mobile">
 				<a href="{{asset('cozastore/index.html')}}"><img src="{{asset('cozastore/images/icons/logo-01.png')}}" alt="IMG-LOGO"></a>
 			</div>
@@ -134,7 +125,7 @@
 						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							My Account
+							Login
 						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">

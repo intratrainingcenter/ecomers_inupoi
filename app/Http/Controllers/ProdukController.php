@@ -30,7 +30,7 @@ class ProdukController extends Controller
    
     public function store(Request $request)
     {
-        
+      
         $validator = Validator::make($request->all(), [
             
             'kode_produk'       => 'required|max:20',
