@@ -22,6 +22,25 @@ Route::prefix('Inupoi')->group(function(){
 	Route::get('/Produk', 'frondend\FrondendController@produk')->name('Inupoi.Produk');
 	Route::get('/Transaksi', 'frondend\FrondendController@transaksi')->name('Inupoi.Transaksi');
 	Route::get('/Detail', 'frondend\FrondendController@detail')->name('Inupoi.Detail');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('Inupoi/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('Inupoi/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+Route::resource('Inupoi', 'FrondendController');
+Route::resource('dashboard','dashboardController')->middleware('auth');
+Route::resource('kategori','KategoriController')->middleware('auth');
+Route::resource('barang','ProdukController')->middleware('auth');
+Route::resource('keranjang','KeranjangController')->middleware('auth');
+Route::resource('diskon','DiskonController')->middleware('auth');
+Route::resource('retur','ReturController')->middleware('auth');
+Route::resource('komentar','KomentarController')->middleware('auth');
+Route::resource('laporanbarang','LabBarangController')->middleware('auth');
+Route::resource('laporankeuangan','LapKeuanganController')->middleware('auth');
+Route::resource('laporantransaksi','LapTransaksiController')->middleware('auth');
+Route::resource('user','UserController')->middleware('auth');
+Route::resource('setting','SettingController')->middleware('auth');
+Route::resource('user','UserController')->middleware('auth');
+Route::resource('userprofile','UserprofileController')->middleware('auth');
+Route::resource('kategori','kategoriController')->middleware('auth');
 
 });
 

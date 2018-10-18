@@ -1,32 +1,9 @@
 @section('content')
+<section class="content container-fluid">
+  <div class="x_panel">
+    <div class="x_content">
 
-@if ($message = Session::get('success'))
-    <div class="alert alert-success alert alert-success alert-dismissible fade in notif" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-    @elseif ($message = Session::get('warning'))
-    <div class="alert alert-warning alert alert-warning alert-dismissible fade in notif" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-    @elseif ($message = Session::get('delete'))
-    <div class="alert alert-danger alert alert-danger alert-dismissible fade in notif" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-    @elseif ($message = Session::get('not_success'))
-    <div class="alert alert-danger alert alert-danger alert-dismissible fade in notif" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-@endif
 @endsection
-
 
 <div class="modal modal-success fade" id="modal-success">
   <div class="modal-dialog">
@@ -80,8 +57,8 @@
           <p>Apakah anda yakin ingin menghapus {{$diskon->kode_diskon}} ?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger pull-left batal" data-dismiss="modal">Tidak</button>
-          <button type="submit" class="btn btn-primary">Iya</button>
+          <button type="button" class="btn btn-danger pull-left batal" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         </form>
       </div>
@@ -106,7 +83,7 @@
           <div class="form-group">
             <label for="nominal" class="col-sm-4 control-label">Nominal</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" name='nominal' id="nominal" placeholder="Nominal" value="{{$diskon->nominal}}">
+              <input type="text" onclick="pure()" class="form-control" name='nominal' id="nominaledit" placeholder="Nominal" value="{{$diskon->nominal}}">
             </div>
           </div>
           <br>
@@ -122,5 +99,5 @@
   </div>
   <!-- /.modal-dialog -->
   </div>
-  @extends('content.diskon.disc')
+
   @endforeach
