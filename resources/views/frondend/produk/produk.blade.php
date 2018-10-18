@@ -17,7 +17,7 @@
 				</a>
 
 				<span class="stext-105 cl3">
-					${{$produk->harga}}
+					{{"$.".number_format($produk->harga)}}
 				</span>
 			</div>
 

@@ -30,7 +30,6 @@ Route::prefix('laporankeuangan')->group(function(){
 
 Route::resource('Inupoi', 'FrondendController');
 Route::resource('dashboard','dashboardController');
-Route::resource('kategori','KategoriController');
 Route::resource('barang','ProdukController');
 Route::resource('keranjang','KeranjangController');
 Route::resource('diskon','DiskonController');
