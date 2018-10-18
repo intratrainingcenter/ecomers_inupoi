@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class FrondendController extends Controller
+class dashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class FrondendController extends Controller
      */
     public function index()
     {
-        return view('frondend/frondend');
+        return view('content.dashboard');
     }
 
     /**

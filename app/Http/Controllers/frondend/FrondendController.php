@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frondend;
 
 use Illuminate\Http\Request;
-use App\laporanKeuangan;
+use App\Http\Controllers\Controller;
+use App\produk;
 
-class LapKeuanganController extends Controller
+class FrondendController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class LapKeuanganController extends Controller
      */
     public function index()
     {
-        $data = laporanKeuangan::all();
+        $data = produk::all();
 
-        return view('content.LapKeuangan.laporanKeuangan');
+        return view('frondend/frondend', compact('data'));
     }
 
     /**
@@ -83,5 +84,31 @@ class LapKeuanganController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function contact()
+    {
+        return view('frondend.contact');
+    }
+
+    public function about()
+    {
+        return view('frondend.about');
+    }
+
+    public function produk()
+    {
+        $data = produk::all();
+        return view('frondend.produk',compact('data'));
+    }
+
+    public function transaksi()
+    {
+        return view('frondend.transaksi');
+    }
+
+    public function detail()
+    {
+        return view('frondend.detailproduk');
     }
 }

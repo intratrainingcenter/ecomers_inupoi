@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use App\kategori;
 
 class KategoriController extends Controller
@@ -15,7 +18,15 @@ class KategoriController extends Controller
     public function index()
     {
         $data = kategori::all();
-        
+
+        // $minutes = now()->addMinutes(1);
+
+        // $value = Cache::remember('kategoris',$minutes, function () {
+        //     return DB::table('kategoris')->get();
+        // });
+
+        // $get = Cache::get('kategoris');     
+
         return view('content.kategori.kategori', compact('data'));
     }
 

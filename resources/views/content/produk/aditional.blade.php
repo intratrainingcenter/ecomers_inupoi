@@ -31,7 +31,7 @@ function white() {
             reader.onload = function (e) {
                 $('#image')
                     .attr('src', e.target.result)
-                    .height(60);
+                    .height(50);
             };
             reader.readAsDataURL(input.files[0]);
         }

@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frondend;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\produk;
+use App\kategori;
 
-class dashboardController extends Controller
+class FrontProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,8 +15,10 @@ class dashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('content.dashboard');
+    {   
+        $category = kategori::all();
+        $data = produk::all();
+        return view('frondend.produk',['data'=>$data,'category'=>$category]);
     }
 
     /**

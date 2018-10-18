@@ -108,7 +108,7 @@
                               <textarea type="text" class="form-control" name='deskripsi_produk' id="deskripsi" placeholder="Deskripsi" required></textarea>
                             </div>
                           </div>
-                    <br><br><br>
+                    <br><br>
                     <div class="form-group">
                             <label for="exampleInputFile" class="col-sm-4 control-label">Image</label>
                             <div class="col-sm-4">
