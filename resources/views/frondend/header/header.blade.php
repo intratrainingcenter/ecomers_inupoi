@@ -29,10 +29,6 @@
 							</li>
 
 							<li>
-								<a href="{{Route('Inupoi.Transaksi')}}">transaction</a>
-							</li>
-
-							<li>
 								<a href="{{Route('Inupoi.About')}}">About</a>
 							</li>
 
