@@ -5,8 +5,9 @@ namespace App\Http\Controllers\frondend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\produk;
+use App\kategori;
 
-class FrondendController extends Controller
+class FrontProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,10 @@ class FrondendController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $category = kategori::all();
         $data = produk::all();
-
-        return view('frondend/frondend', compact('data'));
+        return view('frondend.produk',['data'=>$data,'category'=>$category]);
     }
 
     /**
@@ -84,31 +85,5 @@ class FrondendController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function contact()
-    {
-        return view('frondend.contact');
-    }
-
-    public function about()
-    {
-        return view('frondend.about');
-    }
-
-    public function produk()
-    {
-        $data = produk::all();
-        return view('frondend.produk',compact('data'));
-    }
-
-    public function transaksi()
-    {
-        return view('frondend.transaksi');
-    }
-
-    public function detail()
-    {
-        return view('frondend.detailproduk');
     }
 }

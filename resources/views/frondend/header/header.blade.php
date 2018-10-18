@@ -25,12 +25,11 @@
 							</li>
 
 							<li>
-								<a href="{{Route('Inupoi.Produk')}}">Shop</a>
+								<a href="{{Route('fpro.index')}}">Shop</a>
 							</li>
 
 							<li>
-								<a href="{{Route('Inupoi.Transaksi')}}">
-transaction</a>
+								<a href="{{Route('Inupoi.Transaksi')}}">transaction</a>
 							</li>
 
 							<li>

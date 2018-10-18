@@ -4,13 +4,10 @@ namespace App\Http\Controllers\backend;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-<<<<<<< HEAD:app/Http/Controllers/SettingController.php
 use App\setting;
 use Validator, Input, Redirect;  
 
-=======
 use App\Http\Controllers\Controller;
->>>>>>> migration:app/Http/Controllers/backend/SettingController.php
 
 class SettingController extends Controller
 {

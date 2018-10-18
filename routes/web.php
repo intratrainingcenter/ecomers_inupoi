@@ -22,6 +22,7 @@ Route::prefix('Inupoi')->group(function(){
 	Route::get('/Produk', 'frondend\FrondendController@produk')->name('Inupoi.Produk');
 	Route::get('/Transaksi', 'frondend\FrondendController@transaksi')->name('Inupoi.Transaksi');
 	Route::get('/Detail', 'frondend\FrondendController@detail')->name('Inupoi.Detail');
+
 });
 
 Route::prefix('laporankeuangan')->group(function(){
@@ -43,3 +44,5 @@ Route::resource('setting','backend\SettingController');
 Route::resource('user','backend\UserController');
 Route::resource('userprofile','backend\UserprofileController');
 Route::resource('kategori','backend\kategoriController');
+Route::resource('fpro', 'frondend\FrontProductController');
+
