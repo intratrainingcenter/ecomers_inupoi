@@ -18,7 +18,7 @@
 
       <li class="header">HEADER</li>
       <!-- Optionally, you can add icons to the links -->
-    <li class="active"><a href="{{Route('dashboard.index')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+    <li><a href="{{Route('dashboard.index')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <li><a href="{{Route('kategori.index')}}"><i class="fa fa-bars"></i> <span>kategori</span></a></li>
       <li><a href="{{Route('barang.index')}}"><i class="fa fa-gift"></i> <span>Barang</span></a></li>
       <li><a href="{{Route('keranjang.index')}}"><i class="fa fa-shopping-cart"></i> <span>Keranjang</span></a></li>
