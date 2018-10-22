@@ -125,7 +125,7 @@
 						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							My Account
+							Login
 						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
