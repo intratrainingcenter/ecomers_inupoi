@@ -38,34 +38,41 @@
             <div class="modal-body">
                 <div class="box-body">
                     <div class="form-group">
-                      <label for="alamat" class="col-sm-4 control-label">Code Product</label>
+                        <label for="alamat" class="col-sm-4 control-label">Name</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
+                        </div>
+                      </div>
+                      <br><br>
+                    <div class="form-group">
+                      <label for="alamat" class="col-sm-4 control-label">Address</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Address" required>
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Address" required>
                       </div>
                     </div>
                     <br><br>
                     <div class="form-group">
-                            <label for="" class="col-sm-4 control-label">Product Name</label>
+                            <label for="" class="col-sm-4 control-label">Contact</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control" name='contact' id="contact" placeholder="Contact" required>
                             </div>
                           </div>
                     <br><br>
                     <div class="form-group">
-                      <label for="exampleInputFile" class="col-sm-4 control-label">Logo</label>
-                      <div class="col-sm-4">
-                          <input type="file" class="" id="logo" name="logo" onchange="ShowImage(this);" required>
-                          <img class="center" src="" alt="" id='image'>
-                      </div>
-                  </div>
-                    <div class="form-group">
-                            <label for="" class="col-sm-4 control-label">Price</label>
+                            <label for="" class="col-sm-4 control-label">Min Stock</label>
                             <div class="col-sm-8">
-                              <input type="number" class="form-control" name='harga' id="harga" placeholder="Harga" required>
+                              <input type="number" class="form-control" name='min_stock' id="min_stock" placeholder="Min Stock" required>
                             </div>
                           </div>
                     <br><br>
-
+                    <div class="form-group">
+                        <label for="exampleInputFile" class="col-sm-4 control-label">Logo</label>
+                        <div class="col-sm-4">
+                            <input type="file" class="" id="logo" name="logo" onchange="ShowImage(this);">
+                            <img class="center" src="" alt="" id='image'>
+                        </div>
+                    </div>
+                    <br><br>
                  </div>
             </div>
             <div class="modal-footer">
@@ -78,29 +85,65 @@
         </div>
       </div>
 
-     {{-- @foreach ($item as $items)
-
-    <div class="modal fade" id="modal-hapus{{$items->kode_produk}}">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Delete - {{$items->kode_produk}} </h4>
+      @foreach ($setting as $item)
+          
+    <div class="modal fade" id="modal-edit{{$item->id}}" >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add Product</h4>
+            </div>
+            <form  action="{{Route('setting.update',['id'=> $item->id])}}" method="post" enctype="multipart/form-data">
+                @csrf @method('PUT')
+              <div class="modal-body">
+                <div class="box-body">
+                  <div class="form-group">
+                    <label for="alamat" class="col-sm-4 control-label">Name</label>
+                    <div class="col-sm-8">
+                    <input type="text" class="form-control" name="name" id="name" value="{{$item->nama}}" required>
                     </div>
-                  <form action="{{Route('barang.destroy',['id'=> $items->kode_produk])}}" method="POST">
-                      @csrf @method('DELETE')
-                    <div class="modal-body">
-                    <p> <center> Are you sure want to delete : {{$items->kode_produk}} ??</center></p>
+                  </div>
+                        <br><br>
+                        <div class="form-group">
+                          <label for="alamat" class="col-sm-4 control-label">Address</label>
+                          <div class="col-sm-8">
+                          <input type="text" class="form-control" name="address" id="address" value="{{$item->alamat}}" required>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                          <label for="" class="col-sm-4 control-label">Contact</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" name='contact' id="contact" value="{{$item->contact}}" required>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                          <label for="" class="col-sm-4 control-label">Min Stock</label>
+                          <div class="col-sm-8">
+                          <input type="number" class="form-control" name='min_stock' id="min_stock" value="{{$item->min_stock}}" required>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                          <label for="exampleInputFile" class="col-sm-4 control-label">Logo</label>
+                          <div class="col-sm-4">
+                            <input type="file" class="" id="logo" name="logo" onchange="ShowImage(this);">
+                            <img class="center" src="" alt="" id='image'>
+                          </div>
+                        </div>
+                        <br><br>
+                      </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                    </div>
-
-                  </div>
-                </div>
+                      <button type="button" class="btn btn-danger pull-left batal" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
-              @endforeach --}}
-              
- @yield('home')
- @endsection
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      @endforeach
+      @yield('home')
+      @endsection

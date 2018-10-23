@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\coment;
 
-class ReturController extends Controller
+class KomentarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +15,10 @@ class ReturController extends Controller
      */
     public function index()
     {
-        return view('content.retur.retur');
-        //
+        $data = coment::all();
+
+        return view('content.komentar.komentar', compact('data'));
+        
     }
 
     /**

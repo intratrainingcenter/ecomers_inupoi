@@ -2,6 +2,7 @@
 @section('judul','Header')
 @section('sub','Laporan Keuangan')
 @section('someCSS')
+<link rel="stylesheet" href="{{ asset('css/print.css') }}">
 <link href="{{ asset('assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
@@ -13,12 +14,17 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-<script>
-$(function() {
-  $('#example').DataTable();
-  // $('#example2').DataTable({
-  //   ''
-  // });
+<script> 
+$(document).ready(function() {
+  $('.print').click(function(){
+    $('#example').DataTable();
+      'paging'      : false,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : true
+  });
 });
 </script>
 @endsection
@@ -27,62 +33,48 @@ $(function() {
 <section class="content container-fluid">
   <div class="x_panel">
     <div class="x_content">
-@if ($message = Session::get('success'))
-    <div class="alert alert-success alert alert-success alert-dismissible fade in" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-    @elseif ($message = Session::get('edit'))
-    <div class="alert alert-warning alert alert-warning alert-dismissible fade in" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-    @elseif ($message = Session::get('delete'))
-    <div class="alert alert-danger alert alert-danger alert-dismissible fade in" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-    @elseif ($message = Session::get('not_success'))
-    <div class="alert alert-danger alert alert-danger alert-dismissible fade in" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-      </button>
-        <p>{{ $message }}</p>
-    </div>
-@endif
+      @include('content.LapKeuangan.notif')
 
  
-    <div class="panel panel-default">
-    <div class="panel-heading">
-      <button type="button" class="btn btn-primary" onclick="window.print();" data-toggle="modal" data-target="#modal-danger"><li class="fa fa-print"> Print</li></button>
-    </div>
-    <div class="panel-body">
-      <table id="example" class="table table-striped table-bordered" style="width:100%">
-      <thead>
-        <tr>
-          <th class="column-title">No</th>
-          <th class="column-title">Kode Transaksi</th>
-          <th class="column-title">Tanggal Transaksi</th>
-          <th class="column-title">Total Biaya</th>
-          <th class="column-title">Action</th>
-        </tr>
-      </thead>
-    	<tbody>
-    		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-edit"><li class="fa fa-search"></li></button>
-          </td>
-    		</tr>
-    	</tbody>
-     </table>
-     </div>
-     </div>
+<div class="panel panel-default">
+<form action="{{route('Filter.laporankeuangan')}}">
+  <div class="panel-heading">
+      <label>Dari :</label>
+      <input type="date" name="dari">
+      <label>Sampai :</label>
+      <input type="date" name="sampai">
+      <button type="submit" class="btn btn-info">Cari</button>
+      <button type="button" class="btn btn-primary pull-right print" onclick="window.print()"><li class="fa fa-print"> Print</li></button>
+  </div>
+</form>
+  <div class="panel-body hasil">
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+      <tr>
+        <th class="column-title">No</th>
+        <th class="column-title">Kode Transaksi</th>
+        <th class="column-title">Tanggal Transaksi</th>
+        <th class="column-title">Total Biaya</th>
+      </tr>
+    </thead>
+  	<tbody>
+      @foreach($data as $uang)
+  		<tr>
+  			<td>{{$loop->iteration}}</td>
+  			<td>{{$uang->kode_transaksi}}</td>
+        <td>{{$uang->tgl_transaksi}}</td>
+        <td>{{$uang->total_biaya}}</td>
+  		</tr>
+      @endforeach
+  	</tbody>
+    <tfoot>
+          <td colspan="2"></td>
+          <td><b>Total Keuangan</b></td>
+          <td></td>
+    </tfoot>
+   </table>
+  </div>
+</div>
 </section>
 
 @endsection

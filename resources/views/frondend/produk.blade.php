@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Home</title>
+	<title>Product</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -16,13 +16,13 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/animate/animate.css')}}">
-<!--===============================================================================================-->
+<!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/css-hamburgers/hamburgers.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/animsition/css/animsition.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/select2/select2.min.css')}}">
-<!--===============================================================================================-->
+<!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/daterangepicker/daterangepicker.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/slick/slick.css')}}">
@@ -34,67 +34,40 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/css/main.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/imgproduk.css')}}">
+
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
-
+	
 	<!-- Header -->
-	<header>
+	<header class="header-v4">
 		@include('frondend.header.header')
 	</header>
 
 	<!-- Cart -->
-	@include('frondend.keranjang.cart')	
-
-	<!-- Slider -->
-	@include('frondend.slider.slider')
-
-
-	<!-- Banner -->
-	<div class="sec-banner bg0 p-t-80 p-b-50">
-		@include('frondend.banner.banner')
-	</div>
-
-
+	@include('frondend.keranjang.cart')
+	
 	<!-- Product -->
-	<section class="bg0 p-t-23 p-b-140">
+	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
-			<div class="p-b-10">
-				<h3 class="ltext-103 cl5">
-					Product Overview
-				</h3>
-			</div>
-
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 						All Products
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Women
+					@foreach ($category as $item)
+						
+				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{$item->kode_kategori}}">
+						{{$item->nama_kategori}}
 					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Bag
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Shoes
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-						Watches
-					</button>
+					
+					@endforeach
 				</div>
 			</div>
 
 			<div class="row isotope-grid">
-				@include('frondend.produk.produk')
+			@include('frondend.produk.produk')
 			</div>
 
 			<!-- Load more -->
@@ -104,8 +77,8 @@
 				</a>
 			</div>
 		</div>
-	</section>
-
+	</div>
+		
 
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
@@ -125,7 +98,7 @@
 		@include('frondend.modal.modal')
 	</div>
 
-<!--===============================================================================================-->
+<!--===============================================================================================-->	
 	<script src="{{asset('cozastore/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/animsition/js/animsition.min.js')}}"></script>
@@ -172,7 +145,7 @@
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/sweetalert/sweetalert.min.js')}}"></script>
 	<script>
-		$('.js-addwish-b2').on('click', function(e){
+		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
 			e.preventDefault();
 		});
 
@@ -205,7 +178,7 @@
 				swal(nameProduct, "is added to cart !", "success");
 			});
 		});
-
+	
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
