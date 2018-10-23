@@ -276,32 +276,6 @@
     $('.js-hide-modal1').on('click',function(){
         $('.js-modal1').removeClass('show-modal1');
     });
-
-
-    // $('.js-show-modal1-produk').on('click',function(e){
-    //     e.preventDefault();
-    //     var id =$(this).attr('kode');
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: '{{ URL::route("fpro.show", ["jenis" =>"showcode"]) }}',
-    //         dataType:'json',
-    //         data: {
-    //             id:id,
-    //             tipe:'showcode',
-    //             _token: $("meta[name=csrf-token]").attr("content"),
-    //             _method:'GET'
-    //         },
-
-    //         }).done(function (data) {
-
-    //             $('.js-modal1').addClass('show-modal1');
-    //             $('#quick .isi h4 span').text(kode);
-    //         }).
-    //         fail(function (data) {
-    //             console.log(data);
-    //         })
-        
-    // });
     
 
 })(jQuery);

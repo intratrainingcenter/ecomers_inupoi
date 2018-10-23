@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frondend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\produk;
 use App\kategori;
 
@@ -50,12 +51,7 @@ class FrontProductController extends Controller
      */
     public function show($id)
     {
-        // switch ($request->tipe) {
-        // case 'showcode':
-        // $data = produk::where('kode_produk',$id)->first();
-        // return response()->json($data);
-        // break;
-        // }
+        
     }
 
     /**
@@ -66,7 +62,13 @@ class FrontProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('produks')
+            ->select('*')
+            ->where('kode_produk',$id)
+            ->get();
+        
+                 
+        return view('frondend.detailproduk',['data'=>$data]);
     }
 
     /**

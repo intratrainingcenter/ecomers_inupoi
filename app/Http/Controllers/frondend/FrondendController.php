@@ -109,6 +109,7 @@ class FrondendController extends Controller
 
     public function detail()
     {
-        return view('frondend.detailproduk');
+        $data = produk::all();
+        return view('frondend.detailproduk',compact('data'));
     }
 }

@@ -49,7 +49,7 @@
                                         </span>
                                         
                                         <p class="stext-102 cl3 p-t-23">
-                                        {{$item->deskripsi}}                                         
+                                        {{$item->deskripsi_produk}}                                         
                                         </p>
                                         
                                         <!--  -->
