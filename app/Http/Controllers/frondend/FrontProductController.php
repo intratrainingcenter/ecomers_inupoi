@@ -50,7 +50,12 @@ class FrontProductController extends Controller
      */
     public function show($id)
     {
-        //
+        // switch ($request->tipe) {
+        // case 'showcode':
+        // $data = produk::where('kode_produk',$id)->first();
+        // return response()->json($data);
+        // break;
+        // }
     }
 
     /**

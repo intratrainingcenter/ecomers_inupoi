@@ -45,23 +45,8 @@ Route::resource('laporantransaksi','backend\LapTransaksiController')->middleware
 Route::resource('setting','backend\SettingController')->middleware('auth');
 Route::resource('user','backend\UserController')->middleware('auth');
 Route::resource('userprofile','backend\UserprofileController')->middleware('auth');
+
+// frontEnd
 Route::resource('fpro', 'frondend\FrontProductController');
-
-
-
 Route::resource('Inupoi', 'frondend\FrondendController');
-// Route::resource('dashboard','backend\dashboardController');
-// Route::resource('barang','backend\ProdukController');
-// Route::resource('keranjang','backend\KeranjangController');
-// Route::resource('diskon','backend\DiskonController');
-// Route::resource('retur','backend\ReturController');
-// Route::resource('komentar','backend\KomentarController');
-// Route::resource('laporanbarang','backend\LabBarangController');
-// Route::resource('laporankeuangan','backend\LapKeuanganController');
-// Route::resource('laporantransaksi','backend\LapTransaksiController');
-// Route::resource('user','backend\UserController');
-// Route::resource('setting','backend\SettingController');
-// Route::resource('user','backend\UserController');
-// Route::resource('userprofile','backend\UserprofileController');
-// Route::resource('kategori','backend\kategoriController');
 
