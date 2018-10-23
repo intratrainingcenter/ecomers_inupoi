@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ReturController extends Controller
+class LapTransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class ReturController extends Controller
      */
     public function index()
     {
-        return view('content.retur.retur');
+        return view('content.LapTransaksi.laporanTransaksi');
         //
     }
 

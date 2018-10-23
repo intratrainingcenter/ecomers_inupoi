@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Http\Controllers\Controller;
 
-class UserprofileController extends Controller
+class ReturController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class UserprofileController extends Controller
      */
     public function index()
     {
-      $user = User::get();
-      // dd($class);
-      return View('content/detail_profile',compact('user'));
+        return view('content.retur.retur');
+        //
     }
 
     /**

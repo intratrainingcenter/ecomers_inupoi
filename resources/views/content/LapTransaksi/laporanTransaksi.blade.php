@@ -56,35 +56,27 @@ $(function() {
  
     <div class="panel panel-default">
     <div class="panel-heading">
-            <button type="button" class="btn-lg btn-success fa fa-plus-square "></button>
+      <button type="button" class="btn btn-primary" onclick="window.print();"><li class="fa fa-print"> Print</li></button>
     </div>
     <div class="panel-body">
       <table id="example" class="table table-striped table-bordered" style="width:100%">
       <thead>
         <tr>
           <th class="column-title">No</th>
-          <th class="column-title">Nis Siswa</th>
-          <th class="column-title">Nama Siswa</th>
-          <th class="column-title">Absensi</th>
-          <th class="column-title">Keterangan</th>
+          <th class="column-title">Kode Transaksi</th>
+          <th class="column-title">Tanggal Transaksi</th>
           <th class="column-title">Action</th>
         </tr>
       </thead>
-    	@php
-    	$no= 1;
-    	@endphp
     	<tbody>
     		<tr>
     			<td>data-dismissq</td>
     			<td>dsdfsdfs</td>
           <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>awgaanklfa</td>
           <td>
-              <a href="" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-
-              <a><button  onclick=" return confirm('Anda Yakin Menghapus Absensi')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
-
+            <center>
+              <button type="button" class="btn btn-primary"><li class="fa fa-search"></li></button>
+            </center>
           </td>
     		</tr>
     	</tbody>

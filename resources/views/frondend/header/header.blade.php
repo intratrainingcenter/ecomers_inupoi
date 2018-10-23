@@ -30,32 +30,23 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="active-menu">
-								<a href="{{asset('cozastore/index.html')}}">Home</a>
-								<ul class="sub-menu">
-									<li><a href="{{asset('cozastore/index.html')}}">Homepage 1</a></li>
-									<li><a href="{{asset('cozastore/home-02.html')}}">Homepage 2</a></li>
-									<li><a href="{{asset('cozastore/home-03.html')}}">Homepage 3</a></li>
-								</ul>
+								<a href="{{Route('Inupoi.index')}}">Home</a>
 							</li>
 
 							<li>
-								<a href="{{asset('cozastore/product.html')}}">Shop</a>
-							</li>
-
-							<li class="label1" data-label1="hot">
-								<a href="{{asset('cozastore/shoping-cart.html')}}">Features</a>
+								<a href="{{Route('fpro.index')}}">Shop</a>
 							</li>
 
 							<li>
-								<a href="{{asset('cozastore/blog.html')}}">Blog</a>
+								<a href="{{Route('Inupoi.Transaksi')}}">transaction</a>
 							</li>
 
 							<li>
-								<a href="{{asset('cozastore/about.html')}}">About</a>
+								<a href="{{Route('Inupoi.About')}}">About</a>
 							</li>
 
 							<li>
-								<a href="{{asset('cozastore/contact.html')}}">Contact</a>
+								<a href="{{Route('Inupoi.Contact')}}">Contact</a>
 							</li>
 						</ul>
 					</div>
@@ -141,35 +132,23 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="{{asset('cozastore/index.html')}}">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="{{asset('cozastore/index.html')}}">Homepage 1</a></li>
-						<li><a href="{{asset('cozastore/home-02.html')}}">Homepage 2</a></li>
-						<li><a href="{{asset('cozastore/home-03.html')}}">Homepage 3</a></li>
-					</ul>
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
+					<a href="{{Route('Inupoi.index')}}">Home</a>
 				</li>
 
 				<li>
-					<a href="{{asset('cozastore/product.html')}}">Shop</a>
+					<a href="{{Route('Inupoi.Produk')}}">Shop</a>
 				</li>
 
 				<li>
-					<a href="{{asset('cozastore/shoping-cart.html')}}" class="label1 rs1" data-label1="hot">Features</a>
+					<a href="{{Route('Inupoi.Transaksi')}}" class="label1 rs1" data-label1="hot">Features</a>
 				</li>
 
 				<li>
-					<a href="{{asset('cozastore/blog.html')}}">Blog</a>
+					<a href="{{Route('Inupoi.About')}}">About</a>
 				</li>
 
 				<li>
-					<a href="{{asset('cozastore/about.html')}}">About</a>
-				</li>
-
-				<li>
-					<a href="{{asset('cozastore/contact.html')}}">Contact</a>
+					<a href="{{Route('Inupoi.Contact')}}">Contact</a>
 				</li>
 			</ul>
 		</div>
