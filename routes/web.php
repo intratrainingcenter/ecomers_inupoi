@@ -22,6 +22,9 @@ Route::prefix('Inupoi')->group(function(){
 	Route::get('/Produk', 'frondend\FrondendController@produk')->name('Inupoi.Produk');
 	Route::get('/Transaksi', 'frondend\FrondendController@transaksi')->name('Inupoi.Transaksi');
 	Route::get('/Detail', 'frondend\FrondendController@detail')->name('Inupoi.Detail');
+	Route::get('/Favorite/{id}', 'backend\ProdukController@addfavorite');
+	Route::get('/RemoveFavorite/{id}', 'backend\ProdukController@removefavorite');
+	Route::get('/CountFavorite', 'backend\ProdukController@countfavorite');
 });
 
 Route::prefix('laporankeuangan')->group(function(){
