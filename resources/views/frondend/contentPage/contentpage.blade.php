@@ -10,7 +10,7 @@
 						</h4>
 						<div class="bor8 m-b-20 how-pos4-parent">
 							@if (Auth::guard('web')->check())
-							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="email" value="{{Auth::guard('web')->user()->email}}">
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="email" value="{{Auth::guard('web')->user()->email}}" disabled>
 							<img class="how-pos4 pointer-none" src="{{asset('cozastore/images/icons/icon-email.png')}}" alt="ICON">
 							@else
 							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="email">
