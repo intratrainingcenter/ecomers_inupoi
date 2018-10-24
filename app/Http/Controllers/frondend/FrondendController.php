@@ -5,7 +5,13 @@ namespace App\Http\Controllers\frondend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\produk;
-
+use App\User;
+use Mail;
+use Auth;
+use Redirect;
+use Session;
+use Validator;
+use App\Mailfile;
 class FrondendController extends Controller
 {
     /**
@@ -88,8 +94,26 @@ class FrondendController extends Controller
 
     public function contact()
     {
-        return view('frondend.contact');
+        $user = User::get();
+        // dd($user);
+        return View('frondend/contentPage/contentPage',compact('user'));
     }
+    public function email(Request $request)
+    {
+      $data = array(
+        'email' => $request->email,
+        'title' => $request->title,
+      );
+      // dd($data);
+      Mail::send('frondend.contentPage.mymail', $data, function($massage) use ($data){
+        $massage->to('InupiCorp@gmail.com');
+        $massage->from($data['email']);
+        $massage->subject($data['title']);
+      });
+      session::flash('success_send', "Mail sent Successfully");
+      return redirect()->route('Inupoi.Contact');
+    }
+
 
     public function about()
     {
