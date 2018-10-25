@@ -38,7 +38,7 @@ class FrondendController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

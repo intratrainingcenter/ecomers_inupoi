@@ -18,7 +18,7 @@ class FrontProductController extends Controller
     public function index()
     {   
         $category = kategori::all();
-        $data = produk::all();
+        $data = produk::paginate(8);
         return view('frondend.produk',['data'=>$data,'category'=>$category]);
     }
 
@@ -40,7 +40,14 @@ class FrontProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $category = kategori::all();
+        $data = DB::table('produks')
+            ->select('*')
+            ->where('nama_produk', 'like' , "%{$request->search}%")
+            ->paginate(8);
+
+        return view('frondend.produk',['data'=>$data,'category'=>$category]);
     }
 
     /**
