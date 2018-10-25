@@ -67,8 +67,16 @@ class FrontProductController extends Controller
             ->where('kode_produk',$id)
             ->get();
         
-                 
-        return view('frondend.detailproduk',['data'=>$data]);
+        $category = DB::table('kategoris')
+        ->join('produks', 'produks.kode_kategori','=','kategoris.kode_kategori')
+        ->select('kategoris.*')
+        ->where('kode_produk',$id)
+        ->get();    
+        
+        $related = produk::orderBy('created_at', 'desc')->get();
+         
+
+        return view('frondend.detailproduk',['data'=>$data,'category'=>$category,'related'=>$related]);
     }
 
     /**
