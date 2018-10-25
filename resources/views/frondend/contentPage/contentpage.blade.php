@@ -4,13 +4,22 @@
 <div class="container">
 			<div class="flex-w flex-tr">
 				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-					<form action="{{ Route('Inupoi.sendmail') }}" method="post">
 						<h4 class="mtext-105 cl2 txt-center p-b-30">
 							Send Us A Message
 						</h4>
+						@if (Auth::guard('web')->check())
+						<h5 class="mtext-105 cl2 txt-center p-b-30">
+							Tell us what your complaint is...
+						</h5>
+						@else
+						<h5 class="mtext-105 cl2 txt-center p-b-30" style="color:red">
+							Better your must login first!
+						</h5>
+						@endif
+						<form action="{{ Route('Inupoi.sendmail') }}" method="post">
 						<div class="bor8 m-b-20 how-pos4-parent">
 							@if (Auth::guard('web')->check())
-							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="email" value="{{Auth::guard('web')->user()->email}}" disabled>
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="email" value="{{ Auth::guard('web')->user()->email }}" readonly>
 							<img class="how-pos4 pointer-none" src="{{asset('cozastore/images/icons/icon-email.png')}}" alt="ICON">
 							@else
 							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="email">

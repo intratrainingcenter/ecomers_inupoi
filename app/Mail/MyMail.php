@@ -20,6 +20,7 @@ class MyMail extends Mailable
      */
     public function __construct($title)
     {
+        $email->email = $email;
         $this->title = $title;
     }
 

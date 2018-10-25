@@ -100,6 +100,7 @@ class FrondendController extends Controller
     }
     public function email(Request $request)
     {
+      // dd($request);
       $data = array(
         'email' => $request->email,
         'title' => $request->title,
