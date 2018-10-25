@@ -4,13 +4,9 @@
 	<title>Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
-<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/favicon.png')}}"/>
-=======
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/log.png')}}"/>
->>>>>>> migration
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/bootstrap/css/bootstrap.min.css')}}">
 <!--===============================================================================================-->
@@ -49,7 +45,7 @@
 	</header>
 
 	<!-- Cart -->
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
 	<div class="wrap-header-cart js-panel-cart">
 		<div class="s-full js-hide-cart"></div>
 
@@ -214,12 +210,12 @@
 			</div>
 		</div>
 	</section>
-=======
+=========
 	@include('frondend.keranjang.cart')	
 
 	<!-- Slider -->
 	@include('frondend.slider.slider')
->>>>>>> migration
+>>>>>>>>> Temporary merge branch 2
 
 
 	<!-- Banner -->
@@ -263,7 +259,7 @@
 						Watches
 					</button>
 				</div>
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
 
 				<div class="flex-w flex-c-m m-tb-10">
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
@@ -554,13 +550,13 @@
 				</div>
 
 				</div>
-=======
+=========
 			</div>
 
 			<div class="row isotope-grid">
 				@include('frondend.produk.produk')
 			</div>
->>>>>>> migration
+>>>>>>>>> Temporary merge branch 2
 
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">

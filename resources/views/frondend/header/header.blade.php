@@ -6,7 +6,6 @@
 					<div class="left-top-bar">
 						Free shipping for standard order over $100
 					</div>
-<<<<<<< HEAD
 
 					<div class="right-top-bar flex-w h-full">
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
@@ -16,8 +15,6 @@
 							Login &nbsp;<i class="fa fa-google"></i>oogle +
 						</a>
 					</div>
-=======
->>>>>>> migration
 				</div>
 			</div>
 
@@ -37,12 +34,11 @@
 							</li>
 
 							<li>
-								<a href="{{Route('Inupoi.Produk')}}">Shop</a>
+								<a href="{{Route('fpro.index')}}">Shop</a>
 							</li>
 
 							<li>
-								<a href="{{Route('Inupoi.Transaksi')}}">
-transaction</a>
+								<a href="{{Route('Inupoi.Transaksi')}}">transaction</a>
 							</li>
 
 							<li>

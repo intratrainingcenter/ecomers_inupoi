@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frondend;
 
 use Illuminate\Http\Request;
-use App\laporanKeuangan;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use App\produk;
+use App\kategori;
 
-class LapKeuanganController extends Controller
+class FrontProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +16,10 @@ class LapKeuanganController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $data = laporanKeuangan::all();
-
-        return view('content.LapKeuangan.laporanKeuangan', compact('data'));
+    {   
+        $category = kategori::all();
+        $data = produk::all();
+        return view('frondend.produk',['data'=>$data,'category'=>$category]);
     }
 
     /**
@@ -48,7 +51,7 @@ class LapKeuanganController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -59,7 +62,21 @@ class LapKeuanganController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('produks')
+            ->select('*')
+            ->where('kode_produk',$id)
+            ->get();
+        
+        $category = DB::table('kategoris')
+        ->join('produks', 'produks.kode_kategori','=','kategoris.kode_kategori')
+        ->select('kategoris.*')
+        ->where('kode_produk',$id)
+        ->get();    
+        
+        $related = produk::orderBy('created_at', 'desc')->get();
+         
+
+        return view('frondend.detailproduk',['data'=>$data,'category'=>$category,'related'=>$related]);
     }
 
     /**
@@ -83,14 +100,5 @@ class LapKeuanganController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function filter(Request $request)
-    {
-        $dari = $request->get('dari');
-        $sampai = $request->get('sampai');
-
-        $data = laporanKeuangan::whereBetween('tgl_transaksi', [$dari, $sampai])->get();
-        return view('content.LapKeuangan.laporanKeuangan', ['data'=>$data]);
     }
 }
