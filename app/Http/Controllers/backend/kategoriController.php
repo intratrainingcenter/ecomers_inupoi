@@ -25,8 +25,8 @@ class KategoriController extends Controller
         //     return DB::table('kategoris')->get();
         // });
 
-        // $get = Cache::get('kategoris');   
-        // // dd($get);  
+        $get = Cache::get('kategoris');   
+        // dd($get);  
 
         return view('content.kategori.kategori', compact('data'));
     }

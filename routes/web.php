@@ -28,7 +28,8 @@ Route::prefix('Inupoi')->group(function(){
 });
 
 Route::prefix('laporankeuangan')->group(function(){
-	Route::get('/Filter', 'LapKeuanganController@filter')->name('Filter.laporankeuangan');
+	Route::get('/Filter', 'backend\LapKeuanganController@filter')->name('Filter.laporankeuangan');
+	Route::get('/SubTotal', 'backend\LapKeuanganController@subtotal');
 });
 
 Route::resource('Inupoi', 'frondend\FrondendController');

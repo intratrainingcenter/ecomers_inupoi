@@ -18,6 +18,7 @@ class LapKeuanganController extends Controller
     public function index()
     {
         $data = laporanKeuangan::all();
+        $totbi = laporanKeuangan::sum('total_biaya');
         $month = now()->addMonth(1);
 
         $value = Cache::remember('laporan_keuangans',$month, function () {
@@ -26,7 +27,7 @@ class LapKeuanganController extends Controller
 
         $get = Cache::get('laporan_keuangans');
 
-        return view('content.LapKeuangan.laporanKeuangan', compact('data'));
+        return view('content.LapKeuangan.laporanKeuangan', compact('data','totbi'));
     }
 
     /**
@@ -101,6 +102,16 @@ class LapKeuanganController extends Controller
         $sampai = $request->get('sampai');
 
         $data = laporanKeuangan::whereBetween('tgl_transaksi', [$dari, $sampai])->get();
-        return view('content.LapKeuangan.laporanKeuangan', ['data'=>$data]);
+        $totbi = laporanKeuangan::whereBetween('tgl_transaksi', [$dari, $sampai])->sum('total_biaya');
+
+        return view('content.LapKeuangan.laporanKeuangan', compact('data','totbi'));
+    }
+
+    public function subtotal()
+    {
+        $count = laporanKeuangan::sum('total_biaya');
+        // dd($count);
+
+        return $count;
     }
 }

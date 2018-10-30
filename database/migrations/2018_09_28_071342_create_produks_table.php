@@ -17,7 +17,7 @@ class CreateProduksTable extends Migration
             $table->increments('id');
             $table->string('kode_kategori');
             $table->string('kode_produk');
-            $table->string('kode_diskon');
+            $table->string('kode_diskon')->nullable();
             $table->string('nama_produk');
             $table->string('harga');
             $table->string('stok');

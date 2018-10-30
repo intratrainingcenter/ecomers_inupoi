@@ -4,6 +4,9 @@ namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use App\laporanBarang;
 
 class LabBarangController extends Controller
 {
@@ -14,8 +17,16 @@ class LabBarangController extends Controller
      */
     public function index()
     {
-        return view('content.LapBarang.laporanBarang');
+        $data = laporanBarang::all();
+        $month = now()->addMonth(1);
 
+        $value = Cache::remember('laporan_barangs', $month, function(){
+            return DB::table('laporan_barangs')->get();
+        });
+
+        $get = Cache::get('laporan_barangs');
+
+        return view('content.LapBarang.laporanBarang', compact('data'));
     }
 
     /**

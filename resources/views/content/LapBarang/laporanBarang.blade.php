@@ -63,24 +63,28 @@ $(function() {
       <thead>
         <tr>
           <th class="column-title">No</th>
-          <th class="column-title">Nis Siswa</th>
-          <th class="column-title">Nama Siswa</th>
-          <th class="column-title">Absensi</th>
-          <th class="column-title">Keterangan</th>
+          <th class="column-title">Kode Transaksi</th>
+          <th class="column-title">Kode Barang</th>
+          <th class="column-title">Barang Keluar</th>
+          <th class="column-title">Stok Akhir</th>
+          <th class="column-title">Tanggal Transaksi</th>
           <th class="column-title">Action</th>
         </tr>
       </thead>
     	<tbody>
+        @foreach($data as $lapbarang)
     		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>awgaanklfa</td>
+    			<td>{{$loop->iteration}}</td>
+    			<td>{{$lapbarang->kode_transaksi}}</td>
+          <td>{{$lapbarang->kode_barang}}</td>
+          <td>{{$lapbarang->barang_keluar}}</td>
+          <td>{{$lapbarang->stok_akhir}}</td>
+          <td>{{$lapbarang->tgl_transaksi}}</td>
           <td>
             <button type="button" class="btn btn-primary"><li class="fa fa-search"></li></button>
           </td>
     		</tr>
+        @endforeach
     	</tbody>
      </table>
      </div>

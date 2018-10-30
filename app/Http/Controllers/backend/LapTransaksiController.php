@@ -4,6 +4,9 @@ namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use App\laporanTransaksi;
 
 class LapTransaksiController extends Controller
 {
@@ -14,8 +17,15 @@ class LapTransaksiController extends Controller
      */
     public function index()
     {
-        return view('content.LapTransaksi.laporanTransaksi');
-        //
+        $data = laporanTransaksi::all();
+        $month = now()->addMonth(1);
+
+        $value = Cache::remember('laporan_transaksis', $month, function(){
+            return DB::table('laporan_transaksis')->get();
+        });
+        $get = Cache::get('laporan_transaksis');
+
+        return view('content.LapTransaksi.laporanTransaksi', compact('data'));
     }
 
     /**

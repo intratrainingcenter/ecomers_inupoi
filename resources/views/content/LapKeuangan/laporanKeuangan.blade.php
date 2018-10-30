@@ -70,7 +70,7 @@ $(document).ready(function() {
     <tfoot>
           <td colspan="2"></td>
           <td><b>Total Keuangan</b></td>
-          <td></td>
+          <td><b>{{$totbi}}</b></td>
     </tfoot>
    </table>
   </div>
