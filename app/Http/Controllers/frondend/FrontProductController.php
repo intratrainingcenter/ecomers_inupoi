@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\produk;
 use App\kategori;
+use App\keranjang;
+
 
 class FrontProductController extends Controller
 {
@@ -17,9 +19,22 @@ class FrontProductController extends Controller
      */
     public function index()
     {   
+        $cart = DB::table('keranjangs')
+        ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+        ->select('produks.gambar','keranjangs.*')
+        ->get();
+
         $category = kategori::all();
         $data = produk::paginate(8);
-        return view('frondend.produk',['data'=>$data,'category'=>$category]);
+
+        $purchases = DB::table('keranjangs')
+        ->sum('keranjangs.harga');
+
+        $count = keranjang::count();
+        
+     return view('frondend.produk',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
+                'count'=>$count]);
+        
     }
 
     /**

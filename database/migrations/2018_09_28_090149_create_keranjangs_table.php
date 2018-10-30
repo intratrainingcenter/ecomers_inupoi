@@ -19,6 +19,7 @@ class CreateKeranjangsTable extends Migration
             $table->string('nama_produk');
             $table->string('ukuran');
             $table->string('jumlah');
+            $table->string('harga');
             $table->timestamps();
         });
     }
