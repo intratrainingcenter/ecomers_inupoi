@@ -18,6 +18,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('Inupoi')->group(function(){
 	Route::get('/Contact', 'frondend\FrondendController@contact')->name('Inupoi.Contact');
+  Route::post('/sendmail', 'frondend\FrondendController@email')->name('Inupoi.sendmail');
+
 	Route::get('/About', 'frondend\FrondendController@about')->name('Inupoi.About');
 	Route::get('/Produk', 'frondend\FrondendController@produk')->name('Inupoi.Produk');
 	Route::get('/Transaksi', 'frondend\FrondendController@transaksi')->name('Inupoi.Transaksi');
@@ -28,9 +30,9 @@ Route::prefix('laporankeuangan')->group(function(){
 	Route::get('/Filter', 'LapKeuanganController@filter')->name('Filter.laporankeuangan');
 });
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('Inupoi/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('Inupoi/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::resource('Inupoi', 'FrondendController');
 Route::resource('dashboard','backend\dashboardController')->middleware('auth');
 Route::resource('kategori','backend\KategoriController')->middleware('auth');

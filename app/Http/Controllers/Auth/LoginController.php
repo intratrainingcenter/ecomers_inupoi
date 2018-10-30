@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use Auth;
 use App\User;
+use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     /*
@@ -77,5 +78,16 @@ class LoginController extends Controller
 
       }
     }
+
+    public function logout(Request $request) {
+      if (Auth::user()->jabatan == 'member') {
+        Auth::logout();
+        return redirect('/Inupoi');
+      }else {
+        Auth::logout();
+        return redirect('/');
+      }
+    }
+
 
 }

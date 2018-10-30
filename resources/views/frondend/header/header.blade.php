@@ -11,9 +11,16 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							Help & FAQs
 						</a>
+						@if (Auth::guard('web')->check())
+						<form action="{{ route('logout') }}" method="POST">
+						<a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
+							@csrf
+						</form>
+						@else
 						<a href="{{ url('Inupoi/google') }}" class="flex-c-m trans-04 p-lr-25">
 							Login &nbsp;<i class="fa fa-google"></i>oogle +
 						</a>
+						@endif
 					</div>
 				</div>
 			</div>
@@ -22,7 +29,7 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="#" class="logo">
+					<a href="/Inupoi" class="logo">
 						<img src="{{asset('cozastore/images/icons/inupoi.png')}}" alt="IMG-LOGO">
 					</a>
 
