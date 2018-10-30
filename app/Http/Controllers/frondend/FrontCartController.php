@@ -4,11 +4,8 @@ namespace App\Http\Controllers\frondend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use App\produk;
-use App\kategori;
 
-class FrontProductController extends Controller
+class FrontCartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +13,8 @@ class FrontProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $category = kategori::all();
-        $data = produk::paginate(8);
-        return view('frondend.produk',['data'=>$data,'category'=>$category]);
+    {
+        //
     }
 
     /**
@@ -29,7 +24,7 @@ class FrontProductController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -40,13 +35,7 @@ class FrontProductController extends Controller
      */
     public function store(Request $request)
     {
-        $category = kategori::all();
-        $data = DB::table('produks')
-            ->select('*')
-            ->where('nama_produk', 'like' , "%{$request->search}%")
-            ->paginate(8);
-
-        return view('frondend.produk',['data'=>$data,'category'=>$category]);
+        dd($request);
     }
 
     /**
@@ -57,7 +46,7 @@ class FrontProductController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -68,21 +57,7 @@ class FrontProductController extends Controller
      */
     public function edit($id)
     {
-        $data = DB::table('produks')
-            ->select('*')
-            ->where('kode_produk',$id)
-            ->get();
-        
-        $category = DB::table('kategoris')
-        ->join('produks', 'produks.kode_kategori','=','kategoris.kode_kategori')
-        ->select('kategoris.*')
-        ->where('kode_produk',$id)
-        ->get();    
-        
-        $related = produk::orderBy('created_at', 'desc')->get();
-         
-
-        return view('frondend.detailproduk',['data'=>$data,'category'=>$category,'related'=>$related]);
+        //
     }
 
     /**

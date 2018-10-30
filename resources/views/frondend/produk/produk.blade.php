@@ -7,11 +7,7 @@
 				<button type="button" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04" data-toggle="modal" data-target="#quick{{$item->kode_produk}}">
 						Quick View
 				</button>
-{{-- 
-				<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1-produkA" kode="{{$item->kode_produk}}">
-						Quick View
-							
-					</a> --}}
+
 				</div>
 				
 				<div class="block2-txt flex-w flex-t p-t-14">

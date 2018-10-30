@@ -17,6 +17,8 @@ class CreateKeranjangsTable extends Migration
             $table->increments('id');
             $table->string('kode_produk');
             $table->string('nama_produk');
+            $table->string('ukuran');
+            $table->string('jumlah');
             $table->timestamps();
         });
     }

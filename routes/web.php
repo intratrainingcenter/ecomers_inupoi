@@ -49,4 +49,6 @@ Route::resource('userprofile','backend\UserprofileController')->middleware('auth
 // frontEnd
 Route::resource('fpro', 'frondend\FrontProductController');
 Route::resource('Inupoi', 'frondend\FrondendController');
+Route::resource('fcart', 'frondend\FrontCartController');
+
 
