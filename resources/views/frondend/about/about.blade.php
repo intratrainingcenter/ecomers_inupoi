@@ -57,10 +57,11 @@
 						<h3 class="mtext-111 cl2 p-b-16">
 							Our Story
 						</h3>
-
-						<p class="stext-113 cl6 p-b-26">
+						<div class="bor16 p-l-29 p-b-9 m-t-22">
+							<p class="stext-114 cl6 p-r-40 p-b-11">
 							{{$our->deskripsi}}
-						</p>
+							</p>
+						</div>
 					</div>
 				</div>
 				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">

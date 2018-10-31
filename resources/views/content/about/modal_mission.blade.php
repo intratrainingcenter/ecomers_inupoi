@@ -49,7 +49,8 @@
             <div class="col-sm-8">
               <img src="{{ asset('image/'. $our->image_mission) }}" id="output2" alt="..." class="img-thumbnail" width="200px" height="200px">
               <h6>==========================================</h6>
-              <input type="file"  name="image_mission"  accept="image/*" onchange="loadFile2(event)" class="text-center center-block well well-sm" value="{{$our->image_mission}}">
+              <p style="color:red;">Please Reenter Image!</p>
+              <input type="file"  name="image_mission"  accept="image/*" onchange="loadFile2(event)" class="text-center center-block well well-sm" required="">
             </div>
           </div>
           <br><br>

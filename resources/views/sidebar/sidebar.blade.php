@@ -38,17 +38,8 @@
           <li><a href="{{Route('laporantransaksi.index')}}"><i class="fa fa-circle-o"></i> Laporan Transaksi</a></li>
         </ul>
       </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-clipboard"></i> <span>About</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="{{Route('about.index')}}"><i class="fa fa-circle-o"></i>Our Story</a></li>
-        </ul>
-      </li>
+
+      <li><a href="{{Route('about.index')}}"><i class="fa fa-info"></i> <span>About</span></a></li>
       @if (Auth::guard('web')->check())
          @if (Auth::guard('web')->user()->jabatan == 'owner')
       <li><a href="{{Route('user.index')}}"><i class="fa fa-group "></i> <span>User</span></a></li>
