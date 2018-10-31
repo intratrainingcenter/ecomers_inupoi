@@ -4,6 +4,8 @@ namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\produk;
+use App\User;
 
 class dashboardController extends Controller
 {
@@ -14,7 +16,10 @@ class dashboardController extends Controller
      */
     public function index()
     {
-        return view('content.dashboard');
+        $produk = produk::sum('stok');
+        $user = User::count('name');
+
+        return view('content.dashboard', compact('produk','user'));
     }
 
     /**

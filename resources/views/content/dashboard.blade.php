@@ -26,9 +26,9 @@ $(function() {
     <!-- small box -->
     <div class="small-box bg-aqua">
       <div class="inner">
-        <h3>150</h3>
+        <h3>{{$produk}}</h3>
 
-        <p>New Orders</p>
+        <p>Produk</p>
       </div>
       <div class="icon">
         <i class="ion ion-bag"></i>
@@ -56,7 +56,7 @@ $(function() {
     <!-- small box -->
     <div class="small-box bg-yellow">
       <div class="inner">
-        <h3>44</h3>
+        <h3>{{$user}}</h3>
 
         <p>User Registrations</p>
       </div>
