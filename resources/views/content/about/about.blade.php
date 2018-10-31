@@ -34,8 +34,8 @@ $(function() {
       <thead>
         <tr>
           <th class="column-title">No</th>
-          <th class="column-title">Description</th>
-          <th class="column-title">Image</th>
+          <th class="column-title" style="width:70%">Description</th>
+          <th class="column-title" style="width:20%">Image</th>
           <th class="column-title">Action</th>
         </tr>
       </thead>
@@ -67,8 +67,8 @@ $(function() {
       <thead>
         <tr>
           <th class="column-title">No</th>
-          <th class="column-title">Description</th>
-          <th class="column-title">Image</th>
+          <th class="column-title" style="width:70%">Description</th>
+          <th class="column-title" style="width:20%">Image</th>
           <th class="column-title">Action</th>
         </tr>
       </thead>
