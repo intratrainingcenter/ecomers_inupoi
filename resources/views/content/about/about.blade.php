@@ -1,6 +1,6 @@
-@extends('index')@section('title', 'Kategori')
+@extends('index')@section('title', 'About')
 @section('judul','Header')
-@section('sub','Kategori')
+@section('sub','About')
 @section('someCSS')
 <link href="{{ asset('assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
