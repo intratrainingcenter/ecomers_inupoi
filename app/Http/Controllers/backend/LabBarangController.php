@@ -18,13 +18,14 @@ class LabBarangController extends Controller
     public function index()
     {
         $data = laporanBarang::all();
-        $month = now()->addMonth(1);
 
-        $value = Cache::remember('laporan_barangs', $month, function(){
+        $minute = now()->addMinutes(10080);
+
+        $value = Cache::remember('res', $minute, function(){
             return DB::table('laporan_barangs')->get();
         });
 
-        $get = Cache::get('laporan_barangs');
+        $get = Cache::get('res');
 
         return view('content.LapBarang.laporanBarang', compact('data'));
     }

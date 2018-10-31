@@ -19,13 +19,14 @@ class LapKeuanganController extends Controller
     {
         $data = laporanKeuangan::all();
         $totbi = laporanKeuangan::sum('total_biaya');
-        $month = now()->addMonth(1);
 
-        $value = Cache::remember('laporan_keuangans',$month, function () {
+        $menit = now()->addMinutes(10080);
+
+        $value = Cache::remember('res',$menit, function () {
             return DB::table('laporan_keuangans')->get();
         });
 
-        $get = Cache::get('laporan_keuangans');
+        $get = Cache::get('res');
 
         return view('content.LapKeuangan.laporanKeuangan', compact('data','totbi'));
     }

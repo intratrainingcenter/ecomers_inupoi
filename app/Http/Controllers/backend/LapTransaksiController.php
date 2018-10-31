@@ -18,12 +18,13 @@ class LapTransaksiController extends Controller
     public function index()
     {
         $data = laporanTransaksi::all();
-        $month = now()->addMonth(1);
+        
+        $menit = now()->addMinutes(10080);
 
-        $value = Cache::remember('laporan_transaksis', $month, function(){
+        $value = Cache::remember('res', $menit, function(){
             return DB::table('laporan_transaksis')->get();
         });
-        $get = Cache::get('laporan_transaksis');
+        $get = Cache::get('res');
 
         return view('content.LapTransaksi.laporanTransaksi', compact('data'));
     }

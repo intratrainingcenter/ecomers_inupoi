@@ -19,14 +19,13 @@ class KategoriController extends Controller
     {
         $data = kategori::all();
 
-        // $minutes = now()->addMonth(1);
+        // $minutes = now()->addMinutes(1);
 
-        // $value = Cache::remember('kategoris',$minutes, function () {
+        // $value = Cache::remember('res',$minutes, function () {
         //     return DB::table('kategoris')->get();
         // });
-
-        $get = Cache::get('kategoris');   
-        // dd($get);  
+        // $get = Cache::get('res');   
+        // dd($get); 
 
         return view('content.kategori.kategori', compact('data'));
     }

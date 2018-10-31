@@ -19,7 +19,6 @@ class ProdukController extends Controller
         $item = produk::orderBy('created_at', 'desc')->get();;
         $category = kategori::all();
         $discount = diskon::all();
-        // dd($item);
 
         return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount]);
     }
@@ -249,7 +248,6 @@ class ProdukController extends Controller
     public function countfavorite()
     {
         $countfavorit = produk::count('favorite');
-        // dd($countfavorit);
 
         return $countfavorit;
     }

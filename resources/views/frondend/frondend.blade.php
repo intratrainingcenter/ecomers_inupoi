@@ -180,7 +180,7 @@
 				method:'get',
 				url:location.origin+'/Inupoi/CountFavorite/',
 				success:function(data){
-					$('.icon-header-noti').attr('data-notify',data)
+					$('.js-show-cart').attr('data-notify',data)
 				}
 			});
 		}

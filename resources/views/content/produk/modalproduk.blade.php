@@ -61,6 +61,7 @@
                             <div class="col-sm-8">
                               <select name="kode_diskon" class="form-control" id="kode_diskon" required>
                                   <option value="" disabled selected>Code Discount</option>
+                                  <option value="-"> Without Discount </option>
                                 @foreach ($diskon as $itemdiskon)
                               <option value="{{$itemdiskon->kode_diskon}}">{{$itemdiskon->kode_diskon}} - ${{$itemdiskon->nominal}}</option>
                                 @endforeach
