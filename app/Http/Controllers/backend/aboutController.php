@@ -18,7 +18,6 @@ class aboutController extends Controller
     public function index()
     {
         $data = about::all();
-        // dd($data);
         return view('content.about.about', compact('data'));
     }
 
@@ -75,7 +74,6 @@ class aboutController extends Controller
     public function update(Request $request, $id)
     {
       $gambar = $request->file('image');
-      // dd($gambar);
       $nm_file = $gambar->getClientOriginalName();
       $request->file('image')->move(public_path().'/image/', $nm_file);
       $data = about::find($id);
@@ -98,7 +96,6 @@ class aboutController extends Controller
 
     public function update_mission(Request $request, $id)
     {
-      // dd($request->all());
       $gambar = $request->file('image_mission');
       $nm_file = $gambar->getClientOriginalName();
       $request->file('image_mission')->move(public_path().'/image/', $nm_file);

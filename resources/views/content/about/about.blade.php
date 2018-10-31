@@ -47,7 +47,6 @@ $(function() {
           <td><img src="{{ asset('image/'. $our->image) }}" name="image" alt="..." class="img-thumbnail" width="200px" height="200px"></td>
           <td>
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit{{$our->id}}"><li class="fa fa-pencil"></li></button>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{$our->id}}"><li class="fa fa-trash-o"></li></button>
           </td>
     		</tr>
         @endforeach
@@ -81,8 +80,6 @@ $(function() {
           <td><img src="{{ asset('image/'. $our->image_mission) }}" name="image" alt="..." class="img-thumbnail" width="200px" height="200px"></td>
           <td>
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit_mission{{$our->id}}"><li class="fa fa-pencil"></li></button>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger_mission{{$our->id}}"><li class="fa fa-trash-o"></li></button>
-          </td>
     		</tr>
         @endforeach
     	</tbody>
