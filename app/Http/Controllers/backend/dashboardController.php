@@ -18,8 +18,10 @@ class dashboardController extends Controller
     {
         $produk = produk::sum('stok');
         $user = User::count('name');
+        $pengunjung = User::where('jabatan', 'member')->count();
+        // dd($pengunjung);
 
-        return view('content.dashboard', compact('produk','user'));
+        return view('content.dashboard', compact('produk','user','pengunjung'));
     }
 
     /**
