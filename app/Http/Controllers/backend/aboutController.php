@@ -1,18 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\frondend;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\produk;
-use App\User;
-use Mail;
-use Auth;
-use Redirect;
-use Session;
-use Validator;
-use App\Mailfile;
-class FrondendController extends Controller
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use App\about;
+
+class aboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +17,9 @@ class FrondendController extends Controller
      */
     public function index()
     {
-        $data = produk::all();
-
-        return view('frondend/frondend', compact('data'));
+        $data = about::all();
+        // dd($data);
+        return view('content.about.about', compact('data'));
     }
 
     /**
@@ -78,7 +74,15 @@ class FrondendController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $gambar = $request->file('image');
+      // dd($gambar);
+      $nm_file = $gambar->getClientOriginalName();
+      $request->file('image')->move(public_path().'/image/', $nm_file);
+      $data = about::find($id);
+      $data->image = $nm_file;
+      $data->deskripsi = $request->deskripsi;
+     $data->save();
+    return redirect()->route('about.index')->with('success', 'Berhasil Mengedit Data');
     }
 
     /**
@@ -92,48 +96,16 @@ class FrondendController extends Controller
         //
     }
 
-    public function contact()
+    public function update_mission(Request $request, $id)
     {
-        $user = User::get();
-        // dd($user);
-        return View('frondend/contentPage/contentPage',compact('user'));
-    }
-    public function email(Request $request)
-    {
-      // dd($request);
-      $data = array(
-        'email' => $request->email,
-        'title' => $request->title,
-      );
-      // dd($data);
-      Mail::send('frondend.contentPage.mymail', $data, function($massage) use ($data){
-        $massage->to('InupiCorp@gmail.com');
-        $massage->from($data['email']);
-        $massage->subject($data['title']);
-      });
-      session::flash('success_send', "Mail sent Successfully");
-      return redirect()->route('Inupoi.Contact');
-    }
-
-
-    public function about()
-    {
-        return view('frondend.about.about');
-    }
-
-    public function produk()
-    {
-        $data = produk::all();
-        return view('frondend.produk',compact('data'));
-    }
-
-    public function transaksi()
-    {
-        return view('frondend.transaksi');
-    }
-
-    public function detail()
-    {
-        return view('frondend.detailproduk');
+      // dd($request->all());
+      $gambar = $request->file('image_mission');
+      $nm_file = $gambar->getClientOriginalName();
+      $request->file('image_mission')->move(public_path().'/image/', $nm_file);
+      $data = about::find($id);
+      $data->image_mission = $nm_file;
+      $data->deskripsi_mission = $request->deskripsi_mission;
+     $data->save();
+    return redirect()->route('about.index')->with('success', 'Berhasil Mengedit Data');
     }
 }

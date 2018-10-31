@@ -25,6 +25,7 @@ Route::prefix('Inupoi')->group(function(){
 	Route::get('/Transaksi', 'frondend\FrondendController@transaksi')->name('Inupoi.Transaksi');
 	Route::get('/Detail', 'frondend\FrondendController@detail')->name('Inupoi.Detail');
 });
+Route::put('/about_mission/{id}','backend\aboutController@update_mission')->name('about.update_mission')->middleware('auth');
 
 Route::prefix('laporankeuangan')->group(function(){
 	Route::get('/Filter', 'LapKeuanganController@filter')->name('Filter.laporankeuangan');
@@ -35,6 +36,7 @@ Route::get('Inupoi/{provider}/callback', 'Auth\LoginController@handleProviderCal
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::resource('Inupoi', 'FrondendController');
 Route::resource('dashboard','backend\dashboardController')->middleware('auth');
+Route::resource('about','backend\aboutController')->middleware('auth');
 Route::resource('kategori','backend\KategoriController')->middleware('auth');
 Route::resource('barang','backend\ProdukController')->middleware('auth');
 Route::resource('keranjang','backend\KeranjangController')->middleware('auth');
