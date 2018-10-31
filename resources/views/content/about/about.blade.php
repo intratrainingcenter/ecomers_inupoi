@@ -30,7 +30,7 @@ $(function() {
     <center>
       <h2>Our Story</h2>
     </center>
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <table class="table table-striped table-bordered" style="width:100%">
       <thead>
         <tr>
           <th class="column-title">No</th>
@@ -63,7 +63,7 @@ $(function() {
     <center>
       <h2>Our Mission</h2>
     </center>
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <table class="table table-striped table-bordered" style="width:100%">
       <thead>
         <tr>
           <th class="column-title">No</th>
