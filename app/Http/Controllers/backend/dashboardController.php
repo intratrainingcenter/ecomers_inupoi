@@ -17,11 +17,12 @@ class dashboardController extends Controller
     public function index()
     {
         $produk = produk::sum('stok');
+        $jenis_barang = produk::count('stok');
         $user = User::count('name');
         $pengunjung = User::where('jabatan', 'member')->count();
         // dd($pengunjung);
 
-        return view('content.dashboard', compact('produk','user','pengunjung'));
+        return view('content.dashboard', compact('produk','user','pengunjung','jenis_barang'));
     }
 
     /**
