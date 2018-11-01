@@ -25,11 +25,11 @@ Route::prefix('Inupoi')->group(function(){
 	Route::get('/Favorite/{id}', 'backend\ProdukController@addfavorite');
 	Route::get('/RemoveFavorite/{id}', 'backend\ProdukController@removefavorite');
 	Route::get('/CountFavorite', 'backend\ProdukController@countfavorite');
+	// Route::get('/Kode', 'frondend\FrondendController@kode');
 });
 
 Route::prefix('laporankeuangan')->group(function(){
 	Route::get('/Filter', 'backend\LapKeuanganController@filter')->name('Filter.laporankeuangan');
-	Route::get('/SubTotal', 'backend\LapKeuanganController@subtotal');
 });
 
 Route::resource('Inupoi', 'frondend\FrondendController');

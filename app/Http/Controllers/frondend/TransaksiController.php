@@ -4,9 +4,10 @@ namespace App\Http\Controllers\frondend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\produk;
+use Carbon\Carbon;
+use App\transaksi;
 
-class FrondendController extends Controller
+class TransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,16 @@ class FrondendController extends Controller
      */
     public function index()
     {
-        $data = produk::all();
+        // $date = date('Y');
+        // $mounth = date('m');
+        // $day = date('d');
+        // $hour = date('H');
 
-        return view('frondend/frondend', compact('data'));
+        // $miliseconds = round(microtime(true));
+        // $kode = ('TR'.$date.$mounth.$day.$hour.$miliseconds);
+        // dd($kode);
+
+        // return $kode;
     }
 
     /**
@@ -85,43 +93,4 @@ class FrondendController extends Controller
     {
         //
     }
-
-    public function contact()
-    {
-        return view('frondend.contact');
-    }
-
-    public function about()
-    {
-        return view('frondend.about');
-    }
-
-    public function produk()
-    {
-        return view('frondend.produk');
-    }
-
-    public function transaksi()
-    {
-        return view('frondend.transaksi');
-    }
-
-    public function detail()
-    {
-        return view('frondend.detailproduk');
-    }
-
-    // public function kode()
-    // {
-    //     $date = date('Y');
-    //     $mounth = date('m');
-    //     $day = date('d');
-    //     $hour = date('H');
-
-    //     $miliseconds = round(microtime(true));
-    //     $kode = ('TR'.$date.$mounth.$day.$hour.$miliseconds);
-    //     dd($kode);
-
-    //     return $kode;
-    // }
 }

@@ -107,12 +107,4 @@ class LapKeuanganController extends Controller
 
         return view('content.LapKeuangan.laporanKeuangan', compact('data','totbi'));
     }
-
-    public function subtotal()
-    {
-        $count = laporanKeuangan::sum('total_biaya');
-        // dd($count);
-
-        return $count;
-    }
 }
