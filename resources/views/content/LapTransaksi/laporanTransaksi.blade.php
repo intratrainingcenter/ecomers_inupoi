@@ -69,16 +69,18 @@ $(function() {
         </tr>
       </thead>
     	<tbody>
+        @foreach($data as $laptransaksi)
     		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
+    			<td>{{$loop->iteration}}</td>
+    			<td>{{$laptransaksi->kode_transaksi}}</td>
+          <td>{{$laptransaksi->tgl_transaksi}}</td>
           <td>
             <center>
               <button type="button" class="btn btn-primary"><li class="fa fa-search"></li></button>
             </center>
           </td>
     		</tr>
+        @endforeach
     	</tbody>
      </table>
      </div>

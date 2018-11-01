@@ -21,11 +21,11 @@ class KategoriController extends Controller
 
         // $minutes = now()->addMinutes(1);
 
-        // $value = Cache::remember('kategoris',$minutes, function () {
+        // $value = Cache::remember('res',$minutes, function () {
         //     return DB::table('kategoris')->get();
         // });
-
-        // $get = Cache::get('kategoris');     
+        // $get = Cache::get('res');   
+        // dd($get); 
 
         return view('content.kategori.kategori', compact('data'));
     }
