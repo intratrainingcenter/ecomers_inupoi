@@ -53,7 +53,6 @@ class FrontCartController extends Controller
             if($cek2 == 1)
             {
                 $create = keranjang::create([
-                    'user       '       => $request->user,
                     'kode_produk'       => $request->kode_produk,
                     'nama_produk'       => $request->nama_produk,
                     'ukuran'            => $request->ukuran,   

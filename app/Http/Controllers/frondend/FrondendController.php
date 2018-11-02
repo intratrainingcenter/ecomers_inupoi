@@ -110,9 +110,18 @@ class FrondendController extends Controller
 
     public function contact()
     {
+        $count = keranjang::count();
+      
+      $cart = DB::table('keranjangs')
+        ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+        ->select('produks.gambar','keranjangs.*')
+        ->get();
+
+        $purchases = DB::table('keranjangs')
+        ->sum('keranjangs.harga');
         $user = User::get();
-        // dd($user);
-        return View('frondend/contentPage/contentPage',compact('user'));
+
+        return View('frondend/contentPage/contentpage',compact('user','count','cart','purchases'));
     }
     public function email(Request $request)
     {
@@ -134,8 +143,19 @@ class FrondendController extends Controller
 
     public function about()
     {
+      
+      $count = keranjang::count();
+      
+      $cart = DB::table('keranjangs')
+        ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+        ->select('produks.gambar','keranjangs.*')
+        ->get();
+
+        $purchases = DB::table('keranjangs')
+        ->sum('keranjangs.harga');
+
       $data = about::all();
-      return view('frondend.about.about', compact('data'));
+      return view('frondend.about.about', compact('data','count','cart','purchases'));
     }
 
     public function produk()
