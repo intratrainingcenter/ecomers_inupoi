@@ -53,6 +53,8 @@ class FrontdetailController extends Controller
             'ukuran'            => 'required|max:5',
             'total'             => 'required|max:20',
             'harga'             => 'required|max:40',
+            'user'              => 'required|max:40',
+            
             
           ]);
 
@@ -73,6 +75,8 @@ class FrontdetailController extends Controller
                     'ukuran'            => $request->ukuran,   
                     'jumlah'            => $request->total,             
                     'harga'             => ($request->harga*$request->total),
+                    'user'              => $request->user,
+
     
                     ]);
                     return redirect()->route('fpro.edit', ['id' => $request->kode_produk])->with('success','Success add to Cart');
