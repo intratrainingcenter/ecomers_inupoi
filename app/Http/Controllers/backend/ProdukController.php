@@ -31,11 +31,18 @@ class ProdukController extends Controller
         ->select('stok')
         ->get('stok');
 
+        $code = produk::orderBy('id','desc')->first();
+        if($code == NULL)
+        {
+            $number = 'BR' . sprintf('%03d',intval(0)+1);
+        }
+        else
+        {
+            $no_check = $code->id;
+            $number = 'BR' . sprintf('%03d',intval($no_check)+1);
+        }
         
-        
-       
-    
-        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount,'setting'=>$setting]);
+        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount,'setting'=>$setting],compact('number'));
     }
 
    
@@ -47,7 +54,6 @@ class ProdukController extends Controller
    
     public function store(Request $request)
     {
-      
         $validator = Validator::make($request->all(), [
             
             'kode_produk'       => 'required|max:20',
