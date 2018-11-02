@@ -110,18 +110,4 @@ class FrondendController extends Controller
     {
         return view('frondend.detailproduk');
     }
-
-    // public function kode()
-    // {
-    //     $date = date('Y');
-    //     $mounth = date('m');
-    //     $day = date('d');
-    //     $hour = date('H');
-
-    //     $miliseconds = round(microtime(true));
-    //     $kode = ('TR'.$date.$mounth.$day.$hour.$miliseconds);
-    //     dd($kode);
-
-    //     return $kode;
-    // }
 }

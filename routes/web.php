@@ -25,7 +25,6 @@ Route::prefix('Inupoi')->group(function(){
 	Route::get('/Favorite/{id}', 'backend\ProdukController@addfavorite');
 	Route::get('/RemoveFavorite/{id}', 'backend\ProdukController@removefavorite');
 	Route::get('/CountFavorite', 'backend\ProdukController@countfavorite');
-	// Route::get('/Kode', 'frondend\FrondendController@kode');
 });
 
 Route::prefix('laporankeuangan')->group(function(){
