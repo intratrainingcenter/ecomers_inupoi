@@ -7,16 +7,12 @@
 				<button type="button" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04" data-toggle="modal" data-target="#quick{{$item->kode_produk}}">
 						Quick View
 				</button>
-{{-- 
-				<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1-produkA" kode="{{$item->kode_produk}}">
-						Quick View
-							
-					</a> --}}
+
 				</div>
 				
 				<div class="block2-txt flex-w flex-t p-t-14">
 					<div class="block2-txt-child1 flex-col-l ">
-						<a href="{{Route('Inupoi.Detail')}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+						<a href="{{Route('fpro.edit',['id'=>$item->kode_produk])}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 								{{$item->nama_produk}}
 							</a>
 							

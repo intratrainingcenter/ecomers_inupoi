@@ -4,8 +4,17 @@ namespace App\Http\Controllers\frondend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\produk;
-
+use App\User;
+use App\kategori;
+use App\keranjang;
+use Mail;
+use Auth;
+use Redirect;
+use Session;
+use Validator;
+use App\Mailfile;
 class FrondendController extends Controller
 {
     /**
@@ -14,10 +23,22 @@ class FrondendController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $data = produk::all();
+    {   $cart = DB::table('keranjangs')
+        ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+        ->select('produks.gambar','keranjangs.*')
+        ->get();
 
-        return view('frondend/frondend', compact('data'));
+        $category = kategori::all();
+
+        $purchases = DB::table('keranjangs')
+        ->sum('keranjangs.harga');
+
+        $count = keranjang::count();
+
+        $data = produk::paginate(4);
+
+
+        return view('frondend/frondend', compact('data','category','cart','purchases','count'));
     }
 
     /**
@@ -88,8 +109,27 @@ class FrondendController extends Controller
 
     public function contact()
     {
-        return view('frondend.contact');
+        $user = User::get();
+        // dd($user);
+        return View('frondend/contentPage/contentPage',compact('user'));
     }
+    public function email(Request $request)
+    {
+      // dd($request);
+      $data = array(
+        'email' => $request->email,
+        'title' => $request->title,
+      );
+      // dd($data);
+      Mail::send('frondend.contentPage.mymail', $data, function($massage) use ($data){
+        $massage->to('InupiCorp@gmail.com');
+        $massage->from($data['email']);
+        $massage->subject($data['title']);
+      });
+      session::flash('success_send', "Mail sent Successfully");
+      return redirect()->route('Inupoi.Contact');
+    }
+
 
     public function about()
     {
@@ -104,7 +144,23 @@ class FrondendController extends Controller
 
     public function transaksi()
     {
-        return view('frondend.transaksi');
+        $cart = DB::table('keranjangs')
+        ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+        ->select('produks.gambar','keranjangs.*')
+        ->get();
+
+        $category = kategori::all();
+        $data = produk::paginate(8);
+
+        $purchases = DB::table('keranjangs')
+        ->sum('keranjangs.harga');
+
+        $count = keranjang::count();
+    
+        
+        return view('frondend.transaksi',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
+                'count'=>$count]);
+       
     }
 
     public function detail()

@@ -11,9 +11,16 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							Help & FAQs
 						</a>
+						@if (Auth::guard('web')->check())
+						<form action="{{ route('logout') }}" method="POST">
+						<a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
+							@csrf
+						</form>
+						@else
 						<a href="{{ url('Inupoi/google') }}" class="flex-c-m trans-04 p-lr-25">
 							Login &nbsp;<i class="fa fa-google"></i>oogle +
 						</a>
+						@endif
 					</div>
 				</div>
 			</div>
@@ -22,7 +29,7 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="#" class="logo">
+					<a href="/Inupoi" class="logo">
 						<img src="{{asset('cozastore/images/icons/inupoi.png')}}" alt="IMG-LOGO">
 					</a>
 
@@ -57,7 +64,7 @@
 							<i class="zmdi zmdi-search"></i>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{$count}}">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
@@ -160,11 +167,13 @@
 					<img src="{{asset('cozastore/images/icons/icon-close2.png')}}" alt="CLOSE">
 				</button>
 
-				<form class="wrap-search-header flex-w p-l-15">
-					<button class="flex-c-m trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
+			<form action="{{Route('fpro.store')}}" method="POST" class="wrap-search-header flex-w p-l-15">
+					@csrf @method('post')
 					<input class="plh3" type="text" name="search" placeholder="Search...">
+						<button type="submit" class="flex-c-m trans-04">
+							<i class="zmdi zmdi-search"></i>
+						</button>
+						
 				</form>
 			</div>
 		</div>

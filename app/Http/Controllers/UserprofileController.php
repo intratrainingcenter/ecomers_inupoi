@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\User;
 
 class UserprofileController extends Controller
