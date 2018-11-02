@@ -5,7 +5,7 @@
           <th class="column-title">No</th>
           <th class="column-title">Nama</th>
           <th class="column-title">Email</th>
-          <th class="column-title">Jabatan</th>
+          <th class="column-title">Position</th>
           <th class="column-title">Action</th>
         </tr>
       </thead>
@@ -33,7 +33,7 @@
                 <p>=====</p>
                 @else
                 <form action="{{route('user.destroy',$users->id,$users->foto)}}" method="post" enctype="multipart/form-data">
-                  <button  type="submit" onclick=" return confirm('Anda Yakin Menghapus Profile')" name="submit" class="btn btn-danger">
+                  <button  type="submit" onclick=" return confirm('Do you really want to delete it')" name="submit" class="btn btn-danger">
                       <i class="fa fa-trash-o"></i>
                   </button>
                    {{ csrf_field() }}
@@ -43,9 +43,9 @@
                 @endif
               </td>
               @elseif (Auth::guard('web')->user()->jabatan == 'superadmin')
-              <td>Hanya Owner Yang Dapat Mengganti</td>
+              <td>Only the owner can change</td>
               @elseif (Auth::guard('web')->user()->jabatan == 'petugas')
-              <td>Hanya Owner Yang Dapat Mengganti</td>
+              <td>Only the owner can change</td>
            @endif
            @endif
     		</tr>

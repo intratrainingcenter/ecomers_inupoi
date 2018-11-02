@@ -17,15 +17,15 @@
         <a class="panel-close close" data-dismiss="alert">×</a>
         <i class="fa fa-user"></i>
         @if ($user->jabatan == 'member')
-        Halaman <strong>Profil</strong> Data Member
+        Member Data <strong>Profile</strong> Page
         @else
-         Halaman <strong>Edit Profil</strong> Ubah Data User
+         Member Data <strong>Profile</strong> Edite Page
          @endif
       </div>
-      <h3>Informasi Pribadi  {{Auth::user()->name}}</h3>
+      <h3>{{Auth::user()->name}} personal information</h3>
                      <input type="hidden" name="id" value="{{$user->id}}" class="form-control"/>
         <div class="form-group">
-          <label class="col-lg-3 control-label">Nama:</label>
+          <label class="col-lg-3 control-label">Name:</label>
           <div class="col-lg-8">
               @if ($user->jabatan == 'member')
               <input class="form-control" name="name" value="{{$user->name}}" type="text" disabled>
@@ -45,14 +45,14 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="col-lg-3 control-label">Jabatan:</label>
+          <label class="col-lg-3 control-label">Position:</label>
           <div class="col-lg-8">
             @if ($user->jabatan == 'member')
               <input class="form-control" name="jabatan" value="{{$user->jabatan}}" type="text" disabled>
               @else
             <select class="form-control" name="jabatan" required="">
               <option value="{{$user->jabatan}}">{{$user->jabatan}}</option>
-              <option value="" disabled>=============Pilih Jabatan============</option>
+              <option value="" disabled>=============Choose the Position============</option>
               <option value="owner">Owner</option>
               <option value="superadmin">Super Admin</option>
               <option value="petugas">Petugas</option>
@@ -64,13 +64,13 @@
         <a href="{{ route('user.index')}}" type="button" class="btn btn-default">Back</a>
         @else
         <div class="form-group">
-          <label class="col-md-3 control-label">Password Lama</label>
+          <label class="col-md-3 control-label">Old Password</label>
           <div class="col-md-8">
             <input class="form-control" name="password_lama"  type="password">
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-3 control-label">Password Baru</label>
+          <label class="col-md-3 control-label">New Password</label>
           <div class="col-md-8">
             <input class="form-control" name="password" type="password">
           </div>

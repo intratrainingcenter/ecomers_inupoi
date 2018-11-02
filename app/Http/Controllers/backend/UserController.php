@@ -77,8 +77,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $gambar = $request->file('foto');
-            $nm_file = $gambar->getClientOriginalName();
+      $image = $request->file('foto');
+            $nm_file = $image->getClientOriginalName();
             $request->file('foto')->move(public_path().'/image/', $nm_file);
       $user = User::find($id);
    if (Hash::check(request()->get('password_lama'), $user->password)) {
@@ -106,7 +106,7 @@ class UserController extends Controller
     {
       $user = user::findOrFail($id);
       // dd($user);
-      $gambar = $request->file('foto');
+      $image = $request->file('foto');
       $nm_file = $request->image;
       unlink(public_path('image'.DIRECTORY_SEPARATOR.$nm_file));
       $user->delete();

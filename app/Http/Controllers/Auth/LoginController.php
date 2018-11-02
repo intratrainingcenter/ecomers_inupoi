@@ -82,10 +82,10 @@ class LoginController extends Controller
     public function logout(Request $request) {
       if (Auth::user()->jabatan == 'member') {
         Auth::logout();
-        return redirect('/Inupoi');
+        return redirect('/');
       }else {
         Auth::logout();
-        return redirect('/');
+        return redirect('/admin');
       }
     }
 

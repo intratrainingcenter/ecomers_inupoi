@@ -38,12 +38,12 @@ $(function() {
                  <div class="alert alert-info alert-dismissable">
                    <a class="panel-close close" data-dismiss="alert">×</a>
                    <i class="fa fa-user"></i>
-                    Halaman <strong>Profil</strong> Data User
+                    Member Data <strong>Profile</strong> Page
                  </div>
                  <h3>Informasi Pribadi  {{Auth::user()->name}}</h3>
                                 <input type="hidden" name="id" value="{{$user->id}}" class="form-control"/>
                    <div class="form-group">
-                     <label class="col-lg-3 control-label">Nama:</label>
+                     <label class="col-lg-3 control-label">Name:</label>
                      <div class="col-lg-8">
                        <input class="form-control" name="name" value="{{$user->name}}" type="text" disabled>
                      </div>
@@ -55,10 +55,9 @@ $(function() {
                      </div>
                    </div>
                    <div class="form-group">
-                     <label class="col-lg-3 control-label">Jabatan:</label>
+                     <label class="col-lg-3 control-label">Position:</label>
                      <div class="col-lg-8">
                        <input class="form-control" name="jabatan" value="{{$user->jabatan}}" type="text" disabled>
-
                      </div>
                    </div>
       </form>
