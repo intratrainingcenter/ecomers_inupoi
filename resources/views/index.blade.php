@@ -103,30 +103,10 @@
 <script>
 $(function() {
   $('#example').DataTable();
- 
+
 });
 
 </script>
-  {{-- onesignal --}}
-<link rel="manifest" href="/manifest.json" />
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-<script>
-  var OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "60fe8115-2762-4d5f-8252-da2d4689e188",
-      autoRegister: false,
-      notifyButton: {
-        enable: true,
-      },
-      allowLocalhostAsSecureOrigin: true,
-    });
-  });
-</script>
-  {{-- end onesignal --}}
-
-     
-
 @section('someJS')
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

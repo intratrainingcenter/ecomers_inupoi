@@ -72,7 +72,7 @@ $(function() {
       <div class="inner">
         <h3>{{$jenis_barang}}</h3>
 
-        <p>Number of Product Types</p>
+        <p>Total of Product Types</p>
       </div>
       <div class="icon">
         <i class="fa fa-database"></i>
