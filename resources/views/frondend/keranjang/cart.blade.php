@@ -14,21 +14,28 @@
 			</div>
 				
 			<div class="header-cart-content flex-w js-pscroll">
-				<ul class="header-cart-wrapitem w-full">
+				<ul class="header-cart-wrapitem w-full" id="minicart">
 			@foreach ($cart as $carts)
 					
+						<form action="{{Route('fcart.destroy',['id'=>$carts->kode_produk])}}" method="POST">
+						@csrf @method('DELETE')
+						<button type="submit" class="fa fa-close">
+						</button>
+						</form>		
+
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
 							<img src="{{Storage::url($carts->gambar)}}" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+							
+						<span href="" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
 								{{$carts->nama_produk}}
-							</a>
+						</span>
 
 							<span class="header-cart-item-info">
-									{{"$.".number_format($carts->harga)}}
+								{{$carts->jumlah}} = {{"$.".number_format($carts->harga)}}
 							</span>
 						</div>
 					</li>
