@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\backend;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\produk;
 use App\kategori;
 use App\keranjang;
 use App\diskon;
+use App\setting;
 use Validator, Input, Redirect;  
 
 use Illuminate\Http\Request;
@@ -16,11 +18,31 @@ class ProdukController extends Controller
     
     public function index()
     {
-        $item = produk::orderBy('created_at', 'desc')->get();;
+        $item = produk::orderBy('created_at', 'desc')->get();
         $category = kategori::all();
+        $setting = setting::all();
         $discount = diskon::all();
 
-        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount]);
+        $settings = DB::table('settings')
+        ->select('min_stock')
+        ->get('min_stock');
+        
+        $product = DB::table('produks')
+        ->select('stok')
+        ->get('stok');
+
+        $code = produk::orderBy('id','desc')->first();
+        if($code == NULL)
+        {
+            $number = 'BR' . sprintf('%03d',intval(0)+1);
+        }
+        else
+        {
+            $no_check = $code->id;
+            $number = 'BR' . sprintf('%03d',intval($no_check)+1);
+        }
+        
+        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount,'setting'=>$setting],compact('number'));
     }
 
    
@@ -32,7 +54,6 @@ class ProdukController extends Controller
    
     public function store(Request $request)
     {
-      
         $validator = Validator::make($request->all(), [
             
             'kode_produk'       => 'required|max:20',
@@ -72,7 +93,6 @@ class ProdukController extends Controller
                 'harga'             => $request->harga,
                 'stok'              => $request->stok,
                 'rating'            => '0',
-                'favorite'          => '0',
                 'deskripsi_produk'  => $request->deskripsi_produk,
                 'gambar'            => $path,
                 'gambar_belakang'   => $path2,
@@ -221,34 +241,5 @@ class ProdukController extends Controller
         Storage::delete($image_path2);
         $data->delete();
         return redirect('barang')->with('success','Success');
-    }
-
-    public function addfavorite($id)
-    {
-        $update = produk::where('kode_produk', $id)->first();
-        // dd($update);
-        $update->update([
-            'favorite'  =>  $update->favorite + 1
-        ]);
-
-        return('success');
-    }
-
-    public function removefavorite($id)
-    {
-        $update = produk::where('kode_produk', $id)->first();
-        // dd($update);
-        $update->update([
-            'favorite'  =>  $update->favorite - 1
-        ]);
-
-        return('success');
-    }
-
-    public function countfavorite()
-    {
-        $countfavorit = produk::count('favorite');
-
-        return $countfavorit;
     }
 }
