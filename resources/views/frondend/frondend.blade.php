@@ -722,10 +722,14 @@
 				ps.update();
 			})
 		});
+
+		
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
-	<script src="{{asset('js/favorit.js')}}"></script>
-
+	<script src="{{asset('js/cart.js')}}"></script>
+	<script>
+		var storge = "{{storage::url('')}}";
+		</script>
 </body>
 </html>

@@ -12,24 +12,40 @@ use App\diskon;
 use App\setting;
 use Validator, Input, Redirect;  
 
-
-class FrontCartController extends Controller
+class FrontdetailController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
+       
+        $data = DB::table('produks')
+        ->select('*')
+        ->where('kode_produk',$request->kode_produk)
+        ->get();
+    
+        $cart = DB::table('keranjangs')
+        ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+        ->select('produks.gambar','keranjangs.*')
+        ->get();
 
+        $purchases = DB::table('keranjangs')
+        ->sum('keranjangs.harga');
+
+        $related = produk::orderBy('created_at', 'desc')->get();
+     
+
+     return view('frondend.detailproduk',['data'=>$data,'related'=>$related,'count'=>$count,
+                'cart'=>$cart,'purchases'=>$purchases]);
     }
 
-  
+
     public function create()
     {
-        
+        //
     }
+
 
     public function store(Request $request)
     {
-      
         $validator = Validator::make($request->all(), [
             
             'kode_produk'       => 'required|max:20',
@@ -42,14 +58,13 @@ class FrontCartController extends Controller
 
         if ($validator->fails())
         {  
-            return redirect('fpro')->with('Fail', 'the size has not been filled');
+            return redirect()->route('fpro.edit', ['id' => $request->kode_produk])->with('Fail', 'the size has not been filled');
         }
         $cek = keranjang::where('kode_produk',$request->kode_produk)->doesntExist();
        
         if($cek)
         { 
             $cek2 = produk::where('ukuran',$request->ukuran)->where('nama_produk',$request->nama_produk)->count();
-            
             if($cek2 == 1)
             {
                 $create = keranjang::create([
@@ -60,66 +75,61 @@ class FrontCartController extends Controller
                     'harga'             => ($request->harga*$request->total),
     
                     ]);
-                    return redirect('fpro')->with('success','Success add to Cart');
+                    return redirect()->route('fpro.edit', ['id' => $request->kode_produk])->with('success','Success add to Cart');
             }
             else
             {
-                return redirect('fpro')->with('Fail','Stock for this Size is not Available');
+                return redirect()->route('fpro.edit', ['id' => $request->kode_produk])->with('Fail','Stock for this Size is not Available');
             }        
         }
         else
         {
+
             $cek2 = produk::where('ukuran',$request->ukuran)->where('nama_produk',$request->nama_produk)->count();
-            
             if($cek2 == 1)
             {
                 $cek3 = keranjang::select('jumlah')->where('kode_produk',$request->kode_produk)->get();
                 foreach($cek3 as $ceking){}
                 $cek4 = keranjang::select('harga')->where('kode_produk',$request->kode_produk)->get();            
                 foreach($cek4 as $ceking2){}
-                    $create = keranjang::where('kode_produk',$request->kode_produk)->update([
-                        
-                        'jumlah'            => ($ceking->jumlah+$request->total),
-                        'harga'             => ($request->total*$request->harga+$ceking2->harga),
-                        
-                        ]);
-                    return redirect('fpro')->with('success','Success add to Cart');
+                $create = keranjang::where('kode_produk',$request->kode_produk)->update([
+                    
+                    'jumlah'            => ($ceking->jumlah+$request->total),
+                    'harga'             => ($request->total*$request->harga+$ceking2->harga),
+                    
+                    ]);
+                return redirect()->route('fpro.edit', ['id' => $request->kode_produk])->with('success','Success add to Cart');
             }
             else
             {
-                return redirect('fpro')->with('Fail','Stock for this Size is not Available');
-            }
-             
+                return redirect()->route('fpro.edit', ['id' => $request->kode_produk])->with('Fail','Stock for this Size is not Available');
+            }        
             
 
         }
+    }
 
+
+    public function show($id)
+    {
+        //
     }
 
     
-    public function show($id)
-    {
-       
-    }
-
-
     public function edit($id)
     {
-        
+        //
     }
 
 
     public function update(Request $request, $id)
     {
-        
+        //
     }
 
 
     public function destroy($id)
     {
-        $data = keranjang::where('kode_produk',$id)->first();
-        $data->delete();
-        return redirect('fpro')->with('success','Success Delete item on Cart');
-
+        //
     }
 }

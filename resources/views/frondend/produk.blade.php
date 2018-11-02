@@ -146,6 +146,10 @@
 		        mainClass: 'mfp-fade'
 		    });
 		});
+
+		$ (document).ready(function(){
+    console.log('Ready!!')
+})
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/isotope/isotope.pkgd.min.js')}}"></script>

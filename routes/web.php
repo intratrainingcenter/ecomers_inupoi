@@ -61,6 +61,11 @@ Route::resource('fpro', 'frondend\FrontProductController');
 Route::resource('Inupoi', 'frondend\FrondendController');
 <<<<<<< HEAD
 Route::resource('fcart', 'frondend\FrontCartController');
+Route::resource('fdet', 'frondend\FrontdetailController');
+
+
+//cart JS
+Route::get('decart', 'frondend\FrontProductController@showcart');
 
 
 =======
