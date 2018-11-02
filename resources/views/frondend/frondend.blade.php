@@ -7,8 +7,6 @@
 <!--===============================================================================================-->
 	<link rel="manifest" href="{{asset('/manifest.json')}}" />
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/favicon.png')}}"/>
-<!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/log.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -281,8 +279,6 @@
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
 	<script src="{{asset('js/favorit.js')}}"></script>
 	<script src="{{asset('js/cart.js')}}"></script>
-	<script>
-		var storge = "{{storage::url('')}}";
-		</script>
+
 </body>
 </html>

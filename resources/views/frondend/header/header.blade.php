@@ -63,12 +63,12 @@
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
 							<i class="zmdi zmdi-search"></i>
 						</div>
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{$count}}">
 
-						<a href="{{Route('Inupoi.Transaksi')}}" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="2">
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{$count}}">
 							<i class="zmdi zmdi-shopping-cart"></i>
+				
 						</div>
-						
+
 
 						<div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>
@@ -175,7 +175,7 @@
 						<button type="submit" class="flex-c-m trans-04">
 							<i class="zmdi zmdi-search"></i>
 						</button>
-						
+
 				</form>
 			</div>
 		</div>
