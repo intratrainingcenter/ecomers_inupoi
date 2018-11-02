@@ -15,6 +15,7 @@ use Redirect;
 use Session;
 use Validator;
 use App\Mailfile;
+use App\about;
 class FrondendController extends Controller
 {
     /**
@@ -133,7 +134,8 @@ class FrondendController extends Controller
 
     public function about()
     {
-        return view('frondend.about');
+      $data = about::all();
+      return view('frondend.about.about', compact('data'));
     }
 
     public function produk()

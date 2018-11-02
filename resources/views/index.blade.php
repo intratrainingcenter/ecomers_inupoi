@@ -16,6 +16,28 @@
   {{-- onesignal --}}
   {{-- end onesignal --}}
 
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBdrn8yxUdSwVw1D7873t8yE8isjsLPgOs",
+    authDomain: "ecomersinupoi-9d3db.firebaseapp.com",
+    databaseURL: "https://ecomersinupoi-9d3db.firebaseio.com",
+    projectId: "ecomersinupoi-9d3db",
+    storageBucket: "ecomersinupoi-9d3db.appspot.com",
+    messagingSenderId: "513365239353"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+  var starCountRef = database.ref('object');
+  starCountRef.on('value', function(snapshot) {
+    console.log(snapshot.val());
+  });
+
+</script>
+
   <style>
   hr
 {

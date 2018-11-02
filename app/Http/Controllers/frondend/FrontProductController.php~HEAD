@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\frondend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-use App\laporanTransaksi;
+use App\produk;
+use App\kategori;
 
-class LapTransaksiController extends Controller
+class FrontProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +15,10 @@ class LapTransaksiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $data = laporanTransaksi::all();
-        
-        $menit = now()->addMinutes(10080);
-
-        $value = Cache::remember('res', $menit, function(){
-            return DB::table('laporan_transaksis')->get();
-        });
-        $get = Cache::get('res');
-
-        return view('content.LapTransaksi.laporanTransaksi', compact('data'));
+    {   
+        $category = kategori::all();
+        $data = produk::all();
+        return view('frondend.produk',['data'=>$data,'category'=>$category]);
     }
 
     /**
