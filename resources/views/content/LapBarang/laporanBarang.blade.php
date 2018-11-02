@@ -55,20 +55,24 @@
       <table id="example" class="table table-bordered" style="width:100%">
       <thead>
         <tr>
-<<<<<<< HEAD
+          <th class="column-title">#</th>
+          <th class="column-title">Code Product</th>
+          <th class="column-title">Name Product</th>
+          <th class="column-title">Stock</th>
+          <th class="column-title">Price</th>
           <th class="column-title">No</th>
           <th class="column-title">Kode Transaksi</th>
           <th class="column-title">Kode Barang</th>
           <th class="column-title">Barang Keluar</th>
           <th class="column-title">Stok Akhir</th>
           <th class="column-title">Tanggal Transaksi</th>
-=======
+=========
           <th class="column-title">#</th>
           <th class="column-title">Code Product</th>
           <th class="column-title">Name Product</th>
           <th class="column-title">Stock</th>
           <th class="column-title">Price</th>
->>>>>>> ramadhani
+>>>>>>>>> Temporary merge branch 2
           <th class="column-title">Action</th>
         </tr>
       </thead>

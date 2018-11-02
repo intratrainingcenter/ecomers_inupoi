@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
 use Illuminate\Http\Request;
-=======
+=========
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\setting;
 use Validator, Input, Redirect;  
 
->>>>>>> ramadhani
+use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
@@ -22,12 +22,10 @@ class SettingController extends Controller
     public function index()
     {
 <<<<<<< HEAD
-        return view('content.setting.setting');
-=======
         $setting = setting::all();
         $cek = setting::all()->count();
         return view('content.setting.setting',['setting'=>$setting,'cek'=>$cek]);
->>>>>>> ramadhani
+        return view('content.setting.setting');
         //
     }
 
@@ -49,17 +47,8 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
         //
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-=======
         $validator = Validator::make($request->all(), [
             
             'name'       => 'required|max:20',
@@ -91,7 +80,15 @@ class SettingController extends Controller
         }
     }
 
->>>>>>> ramadhani
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         //
@@ -117,9 +114,7 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
         //
-=======
         // dd($request);
         $validator = Validator::make($request->all(), [
             
@@ -164,7 +159,7 @@ class SettingController extends Controller
             }
           
         }
->>>>>>> ramadhani
+        //
     }
 
     /**

@@ -31,7 +31,7 @@ class MyMail extends Mailable
      */
     public function build()
     {
-        return $this->from('InupiCorp@gmail.com')
+        return $this->from('InupiCorp@gmail.com');
               ->view('frondend.contentPage.mymail');
     }
 }

@@ -133,6 +133,8 @@
                                                         </div>
                                                         <input type="hidden" name="kode_produk" value="{{$item->kode_produk}}">
                                                         <input type="hidden" name="nama_produk" value="{{$item->nama_produk}}">
+                                                        {{-- @if(Auth::user( ))
+                                                        @endif --}}
                                                         <input type="hidden" name="harga" value="{{$item->harga}}">
                                                         @if(Auth::user())
                                                         <input type="hidden" name="user" value="{{Auth::user()->id}}">                                                        

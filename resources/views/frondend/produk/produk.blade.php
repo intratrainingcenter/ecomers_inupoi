@@ -1,6 +1,5 @@
 @foreach($data as $item)
 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$item->kode_kategori}}">
-<<<<<<< HEAD
 	<!-- Block2 -->
 	<div class="block2">
 		<div class="block2-pic hov-img1">
@@ -26,7 +25,6 @@
 				<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 					<img class="icon-heart1 dis-block trans-04" src="{{asset('cozastore/images/icons/icon-heart-01.png')}}" alt="ICON">
 					<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('cozastore/images/icons/icon-heart-02.png')}}" alt="ICON">
-=======
 		<!-- Block2 -->
 		<div class="block2">
 			<div class="block2-pic hov-img1">
@@ -52,23 +50,11 @@
 							<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 								<img class="icon-heart1 dis-block trans-04" src="{{asset('cozastore/images/icons/icon-heart-01.png')}}" alt="ICON">
 								<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('cozastore/images/icons/icon-heart-02.png')}}" alt="ICON">
->>>>>>> ramadhani
 				</a>
 			</div>
 		</div>
 	</div>
 </div>
-<<<<<<< HEAD
-@endforeach
-=======
-
-
-
 @endforeach
 
 @extends('frondend.produk.modal')
-
-
-
-
->>>>>>> ramadhani
