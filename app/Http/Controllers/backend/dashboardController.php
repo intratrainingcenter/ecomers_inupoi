@@ -4,6 +4,8 @@ namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\produk;
+use App\User;
 
 class dashboardController extends Controller
 {
@@ -14,7 +16,13 @@ class dashboardController extends Controller
      */
     public function index()
     {
-        return view('content.dashboard');
+        $produk = produk::sum('stok');
+        $jenis_barang = produk::count('stok');
+        $user = User::count('name');
+        $pengunjung = User::where('jabatan', 'member')->count();
+        // dd($pengunjung);
+
+        return view('content.dashboard', compact('produk','user','pengunjung','jenis_barang'));
     }
 
     /**

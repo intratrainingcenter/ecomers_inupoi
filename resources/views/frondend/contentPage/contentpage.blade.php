@@ -22,7 +22,7 @@
 							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="email" value="{{ Auth::guard('web')->user()->email }}" readonly>
 							<img class="how-pos4 pointer-none" src="{{asset('cozastore/images/icons/icon-email.png')}}" alt="ICON">
 							@else
-							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="email">
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="email" placeholder="Enter Your Email">
 							<img class="how-pos4 pointer-none" src="{{asset('cozastore/images/icons/icon-email.png')}}" alt="ICON">
 							@endif
 						</div>

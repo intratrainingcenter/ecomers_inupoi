@@ -4,6 +4,8 @@ namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use App\laporanKeuangan;
 
 class LapKeuanganController extends Controller
@@ -16,8 +18,17 @@ class LapKeuanganController extends Controller
     public function index()
     {
         $data = laporanKeuangan::all();
+        $totbi = laporanKeuangan::sum('total_biaya');
 
-        return view('content.LapKeuangan.laporanKeuangan', compact('data'));
+        $menit = now()->addMinutes(10080);
+
+        $value = Cache::remember('res',$menit, function () {
+            return DB::table('laporan_keuangans')->get();
+        });
+
+        $get = Cache::get('res');
+
+        return view('content.LapKeuangan.laporanKeuangan', compact('data','totbi'));
     }
 
     /**
@@ -92,6 +103,16 @@ class LapKeuanganController extends Controller
         $sampai = $request->get('sampai');
 
         $data = laporanKeuangan::whereBetween('tgl_transaksi', [$dari, $sampai])->get();
-        return view('content.LapKeuangan.laporanKeuangan', ['data'=>$data]);
+        $totbi = laporanKeuangan::whereBetween('tgl_transaksi', [$dari, $sampai])->sum('total_biaya');
+
+        return view('content.LapKeuangan.laporanKeuangan', compact('data','totbi'));
+    }
+
+    public function subtotal()
+    {
+        $count = laporanKeuangan::sum('total_biaya');
+        // dd($count);
+
+        return $count;
     }
 }

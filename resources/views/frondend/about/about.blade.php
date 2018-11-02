@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Product</title>
+	<title>About</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/log.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -16,29 +16,21 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/animate/animate.css')}}">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/css-hamburgers/hamburgers.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/animsition/css/animsition.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/select2/select2.min.css')}}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/daterangepicker/daterangepicker.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/slick/slick.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/MagnificPopup/magnific-popup.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/css/main.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/imgproduk.css')}}">
-
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
-	
+
 	<!-- Header -->
 	<header class="header-v4">
 		@include('frondend.header.header')
@@ -46,46 +38,70 @@
 
 	<!-- Cart -->
 	@include('frondend.keranjang.cart')
-	
-	<!-- Product -->
-	<div class="bg0 m-t-23 p-b-140">
-		<div class="container">
-			<div class="flex-w flex-sb-m p-b-52">
-				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-<<<<<<< HEAD
-				<form action="{{Route('fpro.index')}}">
-						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-							All Products
-						</button>
-						{{ csrf_field() }}
-				</form>
-=======
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
-					</button>
->>>>>>> login
 
-					@foreach ($category as $item)
-						
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{$item->kode_kategori}}">
-						{{$item->nama_kategori}}
-					</button>
-					
-					@endforeach
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url({{asset('cozastore/images/bg-01.jpg')}});">
+		<h2 class="ltext-105 cl0 txt-center">
+			About
+		</h2>
+	</section>
+
+
+	<!-- Content page -->
+	<section class="bg0 p-t-75 p-b-120">
+		<div class="container">
+			@foreach($data as $our)
+			<div class="row p-b-148">
+				<div class="col-md-7 col-lg-8">
+					<div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+						<h3 class="mtext-111 cl2 p-b-16">
+							Our Story
+						</h3>
+						<div class="bor16 p-l-29 p-b-9 m-t-22">
+							<p class="stext-114 cl6 p-r-40 p-b-11">
+							{{$our->deskripsi}}
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+					<div class="how-bor1 ">
+						<div class="hov-img0">
+							<img src="{{ asset('image/'. $our->image) }}" alt="IMG">
+						</div>
+					</div>
 				</div>
 			</div>
+			@endforeach
 
-			<div class="row isotope-grid">
-			@include('frondend.produk.produk')
-			</div>
+			@foreach($data as $our)
+			<div class="row">
+				<div class="order-md-2 col-md-7 col-lg-8 p-b-30">
+					<div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
+						<h3 class="mtext-111 cl2 p-b-16">
+							Our Mission
+						</h3>
+						<div class="bor16 p-l-29 p-b-9 m-t-22">
+							<p class="stext-114 cl6 p-r-40 p-b-11">
+							{{$our->deskripsi_mission}}
+							</p>
+						</div>
+					</div>
+				</div>
 
-			<!-- Load more -->
-			<div class="flex-c-m flex-w w-full p-t-45">
-				{{ $data->links() }}
+				<div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
+					<div class="how-bor2">
+						<div class="hov-img0">
+							<img src="{{ asset('image/'. $our->image_mission) }}" alt="IMG">
+						</div>
+					</div>
+				</div>
 			</div>
+			@endforeach
 		</div>
-	</div>
-		
+	</section>
+
+
 
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
@@ -100,12 +116,7 @@
 		</span>
 	</div>
 
-	<!-- Modal1 -->
-	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-		@include('frondend.modal.modal')
-	</div>
-
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/animsition/js/animsition.min.js')}}"></script>
@@ -123,70 +134,7 @@
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="{{asset('cozastore/vendor/daterangepicker/moment.min.js')}}"></script>
-	<script src="{{asset('cozastore/vendor/daterangepicker/daterangepicker.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('cozastore/vendor/slick/slick.min.js')}}"></script>
-	<script src="{{asset('cozastore/js/slick-custom.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('cozastore/vendor/parallax100/parallax100.js')}}"></script>
-	<script>
-        $('.parallax100').parallax100();
-	</script>
-<!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
-	<script>
-		$('.gallery-lb').each(function() { // the containers for all your galleries
-			$(this).magnificPopup({
-		        delegate: 'a', // the selector for gallery item
-		        type: 'image',
-		        gallery: {
-		        	enabled:true
-		        },
-		        mainClass: 'mfp-fade'
-		    });
-		});
-	</script>
-<!--===============================================================================================-->
-	<script src="{{asset('cozastore/vendor/isotope/isotope.pkgd.min.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('cozastore/vendor/sweetalert/sweetalert.min.js')}}"></script>
-	<script>
-		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
-			e.preventDefault();
-		});
-
-		$('.js-addwish-b2').each(function(){
-			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-b2');
-				$(this).off('click');
-			});
-		});
-
-		$('.js-addwish-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-detail');
-				$(this).off('click');
-			});
-		});
-
-		/*---------------------------------------------*/
-
-		$('.js-addcart-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
-	
-	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
 	<script>

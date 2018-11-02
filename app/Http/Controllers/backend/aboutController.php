@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use App\kategori;
+use App\about;
 
-class KategoriController extends Controller
+class aboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,17 +17,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $data = kategori::all();
-
-        // $minutes = now()->addMinutes(1);
-
-        // $value = Cache::remember('kategoris',$minutes, function () {
-        //     return DB::table('kategoris')->get();
-        // });
-
-        // $get = Cache::get('kategoris');     
-
-        return view('content.kategori.kategori', compact('data'));
+        $data = about::all();
+        return view('content.about.about', compact('data'));
     }
 
     /**
@@ -37,7 +28,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -48,20 +39,7 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        $cek = kategori::where('kode_kategori',$request->kode_kategori)->doesntExist();
-
-        if($cek == true){
-            $table = new kategori;
-            $table->kode_kategori   =   $request->kode_kategori;
-            $table->nama_kategori   =   $request->nama_kategori;
-            $table->orderBy('id DESC');
-            $table->save();
-
-            return redirect('kategori')->with('success','Add new data success');
-        }else{
-            return redirect('kategori')->with('edit','Kode Kategori is already exists');
-        }
+        //
     }
 
     /**
@@ -95,13 +73,14 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = kategori::find($id);
-        $update->update([
-            'kode_kategori' =>  $request->kode_kategori,
-            'nama_kategori' =>  $request->nama_kategori
-        ]);
-
-        return redirect('kategori')->with('success','Update data success');
+      $gambar = $request->file('image');
+      $nm_file = $gambar->getClientOriginalName();
+      $request->file('image')->move(public_path().'/image/', $nm_file);
+      $data = about::find($id);
+      $data->image = $nm_file;
+      $data->deskripsi = $request->deskripsi;
+     $data->save();
+    return redirect()->route('about.index')->with('success', 'Berhasil Mengedit Data');
     }
 
     /**
@@ -112,11 +91,18 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
-        $hapus = kategori::find($id);
-        // dd($hapus);
-        $hapus->delete();
+        //
+    }
 
-        return redirect('kategori')->with('success','Delete data success');
+    public function update_mission(Request $request, $id)
+    {
+      $gambar = $request->file('image_mission');
+      $nm_file = $gambar->getClientOriginalName();
+      $request->file('image_mission')->move(public_path().'/image/', $nm_file);
+      $data = about::find($id);
+      $data->image_mission = $nm_file;
+      $data->deskripsi_mission = $request->deskripsi_mission;
+     $data->save();
+    return redirect()->route('about.index')->with('success', 'Berhasil Mengedit Data');
     }
 }

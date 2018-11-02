@@ -633,18 +633,56 @@
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/sweetalert/sweetalert.min.js')}}"></script>
 	<script>
-		$('.js-addwish-b2').on('click', function(e){
-			e.preventDefault();
+		function countwishlist(){
+			$.ajax({
+				headers:{
+					'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content'),
+				},
+				method:'get',
+				url:location.origin+'/Inupoi/CountFavorite/',
+				success:function(data){
+					$('.js-show-cart').attr('data-notify',data)
+				}
+			});
+		}
+
+		$(document).ready(function() {
+			countwishlist();
 		});
 
-		$('.js-addwish-b2').each(function(){
-			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
+		$('.js-addwish-b2').on('click', function(e){
+			e.preventDefault();
+			let nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			let kodeproduk = $(this).attr('kdProduk');
+			if($(this).parent().find('.js-addedwish-b2').length == 0){
+				$.ajax({
+					headers:{
+						'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content'),
+					},
+					method:'get',
+					url:location.origin+'/Inupoi/Favorite/'+kodeproduk,
+					success:function(data){
+						swal(nameProduct, "is added to wishlist !", "success");
+					}
+				});
 
+				countwishlist();
 				$(this).addClass('js-addedwish-b2');
-				$(this).off('click');
-			});
+			}else{
+				$.ajax({
+					headers:{
+						'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content'),
+					},
+					method:'get',
+					url:location.origin+'/Inupoi/RemoveFavorite/'+kodeproduk,
+					success:function(data){
+						swal(nameProduct, "is remove to wishlist !", "success");
+					}
+				});
+
+				countwishlist();
+				$(this).removeClass('js-addedwish-b2');
+			}
 		});
 
 		$('.js-addwish-detail').each(function(){
@@ -687,6 +725,7 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
+	<script src="{{asset('js/favorit.js')}}"></script>
 
 </body>
 </html>

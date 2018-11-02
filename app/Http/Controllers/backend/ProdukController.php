@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\backend;
 use Illuminate\Support\Facades\Storage;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
+=======
+>>>>>>> login
 use App\Http\Controllers\Controller;
 use App\produk;
 use App\kategori;
 use App\keranjang;
 use App\diskon;
+<<<<<<< HEAD
 use App\setting;
+=======
+>>>>>>> login
 use Validator, Input, Redirect;  
 
 use Illuminate\Http\Request;
@@ -18,6 +24,7 @@ class ProdukController extends Controller
     
     public function index()
     {
+<<<<<<< HEAD
         $item = produk::orderBy('created_at', 'desc')->get();
         $category = kategori::all();
         $setting = setting::all();
@@ -43,6 +50,13 @@ class ProdukController extends Controller
         }
         
         return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount,'setting'=>$setting],compact('number'));
+=======
+        $item = produk::orderBy('created_at', 'desc')->get();;
+        $category = kategori::all();
+        $discount = diskon::all();
+
+        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount]);
+>>>>>>> login
     }
 
    
@@ -54,6 +68,10 @@ class ProdukController extends Controller
    
     public function store(Request $request)
     {
+<<<<<<< HEAD
+=======
+      
+>>>>>>> login
         $validator = Validator::make($request->all(), [
             
             'kode_produk'       => 'required|max:20',
@@ -93,6 +111,10 @@ class ProdukController extends Controller
                 'harga'             => $request->harga,
                 'stok'              => $request->stok,
                 'rating'            => '0',
+<<<<<<< HEAD
+=======
+                'favorite'          => '0',
+>>>>>>> login
                 'deskripsi_produk'  => $request->deskripsi_produk,
                 'gambar'            => $path,
                 'gambar_belakang'   => $path2,
@@ -242,4 +264,36 @@ class ProdukController extends Controller
         $data->delete();
         return redirect('barang')->with('success','Success');
     }
+<<<<<<< HEAD
+=======
+
+    public function addfavorite($id)
+    {
+        $update = produk::where('kode_produk', $id)->first();
+        // dd($update);
+        $update->update([
+            'favorite'  =>  $update->favorite + 1
+        ]);
+
+        return('success');
+    }
+
+    public function removefavorite($id)
+    {
+        $update = produk::where('kode_produk', $id)->first();
+        // dd($update);
+        $update->update([
+            'favorite'  =>  $update->favorite - 1
+        ]);
+
+        return('success');
+    }
+
+    public function countfavorite()
+    {
+        $countfavorit = produk::count('favorite');
+
+        return $countfavorit;
+    }
+>>>>>>> login
 }
