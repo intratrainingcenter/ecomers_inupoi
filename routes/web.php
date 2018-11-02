@@ -17,10 +17,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('Inupoi')->group(function(){
 	Route::get('/Contact', 'frondend\FrondendController@contact')->name('Inupoi.Contact');
   Route::post('/sendmail', 'frondend\FrondendController@email')->name('Inupoi.sendmail');
-<<<<<<< HEAD
-=======
-
->>>>>>> ramadhani
 	Route::get('/About', 'frondend\FrondendController@about')->name('Inupoi.About');
 	Route::get('/Produk', 'frondend\FrondendController@produk')->name('Inupoi.Produk');
 	Route::get('/Transaksi', 'frondend\FrondendController@transaksi')->name('Inupoi.Transaksi');
@@ -54,22 +50,16 @@ Route::resource('setting','backend\SettingController')->middleware('auth');
 Route::resource('user','backend\UserController')->middleware('auth');
 Route::resource('userprofile','backend\UserprofileController')->middleware('auth');
 
-// frontEnd
 Route::resource('fpro', 'frondend\FrontProductController');
 Route::resource('Inupoi', 'frondend\FrondendController');
-<<<<<<< HEAD
 
 Route::prefix('laporankeuangan')->group(function(){
 	Route::get('/Filter', 'backend\LapKeuanganController@filter')->name('Filter.laporankeuangan');
 	Route::get('/SubTotal', 'backend\LapKeuanganController@subtotal');
 });
-=======
 Route::resource('fcart', 'frondend\FrontCartController');
 Route::resource('fdet', 'frondend\FrontdetailController');
 
 
 //cart JS
 Route::get('decart', 'frondend\FrontProductController@showcart');
-
-
->>>>>>> ramadhani

@@ -15,10 +15,7 @@ use Redirect;
 use Session;
 use Validator;
 use App\Mailfile;
-<<<<<<< HEAD
 use App\about;
-=======
->>>>>>> ramadhani
 class FrondendController extends Controller
 {
     /**
@@ -161,11 +158,11 @@ class FrondendController extends Controller
         ->sum('keranjangs.harga');
 
         $count = keranjang::count();
-    
-        
+
+
         return view('frondend.transaksi',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
                 'count'=>$count]);
-       
+
     }
 
     public function detail()
