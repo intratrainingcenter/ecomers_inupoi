@@ -111,7 +111,7 @@ class FrondendController extends Controller
     {
         $user = User::get();
         // dd($user);
-        return View('frondend/contentPage/contentPage',compact('user'));
+        return View('frondend/contentPage/contentpage',compact('user'));
     }
     public function email(Request $request)
     {

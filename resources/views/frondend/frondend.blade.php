@@ -267,8 +267,8 @@
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
 	<script src="{{asset('js/cart.js')}}"></script>
-	<script>
+	{{-- <script>
 		var storge = "{{storage::url('')}}";
-		</script>
+		</script> --}}
 </body>
 </html>
