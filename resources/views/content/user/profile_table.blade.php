@@ -29,6 +29,8 @@
                 @endif
                 @if ($users->jabatan == 'owner')
                 <p>=====</p>
+                @elseif ($users->jabatan == 'member')
+                <p>=====</p>
                 @else
                 <form action="{{route('user.destroy',$users->id,$users->foto)}}" method="post" enctype="multipart/form-data">
                   <button  type="submit" onclick=" return confirm('Anda Yakin Menghapus Profile')" name="submit" class="btn btn-danger">

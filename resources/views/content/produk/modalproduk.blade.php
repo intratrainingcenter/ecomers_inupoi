@@ -169,6 +169,7 @@
                             <label for="" class="col-sm-4 control-label">Code Category</label>
                             <div class="col-sm-8">
                               <select class="form-control" name="kode_kategori">
+                              <option value="{{$items->kode_kategori}}">{{$items->kode_kategori}}</option>
                                     @foreach($kategori as $in)
                                   <option value="{{$in->kode_kategori}}">{{$in->kode_kategori}} - {{$in->nama_kategori}}</option>
                                     @endforeach
