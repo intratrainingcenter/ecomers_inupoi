@@ -37,13 +37,12 @@
             <form  action="{{Route('barang.store')}}" method="post" enctype="multipart/form-data">
             <div class="modal-body">
                 <div class="box-body">
-                    <div class="form-group">
+                    <div class="form-group hidden">
                       <label for="kode_produk" class="col-sm-4 control-label">Code Product</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" name="kode_produk" id="kode_produk" placeholder="Code Product" required>
+                      <div class="col-sm-8"> 
+                      <input type="text" class="form-control" name="kode_produk" id="kode_produk" value="{{$number}}">
                       </div>
                     </div>
-                    <br><br>
                     <div class="form-group">
                         <label for="" class="col-sm-4 control-label">Code Category</label>
                         <div class="col-sm-8">
@@ -109,7 +108,7 @@
                               <textarea type="text" class="form-control" name='deskripsi_produk' id="deskripsi" placeholder="Deskripsi" required></textarea>
                             </div>
                           </div>
-                    <br><br><br>
+                    <br><br>
                     <div class="form-group">
                             <label for="exampleInputFile" class="col-sm-4 control-label">Image</label>
                             <div class="col-sm-4">
@@ -136,7 +135,7 @@
 
      @foreach ($item as $items)
 
-    <div class="modal fade" id="modal-hapus{{$items->kode_produk}}">
+    <div class="modal fade overlay-modal1" id="modal-hapus{{$items->kode_produk}}">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -171,6 +170,7 @@
                             <label for="" class="col-sm-4 control-label">Code Category</label>
                             <div class="col-sm-8">
                               <select class="form-control" name="kode_kategori">
+                              <option value="{{$items->kode_kategori}}">{{$items->kode_kategori}}</option>
                                     @foreach($kategori as $in)
                                   <option value="{{$in->kode_kategori}}">{{$in->kode_kategori}} - {{$in->nama_kategori}}</option>
                                     @endforeach

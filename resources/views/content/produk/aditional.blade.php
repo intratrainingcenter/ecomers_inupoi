@@ -8,7 +8,6 @@ setTimeout(function(){ $('.notif').hide(1000)},3000);
         
 
 function white() {
-  $('#kode_produk').val('');
 	$('#kode_kategori').val('');
 	$('#kode_diskon').val('');
 	$('#nama_produk').val('');
@@ -31,7 +30,7 @@ function white() {
             reader.onload = function (e) {
                 $('#image')
                     .attr('src', e.target.result)
-                    .height(60);
+                    .height(50);
             };
             reader.readAsDataURL(input.files[0]);
         }

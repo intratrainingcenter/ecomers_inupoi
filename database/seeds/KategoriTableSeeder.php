@@ -15,7 +15,7 @@ class KategoriTableSeeder extends Seeder
         DB::table('kategoris')->insert([
         	[
         		'id'			=>	'1',
-        		'kode_kategori'	=>	'BRG001',
+        		'kode_kategori'	=>	'KT001',
         		'nama_kategori'	=>	'Blood',
         		'created_at'	=>	Carbon::now()->format('Y-m-d H:i:s'),
         		'updated_at'	=>	Carbon::now()->format('Y-m-d H:i:s')

@@ -1,3 +1,4 @@
+
 <div class="wrap-header-cart js-panel-cart">
 		<div class="s-full js-hide-cart"></div>
 
@@ -11,57 +12,48 @@
 					<i class="zmdi zmdi-close"></i>
 				</div>
 			</div>
-			
+				
 			<div class="header-cart-content flex-w js-pscroll">
-				<ul class="header-cart-wrapitem w-full">
+				<ul class="header-cart-wrapitem w-full" id="minicart">
+			@foreach ($cart as $carts)
+					
+						<form action="{{Route('fcart.destroy',['id'=>$carts->kode_produk])}}" method="POST">
+						@csrf @method('DELETE')
+						<button type="submit" class="fa fa-close">
+						</button>
+						</form>		
+
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="{{asset('cozastore/images/item-cart-01.jpg')}}" alt="IMG">
+							<img src="{{Storage::url($carts->gambar)}}" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
-							</a>
+							
+						<span href="" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								{{$carts->nama_produk}}
+						</span>
 
 							<span class="header-cart-item-info">
-								1 x $19.00
+								{{$carts->jumlah}} = {{"$.".number_format($carts->harga)}}
 							</span>
 						</div>
 					</li>
 
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="{{asset('cozastore/images/item-cart-02.jpg')}}" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $39.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="{{asset('cozastore/images/item-cart-03.jpg')}}" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $17.00
-							</span>
-						</div>
-					</li>
+					@endforeach
 				</ul>
+				
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+						Total: {{"$. ".number_format($purchases)}}
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="{{Route('Inupoi.Transaksi')}}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Check Out
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -6,14 +6,30 @@
 					<div class="left-top-bar">
 						Free shipping for standard order over $100
 					</div>
+
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							Help & FAQs
+						</a>
+						@if (Auth::guard('web')->check())
+						<form action="{{ route('logout') }}" method="POST">
+						<a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
+							@csrf
+						</form>
+						@else
+						<a href="{{ url('Inupoi/google') }}" class="flex-c-m trans-04 p-lr-25">
+							Login &nbsp;<i class="fa fa-google"></i>oogle +
+						</a>
+						@endif
+					</div>
 				</div>
 			</div>
 
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
-					
-					<!-- Logo desktop -->		
-					<a href="#" class="logo">
+
+					<!-- Logo desktop -->
+					<a href="/Inupoi" class="logo">
 						<img src="{{asset('cozastore/images/icons/inupoi.png')}}" alt="IMG-LOGO">
 					</a>
 
@@ -25,7 +41,11 @@
 							</li>
 
 							<li>
-								<a href="{{Route('Inupoi.Produk')}}">Shop</a>
+								<a href="{{Route('fpro.index')}}">Shop</a>
+							</li>
+
+							<li>
+								<a href="{{Route('Inupoi.Transaksi')}}">transaction</a>
 							</li>
 
 							<li>
@@ -36,7 +56,7 @@
 								<a href="{{Route('Inupoi.Contact')}}">Contact</a>
 							</li>
 						</ul>
-					</div>	
+					</div>
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
@@ -44,7 +64,7 @@
 							<i class="zmdi zmdi-search"></i>
 						</div>
 
-						<a href="{{Route('Inupoi.Transaksi')}}" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="2">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</a>
 
@@ -53,12 +73,12 @@
 						</div>
 					</div>
 				</nav>
-			</div>	
+			</div>
 		</div>
 
 		<!-- Header Mobile -->
 		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
+			<!-- Logo moblie -->
 			<div class="logo-mobile">
 				<a href="{{asset('cozastore/index.html')}}"><img src="{{asset('cozastore/images/icons/logo-01.png')}}" alt="IMG-LOGO"></a>
 			</div>
@@ -103,7 +123,7 @@
 						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							My Account
+							Login
 						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
@@ -147,11 +167,13 @@
 					<img src="{{asset('cozastore/images/icons/icon-close2.png')}}" alt="CLOSE">
 				</button>
 
-				<form class="wrap-search-header flex-w p-l-15">
-					<button class="flex-c-m trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
+			<form action="{{Route('fpro.store')}}" method="POST" class="wrap-search-header flex-w p-l-15">
+					@csrf @method('post')
 					<input class="plh3" type="text" name="search" placeholder="Search...">
+						<button type="submit" class="flex-c-m trans-04">
+							<i class="zmdi zmdi-search"></i>
+						</button>
+						
 				</form>
 			</div>
 		</div>
