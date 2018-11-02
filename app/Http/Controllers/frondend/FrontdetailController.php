@@ -48,6 +48,7 @@ class FrontdetailController extends Controller
     {
         $validator = Validator::make($request->all(), [
             
+            'user       '       => 'required|max:20',
             'kode_produk'       => 'required|max:20',
             'nama_produk'       => 'required|max:20',
             'ukuran'            => 'required|max:5',
@@ -68,6 +69,7 @@ class FrontdetailController extends Controller
             if($cek2 == 1)
             {
                 $create = keranjang::create([
+                    'user       '       => $request->user,
                     'kode_produk'       => $request->kode_produk,
                     'nama_produk'       => $request->nama_produk,
                     'ukuran'            => $request->ukuran,   
