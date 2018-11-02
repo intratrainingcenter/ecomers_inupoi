@@ -134,6 +134,9 @@
                                                         <input type="hidden" name="kode_produk" value="{{$item->kode_produk}}">
                                                         <input type="hidden" name="nama_produk" value="{{$item->nama_produk}}">
                                                         <input type="hidden" name="harga" value="{{$item->harga}}">
+                                                        @if(Auth::user())
+                                                        <input type="hidden" name="user" value="{{Auth::user()->id}}">                                                        
+                                                        @endif
                                                         <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                                             Add to cart
                                                         </button>
