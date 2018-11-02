@@ -52,18 +52,12 @@
 		<div class="container">
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-<<<<<<< HEAD
 				<form action="{{Route('fpro.index')}}">
 						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 							All Products
 						</button>
 						{{ csrf_field() }}
 				</form>
-=======
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
-					</button>
->>>>>>> login
 
 					@foreach ($category as $item)
 						
