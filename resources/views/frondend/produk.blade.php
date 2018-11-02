@@ -52,9 +52,18 @@
 		<div class="container">
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+<<<<<<< HEAD
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 						All Products
 					</button>
+=======
+				<form action="{{Route('fpro.index')}}">
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+							All Products
+						</button>
+						{{ csrf_field() }}
+				</form>
+>>>>>>> ramadhani
 
 					@foreach ($category as $item)
 						
@@ -72,9 +81,7 @@
 
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
-				</a>
+				{{ $data->links() }}
 			</div>
 		</div>
 	</div>
@@ -139,6 +146,10 @@
 		        mainClass: 'mfp-fade'
 		    });
 		});
+
+		$ (document).ready(function(){
+    console.log('Ready!!')
+})
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/isotope/isotope.pkgd.min.js')}}"></script>

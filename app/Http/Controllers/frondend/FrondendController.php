@@ -4,15 +4,21 @@ namespace App\Http\Controllers\frondend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\produk;
 use App\User;
+use App\kategori;
+use App\keranjang;
 use Mail;
 use Auth;
 use Redirect;
 use Session;
 use Validator;
 use App\Mailfile;
+<<<<<<< HEAD
 use App\about;
+=======
+>>>>>>> ramadhani
 class FrondendController extends Controller
 {
     /**
@@ -21,10 +27,22 @@ class FrondendController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $data = produk::all();
+    {   $cart = DB::table('keranjangs')
+        ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+        ->select('produks.gambar','keranjangs.*')
+        ->get();
 
-        return view('frondend/frondend', compact('data'));
+        $category = kategori::all();
+
+        $purchases = DB::table('keranjangs')
+        ->sum('keranjangs.harga');
+
+        $count = keranjang::count();
+
+        $data = produk::paginate(4);
+
+
+        return view('frondend/frondend', compact('data','category','cart','purchases','count'));
     }
 
     /**
@@ -131,7 +149,23 @@ class FrondendController extends Controller
 
     public function transaksi()
     {
-        return view('frondend.transaksi');
+        $cart = DB::table('keranjangs')
+        ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+        ->select('produks.gambar','keranjangs.*')
+        ->get();
+
+        $category = kategori::all();
+        $data = produk::paginate(8);
+
+        $purchases = DB::table('keranjangs')
+        ->sum('keranjangs.harga');
+
+        $count = keranjang::count();
+    
+        
+        return view('frondend.transaksi',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
+                'count'=>$count]);
+       
     }
 
     public function detail()

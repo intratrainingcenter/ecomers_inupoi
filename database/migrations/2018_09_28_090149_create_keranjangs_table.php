@@ -15,8 +15,12 @@ class CreateKeranjangsTable extends Migration
     {
         Schema::create('keranjangs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('user')->nullable();
             $table->string('kode_produk');
             $table->string('nama_produk');
+            $table->string('ukuran');
+            $table->string('jumlah');
+            $table->string('harga');
             $table->timestamps();
         });
     }

@@ -263,6 +263,8 @@
 				ps.update();
 			})
 		});
+
+		
 	</script>
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
@@ -275,7 +277,14 @@
 </script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
+<<<<<<< HEAD
 	<script src="{{asset('js/favorit.js')}}"></script>
 
+=======
+	<script src="{{asset('js/cart.js')}}"></script>
+	<script>
+		var storge = "{{storage::url('')}}";
+		</script>
+>>>>>>> ramadhani
 </body>
 </html>

@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers\backend;
 use Illuminate\Support\Facades\Storage;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Facades\DB;
+>>>>>>> ramadhani
 use App\Http\Controllers\Controller;
 use App\produk;
 use App\kategori;
 use App\keranjang;
 use App\diskon;
+<<<<<<< HEAD
+=======
+use App\setting;
+>>>>>>> ramadhani
 use Validator, Input, Redirect;  
 
 use Illuminate\Http\Request;
@@ -16,11 +24,39 @@ class ProdukController extends Controller
     
     public function index()
     {
+<<<<<<< HEAD
         $item = produk::orderBy('created_at', 'desc')->get();;
         $category = kategori::all();
         $discount = diskon::all();
 
         return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount]);
+=======
+        $item = produk::orderBy('created_at', 'desc')->get();
+        $category = kategori::all();
+        $setting = setting::all();
+        $discount = diskon::all();
+
+        $settings = DB::table('settings')
+        ->select('min_stock')
+        ->get('min_stock');
+        
+        $product = DB::table('produks')
+        ->select('stok')
+        ->get('stok');
+
+        $code = produk::orderBy('id','desc')->first();
+        if($code == NULL)
+        {
+            $number = 'BR' . sprintf('%03d',intval(0)+1);
+        }
+        else
+        {
+            $no_check = $code->id;
+            $number = 'BR' . sprintf('%03d',intval($no_check)+1);
+        }
+        
+        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount,'setting'=>$setting],compact('number'));
+>>>>>>> ramadhani
     }
 
    
@@ -32,7 +68,10 @@ class ProdukController extends Controller
    
     public function store(Request $request)
     {
+<<<<<<< HEAD
       
+=======
+>>>>>>> ramadhani
         $validator = Validator::make($request->all(), [
             
             'kode_produk'       => 'required|max:20',
@@ -72,7 +111,10 @@ class ProdukController extends Controller
                 'harga'             => $request->harga,
                 'stok'              => $request->stok,
                 'rating'            => '0',
+<<<<<<< HEAD
                 'favorite'          => '0',
+=======
+>>>>>>> ramadhani
                 'deskripsi_produk'  => $request->deskripsi_produk,
                 'gambar'            => $path,
                 'gambar_belakang'   => $path2,
@@ -222,6 +264,7 @@ class ProdukController extends Controller
         $data->delete();
         return redirect('barang')->with('success','Success');
     }
+<<<<<<< HEAD
 
     public function addfavorite($id)
     {
@@ -251,4 +294,6 @@ class ProdukController extends Controller
 
         return $countfavorit;
     }
+=======
+>>>>>>> ramadhani
 }

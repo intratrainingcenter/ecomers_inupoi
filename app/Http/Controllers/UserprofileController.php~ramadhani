@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\frondend;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\produk;
-use App\kategori;
+use App\User;
 
-class FrontProductController extends Controller
+class UserprofileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +13,10 @@ class FrontProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $category = kategori::all();
-        $data = produk::all();
-        return view('frondend.produk',['data'=>$data,'category'=>$category]);
+    {
+      $user = User::get();
+      // dd($class);
+      return View('content/detail_profile',compact('user'));
     }
 
     /**

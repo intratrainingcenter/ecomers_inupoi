@@ -13,14 +13,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-<script>
-$(function() {
-  $('#example').DataTable();
-  // $('#example2').DataTable({
-  //   ''
-  // });
-});
-</script>
+
 @endsection
 
 @section('content')
@@ -59,15 +52,23 @@ $(function() {
       <button type="button" class="btn btn-primary" onclick="window.print();"><li class="fa fa-print"> Print</li></button>
     </div>
     <div class="panel-body">
-      <table id="example" class="table table-striped table-bordered" style="width:100%">
+      <table id="example" class="table table-bordered" style="width:100%">
       <thead>
         <tr>
+<<<<<<< HEAD
           <th class="column-title">No</th>
           <th class="column-title">Kode Transaksi</th>
           <th class="column-title">Kode Barang</th>
           <th class="column-title">Barang Keluar</th>
           <th class="column-title">Stok Akhir</th>
           <th class="column-title">Tanggal Transaksi</th>
+=======
+          <th class="column-title">#</th>
+          <th class="column-title">Code Product</th>
+          <th class="column-title">Name Product</th>
+          <th class="column-title">Stock</th>
+          <th class="column-title">Price</th>
+>>>>>>> ramadhani
           <th class="column-title">Action</th>
         </tr>
       </thead>

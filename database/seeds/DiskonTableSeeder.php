@@ -15,8 +15,8 @@ class DiskonTableSeeder extends Seeder
         DB::table('diskons')->insert([
         	[
         		'id'			=>	'1',
-        		'kode_diskon'	=>	'DS50',
-        		'nominal'		=>	'5000',
+        		'kode_diskon'	=>	'DS00',
+        		'nominal'		=>	'0',
         		'created_at'	=>	Carbon::now()->format('Y-m-d H:i:s'),
         		'updated_at'	=>	Carbon::now()->format('Y-m-d H:i:s')
         	]
