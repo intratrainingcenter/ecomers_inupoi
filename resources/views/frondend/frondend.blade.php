@@ -5,8 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="manifest" href="{{asset('/manifest.json')}}" />
-<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/log.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -173,6 +171,8 @@
 	<script src="{{asset('cozastore/vendor/isotope/isotope.pkgd.min.js')}}"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/sweetalert/sweetalert.min.js')}}"></script>
+	<link rel="manifest" href="/manifest.json" />
+	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 	<script>
 		function countwishlist(){
 			$.ajax({
@@ -189,6 +189,18 @@
 
 		$(document).ready(function() {
 			countwishlist();
+
+			  var OneSignal = window.OneSignal || [];
+			  OneSignal.push(function() {
+			    OneSignal.init({
+			      appId: "707b641f-804e-4335-bd13-cadb8c76067b",
+			      autoRegister: false,
+			      notifyButton: {
+			        enable: true,
+			      },
+			      allowLocalhostAsSecureOrigin: true,
+			    });
+			  });
 		});
 
 		$('.js-addwish-b2').on('click', function(e){
@@ -266,15 +278,7 @@
 
 
 	</script>
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-<script>
-  var OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "707b641f-804e-4335-bd13-cadb8c76067b",
-    });
-  });
-</script>
+
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
 	<script src="{{asset('js/favorit.js')}}"></script>
