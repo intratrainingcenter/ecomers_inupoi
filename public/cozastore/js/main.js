@@ -194,7 +194,6 @@
     /*==================================================================
     [ Favorit ]*/
     $('.js-show-favorit').on('click',function(){
-        alert("iso");
         $('.js-panel-favorit').addClass('show-header-favorit');
     });
 
