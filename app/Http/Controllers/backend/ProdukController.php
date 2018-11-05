@@ -22,7 +22,6 @@ class ProdukController extends Controller
         $category = kategori::all();
         $setting = setting::all();
         $discount = diskon::all();
-        // dd($item);
 
         $settings = DB::table('settings')
         ->select('min_stock')
