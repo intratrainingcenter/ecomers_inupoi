@@ -10,7 +10,8 @@ use App\kategori;
 use App\keranjang;
 use App\diskon;
 use App\setting;
-use Validator, Input, Redirect;  
+use Validator, Input, Redirect; 
+use Auth; 
 
 class FrontdetailController extends Controller
 {
@@ -31,6 +32,10 @@ class FrontdetailController extends Controller
         ->sum('keranjangs.harga');
 
         $related = produk::orderBy('created_at', 'desc')->get();
+        
+        $user = Auth::user()->select('id')->get();
+        foreach($user as $users){}
+        $count = keranjang::where('id',$users->id)->count();
      
 
      return view('frondend.detailproduk',['data'=>$data,'related'=>$related,'count'=>$count,

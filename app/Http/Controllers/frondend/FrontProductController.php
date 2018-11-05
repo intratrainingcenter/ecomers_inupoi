@@ -17,14 +17,11 @@ class FrontProductController extends Controller
     public function index()
     {   
         $user = Auth::user()->select('id')->get();
-        foreach($user as $users)
-        {
-        }
-        dd($users->id);
+        foreach($user as $users){}
         $cart = DB::table('keranjangs')
         ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
         ->select('produks.gambar','keranjangs.*')
-        ->where('user',$user)
+        ->where('keranjangs.id',$users->id)
         ->get();
 
         $category = kategori::all();
@@ -32,8 +29,8 @@ class FrontProductController extends Controller
 
         $purchases = DB::table('keranjangs')
         ->sum('keranjangs.harga');
-
-        $count = keranjang::count();
+        
+        $count = keranjang::where('id',$users->id)->count();
     
         
         return view('frondend.produk',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
@@ -59,7 +56,9 @@ class FrontProductController extends Controller
 
     public function store(Request $request)
     {
-        $count = keranjang::count();
+        $user = Auth::user()->select('id')->get();
+        foreach($user as $users){}
+        $count = keranjang::where('id',$users->id)->count();
 
         $cart = DB::table('keranjangs')
         ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
