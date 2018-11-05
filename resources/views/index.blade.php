@@ -108,7 +108,7 @@ $(function() {
 
 </script>
   {{-- onesignal --}}
-  <link rel="manifest" href="/manifest.json" />
+  {{-- <link rel="manifest" href="/manifest.json" />
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
   <script>
     var OneSignal = window.OneSignal || [];
@@ -122,7 +122,7 @@ $(function() {
         allowLocalhostAsSecureOrigin: true,
       });
     });
-  </script>
+  </script> --}}
   {{-- end onesignal --}}
 
      
