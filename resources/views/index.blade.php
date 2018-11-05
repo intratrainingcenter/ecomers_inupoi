@@ -108,21 +108,21 @@ $(function() {
 
 </script>
   {{-- onesignal --}}
-<link rel="manifest" href="/manifest.json" />
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-<script>
-  var OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "60fe8115-2762-4d5f-8252-da2d4689e188",
-      autoRegister: false,
-      notifyButton: {
-        enable: true,
-      },
-      allowLocalhostAsSecureOrigin: true,
+  <link rel="manifest" href="/manifest.json" />
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+      OneSignal.init({
+        appId: "48fefe3b-d8be-42be-b43a-2ca3832e0f43",
+        autoRegister: false,
+        notifyButton: {
+          enable: true,
+        },
+        allowLocalhostAsSecureOrigin: true,
+      });
     });
-  });
-</script>
+  </script>
   {{-- end onesignal --}}
 
      

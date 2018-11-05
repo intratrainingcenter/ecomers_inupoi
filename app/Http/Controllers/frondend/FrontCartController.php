@@ -11,7 +11,7 @@ use App\keranjang;
 use App\diskon;
 use App\setting;
 use Validator, Input, Redirect;  
-
+use Auth;
 
 class FrontCartController extends Controller
 {
@@ -29,7 +29,9 @@ class FrontCartController extends Controller
 
     public function store(Request $request)
     {
-      
+        $user = Auth::user()->select('id')->get();
+        foreach($user as $users){}
+            // dd($users->id);
         $validator = Validator::make($request->all(), [
             
             'kode_produk'       => 'required|max:20',
@@ -37,6 +39,8 @@ class FrontCartController extends Controller
             'ukuran'            => 'required|max:5',
             'total'             => 'required|max:20',
             'harga'             => 'required|max:40',
+            'user'              => 'required|max:40',
+
             
           ]);
 
@@ -44,9 +48,10 @@ class FrontCartController extends Controller
         {  
             return redirect('fpro')->with('Fail', 'the size has not been filled');
         }
+        $usercek = keranjang::where('id',$users->id)->doesntExist();
         $cek = keranjang::where('kode_produk',$request->kode_produk)->doesntExist();
-       
-        if($cek)
+      
+        if($cek && $usercek)
         { 
             $cek2 = produk::where('ukuran',$request->ukuran)->where('nama_produk',$request->nama_produk)->count();
             
@@ -56,22 +61,27 @@ class FrontCartController extends Controller
                     'kode_produk'       => $request->kode_produk,
                     'nama_produk'       => $request->nama_produk,
                     'ukuran'            => $request->ukuran,   
-                    'jumlah'            => $request->total,             
+                    'jumlah'            => $request->total,           
+                    'user'              => $request->user,  
                     'harga'             => ($request->harga*$request->total),
+                    'user'              => $request->user,
+
     
                     ]);
                     return redirect('fpro')->with('success','Success add to Cart');
+                 
+                    
             }
             else
             {
                 return redirect('fpro')->with('Fail','Stock for this Size is not Available');
             }        
         }
-        else
+        elseif($cek == false && $usercek == false)
         {
-            $cek2 = produk::where('ukuran',$request->ukuran)->where('nama_produk',$request->nama_produk)->count();
+            $ceksize = produk::where('ukuran',$request->ukuran)->where('nama_produk',$request->nama_produk)->count();
             
-            if($cek2 == 1)
+            if($ceksize == 1)
             {
                 $cek3 = keranjang::select('jumlah')->where('kode_produk',$request->kode_produk)->get();
                 foreach($cek3 as $ceking){}
@@ -89,9 +99,28 @@ class FrontCartController extends Controller
             {
                 return redirect('fpro')->with('Fail','Stock for this Size is not Available');
             }
-             
+        }
+        else
+        {
+            $cek2 = produk::where('ukuran',$request->ukuran)->where('nama_produk',$request->nama_produk)->count();
             
-
+            if($cek2 == 1)
+            {
+                $create = keranjang::create([
+                    'kode_produk'       => $request->kode_produk,
+                    'nama_produk'       => $request->nama_produk,
+                    'ukuran'            => $request->ukuran,   
+                    'jumlah'            => $request->total,           
+                    'user'              => $request->user,  
+                    'harga'             => ($request->harga*$request->total),
+    
+                    ]);
+                    return redirect('fpro')->with('success','Success add to Cart');  
+            }
+            else
+            {
+                return redirect('fpro')->with('Fail','Stock for this Size is not Available');
+            }        
         }
 
     }

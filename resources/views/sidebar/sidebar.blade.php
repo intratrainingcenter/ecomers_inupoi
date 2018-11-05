@@ -38,6 +38,8 @@
           <li><a href="{{Route('laporantransaksi.index')}}"><i class="fa fa-circle-o"></i> Transaction Report</a></li>
         </ul>
       </li>
+
+      <li><a href="{{Route('about.index')}}"><i class="fa fa-info"></i> <span>About</span></a></li>
       @if (Auth::guard('web')->check())
          @if (Auth::guard('web')->user()->jabatan == 'owner')
       <li><a href="{{Route('user.index')}}"><i class="fa fa-group "></i> <span>User</span></a></li>

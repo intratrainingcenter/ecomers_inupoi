@@ -15,6 +15,7 @@ use Redirect;
 use Session;
 use Validator;
 use App\Mailfile;
+use App\about;
 class FrondendController extends Controller
 {
     /**
@@ -109,9 +110,18 @@ class FrondendController extends Controller
 
     public function contact()
     {
+        $count = keranjang::count();
+      
+      $cart = DB::table('keranjangs')
+        ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+        ->select('produks.gambar','keranjangs.*')
+        ->get();
+
+        $purchases = DB::table('keranjangs')
+        ->sum('keranjangs.harga');
         $user = User::get();
-        // dd($user);
-        return View('frondend/contentPage/contentpage',compact('user'));
+
+        return View('frondend/contentPage/contentpage',compact('user','count','cart','purchases'));
     }
     public function email(Request $request)
     {
@@ -133,7 +143,19 @@ class FrondendController extends Controller
 
     public function about()
     {
-        return view('frondend.about');
+      
+      $count = keranjang::count();
+      
+      $cart = DB::table('keranjangs')
+        ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+        ->select('produks.gambar','keranjangs.*')
+        ->get();
+
+        $purchases = DB::table('keranjangs')
+        ->sum('keranjangs.harga');
+
+      $data = about::all();
+      return view('frondend.about.about', compact('data','count','cart','purchases'));
     }
 
     public function produk()
@@ -156,11 +178,11 @@ class FrondendController extends Controller
         ->sum('keranjangs.harga');
 
         $count = keranjang::count();
-    
-        
+
+
         return view('frondend.transaksi',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
                 'count'=>$count]);
-       
+
     }
 
     public function detail()

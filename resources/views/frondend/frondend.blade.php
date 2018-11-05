@@ -4,6 +4,7 @@
 	<title>Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/favicon.png')}}"/>
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/log.png')}}"/>
 <!--===============================================================================================-->
@@ -266,9 +267,25 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
-	<script src="{{asset('js/cart.js')}}"></script>
-	{{-- <script>
-		var storge = "{{storage::url('')}}";
-		</script> --}}
+
+
+	 {{-- onesignal --}}
+	 <link rel="manifest" href="/manifest.json" />
+	 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+	 <script>
+	   var OneSignal = window.OneSignal || [];
+	   OneSignal.push(function() {
+		 OneSignal.init({
+		   appId: "48fefe3b-d8be-42be-b43a-2ca3832e0f43",
+		   autoRegister: false,
+		   notifyButton: {
+			 enable: true,
+		   },
+		   allowLocalhostAsSecureOrigin: true,
+		 });
+	   });
+	 </script>
+	 {{-- end onesignal --}}
+
 </body>
 </html>

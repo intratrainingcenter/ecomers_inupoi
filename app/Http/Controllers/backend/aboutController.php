@@ -4,10 +4,11 @@ namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\produk;
-use App\User;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use App\about;
 
-class dashboardController extends Controller
+class aboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +17,8 @@ class dashboardController extends Controller
      */
     public function index()
     {
-        $produk = produk::sum('stok');
-        $jenis_barang = produk::count('stok');
-        $user = User::count('name');
-        $pengunjung = User::where('jabatan', 'member')->count();
-        // dd($pengunjung);
-
-        return view('content.dashboard', compact('produk','user','pengunjung','jenis_barang'));
+        $data = about::all();
+        return view('content.about.about', compact('data'));
     }
 
     /**
@@ -77,7 +73,14 @@ class dashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $gambar = $request->file('image');
+      $nm_file = $gambar->getClientOriginalName();
+      $request->file('image')->move(public_path().'/image/', $nm_file);
+      $data = about::find($id);
+      $data->image = $nm_file;
+      $data->deskripsi = $request->deskripsi;
+     $data->save();
+    return redirect()->route('about.index')->with('success', 'Berhasil Mengedit Data');
     }
 
     /**
@@ -89,5 +92,17 @@ class dashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function update_mission(Request $request, $id)
+    {
+      $gambar = $request->file('image_mission');
+      $nm_file = $gambar->getClientOriginalName();
+      $request->file('image_mission')->move(public_path().'/image/', $nm_file);
+      $data = about::find($id);
+      $data->image_mission = $nm_file;
+      $data->deskripsi_mission = $request->deskripsi_mission;
+     $data->save();
+    return redirect()->route('about.index')->with('success', 'Berhasil Mengedit Data');
     }
 }
