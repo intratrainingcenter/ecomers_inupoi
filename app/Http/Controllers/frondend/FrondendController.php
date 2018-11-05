@@ -111,7 +111,7 @@ class FrondendController extends Controller
     public function contact()
     {
         $count = keranjang::count();
-      
+
       $cart = DB::table('keranjangs')
         ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
         ->select('produks.gambar','keranjangs.*')
@@ -143,9 +143,9 @@ class FrondendController extends Controller
 
     public function about()
     {
-      
+
       $count = keranjang::count();
-      
+
       $cart = DB::table('keranjangs')
         ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
         ->select('produks.gambar','keranjangs.*')

@@ -174,6 +174,19 @@
 	<link rel="manifest" href="/manifest.json" />
 	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 	<script>
+	var OneSignal = window.OneSignal || [];
+	OneSignal.push(function() {
+		OneSignal.init({
+			appId: "9be13f74-e9c1-4965-a069-fa6db301b3d2",
+			autoRegister: false,
+			notifyButton: {
+				enable: true,
+	},
+	allowLocalhostAsSecureOrigin: true,
+	});
+});
+	</script>
+	<script>
 		function countwishlist(){
 			$.ajax({
 				headers:{
@@ -189,20 +202,6 @@
 
 		$(document).ready(function() {
 			countwishlist();
-
-			  var OneSignal = window.OneSignal || [];
-			  OneSignal.push(function() {
-			    OneSignal.init({
-			      appId: "707b641f-804e-4335-bd13-cadb8c76067b",
-			      autoRegister: false,
-			      notifyButton: {
-			        enable: true,
-			      },
-			      allowLocalhostAsSecureOrigin: true,
-			    });
-			  });
-		});
-
 		$('.js-addwish-b2').on('click', function(e){
 			e.preventDefault();
 			let nameProduct = $(this).parent().parent().find('.js-name-b2').html();
@@ -257,6 +256,7 @@
 				swal(nameProduct, "is added to cart !", "success");
 			});
 		});
+		});
 
 	</script>
 <!--===============================================================================================-->
@@ -282,7 +282,7 @@
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
 	<script src="{{asset('js/favorit.js')}}"></script>
-	<script src="{{asset('js/cart.js')}}"></script>
+
 
 </body>
 </html>

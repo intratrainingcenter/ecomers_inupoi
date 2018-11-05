@@ -45,6 +45,8 @@ class ProdukController extends Controller
             $number = 'BR' . sprintf('%03d',intval($no_check)+1);
         }
 
+
+
         return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount,'setting'=>$setting],compact('number'));
 
         $item = produk::orderBy('created_at', 'desc')->get();;
@@ -287,4 +289,33 @@ class ProdukController extends Controller
         return $countfavorit;
     }
 
+
+    public function sendMessage(){
+		$content = array(
+			"en" => 'English Message'
+			);
+      $fields = array(
+            			'app_id' => "9be13f74-e9c1-4965-a069-fa6db301b3d2",
+            			'included_segments' => array('Active Users'),
+                  'url' => route('Inupoi.Produk'),
+                  'contents' => $content,
+            		);
+
+		$fields = json_encode($fields);
+
+
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8',
+												   'Authorization: Basic YTRjYjM4ODgtMGFjOS00YTEyLTkyMmQtMjU0Yjk0ZDUwNTdj'));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($ch, CURLOPT_HEADER, FALSE);
+		curl_setopt($ch, CURLOPT_POST, TRUE);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+
+		$response = curl_exec($ch);
+		curl_close($ch);
+
+	}
 }
