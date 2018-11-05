@@ -30,13 +30,5 @@
 		</div>
 	</div>
 </div>
-
-
-
 @endforeach
-
 @extends('frondend.produk.modal')
-
-
-
-

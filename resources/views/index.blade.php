@@ -16,6 +16,28 @@
   {{-- onesignal --}}
   {{-- end onesignal --}}
 
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBdrn8yxUdSwVw1D7873t8yE8isjsLPgOs",
+    authDomain: "ecomersinupoi-9d3db.firebaseapp.com",
+    databaseURL: "https://ecomersinupoi-9d3db.firebaseio.com",
+    projectId: "ecomersinupoi-9d3db",
+    storageBucket: "ecomersinupoi-9d3db.appspot.com",
+    messagingSenderId: "513365239353"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+  var starCountRef = database.ref('object');
+  starCountRef.on('value', function(snapshot) {
+    console.log(snapshot.val());
+  });
+
+</script>
+
   <style>
   hr
 {
@@ -86,21 +108,21 @@ $(function() {
 
 </script>
   {{-- onesignal --}}
-<link rel="manifest" href="/manifest.json" />
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-<script>
-  var OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "60fe8115-2762-4d5f-8252-da2d4689e188",
-      autoRegister: false,
-      notifyButton: {
-        enable: true,
-      },
-      allowLocalhostAsSecureOrigin: true,
+  <link rel="manifest" href="/manifest.json" />
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+      OneSignal.init({
+        appId: "48fefe3b-d8be-42be-b43a-2ca3832e0f43",
+        autoRegister: false,
+        notifyButton: {
+          enable: true,
+        },
+        allowLocalhostAsSecureOrigin: true,
+      });
     });
-  });
-</script>
+  </script>
   {{-- end onesignal --}}
 
      

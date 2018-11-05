@@ -26,9 +26,9 @@ $(function() {
     <!-- small box -->
     <div class="small-box bg-aqua">
       <div class="inner">
-        <h3>150</h3>
+        <h3>{{$produk}}</h3>
 
-        <p>New Orders</p>
+        <p>Product</p>
       </div>
       <div class="icon">
         <i class="ion ion-bag"></i>
@@ -39,30 +39,16 @@ $(function() {
   <!-- ./col -->
   <div class="col-lg-3 col-xs-6">
     <!-- small box -->
-    <div class="small-box bg-green">
-      <div class="inner">
-        <h3>53</h3>
-        <p>Stock all Product</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-cube"></i>
-      </div>
-      <a class="small-box-footer">Total All Stock   <i class="fa fa-arrow-circle-right"></i></a>
-    </div>
-  </div>
-  <!-- ./col -->
-  <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
     <div class="small-box bg-yellow">
       <div class="inner">
-        <h3>44</h3>
+        <h3>{{$user}}</h3>
 
         <p>User Registrations</p>
       </div>
       <div class="icon">
         <i class="ion ion-person-add"></i>
       </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <a class="small-box-footer"><i class="ion ion-person-add"></i></a>
     </div>
   </div>
   <!-- ./col -->
@@ -70,14 +56,28 @@ $(function() {
     <!-- small box -->
     <div class="small-box bg-red">
       <div class="inner">
-        <h3>65</h3>
+        <h3>{{$pengunjung}}</h3>
 
-        <p>Unique Visitors</p>
+        <p>Visitors</p>
       </div>
       <div class="icon">
         <i class="ion ion-pie-graph"></i>
       </div>
-      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      <a class="small-box-footer"><i class="ion ion-pie-graph"></i></a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-green">
+      <div class="inner">
+        <h3>{{$jenis_barang}}</h3>
+
+        <p>Number of Product Types</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-database"></i>
+      </div>
+      <a class="small-box-footer"><i class="fa fa-database"></i></a>
     </div>
   </div>
   <!-- ./col -->

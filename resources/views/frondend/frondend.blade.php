@@ -4,6 +4,7 @@
 	<title>Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/favicon.png')}}"/>
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/log.png')}}"/>
 <!--===============================================================================================-->
@@ -172,18 +173,56 @@
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/sweetalert/sweetalert.min.js')}}"></script>
 	<script>
-		$('.js-addwish-b2').on('click', function(e){
-			e.preventDefault();
+		function countwishlist(){
+			$.ajax({
+				headers:{
+					'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content'),
+				},
+				method:'get',
+				url:location.origin+'/Inupoi/CountFavorite/',
+				success:function(data){
+					$('.js-show-cart').attr('data-notify',data)
+				}
+			});
+		}
+
+		$(document).ready(function() {
+			countwishlist();
 		});
 
-		$('.js-addwish-b2').each(function(){
-			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
+		$('.js-addwish-b2').on('click', function(e){
+			e.preventDefault();
+			let nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			let kodeproduk = $(this).attr('kdProduk');
+			if($(this).parent().find('.js-addedwish-b2').length == 0){
+				$.ajax({
+					headers:{
+						'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content'),
+					},
+					method:'get',
+					url:location.origin+'/Inupoi/Favorite/'+kodeproduk,
+					success:function(data){
+						swal(nameProduct, "is added to wishlist !", "success");
+					}
+				});
 
+				countwishlist();
 				$(this).addClass('js-addedwish-b2');
-				$(this).off('click');
-			});
+			}else{
+				$.ajax({
+					headers:{
+						'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content'),
+					},
+					method:'get',
+					url:location.origin+'/Inupoi/RemoveFavorite/'+kodeproduk,
+					success:function(data){
+						swal(nameProduct, "is remove to wishlist !", "success");
+					}
+				});
+
+				countwishlist();
+				$(this).removeClass('js-addedwish-b2');
+			}
 		});
 
 		$('.js-addwish-detail').each(function(){
@@ -229,8 +268,24 @@
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
 	<script src="{{asset('js/cart.js')}}"></script>
-	<script>
-		var storge = "{{storage::url('')}}";
-		</script>
+
+	 {{-- onesignal --}}
+	 <link rel="manifest" href="/manifest.json" />
+	 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+	 <script>
+	   var OneSignal = window.OneSignal || [];
+	   OneSignal.push(function() {
+		 OneSignal.init({
+		   appId: "48fefe3b-d8be-42be-b43a-2ca3832e0f43",
+		   autoRegister: false,
+		   notifyButton: {
+			 enable: true,
+		   },
+		   allowLocalhostAsSecureOrigin: true,
+		 });
+	   });
+	 </script>
+	 {{-- end onesignal --}}
+
 </body>
 </html>
