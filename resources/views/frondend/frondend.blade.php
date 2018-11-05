@@ -267,7 +267,7 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
-	<script src="{{asset('js/cart.js')}}"></script>
+
 
 	 {{-- onesignal --}}
 	 <link rel="manifest" href="/manifest.json" />
