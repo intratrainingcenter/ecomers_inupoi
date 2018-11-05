@@ -68,5 +68,3 @@ Route::prefix('laporankeuangan')->group(function(){
 	Route::get('/Filter', 'backend\LapKeuanganController@filter')->name('Filter.laporankeuangan');
 	Route::get('/SubTotal', 'backend\LapKeuanganController@subtotal');
 });
-
-
