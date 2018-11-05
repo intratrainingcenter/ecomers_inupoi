@@ -33,6 +33,10 @@ Route::prefix('laporankeuangan')->group(function(){
 	Route::get('/Filter', 'backend\LapKeuanganController@filter')->name('Filter.laporankeuangan');
 });
 
+Route::prefix('laporantransaksi')->group(function(){
+	Route::get('/Filter', 'backend\LapTransaksiController@filter')->name('Filter.laporantransaksi');
+});
+
 Route::get('Inupoi/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('Inupoi/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

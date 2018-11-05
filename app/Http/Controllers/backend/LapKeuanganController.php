@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use App\laporanKeuangan;
+use App\transaksi;
 
 class LapKeuanganController extends Controller
 {
@@ -17,13 +17,13 @@ class LapKeuanganController extends Controller
      */
     public function index()
     {
-        $data = laporanKeuangan::all();
-        $totbi = laporanKeuangan::sum('total_biaya');
+        $data = transaksi::all();
+        $totbi = transaksi::sum('total_biaya');
 
         $menit = now()->addMinutes(10080);
 
         $value = Cache::remember('res',$menit, function () {
-            return DB::table('laporan_keuangans')->get();
+            return DB::table('transaksis')->get();
         });
 
         $get = Cache::get('res');
@@ -102,8 +102,8 @@ class LapKeuanganController extends Controller
         $dari = $request->get('dari');
         $sampai = $request->get('sampai');
 
-        $data = laporanKeuangan::whereBetween('tgl_transaksi', [$dari, $sampai])->get();
-        $totbi = laporanKeuangan::whereBetween('tgl_transaksi', [$dari, $sampai])->sum('total_biaya');
+        $data = transaksi::whereBetween('created_at', [$dari, $sampai])->get();
+        $totbi = transaksi::whereBetween('created_at', [$dari, $sampai])->sum('total_biaya');
 
         return view('content.LapKeuangan.laporanKeuangan', compact('data','totbi'));
     }

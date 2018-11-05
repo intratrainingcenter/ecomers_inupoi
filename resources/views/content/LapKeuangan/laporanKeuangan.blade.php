@@ -62,15 +62,15 @@ $(document).ready(function() {
   		<tr>
   			<td>{{$loop->iteration}}</td>
   			<td>{{$uang->kode_transaksi}}</td>
-        <td>{{$uang->tgl_transaksi}}</td>
-        <td>{{$uang->total_biaya}}</td>
+        <td>{{$uang->created_at}}</td>
+        <td>{{"$.".number_format($uang->total_biaya)}}</td>
   		</tr>
       @endforeach
   	</tbody>
     <tfoot>
           <td colspan="2"></td>
           <td><b>Total Keuangan</b></td>
-          <td><b>{{$totbi}}</b></td>
+          <td><b>{{"$.".number_format($totbi)}}</b></td>
     </tfoot>
    </table>
   </div>

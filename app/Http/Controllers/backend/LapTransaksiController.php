@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use App\laporanTransaksi;
+use App\transaksi;
 
 class LapTransaksiController extends Controller
 {
@@ -17,12 +17,12 @@ class LapTransaksiController extends Controller
      */
     public function index()
     {
-        $data = laporanTransaksi::all();
+        $data = transaksi::all();
         
         $menit = now()->addMinutes(10080);
 
         $value = Cache::remember('res', $menit, function(){
-            return DB::table('laporan_transaksis')->get();
+            return DB::table('transaksis')->get();
         });
         $get = Cache::get('res');
 
@@ -93,5 +93,15 @@ class LapTransaksiController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function filter(Request $request)
+    {
+        $dari = $request->get('dari');
+        $sampai = $request->get('sampai');
+
+        $data = transaksi::whereBetween('created_at', [$dari, $sampai])->get();
+
+        return view('content.LapTransaksi.laporanTransaksi', compact('data'));
     }
 }

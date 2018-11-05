@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\diskon;
 use App\produk;
@@ -17,8 +18,13 @@ class DiskonController extends Controller
     public function index()
     {
         $data = diskon::orderBy('created_at','desc')->get();
+
+        $hour = date('H');
+        $miliseconds = round(microtime(true));
+
+        $kode = ('DSK'.$hour.$miliseconds);
     
-        return view('content.diskon.diskon', compact('data'));
+        return view('content.diskon.diskon', compact('data','kode'));
     }
 
     /**
