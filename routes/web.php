@@ -69,18 +69,4 @@ Route::prefix('laporankeuangan')->group(function(){
 	Route::get('/SubTotal', 'backend\LapKeuanganController@subtotal');
 });
 
-Route::resource('Inupoi', 'frondend\FrondendController');
-Route::resource('dashboard','backend\dashboardController');
-Route::resource('barang','backend\ProdukController');
-Route::resource('keranjang','backend\KeranjangController');
-Route::resource('diskon','backend\DiskonController');
-Route::resource('retur','backend\ReturController');
-Route::resource('komentar','backend\KomentarController');
-Route::resource('laporanbarang','backend\LabBarangController');
-Route::resource('laporankeuangan','backend\LapKeuanganController');
-Route::resource('laporantransaksi','backend\LapTransaksiController');
-Route::resource('user','backend\UserController');
-Route::resource('setting','backend\SettingController');
-Route::resource('user','backend\UserController');
-Route::resource('userprofile','backend\UserprofileController');
-Route::resource('kategori','backend\kategoriController');
+

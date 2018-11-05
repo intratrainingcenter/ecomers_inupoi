@@ -46,6 +46,7 @@ class FrontdetailController extends Controller
 
     public function store(Request $request)
     {
+        dd($request);
         $validator = Validator::make($request->all(), [
             
             'kode_produk'       => 'required|max:20',
@@ -53,6 +54,8 @@ class FrontdetailController extends Controller
             'ukuran'            => 'required|max:5',
             'total'             => 'required|max:20',
             'harga'             => 'required|max:40',
+            'user'              => 'required|max:40',
+            
             
           ]);
 
@@ -71,8 +74,11 @@ class FrontdetailController extends Controller
                     'kode_produk'       => $request->kode_produk,
                     'nama_produk'       => $request->nama_produk,
                     'ukuran'            => $request->ukuran,   
-                    'jumlah'            => $request->total,             
+                    'jumlah'            => $request->total,     
+                    'user'              => $request->user,                              
                     'harga'             => ($request->harga*$request->total),
+                    'user'              => $request->user,
+
     
                     ]);
                     return redirect()->route('fpro.edit', ['id' => $request->kode_produk])->with('success','Success add to Cart');

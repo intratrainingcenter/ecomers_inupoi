@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\produk;
 use App\kategori;
 use App\keranjang;
+use Auth;
 
 
 class FrontProductController extends Controller
@@ -15,10 +16,15 @@ class FrontProductController extends Controller
   
     public function index()
     {   
-
+        $user = Auth::user()->select('id')->get();
+        foreach($user as $users)
+        {
+        }
+        dd($users->id);
         $cart = DB::table('keranjangs')
         ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
         ->select('produks.gambar','keranjangs.*')
+        ->where('user',$user)
         ->get();
 
         $category = kategori::all();
