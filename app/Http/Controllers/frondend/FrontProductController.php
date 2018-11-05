@@ -16,21 +16,19 @@ class FrontProductController extends Controller
   
     public function index()
     {   
-        $user = Auth::user()->select('id')->get();
-        foreach($user as $users){}
+        $user = Auth::user()->id;
         $cart = DB::table('keranjangs')
         ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
-        ->select('produks.gambar','keranjangs.*')
-        ->where('keranjangs.id',$users->id)
+        ->where('keranjangs.user',$user)
         ->get();
-
+    
         $category = kategori::all();
         $data = produk::paginate(8);
 
         $purchases = DB::table('keranjangs')
         ->sum('keranjangs.harga');
         
-        $count = keranjang::where('id',$users->id)->count();
+        $count = keranjang::where('user',$user)->count();
     
         
         return view('frondend.produk',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,

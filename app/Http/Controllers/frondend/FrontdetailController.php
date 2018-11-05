@@ -17,6 +17,7 @@ class FrontdetailController extends Controller
 {
     public function index(Request $request)
     {
+        $user = Auth::user()->id;
        
         $data = DB::table('produks')
         ->select('*')
@@ -25,7 +26,7 @@ class FrontdetailController extends Controller
     
         $cart = DB::table('keranjangs')
         ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
-        ->select('produks.gambar','keranjangs.*')
+        ->where('keranjangs.user',$user)
         ->get();
 
         $purchases = DB::table('keranjangs')
@@ -33,9 +34,7 @@ class FrontdetailController extends Controller
 
         $related = produk::orderBy('created_at', 'desc')->get();
         
-        $user = Auth::user()->select('id')->get();
-        foreach($user as $users){}
-        $count = keranjang::where('id',$users->id)->count();
+        $count = keranjang::where('user',$user)->count();
      
 
      return view('frondend.detailproduk',['data'=>$data,'related'=>$related,'count'=>$count,

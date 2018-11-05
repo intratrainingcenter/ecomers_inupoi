@@ -27,9 +27,7 @@ class ProdukController extends Controller
         $discount = diskon::all();
         // dd($item);
 
-        $settings = DB::table('settings')
-        ->select('min_stock')
-        ->get('min_stock');
+       
 
         $product = DB::table('produks')
         ->select('stok')
@@ -46,7 +44,7 @@ class ProdukController extends Controller
             $number = 'BR' . sprintf('%03d',intval($no_check)+1);
         }
 
-        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount,'setting'=>$setting],compact('number'));
+        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount],compact('number'));
 
         $item = produk::orderBy('created_at', 'desc')->get();;
         $category = kategori::all();
