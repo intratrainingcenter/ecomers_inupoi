@@ -20,7 +20,6 @@ class FrontProductController extends Controller
         $cart = DB::table('keranjangs')
         ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
         ->select('produks.gambar','keranjangs.*')
-        ->where('keranjangs.id',$users->id)
         ->get();
 
         $category = kategori::all();

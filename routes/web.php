@@ -11,9 +11,7 @@
 |
 */
 Auth::routes();
-Route::get('/', function () {
-    return view('index');
-})->middleware('auth');
+Route::get('/admin', 'backend\dashboardController@index')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('Inupoi')->group(function(){
@@ -36,7 +34,7 @@ Route::prefix('laporankeuangan')->group(function(){
 Route::get('Inupoi/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('Inupoi/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-Route::resource('Inupoi', 'FrondendController');
+Route::resource('/', 'frondend\FrondendController');
 Route::resource('dashboard','backend\dashboardController')->middleware('auth');
 Route::resource('about','backend\aboutController')->middleware('auth');
 Route::resource('kategori','backend\KategoriController')->middleware('auth');
