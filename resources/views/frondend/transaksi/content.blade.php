@@ -36,8 +36,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="column-5">{{"$. ".number_format($item->harga)}}</td>
-                                
+                                <td class="column-5">{{"$. ".number_format($item->harga)}}</td> 
                             </tr>
                             @endforeach
 
@@ -95,7 +94,7 @@
                         </div>
                     </div>
 
-                    <form  method="POST" id="payment-form"  action="/payment/add-funds/paypal">
+                    <form  method="POST" action="{{Route('ftrans.store')}}">
                         {{ csrf_field() }} 
                         <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                             Proses to Checkout
