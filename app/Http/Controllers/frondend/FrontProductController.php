@@ -13,11 +13,10 @@ use Auth;
 
 class FrontProductController extends Controller
 {
-  
+
     public function index()
-    {   
-        $user = Auth::user()->select('id')->get();
-        foreach($user as $users){}
+    {
+
         $cart = DB::table('keranjangs')
         ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
         ->select('produks.gambar','keranjangs.*')
@@ -29,13 +28,13 @@ class FrontProductController extends Controller
 
         $purchases = DB::table('keranjangs')
         ->sum('keranjangs.harga');
-        
-        $count = keranjang::where('id',$users->id)->count();
-    
-        
+
+        $count = keranjang::select('nama_produk')->count();
+
+
         return view('frondend.produk',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
                 'count'=>$count]);
-        
+
     }
     public function showcart()
     {
@@ -47,10 +46,10 @@ class FrontProductController extends Controller
         return response()->json(array('success' => true, 'cart' => $cart));
     }
 
- 
+
     public function create()
     {
-        
+
     }
 
 
@@ -73,16 +72,16 @@ class FrontProductController extends Controller
 
         $purchases = DB::table('keranjangs')
             ->sum('keranjangs.harga');
-        
+
 
         return view('frondend.produk',['data'=>$data,'category'=>$category,'count'=>$count,'cart'=>$cart,
                     'purchases'=>$purchases]);
     }
 
-  
+
     public function show($id)
     {
-        
+
     }
 
 
@@ -92,14 +91,14 @@ class FrontProductController extends Controller
             ->select('*')
             ->where('kode_produk',$id)
             ->get();
-        
+
         $category = DB::table('kategoris')
         ->join('produks', 'produks.kode_kategori','=','kategoris.kode_kategori')
         ->select('kategoris.*')
         ->where('kode_produk',$id)
-        ->get();    
+        ->get();
         $count = keranjang::count();
-        
+
         $cart = DB::table('keranjangs')
         ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
         ->select('produks.gambar','keranjangs.*')
@@ -109,21 +108,21 @@ class FrontProductController extends Controller
         ->sum('keranjangs.harga');
 
         $related = produk::orderBy('created_at', 'desc')->get();
-         
+
 
         return view('frondend.detailproduk',['data'=>$data,'category'=>$category,'related'=>$related,'count'=>$count,
         'cart'=>$cart,'purchases'=>$purchases]);
     }
 
-  
+
     public function update(Request $request, $id)
     {
-       
+
     }
 
 
     public function destroy($id)
     {
-        
+
     }
 }
