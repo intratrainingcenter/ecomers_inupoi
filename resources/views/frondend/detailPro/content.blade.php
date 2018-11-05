@@ -92,7 +92,9 @@
                                                             <input type="hidden" name="kode_produk" value="{{$item->kode_produk}}">
                                                             <input type="hidden" name="nama_produk" value="{{$item->nama_produk}}">
                                                             <input type="hidden" name="harga"       value="{{$item->harga}}">
-                                                    		<input type="hidden" name="user"        value="{{Auth::user()->id}}">
+                                                             @if(Auth::guard('web')->check())
+                                                                       <input type="hidden" name="user" value="{{Auth::user()->id}}">
+                                                                    @endif
 
                                                             <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                                                 Add to cart
