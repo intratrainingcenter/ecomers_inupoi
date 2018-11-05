@@ -19,11 +19,14 @@ class DiskonController extends Controller
     {
         $data = diskon::orderBy('created_at','desc')->get();
 
+        $date = date('Y');
+        $mounth = date('m');
+        $day = date('d');
         $hour = date('H');
         $miliseconds = round(microtime(true));
 
-        $kode = ('DSK'.$hour.$miliseconds);
-    
+        $kode = ('DSK'.$date.$mounth.$day.$hour.$miliseconds);
+
         return view('content.diskon.diskon', compact('data','kode'));
     }
 
