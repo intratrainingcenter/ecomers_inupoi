@@ -31,7 +31,6 @@ class FrontCartController extends Controller
     {
         $user = Auth::user()->select('id')->get();
         foreach($user as $users){}
-            // dd($users->id);
         $validator = Validator::make($request->all(), [
             
             'kode_produk'       => 'required|max:20',
@@ -46,9 +45,8 @@ class FrontCartController extends Controller
         {  
             return redirect('fpro')->with('Fail', 'the size has not been filled');
         }
-        $usercek = keranjang::where('id',$users->id)->doesntExist();
+        $usercek = keranjang::where('user',$request->user)->doesntExist();
         $cek = keranjang::where('kode_produk',$request->kode_produk)->doesntExist();
-      
         if($cek && $usercek)
         { 
             $cek2 = produk::where('ukuran',$request->ukuran)->where('nama_produk',$request->nama_produk)->count();
@@ -83,7 +81,7 @@ class FrontCartController extends Controller
                 foreach($cek3 as $ceking){}
                 $cek4 = keranjang::select('harga')->where('kode_produk',$request->kode_produk)->get();            
                 foreach($cek4 as $ceking2){}
-                    $create = keranjang::where('kode_produk',$request->kode_produk)->update([
+                    $create = keranjang::where('user',$request->user)->where('kode_produk',$request->kode_produk)->update([
                         
                         'jumlah'            => ($ceking->jumlah+$request->total),
                         'harga'             => ($request->total*$request->harga+$ceking2->harga),
