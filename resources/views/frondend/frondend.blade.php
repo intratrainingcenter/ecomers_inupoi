@@ -4,7 +4,8 @@
 	<title>Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/favicon.png')}}"/>
+<!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/log.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -44,7 +45,7 @@
 	</header>
 
 	<!-- Cart -->
-	@include('frondend.keranjang.cart')
+	@include('frondend.keranjang.cart')	
 
 	<!-- Slider -->
 	@include('frondend.slider.slider')
@@ -171,21 +172,6 @@
 	<script src="{{asset('cozastore/vendor/isotope/isotope.pkgd.min.js')}}"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/sweetalert/sweetalert.min.js')}}"></script>
-	<link rel="manifest" href="/manifest.json" />
-	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-	<script>
-	var OneSignal = window.OneSignal || [];
-	OneSignal.push(function() {
-		OneSignal.init({
-			appId: "9be13f74-e9c1-4965-a069-fa6db301b3d2",
-			autoRegister: false,
-			notifyButton: {
-				enable: true,
-	},
-	allowLocalhostAsSecureOrigin: true,
-	});
-});
-	</script>
 	<script>
 		function countwishlist(){
 			$.ajax({
@@ -202,6 +188,8 @@
 
 		$(document).ready(function() {
 			countwishlist();
+		});
+
 		$('.js-addwish-b2').on('click', function(e){
 			e.preventDefault();
 			let nameProduct = $(this).parent().parent().find('.js-name-b2').html();
@@ -256,7 +244,6 @@
 				swal(nameProduct, "is added to cart !", "success");
 			});
 		});
-		});
 
 	</script>
 <!--===============================================================================================-->
@@ -276,13 +263,29 @@
 			})
 		});
 
-
+		
 	</script>
-
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
-	<script src="{{asset('js/favorit.js')}}"></script>
 
+
+	 {{-- onesignal --}}
+	 <link rel="manifest" href="/manifest.json" />
+	 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+	 <script>
+	   var OneSignal = window.OneSignal || [];
+	   OneSignal.push(function() {
+		 OneSignal.init({
+		   appId: "48fefe3b-d8be-42be-b43a-2ca3832e0f43",
+		   autoRegister: false,
+		   notifyButton: {
+			 enable: true,
+		   },
+		   allowLocalhostAsSecureOrigin: true,
+		 });
+	   });
+	 </script>
+	 {{-- end onesignal --}}
 
 </body>
 </html>
