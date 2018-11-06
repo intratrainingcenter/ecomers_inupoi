@@ -16,23 +16,30 @@ class FrontProductController extends Controller
   
     public function index()
     {   
-        $user = Auth::user()->id;
-        $cart = DB::table('keranjangs')
-        ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
-        ->where('keranjangs.user',$user)
-        ->get();
+        if (Auth::guard('web')->check())
+        {
+            $user = Auth::user()->id;
+            $count = keranjang::where('user',$user)->count();
+            $cart = DB::table('keranjangs')
+            ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+            ->where('keranjangs.user',$user)
+            ->get();
+
+            $category = kategori::all();
+            $data = produk::paginate(8);
+            $purchases = DB::table('keranjangs')
+            ->sum('keranjangs.harga');
+            return view('frondend.produk',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
+            'count'=>$count]);
+        }
     
         $category = kategori::all();
         $data = produk::paginate(8);
 
         $purchases = DB::table('keranjangs')
         ->sum('keranjangs.harga');
-        
-        $count = keranjang::where('user',$user)->count();
-    
-        
-        return view('frondend.produk',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
-                'count'=>$count]);
+
+        return view('frondend.produk',['data'=>$data,'category'=>$category,'purchases'=>$purchases]);
         
     }
     public function showcart()
