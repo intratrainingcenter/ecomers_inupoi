@@ -140,6 +140,7 @@ class FrontCartController extends Controller
 
     public function destroy($id)
     {
+       
         if (Auth::guard('web')->check())
         {
         $user = Auth::user()->id;
