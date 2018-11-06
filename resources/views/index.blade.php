@@ -13,9 +13,6 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
-  {{-- onesignal --}}
-  {{-- end onesignal --}}
-
 <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -103,30 +100,10 @@
 <script>
 $(function() {
   $('#example').DataTable();
- 
+
 });
 
 </script>
-  {{-- onesignal --}}
-  <link rel="manifest" href="/manifest.json" />
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-  <script>
-    var OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-      OneSignal.init({
-        appId: "48fefe3b-d8be-42be-b43a-2ca3832e0f43",
-        autoRegister: false,
-        notifyButton: {
-          enable: true,
-        },
-        allowLocalhostAsSecureOrigin: true,
-      });
-    });
-  </script>
-  {{-- end onesignal --}}
-
-     
-
 @section('someJS')
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

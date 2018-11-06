@@ -113,6 +113,9 @@ class ProdukController extends Controller
                 'gambar'            => $path,
                 'gambar_belakang'   => $path2,
                 ]);
+
+                $this->sendMessage();
+
                 return redirect('barang')->with('success','Success');
 
             }
@@ -292,12 +295,12 @@ class ProdukController extends Controller
 
     public function sendMessage(){
 		$content = array(
-			"en" => 'English Message'
+			"en" => 'Hi !! We Have a New Product Visit Our Site Click here now !!!'
 			);
       $fields = array(
             			'app_id' => "9be13f74-e9c1-4965-a069-fa6db301b3d2",
             			'included_segments' => array('Active Users'),
-                  'url' => route('Inupoi.Produk'),
+                  'url' => route('fpro.index'),
                   'contents' => $content,
             		);
 
