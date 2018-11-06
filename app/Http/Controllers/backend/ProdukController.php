@@ -25,7 +25,6 @@ class ProdukController extends Controller
         $category = kategori::all();
         $setting = setting::all();
         $discount = diskon::all();
-        // dd($item);
 
        
 
@@ -279,7 +278,7 @@ class ProdukController extends Controller
 
     public function countfavorite()
     {
-        $data = produk::where('favorite', '>' , 0)->count();
+        $data = produk::where('favorite' , '>' , 0)->count();
 
         return $data;
     }

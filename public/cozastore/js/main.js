@@ -193,13 +193,13 @@
 
     /*==================================================================
     [ Favorit ]*/
-    $('.js-show-favorit').on('click',function(){
-        $('.js-panel-favorit').addClass('show-header-favorit');
-    });
+    // $('.js-show-favorit').on('click',function(){
+    //     $('.js-panel-favorit').addClass('show-header-favorit');
+    // });
 
-    $('.js-hide-favorit').on('click',function(){
-        $('.js-panel-favorit').removeClass('show-header-favorit');
-    });
+    // $('.js-hide-favorit').on('click',function(){
+    //     $('.js-panel-favorit').removeClass('show-header-favorit');
+    // });
 
     /*==================================================================
     [ Cart ]*/

@@ -181,7 +181,7 @@
 				method:'get',
 				url:location.origin+'/Inupoi/CountFavorite/',
 				success:function(data){
-					$('.js-show-favorit').attr('data-notify',data)
+					$('.js-show-favorite').attr('data-notify',data)
 				}
 			});
 		}
