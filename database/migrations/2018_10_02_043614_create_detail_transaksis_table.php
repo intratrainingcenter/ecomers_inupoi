@@ -15,7 +15,6 @@ class CreateDetailTransaksisTable extends Migration
     {
         Schema::create('detail_transaksis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_user');
             $table->string('kode_barang');
             $table->integer('nama_barang');
             $table->integer('harga');

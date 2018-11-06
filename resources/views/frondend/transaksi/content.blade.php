@@ -1,9 +1,26 @@
 <form class="bg0 p-t-75 p-b-85">
     <div class="container">
-        <div class="row">
+        <div class="row"> 
+
+               
+
             <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
                 <div class="m-l-25 m-r--38 m-lr-0-xl">
                     <div class="wrap-table-shopping-cart">
+                            <table class="table-shopping-cart">
+                                    <tr class="table_head">
+                                        <th class="column-1">Sending Address</th>
+                                        <th class="column-2">:</th>
+                                    </tr>
+        
+                                     <tr class="table_row">
+                                      
+                                        <td colspan="2">
+                                            <textarea cols='50' rows="3" type="text" class="form-control" name='tujuan' id="tujuan" placeholder="Name Address / City / sub-district shipping destination / number that can be contacted" required></textarea>
+                                        </td>
+                                     </tr>
+        
+                                </table>
                         <table class="table-shopping-cart">
                             <tr class="table_head">
                                 <th class="column-1">Product</th>
@@ -16,12 +33,15 @@
                             @foreach ($cart as $item)
                              <tr class="table_row">
                                 <td class="column-1">
-                                        
+                                        <form action="{{Route('fcart.destroy',['id'=>$item->kode_produk])}}" method="POST">
+                                                @csrf @method('DELETE')
+                                                <button type="submit" class="fa fa-close"></button>
+                                        </form>	
                                     <div class="how-itemcart1">
                                         <img src="{{Storage::url($item->gambar)}}" alt="IMG">
                                     </div>
                                 </td>
-                                <td class="column-2">{{$item->nama_produk}}</td>
+                                <td class="colomn-2">{{$item->nama_produk}}</td>
                                 <td class="column-3">{{"$.".number_format($item->harga)}}</td>
                                 <td class="column-4">
                                     <div class="wrap-num-product flex-w m-l-auto m-r-0">

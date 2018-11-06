@@ -75,6 +75,12 @@ class FrontTransController extends Controller
    
     public function destroy($id)
     {
-        //
+        if (Auth::guard('web')->check())
+        {
+        $user = Auth::user()->id;
+        $data = keranjang::where('kode_produk',$id)->where('user',$user)->first();
+        $data->delete();
+        return redirect('ftrans')->with('success','Success remove item from Cart');
+        }
     }
 }
