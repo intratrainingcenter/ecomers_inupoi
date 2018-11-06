@@ -72,7 +72,6 @@ $(function() {
           <th class="column-title">No</th>
           <th class="column-title">Kode Transaksi</th>
           <th class="column-title">Tanggal Transaksi</th>
-          <th class="column-title">Action</th>
         </tr>
       </thead>
     	<tbody>
@@ -81,11 +80,6 @@ $(function() {
     			<td>{{$loop->iteration}}</td>
     			<td>{{$laptransaksi->kode_transaksi}}</td>
           <td>{{$laptransaksi->created_at}}</td>
-          <td>
-            <center>
-              <button type="button" class="btn btn-primary"><li class="fa fa-search"></li></button>
-            </center>
-          </td>
     		</tr>
         @endforeach
     	</tbody>

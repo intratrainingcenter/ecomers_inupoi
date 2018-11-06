@@ -268,8 +268,8 @@ class ProdukController extends Controller
 
     public function countfavorite()
     {
-        $countfavorit = produk::count('favorite');
+        $data = produk::where('favorite' , '>' , 0)->count();
 
-        return $countfavorit;
+        return $data;
     }
 }
