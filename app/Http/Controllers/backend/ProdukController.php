@@ -46,7 +46,8 @@ class ProdukController extends Controller
         return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount],compact('number'));
 
 
-        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount,'setting'=>$setting],compact('number'));
+        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount]);
+
     }
 
 
@@ -98,9 +99,7 @@ class ProdukController extends Controller
                 'harga'             => $request->harga,
                 'stok'              => $request->stok,
                 'rating'            => '0',
-
                 'favorite'          => '0',
-
                 'deskripsi_produk'  => $request->deskripsi_produk,
                 'gambar'            => $path,
                 'gambar_belakang'   => $path2,
