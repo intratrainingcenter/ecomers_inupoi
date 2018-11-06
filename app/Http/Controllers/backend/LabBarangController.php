@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use App\laporanBarang;
+use App\produk;
 
 class LabBarangController extends Controller
 {
@@ -17,12 +18,12 @@ class LabBarangController extends Controller
      */
     public function index()
     {
-        $data = laporanBarang::all();
+        $data = produk::all();
 
         $minute = now()->addMinutes(10080);
 
         $value = Cache::remember('res', $minute, function(){
-            return DB::table('laporan_barangs')->get();
+            return DB::table('produks')->get();
         });
 
         $get = Cache::get('res');

@@ -20,13 +20,12 @@ class KategoriController extends Controller
     {
         $data = kategori::all();
 
-        $date = date('Y');
         $mounth = date('m');
         $day = date('d');
         $hour = date('H');
 
         $miliseconds = round(microtime(true));
-        $kode = ('KTG'.$date.$mounth.$day.$hour.$miliseconds);
+        $kode = ('KTG'.$mounth.$day.$hour.$miliseconds);
 
         return view('content.kategori.kategori', compact('data','kode'));
     }

@@ -57,21 +57,21 @@
         <tr>
           <th class="column-title">No</th>
           <th class="column-title">Kode Barang</th>
+          <th class="column-title">Nama Barang</th>
           <th class="column-title">Barang Keluar</th>
           <th class="column-title">Stok Akhir</th>
-          <th class="column-title">Action</th>
+          <th class="column-title">Favorite</th>
         </tr>
       </thead>
     	<tbody>
-        @foreach($data as $lapbarang)
+        @foreach($data as $produk)
     		<tr>
     			<td>{{$loop->iteration}}</td>
-          <td>{{$lapbarang->kode_barang}}</td>
-          <td>{{$lapbarang->barang_keluar}}</td>
-          <td>{{$lapbarang->stok_akhir}}</td>
-          <td>
-            <button type="button" class="btn btn-primary"><li class="fa fa-search"></li></button>
-          </td>
+          <td>{{$produk->kode_produk}}</td>
+          <td>{{$produk->nama_produk}}</td>
+          <td>0</td>
+          <td>{{$produk->stok}}</td>
+          <td>{{$produk->favorite}}</td>
     		</tr>
         @endforeach
     	</tbody>
