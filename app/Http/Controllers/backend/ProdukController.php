@@ -48,13 +48,6 @@ class ProdukController extends Controller
 
 
         return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount,'setting'=>$setting],compact('number'));
-
-        $item = produk::orderBy('created_at', 'desc')->get();;
-        $category = kategori::all();
-        $discount = diskon::all();
-
-        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount]);
-
     }
 
 

@@ -55,9 +55,16 @@ $(function() {
 
  
     <div class="panel panel-default">
-    <div class="panel-heading">
-      <button type="button" class="btn btn-primary" onclick="window.print();"><li class="fa fa-print"> Print</li></button>
-    </div>
+      <form action="{{route('Filter.laporantransaksi')}}">
+        <div class="panel-heading">
+          <label>Dari :</label>
+          <input type="date" name="dari">
+          <label>Sampai :</label>
+          <input type="date" name="sampai">
+          <button type="submit" class="btn btn-info">Cari</button>
+          <button type="button" class="btn btn-primary pull-right" onclick="window.print();"><li class="fa fa-print"> Print</li></button>
+        </div>
+      </form>
     <div class="panel-body">
       <table id="example" class="table table-striped table-bordered" style="width:100%">
       <thead>
@@ -73,7 +80,7 @@ $(function() {
     		<tr>
     			<td>{{$loop->iteration}}</td>
     			<td>{{$laptransaksi->kode_transaksi}}</td>
-          <td>{{$laptransaksi->tgl_transaksi}}</td>
+          <td>{{$laptransaksi->created_at}}</td>
           <td>
             <center>
               <button type="button" class="btn btn-primary"><li class="fa fa-search"></li></button>

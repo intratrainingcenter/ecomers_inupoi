@@ -9,13 +9,7 @@
       @method('POST') @csrf()
       <div class="modal-body">
         <div class="box-body">
-          <div class="form-group">
-            <label for="kode_kategori" class="col-sm-4 control-label">Kode Kategori</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" name="kode_kategori" id="kode_kategori" placeholder="Kode Kategori">
-            </div>
-          </div>
-          <br><br>
+          <input type="hidden" class="form-control" name="kode_kategori" id="kode_kategori" placeholder="Kode Kategori" value="{{$kode}}">
           <div class="form-group">
             <label for="nama_kategori" class="col-sm-4 control-label">Nama Kategori</label>
             <div class="col-sm-8">

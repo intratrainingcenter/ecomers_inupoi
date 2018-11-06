@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -19,15 +20,15 @@ class KategoriController extends Controller
     {
         $data = kategori::all();
 
-        // $minutes = now()->addMinutes(1);
+        $date = date('Y');
+        $mounth = date('m');
+        $day = date('d');
+        $hour = date('H');
 
-        // $value = Cache::remember('res',$minutes, function () {
-        //     return DB::table('kategoris')->get();
-        // });
-        // $get = Cache::get('res');   
-        // dd($get); 
+        $miliseconds = round(microtime(true));
+        $kode = ('KTG'.$date.$mounth.$day.$hour.$miliseconds);
 
-        return view('content.kategori.kategori', compact('data'));
+        return view('content.kategori.kategori', compact('data','kode'));
     }
 
     /**

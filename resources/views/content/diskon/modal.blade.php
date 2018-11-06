@@ -15,13 +15,7 @@
       @method('POST') @csrf()
       <div class="modal-body">
         <div class="box-body">
-          <div class="form-group">
-            <label for="kode_diskon" class="col-sm-4 control-label">Kode Diskon</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" name="kode_diskon" id="kode_diskon" placeholder="Kode Diskon" required>
-            </div>
-          </div>
-          <br><br>
+          <input type="hidden" class="form-control" name="kode_diskon" id="kode_diskon" value="{{$kode}}" required>
           <div class="form-group">
             <label for="nominal" class="col-sm-4 control-label">Nominal</label>
             <div class="col-sm-8">

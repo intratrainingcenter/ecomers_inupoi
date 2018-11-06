@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\frondend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
+use Carbon\Carbon;
+use App\transaksi;
 
-class UserprofileController extends Controller
+class TransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,16 @@ class UserprofileController extends Controller
      */
     public function index()
     {
-      $user = User::get();
-      // dd($class);
-      return View('content/detail_profile',compact('user'));
+        // $date = date('Y');
+        // $mounth = date('m');
+        // $day = date('d');
+        // $hour = date('H');
+
+        // $miliseconds = round(microtime(true));
+        // $kode = ('TR'.$date.$mounth.$day.$hour.$miliseconds);
+        // dd($kode);
+
+        // return $kode;
     }
 
     /**

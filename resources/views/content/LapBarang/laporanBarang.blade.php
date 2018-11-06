@@ -55,24 +55,10 @@
       <table id="example" class="table table-bordered" style="width:100%">
       <thead>
         <tr>
-          <th class="column-title">#</th>
-          <th class="column-title">Code Product</th>
-          <th class="column-title">Name Product</th>
-          <th class="column-title">Stock</th>
-          <th class="column-title">Price</th>
           <th class="column-title">No</th>
-          <th class="column-title">Kode Transaksi</th>
           <th class="column-title">Kode Barang</th>
           <th class="column-title">Barang Keluar</th>
           <th class="column-title">Stok Akhir</th>
-          <th class="column-title">Tanggal Transaksi</th>
-=========
-          <th class="column-title">#</th>
-          <th class="column-title">Code Product</th>
-          <th class="column-title">Name Product</th>
-          <th class="column-title">Stock</th>
-          <th class="column-title">Price</th>
->>>>>>>>> Temporary merge branch 2
           <th class="column-title">Action</th>
         </tr>
       </thead>
@@ -80,11 +66,9 @@
         @foreach($data as $lapbarang)
     		<tr>
     			<td>{{$loop->iteration}}</td>
-    			<td>{{$lapbarang->kode_transaksi}}</td>
           <td>{{$lapbarang->kode_barang}}</td>
           <td>{{$lapbarang->barang_keluar}}</td>
           <td>{{$lapbarang->stok_akhir}}</td>
-          <td>{{$lapbarang->tgl_transaksi}}</td>
           <td>
             <button type="button" class="btn btn-primary"><li class="fa fa-search"></li></button>
           </td>
