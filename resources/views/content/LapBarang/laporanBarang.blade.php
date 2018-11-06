@@ -64,12 +64,12 @@
         </tr>
       </thead>
     	<tbody>
-        @foreach($data as $produk)
+        @foreach($data as $y => $produk)
     		<tr>
     			<td>{{$loop->iteration}}</td>
           <td>{{$produk->kode_produk}}</td>
           <td>{{$produk->nama_produk}}</td>
-          <td>0</td>
+          <td>{{$brgout[$y]}}</td>
           <td>{{$produk->stok}}</td>
           <td>{{$produk->favorite}}</td>
     		</tr>
