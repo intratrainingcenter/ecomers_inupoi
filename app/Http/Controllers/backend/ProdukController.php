@@ -103,9 +103,7 @@ class ProdukController extends Controller
                 'harga'             => $request->harga,
                 'stok'              => $request->stok,
                 'rating'            => '0',
-
                 'favorite'          => '0',
-
                 'deskripsi_produk'  => $request->deskripsi_produk,
                 'gambar'            => $path,
                 'gambar_belakang'   => $path2,
@@ -281,9 +279,9 @@ class ProdukController extends Controller
 
     public function countfavorite()
     {
-        $countfavorit = produk::count('favorite');
+        $data = produk::where('favorite', '>' , 0)->count();
 
-        return $countfavorit;
+        return $data;
     }
 
 }
