@@ -18,6 +18,8 @@ class CreateComentsTable extends Migration
             $table->string('kode_user');
             $table->string('kode_produk');
             $table->string('deskripsi');
+            $table->string('email')
+            $table->string('create_at')
             $table->timestamps();
         });
     }
