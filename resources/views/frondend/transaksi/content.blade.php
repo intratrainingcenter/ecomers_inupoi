@@ -22,7 +22,7 @@
                                     </div>
                                 </td>
                                 <td class="column-2">{{$item->nama_produk}}</td>
-                                <td class="column-3">{{"$.".number_format($item->harga)}}</td>
+                                <td class="column-3">{{"$.".number_format($item->hpp)}}</td>
                                 <td class="column-4">
                                     <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                         <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                    <form  method="POST" action="{{Route('ftrans.store')}}">
+                    <form  method="POST" id="payment-form"  action="/payment/add-funds/paypal">
                         {{ csrf_field() }} 
                         <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                             Proses to Checkout

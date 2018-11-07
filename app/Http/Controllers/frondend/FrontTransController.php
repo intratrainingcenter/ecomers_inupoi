@@ -24,7 +24,7 @@ class FrontTransController extends Controller
             $count = keranjang::where('user',$user)->count();
             $cart = DB::table('keranjangs')
             ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
-            ->select('keranjangs.*','produks.gambar','produks.gambar_belakang')
+            ->select('keranjangs.*','produks.gambar','produks.gambar_belakang','produks.harga As hpp')
             ->where('keranjangs.user',$user)
             ->get();
 
