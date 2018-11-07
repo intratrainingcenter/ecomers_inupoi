@@ -27,6 +27,12 @@ class LabBarangController extends Controller
             $brgout[] = $tes->sum;
         }
 
+        $bro = DetailTransaksi::selectRaw('sum(qty) as sum')
+        ->groupBy('kode_barang')->get();
+        foreach($bro as $tes){
+            $brgout[] = $tes->sum;
+        }
+
         $minute = now()->addMinutes(10080);
 
         $value = Cache::remember('res', $minute, function(){
