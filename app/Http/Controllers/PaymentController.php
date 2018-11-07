@@ -8,14 +8,14 @@ class PaymentController extends Controller
 {
     public function __construct()
     {
-/** PayPal api context **/
-        $paypal_conf = \Config::get('paypal');
-        $this->_api_context = new ApiContext(new OAuthTokenCredential(
-            $paypal_conf['client_id'],
-            $paypal_conf['secret'])
-        );
-        $this->_api_context->setConfig($paypal_conf['settings']);
-    }
+        /** PayPal api context **/
+                $paypal_conf = \Config::get('paypal');
+                $this->_api_context = new ApiContext(new OAuthTokenCredential(
+                    $paypal_conf['AdvLnbeWxPgPcMaYxcdPKvE93QvuDnRDBpzQkZim-aIJx0v0H6UVvE-yJCYT-MG7onNteqQ-wlo67RRX'],
+                    $paypal_conf['EDVwpDG3PFUiAjdMHoNuCAwimUjIv6IhftaPPWHm-G8-XESbqjS9vcMoWnEUjiBtIr4O0FtAg0i8cFzf'])
+                );
+                $this->_api_context->setConfig($paypal_conf['settings']);
+        }
     public function payWithpaypal(Request $request)
     {
         $payer = new Payer();

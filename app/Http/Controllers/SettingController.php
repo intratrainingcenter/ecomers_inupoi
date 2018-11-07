@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<<<< Temporary merge branch 1
-use Illuminate\Http\Request;
-=========
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\setting;
 use Validator, Input, Redirect;  
 
-use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
@@ -21,11 +17,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
         $setting = setting::all();
         $cek = setting::all()->count();
         return view('content.setting.setting',['setting'=>$setting,'cek'=>$cek]);
-        return view('content.setting.setting');
         //
     }
 
@@ -47,8 +41,6 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
         $validator = Validator::make($request->all(), [
             
             'name'       => 'required|max:20',
@@ -80,15 +72,6 @@ class SettingController extends Controller
         }
     }
 
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
@@ -114,7 +97,6 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         // dd($request);
         $validator = Validator::make($request->all(), [
             
@@ -159,7 +141,6 @@ class SettingController extends Controller
             }
           
         }
-        //
     }
 
     /**
