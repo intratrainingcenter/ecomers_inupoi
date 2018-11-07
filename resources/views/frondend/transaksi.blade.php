@@ -111,6 +111,6 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
-
+	@include('frondend.transaksi.aditional')
 </body>
 </html>

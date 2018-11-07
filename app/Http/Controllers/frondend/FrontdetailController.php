@@ -50,7 +50,7 @@ class FrontdetailController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
+        
         $validator = Validator::make($request->all(), [
             
             'kode_produk'       => 'required|max:20',
