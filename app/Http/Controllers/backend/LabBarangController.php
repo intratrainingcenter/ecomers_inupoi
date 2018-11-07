@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use App\laporanBarang;
 use App\produk;
+use App\DetailTransaksi;
 
 class LabBarangController extends Controller
 {
@@ -19,6 +20,12 @@ class LabBarangController extends Controller
     public function index()
     {
         $data = produk::all();
+        
+        $bro = DetailTransaksi::selectRaw('sum(qty) as sum')
+        ->groupBy('kode_barang')->get();  
+        foreach($bro as $tes){
+            $brgout[] = $tes->sum;
+        }
 
         $minute = now()->addMinutes(10080);
 
@@ -28,7 +35,7 @@ class LabBarangController extends Controller
 
         $get = Cache::get('res');
 
-        return view('content.LapBarang.laporanBarang', compact('data'));
+        return view('content.LapBarang.laporanBarang', compact('data','brgout'));
     }
 
     /**

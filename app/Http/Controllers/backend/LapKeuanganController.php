@@ -18,7 +18,7 @@ class LapKeuanganController extends Controller
     public function index()
     {
         $data = transaksi::all();
-        $totbi = transaksi::sum('total_biaya');
+        $totbi = transaksi::sum('grandtotal');
 
         $menit = now()->addMinutes(10080);
 
