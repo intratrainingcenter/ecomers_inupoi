@@ -45,6 +45,7 @@ class DiskonController extends Controller
             $table = new diskon;
             $table->kode_diskon     =   $request->kode_diskon;
             $table->nominal         =   $request->nominal;
+            $table->deskripsi       =   $request->deskripsi;
             $table->orderBy('id DESC');
             $table->save();
 
