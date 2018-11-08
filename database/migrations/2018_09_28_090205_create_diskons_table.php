@@ -17,6 +17,7 @@ class CreateDiskonsTable extends Migration
             $table->increments('id');
             $table->string('kode_diskon');
             $table->integer('nominal');
+            $table->string('deskripsi');
             $table->timestamps();
         });
     }

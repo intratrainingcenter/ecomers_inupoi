@@ -16,7 +16,8 @@ class ComentTableSeeder extends Seeder
         	[
         		'id'			=>	'1',
         		'kode_user'		=>	'USR001',
-        		'kode_produk'	=>	'BRG001',
+                'kode_produk'	=>	'BRG001',
+                'rating'        =>  '4.5',
         		'deskripsi'		=>	'Barang ini sangat bagus',
         		'created_at'	=>	Carbon::now()->format('Y-m-d H:i:s'),
         		'updated_at'	=>	Carbon::now()->format('Y-m-d H:i:s')

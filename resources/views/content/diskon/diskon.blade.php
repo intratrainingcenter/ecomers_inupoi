@@ -38,6 +38,7 @@ $(function() {
         <tr>
           <th class="column-title">No</th>
           <th class="column-title">Kode Diskon</th>
+          <th class="column-title">Deskripsi</th>
           <th class="column-title">Nominal</th>
           <th class="column-title">Action</th>
         </tr>
@@ -47,6 +48,7 @@ $(function() {
     		<tr>
     			<td>{{$loop->iteration}}</td>
     			<td>{{$diskon->kode_diskon}}</td>
+          <td>{{$diskon->deskripsi}}</td>
           <td>{{"$.".number_format($diskon->nominal)}}</td>
           <td>
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit{{$diskon->id}}"><li class="fa fa-pencil"></li></button>

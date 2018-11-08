@@ -27,6 +27,9 @@
                             </span>
                         </div>
 
+                        <form action="{{url('/coment')}}" method="post">
+                        {{ csrf_feild () }}
+
                         <div class="row p-b-25">
                             <div class="col-12 p-b-5">
                                 <label class="stext-102 cl3" for="review">Your review</label>

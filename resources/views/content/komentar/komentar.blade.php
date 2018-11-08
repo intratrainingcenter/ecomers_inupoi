@@ -63,6 +63,7 @@ $(function() {
           <th class="column-title">No</th>
           <th class="column-title">Kode User</th>
           <th class="column-title">Kode Barang</th>
+          <th class="column-title">Rating</th>
           <th class="column-title">Deskripsi</th>
           <th class="column-title">Action</th>
         </tr>
@@ -73,6 +74,7 @@ $(function() {
     			<td>{{$loop->iteration}}</td>
     			<td>{{$coment->kode_user}}</td>
           <td>{{$coment->kode_produk}}</td>
+          <td>{{$coment->rating}}</td>
           <td>{{$coment->deskripsi}}</td>
           <td>
             <center><a href="" type="button" class="btn btn-primary"><i class="fa fa-search"></i></a></center>
