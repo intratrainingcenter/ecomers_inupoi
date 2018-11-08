@@ -10,6 +10,7 @@ use App\kategori;
 use App\keranjang;
 use App\diskon;
 use App\setting;
+use App\transaksi;
 use Validator, Input, Redirect; 
 use Auth; 
 
@@ -22,7 +23,7 @@ class FrontTransController extends Controller
      */
     public function index()
     {
-         $code = transaksis::orderBy('id','desc')->first();
+         $code = transaksi::orderBy('id','desc')->first();
         if($code == NULL)
         {
             $number = 'TR' . sprintf('%03d',intval(0)+1);
