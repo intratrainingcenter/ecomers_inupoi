@@ -23,10 +23,17 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/select2/select2.min.css')}}">
 <!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/daterangepicker/daterangepicker.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/slick/slick.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/MagnificPopup/magnific-popup.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/css/main.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/imgproduk.css')}}">
+
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -53,8 +60,10 @@
 		</div>
 	</div>
 		
+	@include('frondend.transaksi.modal')
 
 	<!-- Shoping Cart -->
+
 	@include('frondend.transaksi.content')
 		
 	
@@ -92,6 +101,69 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
+	<script src="{{asset('cozastore/vendor/daterangepicker/moment.min.js')}}"></script>
+	<script src="{{asset('cozastore/vendor/daterangepicker/daterangepicker.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('cozastore/vendor/slick/slick.min.js')}}"></script>
+	<script src="{{asset('cozastore/js/slick-custom.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('cozastore/vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			});
+		});
+		
+	</script>
+	<!--===============================================================================================-->
+	<script src="{{asset('cozastore/vendor/isotope/isotope.pkgd.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('cozastore/vendor/sweetalert/sweetalert.min.js')}}"></script>
+	<script>
+		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
+			e.preventDefault();
+		});
+
+		$('.js-addwish-b2').each(function(){
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-b2');
+				$(this).off('click');
+			});
+		});
+
+		$('.js-addwish-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-detail');
+				$(this).off('click');
+			});
+		});
+
+		/*---------------------------------------------*/
+
+		$('.js-addcart-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+	
+	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
 	<script>

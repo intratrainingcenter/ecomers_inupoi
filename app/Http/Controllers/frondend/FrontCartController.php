@@ -29,6 +29,7 @@ class FrontCartController extends Controller
 
     public function store(Request $request)
     {
+    
         $user = Auth::user()->select('id')->get();
         foreach($user as $users){}
         $validator = Validator::make($request->all(), [

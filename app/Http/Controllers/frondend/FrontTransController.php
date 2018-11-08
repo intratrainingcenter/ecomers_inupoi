@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\DB;
 use App\produk;
 use App\kategori;
 use App\keranjang;
-use Auth;
+use App\diskon;
+use App\setting;
+use Validator, Input, Redirect; 
+use Auth; 
 
 class FrontTransController extends Controller
 {
@@ -69,12 +72,42 @@ class FrontTransController extends Controller
    
     public function update(Request $request, $id)
     {
-        //
+      
+        $user = Auth::user()->select('id')->get();
+        $cart = keranjang::where('kode_produk',$request->kode_produk)->get();
+        foreach($user as $users){}
+        foreach($cart as $item){}
+
+        if($request->total <= $item->jumlah){
+
+            $create = keranjang::where('user',$request->user)->where('kode_produk',$request->kode_produk)->update([
+                
+                'jumlah'            => $request->total,
+                'harga'             => ($request->harga-$request->total*$request->hpp),
+                
+                ]);
+                return redirect('ftrans')->with('success','has been updated');
+            }
+        elseif($request->total >= $item->jumlah){
+            $create = keranjang::where('user',$request->user)->where('kode_produk',$request->kode_produk)->update([
+                
+                'jumlah'            => $request->total,
+                'harga'             => ($request->total*$request->hpp+$request->harga),
+                
+                ]);
+                return redirect('ftrans')->with('success','has been updated');
+            }
+        else{
+            return redirect('ftrans');
+
+        }
+        
     }
 
    
     public function destroy($id)
     {
+    
         $user = Auth::user()->id;
         $data = keranjang::where('kode_produk',$id)->where('user',$user)->first();
         $data->delete();
