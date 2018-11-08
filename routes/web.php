@@ -30,7 +30,11 @@ Route::prefix('Inupoi')->group(function(){
 Route::put('/about_mission/{id}','backend\aboutController@update_mission')->name('about.update_mission')->middleware('auth');
 
 Route::prefix('laporankeuangan')->group(function(){
-	Route::get('/Filter', 'LapKeuanganController@filter')->name('Filter.laporankeuangan');
+	Route::get('/Filter', 'backend\LapKeuanganController@filter')->name('Filter.laporankeuangan');
+});
+
+Route::prefix('laporantransaksi')->group(function(){
+	Route::get('/Filter', 'backend\LapTransaksiController@filter')->name('Filter.laporantransaksi');
 });
 
 Route::get('Inupoi/{provider}', 'Auth\LoginController@redirectToProvider');

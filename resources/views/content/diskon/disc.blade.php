@@ -8,7 +8,6 @@
   }) ;
 
   function pure() {
-    $('#kode_diskon').val('');
     $('#nominal').val('');
     $('#nominaledit').val('');
   }

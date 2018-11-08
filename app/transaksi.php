@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class transaksi extends Model
 {
-    protected $table 		= 'transaksis';
-    protected $primarykey 	= 'id';
-    protected $fillable 	= ['id','kode_produk','nama_produk','ukuran','jumlah','harga','user'];
+    protected $table 		=	'transaksis';
+    protected $primarykey	=	'id';
+    protected $fillable		=	['id','kode_transaksi','kode_user','kode_barang','biaya','kode_diskon','potongan','total_biaya'];
 }
