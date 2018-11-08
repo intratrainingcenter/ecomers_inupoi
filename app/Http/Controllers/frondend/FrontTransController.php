@@ -22,6 +22,16 @@ class FrontTransController extends Controller
      */
     public function index()
     {
+         $code = transaksis::orderBy('id','desc')->first();
+        if($code == NULL)
+        {
+            $number = 'TR' . sprintf('%03d',intval(0)+1);
+        }
+        else
+        {
+            $no_check = $code->id;
+            $number = 'TR' . sprintf('%03d',intval($no_check)+1);
+        }
       
             $user = Auth::user()->id;
             $count = keranjang::where('user',$user)->count();
@@ -78,7 +88,7 @@ class FrontTransController extends Controller
         foreach($user as $users){}
         foreach($cart as $item){}
 
-        if($request->total <= $item->jumlah){
+        if($request->total < $item->jumlah ){
 
             $create = keranjang::where('user',$request->user)->where('kode_produk',$request->kode_produk)->update([
                 
@@ -88,7 +98,7 @@ class FrontTransController extends Controller
                 ]);
                 return redirect('ftrans')->with('success','has been updated');
             }
-        elseif($request->total >= $item->jumlah){
+        elseif($request->total > $item->jumlah){
             $create = keranjang::where('user',$request->user)->where('kode_produk',$request->kode_produk)->update([
                 
                 'jumlah'            => $request->total,
@@ -97,7 +107,7 @@ class FrontTransController extends Controller
                 ]);
                 return redirect('ftrans')->with('success','has been updated');
             }
-        else{
+        elseif($request->total == $item->jumlah){
             return redirect('ftrans');
 
         }
