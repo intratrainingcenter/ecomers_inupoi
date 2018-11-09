@@ -92,7 +92,13 @@
               <input type="text" onclick="pure()" class="form-control" name='nominal' id="nominaledit" placeholder="Nominal" value="{{$diskon->nominal}}">
             </div>
           </div>
-          <br>
+          <br> <br>
+          <div class="form-group">
+            <label for="nominal" class="col-sm-4 control-label">Description</label>
+            <div class="col-sm-8">
+              <textarea type="text" class="form-control" name='Deskripsi' id="deskripsi" placeholder="Deskripsi" value="{{$diskon->deskripsi}}">{{$diskon->deskripsi}}</textarea>
+            </div>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
