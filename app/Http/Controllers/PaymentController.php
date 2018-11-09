@@ -18,6 +18,9 @@ use PayPal\Rest\ApiContext;
 use Redirect;
 use Session;
 use URL;
+use App\transaksi;
+use App\DetailTransaksi;
+
 
 
 class PaymentController extends Controller
@@ -36,10 +39,11 @@ class PaymentController extends Controller
 
    public function payWithpaypal(Request $request)
    {
+    
     $payer = new Payer();
             $payer->setPaymentMethod('paypal');
     $item_1 = new Item();
-    $item_1->setName('Item 1') /** item name **/
+    $item_1->setName($request->kode_transaksi) /** item name **/
                 ->setCurrency('USD')
                 ->setQuantity(1)
                 ->setPrice($request->get('amount')); /** unit price **/
@@ -88,7 +92,7 @@ class PaymentController extends Controller
             return Redirect::route('paywithpaypal');
     }
 
-    public function getPaymentStatus()
+    public function getPaymentStatus(Request $request)
     {
             /** Get the payment ID before session clear **/
         $payment_id = Session::get('paypal_payment_id');

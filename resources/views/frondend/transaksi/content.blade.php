@@ -105,7 +105,16 @@
 
                     <form class="w3-container w3-display-middle w3-card-4" method="POST" id="payment-form"  action="{!! URL::to('paypal') !!}">
                             {{ csrf_field() }} 
-                            <input class="w3-input w3-border" name="amount" type="hidden" value="{{($purchases-$data)}}"></p>
+                            <input class="w3-input w3-border" name="kode_transaksi" type="hidden" value="{{$number}}">
+                            <input class="w3-input w3-border" name="sub_total"      type="hidden" value="{{$purchases}}">
+                            <input class="w3-input w3-border" name="amount"         type="hidden" value="{{($purchases-$data)}}">
+                            <input class="w3-input w3-border" name="hpp"            type="hidden" value="{{$item->hpp}}">
+                            <input class="w3-input w3-border" name="nominal"        type="hidden" value="{{$item->nomi_diskon}}">
+                            <input class="w3-input w3-border" name="kode_produk"    type="hidden" value="{{$item->kode_produk}}">
+                            <input class="w3-input w3-border" name="nama_produk"    type="hidden" value="{{($item->nama_produk)}}">
+                            <input class="w3-input w3-border" name="qty"            type="hidden" value="{{($item->jumlah)}}">
+                            <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
+
                             <button type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                                 Proses to Checkout
                             </button>

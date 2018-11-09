@@ -30,10 +30,10 @@
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
-							
-						<span href="" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								{{$carts->nama_produk}}
-						</span>
+					
+						<a href="{{Route('fpro.edit',['id'=>$carts->kode_produk])}}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+							{{$carts->nama_produk}}
+						</a>
 
 							<span class="header-cart-item-info">
 								{{$carts->jumlah}} = {{"$.".number_format($carts->harga)}}
