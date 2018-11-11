@@ -4,9 +4,9 @@
 		<div class="block2">
 			<div class="block2-pic hov-img1">
 				<img src="{{Storage::url($item->gambar)}}" alt="IMG-PRODUCT">
-				<button type="button" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04" data-toggle="modal" data-target="#quick{{$item->kode_produk}}">
-						Quick View
-				</button>
+				<a href="{{Route('fpro.edit',['id'=>$item->kode_produk])}}" type="button" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+						View
+				</a>
 
 				</div>
 				
