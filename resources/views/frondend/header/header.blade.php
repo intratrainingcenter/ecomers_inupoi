@@ -4,7 +4,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-						Free shipping for standard order over $100
+
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
@@ -63,8 +63,6 @@
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
 							<i class="zmdi zmdi-search"></i>
 						</div>
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{$count}}">
-
 						@if (Auth::guard('web')->check())
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{$count}}">
 							<i class="zmdi zmdi-shopping-cart"></i>
@@ -74,7 +72,7 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 						@endif
-						
+
 
 						<div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-favorite" data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>
@@ -124,7 +122,6 @@
 			<ul class="topbar-mobile">
 				<li>
 					<div class="left-top-bar">
-						Free shipping for standard order over $100
 					</div>
 				</li>
 
