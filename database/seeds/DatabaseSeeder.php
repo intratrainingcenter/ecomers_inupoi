@@ -17,8 +17,5 @@ class DatabaseSeeder extends Seeder
         $this->call(DiskonTableSeeder::class);
         $this->call(LapKeuanganTableSeeder::class);
         $this->call(ComentTableSeeder::class);
-        $this->call(TransaksiTableSeeder::class);
-        $this->call(DetailTransaksiTableSeeder::class);
-        $this->call(ProdukTableSeeder::class);
     }
 }
