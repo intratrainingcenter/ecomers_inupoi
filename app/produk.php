@@ -10,4 +10,9 @@ class produk extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['id','kode_kategori','kode_produk','kode_diskon','nama_produk','harga',
     'ukuran','stok','rating','favorite','gambar','gambar_belakang','deskripsi_produk'];
+
+    public function detail_transaksi()
+    {
+    	return $this->hasMany('App\DetailTransaksi','kode_barang','kode_produk');
+    }
 }

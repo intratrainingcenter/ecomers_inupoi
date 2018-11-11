@@ -103,7 +103,7 @@ class LapKeuanganController extends Controller
         $sampai = $request->get('sampai');
 
         $data = transaksi::whereBetween('created_at', [$dari, $sampai])->get();
-        $totbi = transaksi::whereBetween('created_at', [$dari, $sampai])->sum('total_biaya');
+        $totbi = transaksi::whereBetween('created_at', [$dari, $sampai])->sum('grandtotal');
 
         return view('content.LapKeuangan.laporanKeuangan', compact('data','totbi'));
     }

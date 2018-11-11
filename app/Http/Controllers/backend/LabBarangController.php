@@ -19,13 +19,17 @@ class LabBarangController extends Controller
      */
     public function index()
     {
+        $barang = produk::select(DB::raw('sum(stok) as stok,kode_produk'))->groupBy('kode_produk')->with(['detail_transaksi' => function($query){
+                $query->select(DB::raw('sum(qty) as qty,kode_barang'))->groupBy('kode_barang');
+        }])->get();
+
         $data = produk::all();
         
-        $bro = DetailTransaksi::selectRaw('sum(qty) as sum')
-        ->groupBy('kode_barang')->get();  
-        foreach($bro as $tes){
-            $brgout[] = $tes->sum;
-        }
+        // $bro = DetailTransaksi::selectRaw('sum(qty) as sum')
+        // ->groupBy('kode_barang')->get();  
+        // foreach($bro as $tes){
+        //     $brgout[] = $tes->sum;
+        // }
 
         $bro = DetailTransaksi::selectRaw('sum(qty) as sum')
         ->groupBy('kode_barang')->get();
@@ -41,7 +45,7 @@ class LabBarangController extends Controller
 
         $get = Cache::get('res');
 
-        return view('content.LapBarang.laporanBarang', compact('data','brgout'));
+        return view('content.LapBarang.laporanBarang', compact('data','barang'));
     }
 
     /**
