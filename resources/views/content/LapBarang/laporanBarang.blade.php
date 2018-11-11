@@ -59,6 +59,7 @@
           <th class="column-title">Kode Barang</th>
           <th class="column-title">Barang Keluar</th>
           <th class="column-title">Stok Akhir</th>
+          <th class="column-title">Favorite</th>
         </tr>
       </thead>
     	<tbody>

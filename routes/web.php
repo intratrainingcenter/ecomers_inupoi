@@ -60,6 +60,9 @@ Route::resource('Inupoi', 'frondend\FrondendController');
 Route::resource('fcart', 'frondend\FrontCartController');
 Route::resource('fdet', 'frondend\FrontdetailController');
 Route::resource('ftrans', 'frondend\FrontTransController');
+Route::post('paypal', 'PaymentController@payWithpaypal');
+Route::get('status', 'PaymentController@getPaymentStatus')->name('status');
+
 
 
 

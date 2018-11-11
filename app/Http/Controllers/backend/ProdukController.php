@@ -45,9 +45,7 @@ class ProdukController extends Controller
 
         return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount],compact('number'));
 
-
-        return view('content.produk.produk',['item'=>$item,'kategori'=>$category,'diskon'=>$discount]);
-
+        
     }
 
 
@@ -69,7 +67,7 @@ class ProdukController extends Controller
             'ukuran'            => 'required|max:5',
             'harga'             => 'required|max:40',
             'stok'              => 'required|max:40',
-            'deskripsi_produk'  => 'required|max:40',
+            'deskripsi_produk'  => 'required|max:255',
             'images'            => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'images2'           => 'required|image|mimes:jpeg,png,jpg|max:2048',
 

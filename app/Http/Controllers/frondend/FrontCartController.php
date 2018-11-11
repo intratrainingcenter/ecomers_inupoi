@@ -29,6 +29,7 @@ class FrontCartController extends Controller
 
     public function store(Request $request)
     {
+    
         $user = Auth::user()->select('id')->get();
         foreach($user as $users){}
         $validator = Validator::make($request->all(), [
@@ -145,13 +146,12 @@ class FrontCartController extends Controller
     public function destroy($id)
     {
        
-        if (Auth::guard('web')->check())
-        {
+        
         $user = Auth::user()->id;
         $data = keranjang::where('kode_produk',$id)->where('user',$user)->first();
         $data->delete();
         return redirect('fpro')->with('success','Success Delete item on Cart');
-        }
+        
         
     }
 }

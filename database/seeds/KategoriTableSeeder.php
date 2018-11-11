@@ -16,7 +16,7 @@ class KategoriTableSeeder extends Seeder
         	[
         		'id'			=>	'1',
         		'kode_kategori'	=>	'KTG071541143027',
-        		'nama_kategori'	=>	'Blood',
+        		'nama_kategori'	=>	'Baju',
         		'created_at'	=>	Carbon::now()->format('Y-m-d H:i:s'),
         		'updated_at'	=>	Carbon::now()->format('Y-m-d H:i:s')
         	]
