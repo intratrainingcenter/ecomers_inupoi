@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/favicon.png')}}"/>
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/log.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -45,17 +45,10 @@
 	</header>
 
 	<!-- Cart -->
-	@include('frondend.keranjang.cart')	
+	@include('frondend.keranjang.cart')
 
 	<!-- Slider -->
 	@include('frondend.slider.slider')
-
-
-	<!-- Banner -->
-	<div class="sec-banner bg0 p-t-80 p-b-50">
-		@include('frondend.banner.banner')
-	</div>
-
 
 	<!-- Product -->
 	<section class="bg0 p-t-23 p-b-140">
@@ -65,32 +58,21 @@
 					Product Overview
 				</h3>
 			</div>
-
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
+				<form action="{{Route('Inupoi.index')}}">
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+							All Products
+						</button>
+						{{ csrf_field() }}
+				</form>
+					@foreach ($category as $item)
+
+				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{$item->kode_kategori}}">
+						{{$item->nama_kategori}}
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Women
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Bag
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Shoes
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-						Watches
-					</button>
+					@endforeach
 				</div>
 			</div>
 
@@ -100,7 +82,7 @@
 
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+				<a href="{{Route('fpro.index')}}" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 					Load More
 				</a>
 			</div>
@@ -263,7 +245,7 @@
 			})
 		});
 
-		
+
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>

@@ -46,7 +46,7 @@
     </div>
 @endif
 
- 
+
     <div class="panel panel-default">
     <div class="panel-heading">
       <button type="button" class="btn btn-primary" onclick="window.print();"><li class="fa fa-print"> Print</li></button>
@@ -78,4 +78,3 @@
 </section>
 
 @endsection
-

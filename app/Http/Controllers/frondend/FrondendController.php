@@ -29,7 +29,7 @@ class FrondendController extends Controller
         ->select('produks.gambar','keranjangs.*')
         ->get();
 
-        $category = kategori::all();
+        $category = kategori::paginate(4);
 
         $purchases = DB::table('keranjangs')
         ->sum('keranjangs.harga');
