@@ -35,6 +35,7 @@ class FrontTransController extends Controller
             $number = 'TR' . sprintf('%03d',intval($no_check)+1);
         }     
             $user = Auth::user()->id;
+            
             $count = keranjang::where('user',$user)->count();
             $cart = DB::table('keranjangs')
             ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
@@ -42,6 +43,7 @@ class FrontTransController extends Controller
             ->select('keranjangs.*','produks.gambar','produks.gambar_belakang','produks.harga As hpp','diskons.nominal As nomi_diskon')
             ->where('keranjangs.user',$user)
             ->get();
+
 
             $category = kategori::all();
             $data = DB::table('produks')
@@ -66,6 +68,8 @@ class FrontTransController extends Controller
     
     public function store(Request $request)
     {
+        $stock = produk::all();
+        foreach($stock as $stocks){}
         $createtrans = transaksi::create([
             'kode_transaksi'    => $request->kode_transaksi,
             'id_user'           => $request->id_user,
@@ -80,6 +84,9 @@ class FrontTransController extends Controller
             'qty'               => $request->qty,
             'sub_total'         => $request->sub_total,
             'nominal_diskon'    => $request->nominal,
+        ]);
+        $update = produk::where('kode_produk',$request->kode_produk)->update([
+            'stok'              => ($stocks->stok-$request->qty),
         ]);
 
         return redirect('ftrans');
