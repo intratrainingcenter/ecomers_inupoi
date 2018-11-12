@@ -20,7 +20,7 @@ class LabBarangController extends Controller
     public function index()
     {
         $barang = produk::select(DB::raw('sum(stok) as stok,kode_produk'))->groupBy('kode_produk')->with(['detail_transaksi' => function($query){
-                $query->select(DB::raw('sum(qty) as qty,kode_barang'))->groupBy('kode_barang');
+                $query->select(DB::raw('sum(qty) as qty,kode_produk'))->groupBy('kode_produk');
         }])->get();
 
         $data = produk::all();

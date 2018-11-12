@@ -13,6 +13,6 @@ class produk extends Model
 
     public function detail_transaksi()
     {
-    	return $this->hasMany('App\DetailTransaksi','kode_barang','kode_produk');
+    	return $this->hasMany('App\DetailTransaksi','kode_produk','kode_produk');
     }
 }

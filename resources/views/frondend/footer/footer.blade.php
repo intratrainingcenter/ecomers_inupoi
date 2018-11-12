@@ -6,29 +6,13 @@
 					</h4>
 
 					<ul>
+					@foreach ($category as $item)
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
-							</a>
+							<button class="stext-107 cl7 hov-cl1 trans-04" data-filter=".{{$item->kode_kategori}}">
+								{{$item->nama_kategori}}
+							</button>
 						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
-							</a>
-						</li>
+					@endforeach
 					</ul>
 				</div>
 

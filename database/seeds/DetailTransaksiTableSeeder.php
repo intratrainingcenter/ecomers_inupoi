@@ -16,8 +16,8 @@ class DetailTransaksiTableSeeder extends Seeder
         	[
         		'id'				=>	'1',
         		'kode_transaksi'	=>	'TRS0123456',
-        		'kode_barang'		=>	'BR001',
-        		'nama_barang'		=>	'celana pendek',
+        		'kode_produk'		=>	'BR001',
+        		'nama_produk'		=>	'celana pendek',
         		'harga'				=>	'120000',
         		'qty'				=>	'2',
         		'sub_total'			=>	'240000',
@@ -28,8 +28,8 @@ class DetailTransaksiTableSeeder extends Seeder
             [
                 'id'                =>  '2',
                 'kode_transaksi'    =>  'TRS0123458',
-                'kode_barang'       =>  'BR001',
-                'nama_barang'       =>  'celana pendek',
+                'kode_produk'       =>  'BR001',
+                'nama_produk'       =>  'celana pendek',
                 'harga'             =>  '120000',
                 'qty'               =>  '3',
                 'sub_total'         =>  '360000',
@@ -40,8 +40,8 @@ class DetailTransaksiTableSeeder extends Seeder
         	[
         		'id'				=>	'3',
         		'kode_transaksi'	=>	'TRS789589568',
-        		'kode_barang'		=>	'BR002',
-        		'nama_barang'		=>	'kaos polo',
+        		'kode_produk'		=>	'BR002',
+        		'nama_produk'		=>	'kaos polo',
         		'harga'				=>	'90000',
         		'qty'				=>	'1',
         		'sub_total'			=>	'90000',
