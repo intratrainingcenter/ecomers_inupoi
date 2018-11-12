@@ -4,7 +4,7 @@
 	<title>Transaction</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/log.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/animate/animate.css')}}">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/css-hamburgers/hamburgers.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/animsition/css/animsition.min.css')}}">
@@ -37,7 +37,7 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
-	
+
 	<!-- Header -->
 	<header class="header-v4">
 		@include('frondend.header.header')
@@ -59,15 +59,15 @@
 			</span>
 		</div>
 	</div>
-		
+
 	@include('frondend.transaksi.modal')
 
 	<!-- Shoping Cart -->
 
 	@include('frondend.transaksi.content')
-		
-	
-		
+	@include('frondend.history.history')
+
+
 
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
@@ -82,7 +82,7 @@
 		</span>
 	</div>
 
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/animsition/js/animsition.min.js')}}"></script>
@@ -122,7 +122,7 @@
 				ps.update();
 			});
 		});
-		
+
 	</script>
 	<!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/isotope/isotope.pkgd.min.js')}}"></script>
@@ -162,7 +162,7 @@
 				swal(nameProduct, "is added to cart !", "success");
 			});
 		});
-	
+
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>

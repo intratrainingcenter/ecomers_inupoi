@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Home</title>
+	<title>Transaction</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/favicon.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{{asset('cozastore/images/icons/log.png')}}"/>
 <!--===============================================================================================-->
@@ -24,72 +23,75 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/select2/select2.min.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/daterangepicker/daterangepicker.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/daterangepicker/daterangepicker.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/slick/slick.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/MagnificPopup/magnific-popup.css')}}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('cozastore/css/main.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/imgproduk.css')}}">
+
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
 
 	<!-- Header -->
-	<header>
+	<header class="header-v4">
 		@include('frondend.header.header')
 	</header>
 
 	<!-- Cart -->
 	@include('frondend.keranjang.cart')
 
-	<!-- Slider -->
-	@include('frondend.slider.slider')
+	<!-- breadcrumb -->
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
 
-	<!-- Product -->
-	<section class="bg0 p-t-23 p-b-140">
-		<div class="container">
-			<div class="p-b-10">
-				<h3 class="ltext-103 cl5">
-					Product Overview
-				</h3>
-			</div>
-			<div class="flex-w flex-sb-m p-b-52">
-				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-				<form action="{{Route('fpro.index')}}">
-						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-							All Products
-						</button>
-						{{ csrf_field() }}
-				</form>
-					@foreach ($category as $item)
-
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{$item->kode_kategori}}">
-						{{$item->nama_kategori}}
-					</button>
-
-					@endforeach
-				</div>
-			</div>
-
-			<div class="row isotope-grid">
-				@include('frondend.produk.produk')
-			</div>
-
-			<!-- Load more -->
-			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="{{Route('fpro.index')}}" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
-				</a>
-			</div>
+			<span class="stext-109 cl4">
+				History
+			</span>
 		</div>
-	</section>
+	</div>
+  <div class="container">
+      <div class="row">
+                  <div class="wrap-table-shopping-cart">
+                      <table class="table-shopping-cart" style="width:1200px;">
+                          <tr class="table_head">
+                              <th class="column-1">Kode Transaction</th>
+                              <th class="column-2"></th>
+                              <th class="column-3">Kode Products</th>
+                              <th class="column-4">Products Name</th>
+                              <th class="column-5">Price</th>
+                              <th class="column-6">Total Items</th>
+                              <th class="column-7">Date</th>
+                              <th class="column-8"></th>
+                          </tr>
 
+                @foreach ($detail as $details)
+                          <tr class="table_row">
+                              <td class="column-1">{{$details->kode_transaksi}}</td>
+                              <td class="column-2"></td>
+                              <td class="column-3">{{$details->kode_produk}}</td>
+                              <td class="column-4">{{$details->nama_produk}}</td>
+                              <td class="column-5">{{$details->harga}}</td>
+                              <td class="column-6">{{$details->qty}}</td>
+                              <td class="column-7">{{$details->created_at}}</td>
+                              <td class="column-8"></td>
+                          </tr>
+                          @endforeach
 
+                      </table>
+                  </div>
+          </div>
+      </div>
+      <br><br><br><br><br>
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		@include('frondend.footer.footer')
@@ -101,11 +103,6 @@
 		<span class="symbol-btn-back-to-top">
 			<i class="zmdi zmdi-chevron-up"></i>
 		</span>
-	</div>
-
-	<!-- Modal1 -->
-	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-		@include('frondend.modal.modal')
 	</div>
 
 <!--===============================================================================================-->
@@ -126,85 +123,47 @@
 		})
 	</script>
 <!--===============================================================================================-->
+	<script src="{{asset('cozastore/vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
 	<script src="{{asset('cozastore/vendor/daterangepicker/moment.min.js')}}"></script>
 	<script src="{{asset('cozastore/vendor/daterangepicker/daterangepicker.js')}}"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/slick/slick.min.js')}}"></script>
 	<script src="{{asset('cozastore/js/slick-custom.js')}}"></script>
 <!--===============================================================================================-->
-	<script src="{{asset('cozastore/vendor/parallax100/parallax100.js')}}"></script>
+	<script src="{{asset('cozastore/vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
 	<script>
-        $('.parallax100').parallax100();
-	</script>
-<!--===============================================================================================-->
-	<script src="{{asset('cozastore/vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
-	<script>
-		$('.gallery-lb').each(function() { // the containers for all your galleries
-			$(this).magnificPopup({
-		        delegate: 'a', // the selector for gallery item
-		        type: 'image',
-		        gallery: {
-		        	enabled:true
-		        },
-		        mainClass: 'mfp-fade'
-		    });
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			});
 		});
+
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/isotope/isotope.pkgd.min.js')}}"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/vendor/sweetalert/sweetalert.min.js')}}"></script>
 	<script>
-		function countwishlist(){
-			$.ajax({
-				headers:{
-					'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content'),
-				},
-				method:'get',
-				url:location.origin+'/Inupoi/CountFavorite/',
-				success:function(data){
-					$('.js-show-favorite').attr('data-notify',data)
-				}
-			});
-		}
-
-		$(document).ready(function() {
-			countwishlist();
+		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
+			e.preventDefault();
 		});
 
-		$('.js-addwish-b2').on('click', function(e){
-			e.preventDefault();
-			let nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			let kodeproduk = $(this).attr('kdProduk');
-			if($(this).parent().find('.js-addedwish-b2').length == 0){
-				$.ajax({
-					headers:{
-						'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content'),
-					},
-					method:'get',
-					url:location.origin+'/Inupoi/Favorite/'+kodeproduk,
-					success:function(data){
-						swal(nameProduct, "is added to wishlist !", "success");
-					}
-				});
+		$('.js-addwish-b2').each(function(){
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
 
-				countwishlist();
 				$(this).addClass('js-addedwish-b2');
-			}else{
-				$.ajax({
-					headers:{
-						'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content'),
-					},
-					method:'get',
-					url:location.origin+'/Inupoi/RemoveFavorite/'+kodeproduk,
-					success:function(data){
-						swal(nameProduct, "is remove to wishlist !", "success");
-					}
-				});
-
-				countwishlist();
-				$(this).removeClass('js-addedwish-b2');
-			}
+				$(this).off('click');
+			});
 		});
 
 		$('.js-addwish-detail').each(function(){
@@ -244,30 +203,9 @@
 				ps.update();
 			})
 		});
-
-
 	</script>
 <!--===============================================================================================-->
 	<script src="{{asset('cozastore/js/main.js')}}"></script>
-
-
-	 {{-- onesignal --}}
-	 <link rel="manifest" href="/manifest.json" />
-	 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-	 <script>
-	   var OneSignal = window.OneSignal || [];
-	   OneSignal.push(function() {
-		 OneSignal.init({
-		   appId: "48fefe3b-d8be-42be-b43a-2ca3832e0f43",
-		   autoRegister: false,
-		   notifyButton: {
-			 enable: true,
-		   },
-		   allowLocalhostAsSecureOrigin: true,
-		 });
-	   });
-	 </script>
-	 {{-- end onesignal --}}
-
+	@include('frondend.transaksi.aditional')
 </body>
 </html>

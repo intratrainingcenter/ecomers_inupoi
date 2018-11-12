@@ -62,6 +62,7 @@ Route::resource('fdet', 'frondend\FrontdetailController');
 Route::resource('ftrans', 'frondend\FrontTransController');
 Route::post('paypal', 'PaymentController@payWithpaypal');
 Route::get('status', 'PaymentController@getPaymentStatus')->name('status');
+Route::get('history', 'frondend\FrondendController@history')->name('history');
 
 
 

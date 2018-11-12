@@ -16,6 +16,10 @@ use Session;
 use Validator;
 use App\Mailfile;
 use App\about;
+use App\diskon;
+use App\setting;
+use App\transaksi;
+use App\DetailTransaksi;
 class FrondendController extends Controller
 {
     /**
@@ -188,5 +192,46 @@ class FrondendController extends Controller
     public function detail()
     {
         return view('frondend.detailproduk');
+    }
+    public function history()
+    {
+      $code = transaksi::orderBy('id','desc')->first();
+     if($code == NULL)
+     {
+         $number = 'TR' . sprintf('%03d',intval(0)+1);
+     }
+     else
+     {
+         $no_check = $code->id;
+         $number = 'TR' . sprintf('%03d',intval($no_check)+1);
+     }
+     $user = Auth::user()->id;
+     $user_transaksi = transaksi::select('id_user')->first();
+     dd($user_transaksi);
+     if ($user) {
+       $count = keranjang::where('user',$user)->count();
+       $cart = DB::table('keranjangs')
+       ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
+       ->join('diskons','produks.kode_diskon','=', 'diskons.kode_diskon')
+       ->select('keranjangs.*','produks.gambar','produks.gambar_belakang','produks.harga As hpp','diskons.nominal As nomi_diskon')
+       ->where('keranjangs.user',$user)
+       ->get();
+
+       $category = kategori::all();
+       $detail = DetailTransaksi::all();
+       // dd($detail);
+       $data = DB::table('produks')
+       ->join('diskons','diskons.kode_diskon','=','produks.kode_diskon')
+       ->join('keranjangs','keranjangs.kode_produk','=','produks.kode_produk')
+       ->select('produks.*','diskons.nominal')
+       ->sum('diskons.nominal');
+       $purchases = DB::table('keranjangs')
+       ->sum('keranjangs.harga');
+
+       return view('frondend.history.history',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,'count'=>$count,'number'=>$number,'detail'=>$detail]);
+     }elseif ($user == NULL) {
+       $data = produk::all();
+       return view('frondend.produk',compact('data'));
+     }
     }
 }
