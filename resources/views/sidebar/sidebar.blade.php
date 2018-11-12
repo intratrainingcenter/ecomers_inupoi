@@ -21,7 +21,6 @@
     <li><a href="{{Route('dashboard.index')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <li><a href="{{Route('kategori.index')}}"><i class="fa fa-bars"></i> <span>Category</span></a></li>
       <li><a href="{{Route('barang.index')}}"><i class="fa fa-gift"></i> <span>Product</span></a></li>
-      <li><a href="{{Route('keranjang.index')}}"><i class="fa fa-shopping-cart"></i> <span>Keranjang</span></a></li>
       <li><a href="{{Route('diskon.index')}}"><i class="fa fa-cut"></i> <span>Discount</span></a></li>
       <li><a href="{{Route('retur.index')}}"><i class="fa fa-recycle"></i> <span>Reture</span></a></li>
       <li><a href="{{Route('komentar.index')}}"><i class="fa fa-pencil-square-o"></i> <span>Comments</span></a></li>

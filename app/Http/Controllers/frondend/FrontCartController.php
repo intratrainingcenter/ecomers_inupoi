@@ -39,6 +39,8 @@ class FrontCartController extends Controller
             'ukuran'            => 'required|max:5',
             'total'             => 'required|max:20',
             'harga'             => 'required|max:40',
+            'user'              => 'required|max:40',
+
             
           ]);
 
@@ -61,6 +63,8 @@ class FrontCartController extends Controller
                     'jumlah'            => $request->total,           
                     'user'              => $request->user,  
                     'harga'             => ($request->harga*$request->total),
+                    'user'              => $request->user,
+
     
                     ]);
                     return redirect('fpro')->with('success','Success add to Cart');

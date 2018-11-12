@@ -97,9 +97,7 @@ class ProdukController extends Controller
                 'harga'             => $request->harga,
                 'stok'              => $request->stok,
                 'rating'            => '0',
-
                 'favorite'          => '0',
-
                 'deskripsi_produk'  => $request->deskripsi_produk,
                 'gambar'            => $path,
                 'gambar_belakang'   => $path2,

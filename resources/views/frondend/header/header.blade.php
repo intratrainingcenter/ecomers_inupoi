@@ -8,8 +8,8 @@
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Help & FAQs
+						<a href="{{route('Inupoi.Tutorial')}}" class="flex-c-m trans-04 p-lr-25">
+							Tutorial
 						</a>
 						@if (Auth::guard('web')->check())
 						<form action="{{ route('logout') }}" method="POST">

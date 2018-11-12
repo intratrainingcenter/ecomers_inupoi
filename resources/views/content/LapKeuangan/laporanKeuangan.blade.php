@@ -63,7 +63,7 @@ $(document).ready(function() {
   			<td>{{$loop->iteration}}</td>
   			<td>{{$uang->kode_transaksi}}</td>
         <td>{{$uang->created_at}}</td>
-        <td>{{"$.".number_format($uang->total_biaya)}}</td>
+        <td>{{"$.".number_format($uang->grandtotal)}}</td>
   		</tr>
       @endforeach
   	</tbody>

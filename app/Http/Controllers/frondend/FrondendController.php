@@ -189,4 +189,9 @@ class FrondendController extends Controller
     {
         return view('frondend.detailproduk');
     }
+
+    public function tutorial()
+    {
+        return view('frondend.panduan');
+    }
 }

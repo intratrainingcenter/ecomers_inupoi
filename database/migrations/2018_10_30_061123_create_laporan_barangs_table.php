@@ -16,7 +16,7 @@ class CreateLaporanBarangsTable extends Migration
         Schema::create('laporan_barangs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_transaksi');
-            $table->string('kode_barang');
+            $table->string('kode_produk');
             $table->string('barang_keluar');
             $table->string('stok_akhir');
             $table->date('tgl_transaksi');
