@@ -32,7 +32,7 @@ class LabBarangController extends Controller
         // }
 
         $bro = DetailTransaksi::selectRaw('sum(qty) as sum')
-        ->groupBy('kode_barang')->get();
+        ->groupBy('kode_produk')->get();
         foreach($bro as $tes){
             $brgout[] = $tes->sum;
         }

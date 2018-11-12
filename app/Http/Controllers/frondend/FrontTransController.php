@@ -160,7 +160,7 @@ class FrontTransController extends Controller
         $user = Auth::user()->id;
         $data = keranjang::where('kode_produk',$id)->where('user',$user)->first();
         $data->delete();
-        return redirect('ftrans')->with('success','Success remove item from Cart');
+        return redirect('ftrans')->with('update','Success remove item from Cart');
         
     }
 }
