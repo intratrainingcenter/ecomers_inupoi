@@ -36,7 +36,7 @@
                                             <input type="hidden" name="hpp" value="{{$item->hpp}}">
                                             <input type="hidden" name="user" value="{{Auth::user()->id}}">
                                             <div class="input-group">
-                                                <input type="text" class="input-group" style="vertical-align : middle;text-align:center;" type="number" id="total" name="total" value="{{$item->jumlah}}">
+                                                <input type="text" class="input-group total" style="vertical-align : middle;text-align:center;" type="number" id="total" name="total" value="{{$item->jumlah}}">
                                                 <button type="submit" class="input-group-addon"><i class="fa fa-check"></i></button>
                                             </div>
                                    @csrf @method('PUT')    
@@ -51,8 +51,43 @@
                 
             </div>
         </div>
+
+       
+               
+                
         
         <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+
+
+                <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+                        <h4 class="mtext-109 cl2 p-b-30">
+                                Shipping Address :
+                        </h4>
+                        
+                        <div class="flex-w flex-t bor12 p-b-13">
+                            <div class="size-208">
+
+                            <span class="mtext-110 cl2">
+                           {{Auth::user()->nickname}}
+                           </span>
+                           <span>
+                           +62{{Auth::user()->no_telp}}
+                           </span>
+                            </div>
+                            
+                            <hr><br><br>
+                            <span class="col col-12">
+                                <p >{{Auth::user()->alamat}}</p>
+                            </span>
+                            <br>
+                    <button type="button" onclick="clear_text()" class="stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" data-toggle="modal" data-target="#modal-address">
+                        Update Address
+                    </button>
+                                 
+                            </div>            
+                </div>
+
+
             <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
                 <h4 class="mtext-109 cl2 p-b-30">
                     Cart Totals

@@ -68,23 +68,37 @@ class FrontTransController extends Controller
     
     public function store(Request $request)
     {
+        $item = keranjang::where('user',$request->id_user)->count();
+        $items = keranjang::join('produks','produks.kode_produk','=','keranjangs.kode_produk')
+        ->join('diskons','diskons.kode_diskon','=','produks.kode_diskon')
+        ->where('keranjangs.user',$request->id_user)->get();
         $stock = produk::all();
+        $address = Auth::user()->alamat;
+
         foreach($stock as $stocks){}
-        $createtrans = transaksi::create([
-            'kode_transaksi'    => $request->kode_transaksi,
-            'id_user'           => $request->id_user,
-            'grandtotal'        => $request->amount,
+
+            foreach($items as $in)
+            {
+                $createdetail = DetailTransaksi::create([
+                    'kode_transaksi'    => $request->kode_transaksi,
+                    'kode_produk'       => $in->kode_produk,
+                    'nama_produk'       => $in->nama_produk,
+                    'harga'             => $in->harga,
+                    'qty'               => $in->jumlah,
+                    'sub_total'         => ($in->harga*$in->jumlah),
+                    'nominal_diskon'    => $in->nominal,
+                    ]);
+            }
+        
             
-        ]);
-        $createdetail = DetailTransaksi::create([
-            'kode_transaksi'    => $request->kode_transaksi,
-            'kode_produk'       => $request->kode_produk,
-            'nama_produk'       => $request->nama_produk,
-            'harga'             => $request->hpp,
-            'qty'               => $request->qty,
-            'sub_total'         => $request->sub_total,
-            'nominal_diskon'    => $request->nominal,
-        ]);
+            $createtrans = transaksi::create([
+                'kode_transaksi'    => $request->kode_transaksi,
+                'id_user'           => $request->id_user,
+                'grandtotal'        => $request->amount,
+                'alamat_tujuan'     => $address,
+
+                
+            ]);
         $update = produk::where('kode_produk',$request->kode_produk)->update([
             'stok'              => ($stocks->stok-$request->qty),
         ]);
@@ -100,9 +114,8 @@ class FrontTransController extends Controller
     }
 
    
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
     }
 
    
