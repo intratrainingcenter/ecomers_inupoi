@@ -21,9 +21,10 @@ Route::prefix('Inupoi')->group(function(){
 	Route::get('/Produk', 'frondend\FrondendController@produk')->name('Inupoi.Produk');
 	Route::get('/Transaksi', 'frondend\FrondendController@transaksi')->name('Inupoi.Transaksi');
 	Route::get('/Detail', 'frondend\FrondendController@detail')->name('Inupoi.Detail');
-	Route::get('/Favorite/{id}', 'backend\ProdukController@addfavorite')->middleware('auth');
-	Route::get('/RemoveFavorite/{id}', 'backend\ProdukController@removefavorite')->middleware('auth');
-	Route::get('/CountFavorite', 'backend\ProdukController@countfavorite')->middleware('auth');
+	Route::get('/Tutorial', 'frondend\FrondendController@tutorial')->name('Inupoi.Tutorial');
+	Route::get('/Favorite/{id}', 'backend\ProdukController@addfavorite');
+	Route::get('/RemoveFavorite/{id}', 'backend\ProdukController@removefavorite');
+	Route::get('/CountFavorite', 'backend\ProdukController@countfavorite');
 });
 Route::put('/about_mission/{id}','backend\aboutController@update_mission')->name('about.update_mission')->middleware('auth');
 
