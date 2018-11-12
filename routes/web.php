@@ -67,7 +67,6 @@ Route::get('history', 'frondend\FrondendController@history')->name('history')->m
 
 
 
-
 //cart JS
 Route::get('decart', 'frondend\FrontProductController@showcart');
 
