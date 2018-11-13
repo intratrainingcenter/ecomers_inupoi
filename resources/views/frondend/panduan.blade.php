@@ -152,6 +152,9 @@
 	  <div class="w3-display-bottomleft w3-large w3-container w3-padding-16" style="bottom: 90px;left: 20px;">
 	    <h3><b><font color="black">Last Payment Process</font></b></h3>
 	  </div>
+	  <div class="w3-display-bottomright w3-large w3-container w3-padding-16">
+	    <a href="{{route('Inupoi.index')}}" class="btn btn-lg btn-primary"><i class="fa fa-home"></i> HOME </a>
+	  </div>
 	</div>
 	
 	<button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>

@@ -7,6 +7,8 @@
 <link href="{{ asset('assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/print.css') }}" rel="stylesheet">
+   
 @endsection
 
 @section('someJS')
@@ -47,11 +49,11 @@
 @endif
 
  
-    <div class="panel panel-default">
+    <div class="panel panel-default noprint">
     <div class="panel-heading">
-      <button type="button" class="btn btn-primary" onclick="window.print();"><li class="fa fa-print"> Print</li></button>
+      <button type="button" class="btn btn-primary printbtn" onclick="window.print();"><li class="fa fa-print"> Print</li></button>
     </div>
-    <div class="panel-body">
+    <div id="printJSform" class="panel-body">
       <table id="example" class="table table-bordered" style="width:100%">
       <thead>
         <tr>
