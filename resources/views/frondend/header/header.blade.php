@@ -127,17 +127,17 @@
 							Help & FAQs
 						</a>
 
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Login
+						@if (Auth::guard('web')->check())
+						<form action="{{ route('logout') }}" method="POST">
+						<a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
+							@csrf
+						</form>
+						@else
+						<a href="{{ url('Inupoi/google') }}" class="flex-c-m trans-04 p-lr-25">
+							Login &nbsp;<i class="fa fa-google"></i>oogle +
 						</a>
+						@endif
 
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							USD
-						</a>
 					</div>
 				</li>
 			</ul>
@@ -148,11 +148,7 @@
 				</li>
 
 				<li>
-					<a href="{{Route('Inupoi.Produk')}}">Shop</a>
-				</li>
-
-				<li>
-					<a href="{{Route('Inupoi.Transaksi')}}" class="label1 rs1" data-label1="hot">Features</a>
+					<a href="{{Route('fpro.index')}}">Shop</a>
 				</li>
 
 				<li>
