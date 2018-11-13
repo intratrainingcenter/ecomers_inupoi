@@ -40,6 +40,14 @@ class KomentarController extends Controller
     
     public function destroy($id)
     {
-        //
+
+      
+        $hapus = komentar::where('', $id);
+        // dd($hapus);
+        $hapus->delete();
+
+        return redirect('komentar')->with('success','Delete data success');
+
+      
     }
 }
