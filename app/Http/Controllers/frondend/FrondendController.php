@@ -126,9 +126,10 @@ class FrondendController extends Controller
 
         $purchases = DB::table('keranjangs')
         ->sum('keranjangs.harga');
+        $footer = setting::all();
         $user = User::get();
 
-        return View('frondend/contentPage/contentpage',compact('user','count','cart','purchases'));
+        return View('frondend/contentPage/contentpage',compact('user','count','cart','purchases','footer'));
     }
     public function email(Request $request)
     {
@@ -159,8 +160,9 @@ class FrondendController extends Controller
         $purchases = DB::table('keranjangs')
         ->sum('keranjangs.harga');
 
-      $data = about::all();
-      return view('frondend.about.about', compact('data','count','cart','purchases'));
+        $footer = setting::all();
+        $data = about::all();
+      return view('frondend.about.about', compact('data','count','cart','purchases','footer'));
     }
 
     public function produk()
@@ -182,11 +184,12 @@ class FrondendController extends Controller
         $purchases = DB::table('keranjangs')
         ->sum('keranjangs.harga');
 
+        $footer = setting::all();
         $count = keranjang::count();
 
 
         return view('frondend.transaksi',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
-                'count'=>$count]);
+                'count'=>$count,'footer'=>$footer]);
 
     }
 

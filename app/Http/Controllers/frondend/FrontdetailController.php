@@ -35,6 +35,8 @@ class FrontdetailController extends Controller
         $related = produk::orderBy('created_at', 'desc')->get();
         
         $count = keranjang::where('user',$user)->count();
+        $footer = setting::all();
+
      
 
 
@@ -42,7 +44,7 @@ class FrontdetailController extends Controller
 
 
      return view('frondend.detailproduk',['data'=>$data,'related'=>$related,'count'=>$count,
-                'cart'=>$cart,'purchases'=>$purchases]);
+                'cart'=>$cart,'purchases'=>$purchases,'footer'=>$footer]);
     }
 
 
