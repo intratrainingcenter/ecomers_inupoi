@@ -33,7 +33,8 @@ class FrontdetailController extends Controller
 
         $related = produk::orderBy('created_at', 'desc')->get();
         
-        $comment = coment::all();
+        $comment = coment::join('produks','coments.kode_produk','=','produks.kode_produks')->join('users','coments.kode_users','=','users.id')
+        ->get();
         dd($comment);
      return view('frondend.detailproduk',['data'=>$data,'related'=>$related,'count'=>$count,
                 'cart'=>$cart,'purchases'=>$purchases,'comment'=>$comment]);

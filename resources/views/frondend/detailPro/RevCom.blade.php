@@ -4,13 +4,23 @@
                 <div class="p-b-30 m-lr-15-sm">
 
                     @foreach($comment as $coments)
-                         <ul>
-                            <li><i class="fa fa-clock-o"></i>
-                            {{date('H: i', strtotime($coments->created_at))}}</a></li>
-                            <li><a href=""><i class="fa fa-calendar-o"></i>
-                            {{date('F j, Y', strtotime($coments->created_at))}}</a></li>
-                        </ul>        
-                        <p> {{$coments->deskripsi}}</P>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                @for ($i=1; $i <= 5 ; $i++)
+                                    <span class="glyphicon glyphicon-star{{ ($i <= $coments->rating) ? '' : '-empty'}}"></span>
+                                @endfor
+        @foreach($)
+                                {{$item->name}}
+                                <i class="fa fa-clock-o"></i> {{date('H: i', strtotime($item->created_at))}} 
+                                <i class="fa fa-calendar-o"></i>
+                                {{date('F j, Y', strtotime($coments->created_at))}}
+                                <span class="pull-right">{{$item->timeago}}</span> 
+
+                                <h5><p>{{{$item->deskripsi}}}</p></h5>
+                            </div>
+                        </div>
+                          
                     @endforeach
            
                     <br />
@@ -26,7 +36,6 @@
                         <p class="stext-102 cl6">
                             Your email address will not be published. Required fields are marked *
                         </p>
-
                         <div class="flex-w flex-m p-t-50 p-b-23">
                             <span class="stext-102 cl3 m-r-16">
                                 Your Rating
@@ -34,16 +43,13 @@
 
                             
                             <select class="wrap-rating fs-18 cl11 pointer" name="rating">
-                                <option value="1">bintang 1</option>
-                                <option value="2"> </option>
-                                <option value="3"> </option>
-                                <option value="4"> </option>
-                                <option value="5"> </option>
+                                <option value="1">bintang 1 </option>
+                                <option value="2">bintang 2 </option>
+                                <option value="3">bintang 3 </option>
+                                <option value="4">bintang 4 </option>
+                                <option value="5">bintang 5 </option>
                             </select>
-
-
                         </div>
-
                    
 
                         <div class="row p-b-25">

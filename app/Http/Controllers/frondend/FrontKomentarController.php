@@ -16,7 +16,8 @@ class FrontKomentarController extends Controller
     public function index()
     {
         
-        $data = coment::join('produks','coments.kode_produk','=','produks.kode_produks')>get();
+        $data = coment::join('produks','coments.kode_produk','=','produks.kode_produks')->join('users','coments.kode_users','=','users.id')
+        ->get();
         return view('content.komentar.komentar', compact('data'));
         
     }
