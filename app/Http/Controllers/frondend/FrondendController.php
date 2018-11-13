@@ -203,6 +203,8 @@ class FrondendController extends Controller
     }
     public function history()
     {
+        $footer = setting::all();
+        
       $code = transaksi::orderBy('id','desc')->first();
      if($code == NULL)
      {
@@ -233,10 +235,10 @@ class FrondendController extends Controller
        ->sum('diskons.nominal');
        $purchases = DB::table('keranjangs')
        ->sum('keranjangs.harga');
-       return view('frondend.history.history',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,'count'=>$count,'number'=>$number,'detail'=>$detail]);
+       return view('frondend.history.history',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,'count'=>$count,'number'=>$number,'detail'=>$detail,'footer'=>$footer]);
      }elseif ($user != $user_transaksi) {
        $data = produk::all();
-       return view('frondend.produk',compact('data'));
+       return view('frondend.produk',compact('data','footer'));
      }
     }
 }
