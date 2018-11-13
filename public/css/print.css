@@ -1,6 +1,0 @@
-@media print {
-	.panel-heading, footer
-		{
-		display: none !important;
-	}
-}
