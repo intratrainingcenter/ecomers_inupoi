@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\produk;
+use App\setting;
 use App\User;
 use App\kategori;
 use App\keranjang;
@@ -35,6 +36,8 @@ class FrondendController extends Controller
 
         $category = kategori::paginate(4);
 
+        $footer = setting::all();
+
         $purchases = DB::table('keranjangs')
         ->sum('keranjangs.harga');
 
@@ -43,7 +46,7 @@ class FrondendController extends Controller
         $data = produk::paginate(4);
 
 
-        return view('frondend/frondend', compact('data','category','cart','purchases','count'));
+        return view('frondend/frondend', compact('data','category','footer','cart','purchases','count'));
     }
 
     /**

@@ -1,6 +1,3 @@
 @media print {
-	.panel-heading, footer
-		{
-		display: none !important;
-	}
+  .noprint {display: none;}
 }
