@@ -48,12 +48,17 @@
 					<div class="header-cart-total w-full p-tb-40">
 						Total: {{"$. ".number_format($purchases)}}
 					</div>
-
+					@if($count == 0)
+					<div class="header-cart-buttons flex-w w-full">
+						
+					</div>
+					@else
 					<div class="header-cart-buttons flex-w w-full">
 						<a href="{{Route('ftrans.index')}}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Check Out
 						</a>
 					</div>
+					@endif
 				</div>
 			
 			@else

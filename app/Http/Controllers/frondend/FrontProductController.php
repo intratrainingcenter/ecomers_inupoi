@@ -24,7 +24,6 @@ class FrontProductController extends Controller
             ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
             ->where('keranjangs.user',$user)
             ->get();
-
             $category = kategori::all();
             $data = produk::paginate(8);
             $purchases = DB::table('keranjangs')
