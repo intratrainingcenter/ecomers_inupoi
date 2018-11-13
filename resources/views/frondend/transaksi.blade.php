@@ -65,10 +65,6 @@
 	<!-- Shoping Cart -->
 
 	@include('frondend.transaksi.content')
-	@include('frondend.history.history')
-
-
-
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		@include('frondend.footer.footer')

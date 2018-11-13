@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -64,8 +64,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
     $request = request();
-      $gambar = $request->file('foto');
-            $nm_file = $gambar->getClientOriginalName();
+      $image = $request->file('foto');
+            $nm_file = $image->getClientOriginalName();
             $request->file('foto')->move(public_path().'/image/', $nm_file);
 
         return User::create([

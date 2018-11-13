@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Transaction</title>
+	<title>History</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -65,25 +65,23 @@
                       <table class="table-shopping-cart" style="width:1200px;">
                           <tr class="table_head">
                               <th class="column-1">Kode Transaction</th>
-                              <th class="column-2"></th>
-                              <th class="column-3">Kode Products</th>
-                              <th class="column-4">Products Name</th>
-                              <th class="column-5">Price</th>
-                              <th class="column-6">Total Items</th>
-                              <th class="column-7">Date</th>
-                              <th class="column-8"></th>
+                              <th class="column-3">Products Name</th>
+                              <th class="column-4">Price</th>
+                              <th class="column-5">Quantity</th>
+                              <th class="column-6">Discount</th>
+                              <th class="column-7">Total</th>
+                              <th class="column-8">Date</th>
                           </tr>
 
                 @foreach ($detail as $details)
                           <tr class="table_row">
                               <td class="column-1">{{$details->kode_transaksi}}</td>
-                              <td class="column-2"></td>
-                              <td class="column-3">{{$details->kode_produk}}</td>
-                              <td class="column-4">{{$details->nama_produk}}</td>
-                              <td class="column-5">{{$details->harga}}</td>
-                              <td class="column-6">{{$details->qty}}</td>
-                              <td class="column-7">{{$details->created_at}}</td>
-                              <td class="column-8"></td>
+                              <td class="column-3">{{$details->nama_produk}}</td>
+                              <td class="column-4" style="vertical-align:middle;text-align:right;">{{"$. ".number_format($details->harga)}}</td>
+                              <td class="column-5" style="vertical-align:middle;text-align:middle;">{{$details->qty}}</td>
+                              <td class="column-6">{{"$. ".number_format($details->nominal_diskon)}}</td>
+                              <td class="column-7">{{"$. ".number_format($details->grandtotal)}}</td>
+                              <td class="column-8">{{$details->created_at}}</td>
                           </tr>
                           @endforeach
 

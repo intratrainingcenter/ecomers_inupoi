@@ -88,7 +88,6 @@ class UserController extends Controller
      $user->foto = $nm_file;
      $user->password = Hash::make($request->password);
      $user->save();
-     // dd($user);
     return redirect()->route('user.index')->with('success', 'Berhasil Mengedit Data');
   }else {
       return redirect()->route('user.index')->with('gagal','Gagal mengupdate data mohon cek password anda');
@@ -105,7 +104,6 @@ class UserController extends Controller
     public function destroy(Request $request, $id)
     {
       $user = user::findOrFail($id);
-      // dd($user);
       $image = $request->file('foto');
       $nm_file = $request->image;
       unlink(public_path('image'.DIRECTORY_SEPARATOR.$nm_file));

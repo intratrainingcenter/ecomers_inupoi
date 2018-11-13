@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/index';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -49,8 +49,6 @@ class LoginController extends Controller
     {
         $user = Socialite::driver($provider)->stateless()->user();
         $authUser = $this->findOrCreateUser($user, $provider);
-        // Auth::login($authUser, true);
-        // return redirect($this->redirectTo);
         if ($authUser == false){
           return redirect('Inupoi11.index')->with('warning','WARNING!');
         }else{

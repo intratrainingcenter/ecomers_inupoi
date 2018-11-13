@@ -129,12 +129,10 @@ class FrondendController extends Controller
     }
     public function email(Request $request)
     {
-      // dd($request);
       $data = array(
         'email' => $request->email,
         'title' => $request->title,
       );
-      // dd($data);
       Mail::send('frondend.contentPage.mymail', $data, function($massage) use ($data){
         $massage->to('InupiCorp@gmail.com');
         $massage->from($data['email']);
@@ -202,12 +200,11 @@ class FrondendController extends Controller
      }
      else
      {
-         $no_check = $code->id;
-         $number = 'TR' . sprintf('%03d',intval($no_check)+1);
+         $number_check = $code->id;
+         $number = 'TR' . sprintf('%03d',intval($number_check)+1);
      }
      $user = Auth::user()->id;
      $user_transaksi = transaksi::select('id_user')->first();
-     dd($user_transaksi);
      if ($user) {
        $count = keranjang::where('user',$user)->count();
        $cart = DB::table('keranjangs')
@@ -218,8 +215,7 @@ class FrondendController extends Controller
        ->get();
 
        $category = kategori::all();
-       $detail = DetailTransaksi::all();
-       // dd($detail);
+       $detail = DetailTransaksi::join('transaksis','detail_transaksis.kode_transaksi','=','transaksis.kode_transaksi')->where('transaksis.id_user',$user)->get();
        $data = DB::table('produks')
        ->join('diskons','diskons.kode_diskon','=','produks.kode_diskon')
        ->join('keranjangs','keranjangs.kode_produk','=','produks.kode_produk')
@@ -227,9 +223,8 @@ class FrondendController extends Controller
        ->sum('diskons.nominal');
        $purchases = DB::table('keranjangs')
        ->sum('keranjangs.harga');
-
        return view('frondend.history.history',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,'count'=>$count,'number'=>$number,'detail'=>$detail]);
-     }elseif ($user == NULL) {
+     }elseif ($user != $user_transaksi) {
        $data = produk::all();
        return view('frondend.produk',compact('data'));
      }
