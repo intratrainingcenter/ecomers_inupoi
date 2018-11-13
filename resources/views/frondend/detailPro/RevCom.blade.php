@@ -28,7 +28,7 @@
                         </div>
 
                         <form action="{{url('/coment')}}" method="post">
-                        {{ csrf_feild () }}
+                        {{ csrf_field() }}
 
                         <div class="row p-b-25">
                             <div class="col-12 p-b-5">

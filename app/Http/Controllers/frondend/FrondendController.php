@@ -18,7 +18,6 @@ use Validator;
 use App\Mailfile;
 use App\about;
 use App\diskon;
-use App\setting;
 use App\transaksi;
 use App\DetailTransaksi;
 class FrondendController extends Controller

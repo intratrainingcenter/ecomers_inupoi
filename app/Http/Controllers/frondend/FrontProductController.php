@@ -119,9 +119,11 @@ class FrontProductController extends Controller
 
         $related = produk::orderBy('created_at', 'desc')->get();
 
+        $footer = setting::all();
+
 
         return view('frondend.detailproduk',['data'=>$data,'category'=>$category,'related'=>$related,'count'=>$count,
-        'cart'=>$cart,'purchases'=>$purchases]);
+        'cart'=>$cart,'purchases'=>$purchases,'footer'=>$footer]);
     }
 
 

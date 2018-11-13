@@ -37,9 +37,6 @@ class FrontdetailController extends Controller
         $count = keranjang::where('user',$user)->count();
         $footer = setting::all();
 
-     
-
-
           $count = keranjang::select('nama_produk')->count();
 
 
