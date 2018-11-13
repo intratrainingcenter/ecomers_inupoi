@@ -44,10 +44,14 @@ $(document).ready(function() {
       <label>Sampai :</label>
       <input type="date" name="sampai">
       <button type="submit" class="btn btn-info">Cari</button>
-      <button type="button" class="btn btn-primary pull-right print" onclick="window.print()"><li class="fa fa-print"> Print</li></button>
+      <button type="button" class="btn btn-primary pull-right" id="btnPrint" onclick="javascript:printcontent('print')"><li class="fa fa-print"> Print</li></button>
   </div>
 </form>
-  <div class="panel-body hasil">
+  <div class="panel-body hasil" id="print">
+      <div hidden="" id="title">
+          <center> <h3> Financial Statements </h3>
+            <hr>
+      </div>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
     <thead>
       <tr>

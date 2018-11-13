@@ -51,9 +51,13 @@
 
     <div class="panel panel-default">
     <div class="panel-heading">
-      <button type="button" class="btn btn-primary printbtn" onclick="window.print();"><li class="fa fa-print"> Print</li></button>
+      <button type="button" class="btn btn-primary printbtn" id="btnPrint" onclick="javascript:printcontent('print')"><li class="fa fa-print"> Print</li></button>
     </div>
-    <div id="printJSform" class="panel-body">
+    <div id="printJSform" class="panel-body" id="print">
+        <div hidden="" id="title">
+            <center> <h3> Report Product </h3>
+              <hr>
+        </div>
       <table id="example" class="table table-bordered" style="width:100%">
       <thead>
         <tr>

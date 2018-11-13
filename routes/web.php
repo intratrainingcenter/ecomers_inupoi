@@ -57,7 +57,7 @@ Route::resource('user','backend\UserController')->middleware('auth');
 Route::resource('userprofile','backend\UserprofileController')->middleware('auth');
 Route::resource('coment','backend\KomentarController')->middleware('auth');
 // frontEnd
-Route::resource('fpro', 'frondend\FrontProductController');
+Route::resource('fmember', 'frondend\FrontMemberController');
 Route::resource('fpro', 'frondend\FrontProductController');
 Route::resource('Inupoi', 'frondend\FrondendController');
 Route::resource('fcart', 'frondend\FrontCartController');

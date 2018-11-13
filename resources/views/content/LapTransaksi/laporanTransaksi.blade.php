@@ -14,12 +14,8 @@
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 <script>
-$(function() {
-  $('#example').DataTable();
-  // $('#example2').DataTable({
-  //   ''
-  // });
-});
+
+
 </script>
 @endsection
 
@@ -62,23 +58,30 @@ $(function() {
           <label>Sampai :</label>
           <input type="date" name="sampai">
           <button type="submit" class="btn btn-info">Cari</button>
-          <button type="button" class="btn btn-primary pull-right" onclick="window.print();"><li class="fa fa-print"> Print</li></button>
+          <button type="button" class="btn btn-primary pull-right" id="btnPrint" onclick="javascript:printcontent('print')"><li class="fa fa-print"> Print</li></button>
         </div>
       </form>
-    <div class="panel-body">
-      <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <div class="panel-body" id="print">
+        <div hidden="" id="title">
+            <center> <h3> Transaction Report </h3>
+              <hr>
+        </div>
+
+      <table id="example" class="table table-striped table-bordered"  style="width:100%">
       <thead>
         <tr>
           <th class="column-title">No</th>
-          <th class="column-title">Kode Transaksi</th>
-          <th class="column-title">Tanggal Transaksi</th>
+          <th class="column-title">Code</th>
+          <th class="column-title">Address</th>          
+          <th class="column-title">Date</th>
         </tr>
       </thead>
     	<tbody>
         @foreach($data as $laptransaksi)
     		<tr>
     			<td>{{$loop->iteration}}</td>
-    			<td>{{$laptransaksi->kode_transaksi}}</td>
+          <td>{{$laptransaksi->kode_transaksi}}</td>
+    			<td>{{$laptransaksi->alamat_tujuan}}</td>          
           <td>{{$laptransaksi->created_at}}</td>
     		</tr>
         @endforeach

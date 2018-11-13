@@ -104,11 +104,35 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-<script>
+<script type="text/javascript">
 $(function() {
   $('#example').DataTable();
+  $('#example_length').show();
+  $('#example_filter').show();
+  $('#example_info').show();
+  $('#example_paginate').show();
 
 });
+function printcontent(example){
+            $('#example_filter').hide();
+            $('#example_info').hide();
+            $('#example_paginate').hide();
+						$('#example_length').hide();
+            $('#btnPrint').hide();
+            $('#title').show();
+						var restorepage = document.body.innerHTML;
+						var printcontent = document.getElementById(example).innerHTML;
+						document.body.innerHTML = printcontent;
+						window.print();
+						window.close();
+            document.body.innerHTML = restorepage;
+            $('#title').hide();            
+            $('#example_length').show();
+            $('#example_filter').show();
+            $('#example_info').show();
+            $('#example_paginate').show();
+						$('#btnPrint').show();
+				}
 
 </script>
 @section('someJS')

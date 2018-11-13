@@ -17,11 +17,7 @@ use Auth;
 
 class FrontTransController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
          $code = transaksi::orderBy('id','desc')->first();
@@ -44,7 +40,7 @@ class FrontTransController extends Controller
             ->where('keranjangs.user',$user)
             ->get();
 
-
+            $footer = setting::all();
             $category = kategori::all();
             $data = DB::table('produks')
             ->join('diskons','diskons.kode_diskon','=','produks.kode_diskon')
@@ -55,7 +51,7 @@ class FrontTransController extends Controller
             ->sum('keranjangs.harga');
 
             return view('frondend.transaksi',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
-            'count'=>$count,'number'=>$number]);
+            'count'=>$count,'number'=>$number,'footer'=>$footer]);
     
     }
 
