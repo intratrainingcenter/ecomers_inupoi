@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\produk;
 use App\kategori;
+use App\setting;
 use App\keranjang;
 use Auth;
 
@@ -28,17 +29,21 @@ class FrontProductController extends Controller
             $data = produk::paginate(8);
             $purchases = DB::table('keranjangs')
             ->sum('keranjangs.harga');
+
+             $footer = setting::all();
+
             return view('frondend.produk',['data'=>$data,'category'=>$category,'cart'=>$cart,'purchases'=>$purchases,
-            'count'=>$count]);
+            'count'=>$count,'footer'=>$footer]);
         }
     
         $category = kategori::all();
         $data = produk::paginate(8);
+        $footer = setting::all();
 
         $purchases = DB::table('keranjangs')
         ->sum('keranjangs.harga');
 
-        return view('frondend.produk',['data'=>$data,'category'=>$category,'purchases'=>$purchases]);
+        return view('frondend.produk',['data'=>$data,'category'=>$category,'purchases'=>$purchases,'footer'=>$footer]);
         
     }
     public function showcart()
