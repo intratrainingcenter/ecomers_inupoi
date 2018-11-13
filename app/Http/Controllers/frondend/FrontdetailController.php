@@ -10,6 +10,7 @@ use App\kategori;
 use App\keranjang;
 use App\diskon;
 use App\setting;
+use App\coment;
 use Validator, Input, Redirect;  
 
 class FrontdetailController extends Controller
@@ -31,10 +32,11 @@ class FrontdetailController extends Controller
         ->sum('keranjangs.harga');
 
         $related = produk::orderBy('created_at', 'desc')->get();
-     
-
+        
+        $comment = coment::all();
+        dd($comment);
      return view('frondend.detailproduk',['data'=>$data,'related'=>$related,'count'=>$count,
-                'cart'=>$cart,'purchases'=>$purchases]);
+                'cart'=>$cart,'purchases'=>$purchases,'comment'=>$comment]);
     }
 
 

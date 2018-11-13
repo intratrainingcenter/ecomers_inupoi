@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\produk;
 use App\kategori;
 use App\keranjang;
+use App\coment;
 use Auth;
 
 
@@ -20,7 +21,7 @@ class FrontProductController extends Controller
         foreach($user as $users)
         {
         }
-        dd($users->id);
+        // dd($users->id);
         $cart = DB::table('keranjangs')
         ->join('produks','keranjangs.kode_produk','=','produks.kode_produk')
         ->select('produks.gambar','keranjangs.*')
@@ -110,10 +111,11 @@ class FrontProductController extends Controller
         ->sum('keranjangs.harga');
 
         $related = produk::orderBy('created_at', 'desc')->get();
+        $comment = coment::all();
          
 
         return view('frondend.detailproduk',['data'=>$data,'category'=>$category,'related'=>$related,'count'=>$count,
-        'cart'=>$cart,'purchases'=>$purchases]);
+        'cart'=>$cart,'purchases'=>$purchases,'comment'=>$comment]);
     }
 
   

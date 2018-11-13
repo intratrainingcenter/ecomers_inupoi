@@ -32,7 +32,7 @@
           <div class="form-group">
             <label for="nominal" class="col-sm-4 control-label">Description</label>
             <div class="col-sm-8">
-              <textarea type="text" class="form-control" name='Deskripsi' id="deskripsi" placeholder="Deskripsi" required></textarea>
+              <textarea type="text" class="form-control" name='deskripsi' id="deskripsi" placeholder="Deskripsi" required></textarea>
             </div>
           </div>
         </div>

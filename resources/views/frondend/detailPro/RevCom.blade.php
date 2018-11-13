@@ -2,8 +2,23 @@
         <div class="row">
             <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
                 <div class="p-b-30 m-lr-15-sm">
+
+                    @foreach($comment as $coments)
+                         <ul>
+                            <li><i class="fa fa-clock-o"></i>
+                            {{date('H: i', strtotime($coments->created_at))}}</a></li>
+                            <li><a href=""><i class="fa fa-calendar-o"></i>
+                            {{date('F j, Y', strtotime($coments->created_at))}}</a></li>
+                        </ul>        
+                        <p> {{$coments->deskripsi}}</P>
+                    @endforeach
+           
+                    <br />
+
+                    <br />
                     <!-- Add review -->
-                    <form class="w-full">
+                    <form action="{{ route('fcoment.store') }}" method="POST" class="w-full">
+                    @csrf
                         <h5 class="mtext-108 cl2 p-b-7">
                             Add a review
                         </h5>
@@ -17,40 +32,61 @@
                                 Your Rating
                             </span>
 
-                            <span class="wrap-rating fs-18 cl11 pointer">
-                                <i val='1' class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                <i val='2' class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                <i val='3' class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                <i val='4' class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                <i val='5' class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                <input class="dis-none" type="number" name="rating">
-                            </span>
+                            
+                            <select class="wrap-rating fs-18 cl11 pointer" name="rating">
+                                <option value="1">bintang 1</option>
+                                <option value="2"> </option>
+                                <option value="3"> </option>
+                                <option value="4"> </option>
+                                <option value="5"> </option>
+                            </select>
+
+
                         </div>
 
-                        <form action="{{url('/coment')}}" method="post">
-                        {{ csrf_feild () }}
+                   
 
                         <div class="row p-b-25">
+
                             <div class="col-12 p-b-5">
                                 <label class="stext-102 cl3" for="review">Your review</label>
                                 <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
                             </div>
-
+        
+                    @if(Auth::guard('web')->check())
                             <div class="col-sm-6 p-b-5">
                                 <label class="stext-102 cl3" for="name">Name</label>
-                                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
+                                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name" value="{{Auth::user()->name}}">
+                            </div>
+
+                            <div class="col-sm-6 p-b-5">
+                                <label class="stext-102 cl3" for="email">Email</label>
+                                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email"  value="{{Auth::user()->email}}">
+                            </div>
+                   
+                        </div>
+                            <input type="hidden" name="kode_produk" value="{{$item->kode_produk}}">
+                        <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" type="sumbit">
+                            Submit
+                        </button>
+                    </form>
+                    @else
+                    <div class="col-sm-6 p-b-5">
+                                <label class="stext-102 cl3" for="name">Name</label>
+                                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name" value="">
                             </div>
 
                             <div class="col-sm-6 p-b-5">
                                 <label class="stext-102 cl3" for="email">Email</label>
                                 <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
                             </div>
+                   
                         </div>
 
-                        <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+                        <a href="{{ url('Inupoi/google') }}" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" type="sumbit">
                             Submit
-                        </button>
-                    </form>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
