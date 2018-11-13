@@ -47,7 +47,7 @@ $(function() {
       <div class="icon">
         <i class="ion ion-cube"></i>
       </div>
-      <a class="small-box-footer">Total All Stock   <i class="fa fa-arrow-circle-right"></i></a>
+      <a class="small-box-footer"><i class="ion ion-cube"></i></a>
     </div>
   </div>
   <!-- ./col -->
