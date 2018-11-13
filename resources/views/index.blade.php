@@ -72,6 +72,13 @@
       setTimeout(function(){ $('.notif').hide(1000)},3000);
     </Script>
 <div class="wrapper">
+  @if ($message = Session::get('Login'))
+      <div class="alert alert-danger alert alert-danger alert-dismissible fade in notif" role="alert" >
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+          <p>{{ $message }}</p>
+      </div>
+      @endif
   @include('header.header')
   @include('sidebar.sidebar')
   <div class="content-wrapper">

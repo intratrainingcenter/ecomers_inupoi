@@ -21,18 +21,18 @@ Route::prefix('Inupoi')->group(function(){
 	Route::get('/Produk', 'frondend\FrondendController@produk')->name('Inupoi.Produk');
 	Route::get('/Transaksi', 'frondend\FrondendController@transaksi')->name('Inupoi.Transaksi');
 	Route::get('/Detail', 'frondend\FrondendController@detail')->name('Inupoi.Detail');
-	Route::get('/Favorite/{id}', 'backend\ProdukController@addfavorite');
-	Route::get('/RemoveFavorite/{id}', 'backend\ProdukController@removefavorite');
-	Route::get('/CountFavorite', 'backend\ProdukController@countfavorite');
+	Route::get('/Favorite/{id}', 'backend\ProdukController@addfavorite')->middleware('auth');
+	Route::get('/RemoveFavorite/{id}', 'backend\ProdukController@removefavorite')->middleware('auth');
+	Route::get('/CountFavorite', 'backend\ProdukController@countfavorite')->middleware('auth');
 });
 Route::put('/about_mission/{id}','backend\aboutController@update_mission')->name('about.update_mission')->middleware('auth');
 
 Route::prefix('laporankeuangan')->group(function(){
-	Route::get('/Filter', 'backend\LapKeuanganController@filter')->name('Filter.laporankeuangan');
+	Route::get('/Filter', 'backend\LapKeuanganController@filter')->name('Filter.laporankeuangan')->middleware('auth');
 });
 
 Route::prefix('laporantransaksi')->group(function(){
-	Route::get('/Filter', 'backend\LapTransaksiController@filter')->name('Filter.laporantransaksi');
+	Route::get('/Filter', 'backend\LapTransaksiController@filter')->name('Filter.laporantransaksi')->middleware('auth');
 });
 
 Route::get('Inupoi/{provider}', 'Auth\LoginController@redirectToProvider');
@@ -59,10 +59,10 @@ Route::resource('fpro', 'frondend\FrontProductController');
 Route::resource('Inupoi', 'frondend\FrondendController');
 Route::resource('fcart', 'frondend\FrontCartController');
 Route::resource('fdet', 'frondend\FrontdetailController');
-Route::resource('ftrans', 'frondend\FrontTransController');
-Route::post('paypal', 'PaymentController@payWithpaypal');
-Route::get('status', 'PaymentController@getPaymentStatus')->name('status');
-Route::get('history', 'frondend\FrondendController@history')->name('history');
+Route::resource('ftrans', 'frondend\FrontTransController')->middleware('frontend');
+Route::post('paypal', 'PaymentController@payWithpaypal')->middleware('frontend');
+Route::get('status', 'PaymentController@getPaymentStatus')->name('status')->middleware('frontend');
+Route::get('history', 'frondend\FrondendController@history')->name('history')->middleware('frontend');
 
 
 
@@ -73,6 +73,6 @@ Route::get('decart', 'frondend\FrontProductController@showcart');
 
 
 Route::prefix('laporankeuangan')->group(function(){
-	Route::get('/Filter', 'backend\LapKeuanganController@filter')->name('Filter.laporankeuangan');
-	Route::get('/SubTotal', 'backend\LapKeuanganController@subtotal');
+	Route::get('/Filter', 'backend\LapKeuanganController@filter')->name('Filter.laporankeuangan')->middleware('auth');
+	Route::get('/SubTotal', 'backend\LapKeuanganController@subtotal')->middleware('auth');
 });

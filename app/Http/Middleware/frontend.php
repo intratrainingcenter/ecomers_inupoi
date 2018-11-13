@@ -15,13 +15,13 @@ class frontend
      */
     public function handle($request, Closure $next)
     {
-      if (Auth::guard('frontend')->check() == 'member') {
+      if (Auth::user()) {
 
           return $next($request);
 
       }else{
 
-    return redirect()->route('Inupoi.index')->with('Login','Anda Belum Login');
+    return redirect()->route('Inupoi.index');
 }
 
     }
