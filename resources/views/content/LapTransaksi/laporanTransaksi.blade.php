@@ -14,12 +14,8 @@
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 <script>
-$(function() {
-  $('#example').DataTable();
-  // $('#example2').DataTable({
-  //   ''
-  // });
-});
+
+
 </script>
 @endsection
 
@@ -55,38 +51,40 @@ $(function() {
 
  
     <div class="panel panel-default">
-    <div class="panel-heading">
-            <button type="button" class="btn-lg btn-success fa fa-plus-square "></button>
-    </div>
-    <div class="panel-body">
-      <table id="example" class="table table-striped table-bordered" style="width:100%">
+      <form action="{{route('Filter.laporantransaksi')}}">
+        <div class="panel-heading">
+          <label>Dari :</label>
+          <input type="date" name="dari">
+          <label>Sampai :</label>
+          <input type="date" name="sampai">
+          <button type="submit" class="btn btn-info">Cari</button>
+          <button type="button" class="btn btn-primary pull-right" id="btnPrint" onclick="javascript:printcontent('print')"><li class="fa fa-print"> Print</li></button>
+        </div>
+      </form>
+    <div class="panel-body" id="print">
+        <div hidden="" id="title">
+            <center> <h3> Transaction Report </h3>
+              <hr>
+        </div>
+
+      <table id="example" class="table table-striped table-bordered"  style="width:100%">
       <thead>
         <tr>
           <th class="column-title">No</th>
-          <th class="column-title">Nis Siswa</th>
-          <th class="column-title">Nama Siswa</th>
-          <th class="column-title">Absensi</th>
-          <th class="column-title">Keterangan</th>
-          <th class="column-title">Action</th>
+          <th class="column-title">Code</th>
+          <th class="column-title">Address</th>          
+          <th class="column-title">Date</th>
         </tr>
       </thead>
-    	@php
-    	$no= 1;
-    	@endphp
     	<tbody>
+        @foreach($data as $laptransaksi)
     		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>awgaanklfa</td>
-          <td>
-              <a href="" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-
-              <a><button  onclick=" return confirm('Anda Yakin Menghapus Absensi')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
-
-          </td>
+    			<td>{{$loop->iteration}}</td>
+          <td>{{$laptransaksi->kode_transaksi}}</td>
+    			<td>{{$laptransaksi->alamat_tujuan}}</td>          
+          <td>{{$laptransaksi->created_at}}</td>
     		</tr>
+        @endforeach
     	</tbody>
      </table>
      </div>

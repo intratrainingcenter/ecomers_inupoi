@@ -17,7 +17,8 @@ class CreateComentsTable extends Migration
             $table->increments('id');
             $table->string('kode_user');
             $table->string('kode_produk');
-            $table->string('deskripsi');
+            $table->unsignedInteger('rating');
+            $table->text('deskripsi')->nullable;
             $table->timestamps();
         });
     }

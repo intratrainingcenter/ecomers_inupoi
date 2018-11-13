@@ -191,6 +191,15 @@
 
 
 
+    /*==================================================================
+    [ Favorit ]*/
+    // $('.js-show-favorit').on('click',function(){
+    //     $('.js-panel-favorit').addClass('show-header-favorit');
+    // });
+
+    // $('.js-hide-favorit').on('click',function(){
+    //     $('.js-panel-favorit').removeClass('show-header-favorit');
+    // });
 
     /*==================================================================
     [ Cart ]*/
@@ -276,7 +285,6 @@
     $('.js-hide-modal1').on('click',function(){
         $('.js-modal1').removeClass('show-modal1');
     });
-
-
+    
 
 })(jQuery);

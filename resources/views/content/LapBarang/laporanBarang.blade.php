@@ -7,20 +7,15 @@
 <link href="{{ asset('assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/print.css') }}" rel="stylesheet">
+   
 @endsection
 
 @section('someJS')
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-<script>
-$(function() {
-  $('#example').DataTable();
-  // $('#example2').DataTable({
-  //   ''
-  // });
-});
-</script>
+
 @endsection
 
 @section('content')
@@ -53,40 +48,34 @@ $(function() {
     </div>
 @endif
 
- 
+
     <div class="panel panel-default">
     <div class="panel-heading">
-            <button type="button" class="btn-lg btn-success fa fa-plus-square "></button>
+      <button type="button" class="btn btn-primary printbtn" id="btnPrint" onclick="javascript:printcontent('print')"><li class="fa fa-print"> Print</li></button>
     </div>
-    <div class="panel-body">
-      <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <div id="printJSform" class="panel-body" id="print">
+        <div hidden="" id="title">
+            <center> <h3> Report Product </h3>
+              <hr>
+        </div>
+      <table id="example" class="table table-bordered" style="width:100%">
       <thead>
         <tr>
           <th class="column-title">No</th>
-          <th class="column-title">Nis Siswa</th>
-          <th class="column-title">Nama Siswa</th>
-          <th class="column-title">Absensi</th>
-          <th class="column-title">Keterangan</th>
-          <th class="column-title">Action</th>
+          <th class="column-title">Kode Barang</th>
+          <th class="column-title">Barang Keluar</th>
+          <th class="column-title">Stok Akhir</th>
         </tr>
       </thead>
-    	@php
-    	$no= 1;
-    	@endphp
     	<tbody>
+        @foreach($barang as $produk)
     		<tr>
-    			<td>data-dismissq</td>
-    			<td>dsdfsdfs</td>
-          <td>cdzsasdasw</td>
-          <td>faa</td>
-          <td>awgaanklfa</td>
-          <td>
-              <a href="" type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-
-              <a><button  onclick=" return confirm('Anda Yakin Menghapus Absensi')" type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
-
-          </td>
+    			<td>{{$loop->iteration}}</td>
+          <td>{{$produk->kode_produk}}</td>
+          <td>{{@$produk->detail_transaksi[0]->qty}}</td>
+          <td>{{$produk->stok}}</td>
     		</tr>
+        @endforeach
     	</tbody>
      </table>
      </div>
@@ -94,4 +83,3 @@ $(function() {
 </section>
 
 @endsection
-

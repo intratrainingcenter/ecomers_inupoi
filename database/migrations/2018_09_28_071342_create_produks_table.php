@@ -17,13 +17,16 @@ class CreateProduksTable extends Migration
             $table->increments('id');
             $table->string('kode_kategori');
             $table->string('kode_produk');
-            $table->string('kode_diskon');
+            $table->string('kode_diskon')->nullable();
             $table->string('nama_produk');
-            $table->integer('harga');
+            $table->string('harga');
             $table->integer('stok');
             $table->string('rating');
-            $table->string('gambar');
+            $table->string('favorite')->nullable();
+            $table->string('ukuran');
             $table->string('deskripsi_produk');
+            $table->binary('gambar');
+            $table->binary('gambar_belakang');
             $table->timestamps();
         });
     }
