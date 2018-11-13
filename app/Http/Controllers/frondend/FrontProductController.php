@@ -9,6 +9,7 @@ use App\produk;
 use App\kategori;
 use App\setting;
 use App\keranjang;
+use App\coment;
 use Auth;
 
 
@@ -118,12 +119,14 @@ class FrontProductController extends Controller
         ->sum('keranjangs.harga');
 
         $related = produk::orderBy('created_at', 'desc')->get();
+        $comment = coment::all();
 
         $footer = setting::all();
 
 
         return view('frondend.detailproduk',['data'=>$data,'category'=>$category,'related'=>$related,'count'=>$count,
         'cart'=>$cart,'purchases'=>$purchases,'footer'=>$footer]);
+        'cart'=>$cart,'purchases'=>$purchases,'comment'=>$comment]);
     }
 
 

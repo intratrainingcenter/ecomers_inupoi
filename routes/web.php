@@ -40,6 +40,7 @@ Route::get('Inupoi/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('Inupoi/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::resource('/', 'frondend\FrondendController');
+Route::resource('coment','backend\KomentarController')->middleware('auth');
 Route::resource('dashboard','backend\dashboardController')->middleware('auth');
 Route::resource('about','backend\aboutController')->middleware('auth');
 Route::resource('kategori','backend\KategoriController')->middleware('auth');
@@ -54,12 +55,13 @@ Route::resource('laporantransaksi','backend\LapTransaksiController')->middleware
 Route::resource('setting','backend\SettingController')->middleware('auth');
 Route::resource('user','backend\UserController')->middleware('auth');
 Route::resource('userprofile','backend\UserprofileController')->middleware('auth');
-
+Route::resource('coment','backend\KomentarController')->middleware('auth');
 // frontEnd
 Route::resource('fpro', 'frondend\FrontProductController');
 Route::resource('Inupoi', 'frondend\FrondendController');
 Route::resource('fcart', 'frondend\FrontCartController');
 Route::resource('fdet', 'frondend\FrontdetailController');
+Route::resource('fcoment','frondend\FrontKomentarController');
 Route::resource('ftrans', 'frondend\FrontTransController')->middleware('frontend');
 Route::post('paypal', 'PaymentController@payWithpaypal')->middleware('frontend');
 Route::get('status', 'PaymentController@getPaymentStatus')->name('status')->middleware('frontend');

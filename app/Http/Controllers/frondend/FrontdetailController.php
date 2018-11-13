@@ -10,7 +10,8 @@ use App\kategori;
 use App\keranjang;
 use App\diskon;
 use App\setting;
-use Validator, Input, Redirect;
+use App\coment;
+use Validator, Input, Redirect;  
 use Auth;
 
 class FrontdetailController extends Controller
@@ -39,9 +40,11 @@ class FrontdetailController extends Controller
 
           $count = keranjang::select('nama_produk')->count();
 
-
+        $comment = coment::join('produks','coments.kode_produk','=','produks.kode_produks')->join('users','coments.kode_users','=','users.id')
+        ->get();
      return view('frondend.detailproduk',['data'=>$data,'related'=>$related,'count'=>$count,
                 'cart'=>$cart,'purchases'=>$purchases,'footer'=>$footer]);
+                'cart'=>$cart,'purchases'=>$purchases,'comment'=>$comment]);
     }
 
 
