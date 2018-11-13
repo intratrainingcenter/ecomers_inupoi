@@ -125,8 +125,7 @@ class FrontProductController extends Controller
 
 
         return view('frondend.detailproduk',['data'=>$data,'category'=>$category,'related'=>$related,'count'=>$count,
-        'cart'=>$cart,'purchases'=>$purchases,'footer'=>$footer]);
-        'cart'=>$cart,'purchases'=>$purchases,'comment'=>$comment]);
+        'cart'=>$cart,'purchases'=>$purchases,'comment'=>$comment,'footer'=>$footer]);
     }
 
 
