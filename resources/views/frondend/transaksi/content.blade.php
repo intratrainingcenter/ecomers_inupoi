@@ -31,7 +31,7 @@
 
                                             <input type="hidden" name="kode_produk" value="{{$item->kode_produk}}">
                                             <input type="hidden" name="nama_produk" value="{{$item->nama_produk}}">
-                                            <input type="hidden" name="harga" value="{{$item->harga}}">
+                                            <input type="hidden" name="harga" value="{{"$. ".number_format($item->harga)}}">
                                             <input type="hidden" name="ukuran" value="{{$item->ukuran}}">
                                             <input type="hidden" name="hpp" value="{{$item->hpp}}">
                                             <input type="hidden" name="user" value="{{Auth::user()->id}}">
